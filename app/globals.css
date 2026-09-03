@@ -1,0 +1,325 @@
+@import "tailwindcss";
+
+:root {
+  --background: #060a12;
+  --foreground: #e8edf5;
+  --cuxton-teal: #1a5276;
+  --cuxton-teal-light: #2980b9;
+  --cuxton-teal-bright: #3498db;
+  --cuxton-orange: #f5a623;
+  --cuxton-orange-light: #f7c066;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cuxton-teal: var(--cuxton-teal);
+  --color-cuxton-teal-light: var(--cuxton-teal-light);
+  --color-cuxton-teal-bright: var(--cuxton-teal-bright);
+  --color-cuxton-orange: var(--cuxton-orange);
+  --color-cuxton-orange-light: var(--cuxton-orange-light);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── Animated deep space gradient ─── */
+@keyframes cosmicShift {
+  0%, 100% { background-position: 0% 50%; }
+  25%      { background-position: 50% 0%; }
+  50%      { background-position: 100% 50%; }
+  75%      { background-position: 50% 100%; }
+}
+
+.bg-cosmic {
+  background: linear-gradient(
+    135deg,
+    #060a12 0%,
+    #0a1628 15%,
+    #0d1f3c 30%,
+    #132a43 45%,
+    #0d1f3c 60%,
+    #0a1628 80%,
+    #060a12 100%
+  );
+  background-size: 400% 400%;
+  animation: cosmicShift 20s ease infinite;
+}
+
+/* ─── Floating particles ─── */
+@keyframes floatParticle {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-100vh) translateX(40px); opacity: 0; }
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatParticle linear infinite;
+}
+
+/* ─── Logo breathe glow ─── */
+@keyframes logoBreathe {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 30px rgba(26, 82, 118, 0.4))
+      drop-shadow(0 0 80px rgba(245, 166, 35, 0.12));
+    transform: scale(1);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 50px rgba(26, 82, 118, 0.65))
+      drop-shadow(0 0 120px rgba(245, 166, 35, 0.3));
+    transform: scale(1.02);
+  }
+}
+
+.logo-breathe {
+  animation: logoBreathe 5s ease-in-out infinite;
+}
+
+/* ─── Concentric rings ─── */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.12; transform: rotate(0deg) scale(1); }
+  50%      { opacity: 0.25; transform: rotate(180deg) scale(1.04); }
+}
+
+.ring-spin      { animation: spinSlow 25s linear infinite; }
+.ring-reverse   { animation: spinReverse 35s linear infinite; }
+.ring-pulse     { animation: ringPulse 8s ease-in-out infinite; }
+
+/* ─── Neural network connector lines ─── */
+@keyframes neuralFlow {
+  0%   { stroke-dashoffset: 200; opacity: 0; }
+  30%  { opacity: 0.5; }
+  70%  { opacity: 0.5; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+.neural-line {
+  stroke-dasharray: 200;
+  animation: neuralFlow 4s ease-in-out infinite;
+}
+
+/* ─── Glowing neural nodes ─── */
+@keyframes nodePulse {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(245, 166, 35, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(245, 166, 35, 0.9), 0 0 40px rgba(245, 166, 35, 0.3);
+    transform: scale(1.4);
+  }
+}
+
+.neural-node {
+  animation: nodePulse 3s ease-in-out infinite;
+}
+
+/* ─── Glass card ─── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+}
+
+/* ─── Badge shimmer ─── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.badge-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(245, 166, 35, 0.12) 0%,
+    rgba(245, 166, 35, 0.35) 50%,
+    rgba(245, 166, 35, 0.12) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ─── Gradient texts ─── */
+.text-gradient-hero {
+  background: linear-gradient(135deg, #ffffff 0%, #a8c4d8 40%, #f5a623 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-sub {
+  background: linear-gradient(90deg, #2980b9, #3498db, #f5a623);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Hover glow button ─── */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.btn-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #1a5276, #2980b9, #f5a623);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.btn-glow:hover::before {
+  opacity: 1;
+}
+.btn-glow:hover {
+  box-shadow:
+    0 0 30px rgba(26, 82, 118, 0.4),
+    0 0 60px rgba(245, 166, 35, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ─── Fade in animations ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.anim-fade-up {
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.anim-fade-scale {
+  animation: fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.anim-fade {
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+}
+
+/* stagger delays */
+.d1 { animation-delay: 0.1s; }
+.d2 { animation-delay: 0.25s; }
+.d3 { animation-delay: 0.4s; }
+.d4 { animation-delay: 0.55s; }
+.d5 { animation-delay: 0.7s; }
+.d6 { animation-delay: 0.85s; }
+.d7 { animation-delay: 1.0s; }
+.d8 { animation-delay: 1.15s; }
+.d9 { animation-delay: 1.3s; }
+
+/* ─── Progress bar ─── */
+@keyframes progressGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(245, 166, 35, 0.4); }
+  50%      { box-shadow: 0 0 20px rgba(245, 166, 35, 0.7), 0 0 40px rgba(26, 82, 118, 0.3); }
+}
+
+.progress-glow {
+  animation: progressGlow 2.5s ease-in-out infinite;
+}
+
+/* ─── Scan lines ─── */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(26, 82, 118, 0.012) 2px,
+    rgba(26, 82, 118, 0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Hexagonal grid overlay ─── */
+@keyframes hexFade {
+  0%, 100% { opacity: 0.015; }
+  50%      { opacity: 0.04; }
+}
+
+.hex-grid {
+  background-image:
+    linear-gradient(30deg, rgba(26,82,118,0.03) 12%, transparent 12.5%, transparent 87%, rgba(26,82,118,0.03) 87.5%, rgba(26,82,118,0.03)),
+    linear-gradient(150deg, rgba(26,82,118,0.03) 12%, transparent 12.5%, transparent 87%, rgba(26,82,118,0.03) 87.5%, rgba(26,82,118,0.03)),
+    linear-gradient(30deg, rgba(26,82,118,0.03) 12%, transparent 12.5%, transparent 87%, rgba(26,82,118,0.03) 87.5%, rgba(26,82,118,0.03)),
+    linear-gradient(150deg, rgba(26,82,118,0.03) 12%, transparent 12.5%, transparent 87%, rgba(26,82,118,0.03) 87.5%, rgba(26,82,118,0.03)),
+    linear-gradient(60deg, rgba(245,166,35,0.02) 25%, transparent 25.5%, transparent 75%, rgba(245,166,35,0.02) 75%, rgba(245,166,35,0.02)),
+    linear-gradient(60deg, rgba(245,166,35,0.02) 25%, transparent 25.5%, transparent 75%, rgba(245,166,35,0.02) 75%, rgba(245,166,35,0.02));
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  animation: hexFade 6s ease-in-out infinite;
+}
+
+/* ─── Cursor blink ─── */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: cursorBlink 1s step-end infinite;
+}
+
+/* ─── Countdown digit container ─── */
+.countdown-cell {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 82, 118, 0.08) 0%,
+    rgba(6, 10, 18, 0.6) 100%
+  );
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(26, 82, 118, 0.15);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-cell::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(26, 82, 118, 0.1);
+}
