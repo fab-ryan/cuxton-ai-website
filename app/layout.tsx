@@ -52,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps) {
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col" style={{ background: "var(--background)" }}>
         <Nav />
-        <main style={{ flex: 1 }}>
+        <main id="main-content" tabIndex={-1} style={{ flex: 1, outline: "none" }}>
           {children}
         </main>
         <Footer />

@@ -139,7 +139,7 @@ export default function ContactPage() {
                     <div>
                       <p style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "0.2rem" }}
                         dangerouslySetInnerHTML={{ __html: title }} />
-                      <p style={{ fontSize: "0.78rem", color: "rgba(232,237,245,0.45)", lineHeight: 1.55 }}
+                      <p style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.45)", lineHeight: 1.55 }}
                         dangerouslySetInnerHTML={{ __html: desc }} />
                     </div>
                   </div>
@@ -152,7 +152,7 @@ export default function ContactPage() {
                 border: "1px solid rgba(27,107,138,0.15)",
                 borderRadius: 16, padding: "1.25rem",
               }}>
-                <p style={{ fontSize: "0.78rem", color: "rgba(232,237,245,0.4)", lineHeight: 1.65 }}>
+                <p style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.4)", lineHeight: 1.65 }}>
                   <span style={{ color: "var(--cuxton-teal-light)", fontWeight: 700 }}>Privacy: </span>
                   Do not submit confidential client data, patient-identifiable information or sensitive
                   internal data through this public form. Describe your situation at a high level — we
@@ -161,7 +161,7 @@ export default function ContactPage() {
               </div>
 
               {/* Direct email */}
-              <p style={{ fontSize: "0.8rem", color: "rgba(232,237,245,0.35)", lineHeight: 1.6 }}>
+              <p style={{ fontSize: "0.8rem", color: "rgba(var(--foreground-rgb),0.35)", lineHeight: 1.6 }}>
                 Prefer email?{" "}
                 <a href="mailto:hello@cuxtonai.com" style={{ color: "var(--cuxton-teal-light)", textDecoration: "none" }}>
                   hello@cuxtonai.com
@@ -188,7 +188,7 @@ export default function ContactPage() {
                   <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "var(--foreground)", marginBottom: "0.75rem" }}>
                     Submission received.
                   </h2>
-                  <p style={{ fontSize: "0.9rem", color: "rgba(232,237,245,0.5)", lineHeight: 1.7, marginBottom: "2rem" }}>
+                  <p style={{ fontSize: "0.9rem", color: "rgba(var(--foreground-rgb),0.5)", lineHeight: 1.7, marginBottom: "2rem" }}>
                     Thank you for getting in touch. We&apos;ll review your submission and follow up within 2
                     business days to arrange a time to connect.
                   </p>
@@ -306,9 +306,9 @@ export default function ContactPage() {
                             style={{
                               display: "flex", alignItems: "center", gap: "0.5rem",
                               padding: "0.5rem 0.75rem", borderRadius: 10, cursor: "pointer",
-                              background: selected ? "rgba(27,107,138,0.15)" : "rgba(9,21,37,0.6)",
+                              background: selected ? "rgba(27,107,138,0.15)" : "rgba(var(--bg-surface-rgb),0.6)",
                               border: `1px solid ${selected ? "rgba(27,107,138,0.4)" : "rgba(27,107,138,0.14)"}`,
-                              color: selected ? "var(--cuxton-teal-light)" : "rgba(232,237,245,0.45)",
+                              color: selected ? "var(--cuxton-teal-light)" : "rgba(var(--foreground-rgb),0.45)",
                               fontSize: "0.78rem", fontWeight: selected ? 600 : 400,
                               textAlign: "left", transition: "all 0.2s ease",
                             }}
@@ -360,7 +360,7 @@ export default function ContactPage() {
                     )}
 
                     <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
-                      <p style={{ fontSize: "0.72rem", color: "rgba(232,237,245,0.25)", maxWidth: 360, lineHeight: 1.5 }}>
+                      <p style={{ fontSize: "0.72rem", color: "rgba(var(--foreground-rgb),0.25)", maxWidth: 360, lineHeight: 1.5 }}>
                         By submitting this form you agree to being contacted by Cuxton AI regarding your enquiry.
                         We do not share your information with third parties.
                       </p>

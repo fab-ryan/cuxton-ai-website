@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Company — About Cuxton AI",
@@ -16,6 +18,82 @@ const principles = [
   { n: "06", label: "Institutional knowledge", desc: "AI connected to an organisation's own authorised knowledge produces more relevant, more accurate and more trusted outputs than AI relying only on general training data." },
   { n: "07", label: "Long-term relationship", desc: "A well-deployed AI system continues to improve with use. We aim to be a long-term partner — not a one-time delivery team." },
 ];
+
+/* ─────────────────────────────────────────────────────────
+   PLACEHOLDER — replace with the real board before shipping.
+   Each entry needs: name, role, bio, city, country, a photo
+   (drop the file in public/team/ and point `photo` at it — omit
+   `photo` to show the initials fallback), and social links.
+   ───────────────────────────────────────────────────────── */
+const boardMembers: {
+  name: string;
+  role: string;
+  bio: string;
+  city: string;
+  country: string;
+  photo?: string;
+  linkedin?: string;
+  x?: string;
+}[] = [
+  {
+    name: "Full Name",
+    role: "Board Role / Title",
+    bio: "Add a short bio: their background, area of focus, and how it connects to Cuxton AI's mission.",
+    city: "City",
+    country: "Country",
+    linkedin: "#",
+    x: "#",
+  },
+  {
+    name: "Full Name",
+    role: "Board Role / Title",
+    bio: "Add a short bio: their background, area of focus, and how it connects to Cuxton AI's mission.",
+    city: "City",
+    country: "Country",
+    linkedin: "#",
+    x: "#",
+  },
+  {
+    name: "Full Name",
+    role: "Board Role / Title",
+    bio: "Add a short bio: their background, area of focus, and how it connects to Cuxton AI's mission.",
+    city: "City",
+    country: "Country",
+    linkedin: "#",
+    x: "#",
+  },
+  {
+    name: "Full Name",
+    role: "Board Role / Title",
+    bio: "Add a short bio: their background, area of focus, and how it connects to Cuxton AI's mission.",
+    city: "City",
+    country: "Country",
+    linkedin: "#",
+    x: "#",
+  },
+];
+
+const LinkedInIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 8.24h4.56V23H.22V8.24zM8.34 8.24h4.37v2.01h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.99c0-1.67-.03-3.81-2.32-3.81-2.33 0-2.69 1.82-2.69 3.69V23H8.34V8.24z" />
+  </svg>
+);
+
+const XIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.83-5.97 6.83H1.66l7.73-8.84L1.25 2.25h6.83l4.72 6.24 5.44-6.24zm-1.16 17.52h1.83L7.02 4.13H5.06l12.02 15.64z" />
+  </svg>
+);
+
+const LocationIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" />
+  </svg>
+);
+
+function initials(name: string) {
+  return name.split(" ").filter(Boolean).slice(0, 2).map(p => p[0]?.toUpperCase()).join("");
+}
 
 export default function CompanyPage() {
   return (
@@ -68,7 +146,7 @@ export default function CompanyPage() {
                     <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cuxton-teal-light)", flexShrink: 0, marginTop: "0.5rem" }} />
                     <div>
                       <p style={{ fontSize: "0.9rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "0.3rem" }}>{title}</p>
-                      <p style={{ fontSize: "0.83rem", color: "rgba(232,237,245,0.5)", lineHeight: 1.65 }}>{desc}</p>
+                      <p style={{ fontSize: "0.83rem", color: "rgba(var(--foreground-rgb),0.5)", lineHeight: 1.65 }}>{desc}</p>
                     </div>
                   </div>
                 ))}
@@ -117,7 +195,7 @@ export default function CompanyPage() {
                       strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 2, flexShrink: 0 }}>
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    <span style={{ fontSize: "0.82rem", color: "rgba(232,237,245,0.55)" }}>{item}</span>
+                    <span style={{ fontSize: "0.82rem", color: "rgba(var(--foreground-rgb),0.55)" }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -156,7 +234,7 @@ export default function CompanyPage() {
                       <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "0.5rem" }}>
                         {p.label}
                       </h3>
-                      <p style={{ fontSize: "0.875rem", color: "rgba(232,237,245,0.5)", lineHeight: 1.7 }}>
+                      <p style={{ fontSize: "0.875rem", color: "rgba(var(--foreground-rgb),0.5)", lineHeight: 1.7 }}>
                         {p.desc}
                       </p>
                     </div>
@@ -166,6 +244,72 @@ export default function CompanyPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Leadership */}
+      <section className={`section-py ${styles.leadership}`}>
+        <div className="section-container">
+          <div className={styles.leadership__header}>
+            <div className="section-label">Leadership</div>
+            <h2 className={styles.leadership__heading}>
+              The people <span className={styles.leadership__headingMuted}>accountable for how Cuxton AI operates.</span>
+            </h2>
+            <p className="section-sub">
+              Our board oversees the principles above in practice — including the data-control and
+              human-oversight commitments that shape every engagement.
+            </p>
+          </div>
+
+          <div className={styles.leadership__frame}>
+            <svg className={`${styles.leadership__corner} ${styles.leadership__cornerTl}`} viewBox="0 0 14 14" fill="none"><path d="M1 6V1h5" stroke="currentColor" strokeWidth="1.5" /></svg>
+            <svg className={`${styles.leadership__corner} ${styles.leadership__cornerTr}`} viewBox="0 0 14 14" fill="none"><path d="M8 1h5v5" stroke="currentColor" strokeWidth="1.5" /></svg>
+            <svg className={`${styles.leadership__corner} ${styles.leadership__cornerBl}`} viewBox="0 0 14 14" fill="none"><path d="M6 13H1V8" stroke="currentColor" strokeWidth="1.5" /></svg>
+            <svg className={`${styles.leadership__corner} ${styles.leadership__cornerBr}`} viewBox="0 0 14 14" fill="none"><path d="M13 8v5H8" stroke="currentColor" strokeWidth="1.5" /></svg>
+
+            <div className={styles.leadership__grid}>
+              {boardMembers.map((m, i) => (
+                <div key={i} className={`card-enterprise ${styles.member}`}>
+                  <div className={styles.member__top}>
+                    {m.photo ? (
+                      <Image src={m.photo} alt={m.name} width={64} height={64} className={styles.member__avatar} />
+                    ) : (
+                      <div className={styles.member__avatarFallback} aria-hidden="true">{initials(m.name)}</div>
+                    )}
+                    <div>
+                      <p className={styles.member__name}>{m.name}</p>
+                      <p className={styles.member__role}>{m.role}</p>
+                    </div>
+                  </div>
+
+                  <p className={styles.member__bio}>{m.bio}</p>
+
+                  <div className={styles.member__footer}>
+                    <div className={styles.member__location}>
+                      <LocationIcon />
+                      <span className={styles.member__locationText}>{m.city}, {m.country}</span>
+                    </div>
+                    <div className={styles.member__social}>
+                      {m.linkedin && (
+                        <a href={m.linkedin} className={styles.member__socialLink} aria-label={`${m.name} on LinkedIn`} target="_blank" rel="noopener noreferrer">
+                          <LinkedInIcon />
+                        </a>
+                      )}
+                      {m.x && (
+                        <a href={m.x} className={styles.member__socialLink} aria-label={`${m.name} on X`} target="_blank" rel="noopener noreferrer">
+                          <XIcon />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className={styles.leadership__note}>
+            Placeholder profiles — replace with the real board in app/company/page.tsx before this ships.
+          </p>
         </div>
       </section>
 

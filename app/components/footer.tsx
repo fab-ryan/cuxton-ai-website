@@ -1,5 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
+import { getImageProps } from "next/image";
+
+const footerLogoCommon = { alt: "Cuxton AI", width: 150, height: 36 };
+const { props: footerLogoLightProps } = getImageProps({ ...footerLogoCommon, src: "/full_color.png" });
+const { props: footerLogoDarkProps } = getImageProps({ ...footerLogoCommon, src: "/full_color-white.png" });
 
 const solutionLinks = [
   ["AI Strategy & Discovery", "/solutions#strategy"],
@@ -41,19 +45,19 @@ export default function Footer() {
       <style>{`
         .footer-link {
           font-size: 0.85rem;
-          color: rgba(232,237,245,0.48);
+          color: rgba(var(--foreground-rgb),0.48);
           text-decoration: none;
           transition: color 0.2s ease;
           display: block;
         }
-        .footer-link:hover { color: rgba(232,237,245,0.9); }
+        .footer-link:hover { color: rgba(var(--foreground-rgb),0.9); }
         .footer-legal-link {
           font-size: 0.78rem;
-          color: rgba(232,237,245,0.3);
+          color: rgba(var(--foreground-rgb),0.3);
           text-decoration: none;
           transition: color 0.2s ease;
         }
-        .footer-legal-link:hover { color: rgba(232,237,245,0.6); }
+        .footer-legal-link:hover { color: rgba(var(--foreground-rgb),0.6); }
         .footer-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -80,18 +84,15 @@ export default function Footer() {
 
             {/* Brand column */}
             <div style={{ maxWidth: 320 }}>
-              <Image
-                src="/full_color-white.png"
-                alt="Cuxton AI"
-                width={150}
-                height={36}
-                className="object-contain"
-              />
+              <picture>
+                <source media="(prefers-color-scheme: light)" srcSet={footerLogoLightProps.srcSet || footerLogoLightProps.src} />
+                <img {...footerLogoDarkProps} alt={footerLogoCommon.alt} className="object-contain" />
+              </picture>
               <p style={{
                 marginTop: "1.25rem",
                 fontSize: "0.875rem",
                 lineHeight: 1.7,
-                color: "rgba(232,237,245,0.45)",
+                color: "rgba(var(--foreground-rgb),0.45)",
               }}>
                 Enterprise AI consultancy, integration and solutions. Helping institutions turn data,
                 knowledge and workflows into secure, useful AI capabilities.
@@ -168,7 +169,7 @@ export default function Footer() {
             justifyContent: "space-between",
             gap: "1rem",
           }}>
-            <p style={{ fontSize: "0.78rem", color: "rgba(232,237,245,0.3)" }}>
+            <p style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.3)" }}>
               © {new Date().getFullYear()} Cuxton AI. All rights reserved.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1.25rem" }}>

@@ -146,7 +146,7 @@ export default function HowWeWorkPage() {
                 <div className="step-content card-enterprise"
                   id={`step-content-${i}`}
                   style={{ padding: "1.75rem", display: "grid", gridTemplateColumns: "1fr", gap: "1.5rem" }}>
-                  <p style={{ fontSize: "0.875rem", color: "rgba(232,237,245,0.55)", lineHeight: 1.75 }}>
+                  <p style={{ fontSize: "0.875rem", color: "rgba(var(--foreground-rgb),0.55)", lineHeight: 1.75 }}>
                     {step.desc}
                   </p>
                   <div>
@@ -164,7 +164,7 @@ export default function HowWeWorkPage() {
                             strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 2, flexShrink: 0 }}>
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
-                          <span style={{ fontSize: "0.8rem", color: "rgba(232,237,245,0.55)" }}>{o}</span>
+                          <span style={{ fontSize: "0.8rem", color: "rgba(var(--foreground-rgb),0.55)" }}>{o}</span>
                         </div>
                       ))}
                     </div>
@@ -199,7 +199,7 @@ export default function HowWeWorkPage() {
                   <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cuxton-amber)", flexShrink: 0 }} />
                   <h3 style={{ fontSize: "0.9rem", fontWeight: 700, color: "var(--foreground)" }}>{p.label}</h3>
                 </div>
-                <p style={{ fontSize: "0.82rem", color: "rgba(232,237,245,0.48)", lineHeight: 1.65 }}>{p.desc}</p>
+                <p style={{ fontSize: "0.82rem", color: "rgba(var(--foreground-rgb),0.48)", lineHeight: 1.65 }}>{p.desc}</p>
               </div>
             ))}
           </div>

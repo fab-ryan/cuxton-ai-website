@@ -150,12 +150,12 @@ export default function IndustriesPage() {
                       {ind.name}
                     </h2>
                     <p style={{
-                      fontSize: "0.78rem", color: "rgba(232,237,245,0.35)",
+                      fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.35)",
                       marginBottom: "1.25rem", letterSpacing: "0.02em",
                     }}>
                       {ind.sub}
                     </p>
-                    <p style={{ fontSize: "0.9rem", color: "rgba(232,237,245,0.55)", lineHeight: 1.75, marginBottom: "2rem" }}>
+                    <p style={{ fontSize: "0.9rem", color: "rgba(var(--foreground-rgb),0.55)", lineHeight: 1.75, marginBottom: "2rem" }}>
                       {ind.intro}
                     </p>
                     <Link href="/contact" className="btn-primary"
@@ -185,7 +185,7 @@ export default function IndustriesPage() {
                             <p style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "0.2rem" }}>
                               {title}
                             </p>
-                            <p style={{ fontSize: "0.78rem", color: "rgba(232,237,245,0.45)", lineHeight: 1.55 }}>
+                            <p style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.45)", lineHeight: 1.55 }}>
                               {desc}
                             </p>
                           </div>

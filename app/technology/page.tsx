@@ -121,7 +121,7 @@ export default function TechnologyPage() {
                   <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "var(--foreground)" }}>{m.name}</h3>
                   <span className="tag-teal" style={{ fontSize: "0.68rem" }}>{m.tag}</span>
                 </div>
-                <p style={{ fontSize: "0.82rem", color: "rgba(232,237,245,0.55)", lineHeight: 1.7, marginBottom: "1.25rem" }}>
+                <p style={{ fontSize: "0.82rem", color: "rgba(var(--foreground-rgb),0.55)", lineHeight: 1.7, marginBottom: "1.25rem" }}>
                   {m.desc}
                 </p>
                 <div style={{ marginBottom: "1rem" }}>
@@ -131,18 +131,18 @@ export default function TechnologyPage() {
                   {m.bestFor.map(b => (
                     <div key={b} style={{ display: "flex", gap: "0.5rem", marginBottom: "0.375rem" }}>
                       <span style={{ color: "var(--cuxton-teal-light)", fontSize: "0.8rem" }}>→</span>
-                      <span style={{ fontSize: "0.78rem", color: "rgba(232,237,245,0.5)" }}>{b}</span>
+                      <span style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.5)" }}>{b}</span>
                     </div>
                   ))}
                 </div>
                 <div>
-                  <p style={{ fontSize: "0.68rem", fontWeight: 700, color: "rgba(232,237,245,0.3)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.625rem" }}>
+                  <p style={{ fontSize: "0.68rem", fontWeight: 700, color: "rgba(var(--foreground-rgb),0.3)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.625rem" }}>
                     Considerations
                   </p>
                   {m.considerations.map(c => (
                     <div key={c} style={{ display: "flex", gap: "0.5rem", marginBottom: "0.375rem" }}>
-                      <span style={{ color: "rgba(232,237,245,0.3)", fontSize: "0.8rem" }}>—</span>
-                      <span style={{ fontSize: "0.78rem", color: "rgba(232,237,245,0.35)" }}>{c}</span>
+                      <span style={{ color: "rgba(var(--foreground-rgb),0.3)", fontSize: "0.8rem" }}>—</span>
+                      <span style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.35)" }}>{c}</span>
                     </div>
                   ))}
                 </div>
@@ -194,7 +194,7 @@ export default function TechnologyPage() {
                     <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "0.5rem" }}>
                       {layer.label}
                     </h3>
-                    <p style={{ fontSize: "0.82rem", color: "rgba(232,237,245,0.48)", lineHeight: 1.7 }}>
+                    <p style={{ fontSize: "0.82rem", color: "rgba(var(--foreground-rgb),0.48)", lineHeight: 1.7 }}>
                       {layer.desc}
                     </p>
                   </div>
@@ -229,7 +229,7 @@ export default function TechnologyPage() {
             ].map(([title, desc]) => (
               <div key={title} className="card-enterprise" style={{ padding: "1.375rem" }}>
                 <p style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--cuxton-teal-light)", marginBottom: "0.5rem" }}>{title}</p>
-                <p style={{ fontSize: "0.78rem", color: "rgba(232,237,245,0.45)", lineHeight: 1.6 }}>{desc}</p>
+                <p style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.45)", lineHeight: 1.6 }}>{desc}</p>
               </div>
             ))}
           </div>
@@ -252,7 +252,7 @@ export default function TechnologyPage() {
                 <p style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "0.5rem" }}>
                   {p.label}
                 </p>
-                <p style={{ fontSize: "0.78rem", color: "rgba(232,237,245,0.45)", lineHeight: 1.65 }}>
+                <p style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.45)", lineHeight: 1.65 }}>
                   {p.desc}
                 </p>
               </div>

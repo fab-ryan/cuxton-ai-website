@@ -204,7 +204,7 @@ export default function SolutionsPage() {
                       }}>
                         {sol.headline}
                       </p>
-                      <p style={{ fontSize: "0.875rem", color: "rgba(232,237,245,0.55)", lineHeight: 1.75 }}>
+                      <p style={{ fontSize: "0.875rem", color: "rgba(var(--foreground-rgb),0.55)", lineHeight: 1.75 }}>
                         {sol.body}
                       </p>
                     </div>
@@ -230,7 +230,7 @@ export default function SolutionsPage() {
                               strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 2, flexShrink: 0 }}>
                               <polyline points="20 6 9 17 4 12" />
                             </svg>
-                            <span style={{ fontSize: "0.82rem", color: "rgba(232,237,245,0.6)", lineHeight: 1.55 }}>{o}</span>
+                            <span style={{ fontSize: "0.82rem", color: "rgba(var(--foreground-rgb),0.6)", lineHeight: 1.55 }}>{o}</span>
                           </li>
                         ))}
                       </ul>

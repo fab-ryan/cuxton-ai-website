@@ -31,7 +31,7 @@ export default function NotFound() {
             width={120}
             height={120}
             className="object-contain"
-            priority
+            preload
           />
         </div>
 
@@ -67,19 +67,19 @@ export default function NotFound() {
         </div>
 
         {/* Heading */}
-        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white/90 mb-3">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[rgba(var(--foreground-rgb),0.9)] mb-3">
           Page Not Found
         </h1>
 
         {/* Description */}
-        <p className="text-sm sm:text-base text-white/35 leading-relaxed max-w-sm mb-2">
+        <p className="text-sm sm:text-base text-[rgba(var(--foreground-rgb),0.5)] leading-relaxed max-w-sm mb-2">
           This page doesn&apos;t exist yet — we&apos;re still building.
           Our site is coming soon.
         </p>
 
         {/* Terminal hint */}
-        <div className="font-mono text-[11px] text-white/20 flex items-center gap-2 mb-10">
-          <span className="text-cuxton-teal-bright">$</span>
+        <div className="font-mono text-[11px] text-[rgba(var(--foreground-rgb),0.35)] flex items-center gap-2 mb-10">
+          <span className="text-cuxton-teal-light">$</span>
           <span>Error: route not found</span>
           <span className="text-cuxton-orange">×</span>
         </div>
@@ -105,10 +105,10 @@ export default function NotFound() {
         </Link>
 
         {/* Divider */}
-        <div className="mt-12 w-24 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+        <div className="mt-12 w-24 h-px bg-gradient-to-r from-transparent via-[rgba(var(--foreground-rgb),0.12)] to-transparent" />
 
         {/* Footer */}
-        <p className="mt-5 text-[10px] text-white/15 tracking-[0.2em] uppercase font-medium">
+        <p className="mt-5 text-[10px] text-[rgba(var(--foreground-rgb),0.3)] tracking-[0.2em] uppercase font-medium">
           © {new Date().getFullYear()} Cuxton AI
         </p>
       </div>
