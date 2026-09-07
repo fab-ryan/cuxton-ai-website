@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Industries — AI for Financial Services, Healthcare, Government and More",
@@ -104,32 +105,25 @@ export default function IndustriesPage() {
   return (
     <div style={{ background: "var(--background)" }}>
 
-      {/* Hero */}
-      <section style={{ padding: "5rem 0 4rem", position: "relative", overflow: "hidden" }}
-        className="bg-cosmic scanlines">
-        <div className="absolute inset-0 hex-grid pointer-events-none" />
-        <div style={{
-          position: "absolute", left: "50%", top: "50%",
-          transform: "translate(-50%,-50%)",
-          width: 700, height: 700,
-          background: "radial-gradient(circle, rgba(245,166,35,0.08) 0%, rgba(27,107,138,0.06) 40%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
-        <div className="section-container" style={{ position: "relative", zIndex: 1 }}>
-          <div className="section-label anim-fade d1">Industries</div>
-          <h1 className="section-heading anim-fade-up d2"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)", maxWidth: 640, marginBottom: "1.25rem" }}>
-            Built for data-rich and high-trust environments.
-          </h1>
-          <p className="section-sub anim-fade-up d3" style={{ marginBottom: "2.5rem" }}>
-            Cuxton AI works with institutions where data sensitivity, regulatory requirements and operational
-            complexity make standard AI approaches inadequate.
-          </p>
-          <Link href="/contact" className="btn-primary anim-fade-up d4">
-            Discuss your sector
-          </Link>
-        </div>
-      </section>
+      <PageHero
+        breadcrumbs={[{ label: "Industries" }]}
+        eyebrow="Industries"
+        title="Built for data-rich and"
+        titleHighlight="high-trust environments."
+        description="Cuxton AI works with institutions where data sensitivity, regulatory requirements and operational complexity make standard AI approaches inadequate."
+        primaryCta={{
+          label: "Discuss Your Sector",
+          href: "/contact",
+        }}
+        tags={[
+          "Financial Services",
+          "Healthcare",
+          "Government",
+          "Education & Research",
+          "Telecommunications",
+          "Legal & Audit",
+        ]}
+      />
 
       {/* Industry panels */}
       <section className="section-py">

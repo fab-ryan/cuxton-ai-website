@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import PageHero from "@/components/PageHero";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -99,30 +100,27 @@ export default function CompanyPage() {
   return (
     <div style={{ background: "var(--background)" }}>
 
-      {/* Hero */}
-      <section style={{ padding: "5rem 0 4.5rem", position: "relative", overflow: "hidden" }}
-        className="bg-cosmic scanlines">
-        <div className="absolute inset-0 hex-grid pointer-events-none" />
-        <div style={{
-          position: "absolute", left: "50%", top: "50%",
-          transform: "translate(-50%,-50%)",
-          width: 800, height: 800,
-          background: "radial-gradient(circle, rgba(27,107,138,0.12) 0%, rgba(245,166,35,0.04) 50%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
-        <div className="section-container" style={{ position: "relative", zIndex: 1, maxWidth: 700 }}>
-          <div className="section-label anim-fade d1">Company</div>
-          <h1 className="section-heading anim-fade-up d2"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)", marginBottom: "1.25rem" }}>
-            Enterprise AI consultancy built for institutions that need control.
-          </h1>
-          <p className="section-sub anim-fade-up d3">
-            Cuxton AI exists to help organisations with complex, sensitive or regulated operations
-            find where AI can create real value — and then build, integrate and deploy it safely,
-            responsibly and with lasting effect.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        breadcrumbs={[{ label: "Company" }]}
+        eyebrow="About Cuxton AI"
+        title="Enterprise AI consultancy built for institutions that"
+        titleHighlight="need control."
+        description="Cuxton AI exists to help organisations with complex, sensitive or regulated operations discover where AI creates real value — and then build, integrate and deploy it safely, responsibly and with lasting effect."
+        primaryCta={{
+          label: "Book a Discovery Session",
+          href: "/contact",
+        }}
+        secondaryCta={{
+          label: "How We Work",
+          href: "/how-we-work",
+        }}
+        tags={[
+          "Sovereign Architecture",
+          "Independent Advisory",
+          "Institutional Privacy",
+          "Human-in-the-Loop",
+        ]}
+      />
 
       {/* What Cuxton AI is */}
       <section className="section-py">

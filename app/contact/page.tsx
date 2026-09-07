@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
 
 /* ── Form state ── */
 type FormData = {
@@ -83,29 +84,20 @@ export default function ContactPage() {
   return (
     <div style={{ background: "var(--background)" }}>
 
-      {/* Hero */}
-      <section style={{ padding: "4.5rem 0 3.5rem", position: "relative", overflow: "hidden" }}
-        className="bg-cosmic scanlines">
-        <div className="absolute inset-0 hex-grid pointer-events-none" />
-        <div style={{
-          position: "absolute", left: "50%", top: "50%",
-          transform: "translate(-50%,-50%)",
-          width: 700, height: 700,
-          background: "radial-gradient(circle, rgba(27,107,138,0.14) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
-        <div className="section-container" style={{ position: "relative", zIndex: 1, maxWidth: 640 }}>
-          <div className="section-label anim-fade d1">Contact</div>
-          <h1 className="section-heading anim-fade-up d2"
-            style={{ fontSize: "clamp(1.875rem, 4.5vw, 3rem)", marginBottom: "1.25rem" }}>
-            Book an AI Discovery Session.
-          </h1>
-          <p className="section-sub anim-fade-up d3">
-            A focused conversation to understand your organisation&apos;s objectives, current environment
-            and where AI could create measurable value. No commitment required.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        breadcrumbs={[{ label: "Contact" }]}
+        eyebrow="Contact & Engagement"
+        title="Book an"
+        titleHighlight="AI Discovery Session."
+        showVisual={false}
+        description="A focused conversation to understand your organisation's objectives, current environment, data boundaries and where AI could create measurable value. No commitment required."
+        tags={[
+          "Direct Architect Access",
+          "Zero Sales Pressure",
+          "Institutional Privacy First",
+          "NDA Ready",
+        ]}
+      />
 
       {/* Form + sidebar */}
       <section className="section-py">

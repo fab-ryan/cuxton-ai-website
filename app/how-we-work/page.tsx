@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "How We Work — Cuxton AI Engagement Model",
@@ -79,32 +80,23 @@ export default function HowWeWorkPage() {
   return (
     <div style={{ background: "var(--background)" }}>
 
-      {/* Hero */}
-      <section style={{ padding: "5rem 0 4.5rem", position: "relative", overflow: "hidden" }}
-        className="bg-cosmic scanlines">
-        <div className="absolute inset-0 hex-grid pointer-events-none" />
-        <div style={{
-          position: "absolute", right: "10%", top: "50%",
-          transform: "translateY(-50%)",
-          width: 500, height: 500,
-          background: "radial-gradient(circle, rgba(27,107,138,0.14) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
-        <div className="section-container" style={{ position: "relative", zIndex: 1, maxWidth: 680 }}>
-          <div className="section-label anim-fade d1">How We Work</div>
-          <h1 className="section-heading anim-fade-up d2"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)", marginBottom: "1.25rem" }}>
-            Start with the problem.<br />Scale what works.
-          </h1>
-          <p className="section-sub anim-fade-up d3" style={{ marginBottom: "2.5rem" }}>
-            Cuxton AI follows a structured, 8-step engagement model designed to find the right use case,
-            build it properly and enable the organisation to operate it with confidence.
-          </p>
-          <Link href="/contact" className="btn-primary anim-fade-up d4">
-            Start with a Discovery Session
-          </Link>
-        </div>
-      </section>
+      <PageHero
+        breadcrumbs={[{ label: "How We Work" }]}
+        eyebrow="Engagement Model"
+        title="Start with the problem."
+        titleHighlight="Scale what works."
+        description="Cuxton AI follows a structured, 8-step engagement model designed to evaluate the right use case, engineer it securely and enable your organisation to operate it with absolute confidence."
+        primaryCta={{
+          label: "Start with a Discovery Session",
+          href: "/contact",
+        }}
+        tags={[
+          "Feasibility-First",
+          "Fixed Milestones",
+          "Knowledge Transfer",
+          "Continuous Oversight",
+        ]}
+      />
 
       {/* Steps */}
       <section className="section-py">

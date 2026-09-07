@@ -1,0 +1,438 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CUXTON AI — Enterprise Footer Styles (CSS Module)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  background-color: #060d14;
+  background-image: url("/footer-network.svg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  color: #e8edf5;
+  border-top: 1px solid rgba(27, 107, 138, 0.28);
+}
+
+/* ─── Ambient Overlay & Top Accent ──────────────────────────────── */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(6, 13, 20, 0.88);
+  z-index: 1;
+}
+
+.glowTopBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(27, 107, 138, 0.35);
+  box-shadow: 0 0 20px 2px rgba(45, 154, 191, 0.3);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 3;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 4rem 2rem 3rem;
+  }
+}
+
+/* ─── 1. EXECUTIVE BRIEFINGS STRIP ─────────────────────────────── */
+
+.briefingStrip {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  margin-bottom: 3rem;
+  background: rgba(9, 21, 37, 0.6);
+  border: 1px solid rgba(27, 107, 138, 0.25);
+  border-radius: 16px;
+}
+
+@media (min-width: 768px) {
+  .briefingStrip {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1.75rem 2.25rem;
+  }
+}
+
+.briefingCopy {
+  max-width: 480px;
+}
+
+.briefingEyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber);
+  margin: 0 0 0.4rem;
+}
+
+.briefingHeading {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #ffffff;
+  margin: 0;
+}
+
+.briefingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .briefingForm {
+    flex-direction: row;
+    width: auto;
+  }
+}
+
+.emailInput {
+  flex: 1;
+  min-width: 0;
+  height: 2.75rem;
+  background: rgba(6, 13, 20, 0.8);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  border-radius: 10px;
+  padding: 0 1rem;
+  font-size: 0.85rem;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 480px) {
+  .emailInput {
+    width: 240px;
+  }
+}
+
+.emailInput::placeholder {
+  color: rgba(238, 242, 247, 0.35);
+}
+
+.emailInput:focus {
+  border-color: var(--cuxton-teal-light);
+  box-shadow: 0 0 0 3px rgba(45, 154, 191, 0.2);
+}
+
+.briefingSubmit {
+  height: 2.75rem;
+  padding: 0 1.25rem;
+  background: var(--cuxton-teal);
+  border: 1px solid rgba(45, 154, 191, 0.4);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.briefingSubmit:hover:not(:disabled) {
+  background: var(--cuxton-teal-mid);
+}
+
+.briefingSubmit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.briefingSuccess {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.85rem;
+  background: rgba(45, 154, 191, 0.15);
+  border: 1px solid rgba(45, 154, 191, 0.35);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  color: var(--cuxton-teal-light);
+  flex-shrink: 0;
+}
+
+/* ─── 2. MAIN FOOTER NAVIGATION COLUMNS ────────────────────────── */
+
+.navGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+  .navGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navGrid {
+    grid-template-columns: 2.3fr 1.3fr 1.3fr 1.2fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Brand Column */
+.brandColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 360px;
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .brandColumn {
+    grid-column: auto;
+  }
+}
+
+.brandTagline {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(238, 242, 247, 0.65);
+  margin: 0;
+}
+
+.trustChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.trustChip {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(27, 107, 138, 0.25);
+  border-radius: 6px;
+  color: rgba(238, 242, 247, 0.7);
+}
+
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+  color: rgba(238, 242, 247, 0.6);
+  transition: all 0.22s ease;
+  text-decoration: none;
+}
+
+.socialBtn:hover {
+  color: #ffffff;
+  border-color: var(--cuxton-teal-light);
+  background: rgba(27, 107, 138, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(27, 107, 138, 0.35);
+}
+
+/* Nav Link Columns */
+.colHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber);
+  margin-bottom: 1.25rem;
+}
+
+.colHeaderDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cuxton-amber);
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(238, 242, 247, 0.6);
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0.15rem 0;
+}
+
+.linkArrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.22s ease;
+  color: var(--cuxton-amber);
+}
+
+.navLink:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.navLink:hover .linkArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.linkTag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(245, 166, 35, 0.15);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  color: var(--cuxton-amber);
+  margin-left: 0.35rem;
+}
+
+/* ─── 3. BOTTOM UTILITY BAR ────────────────────────────────────── */
+
+.bottomDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(27, 107, 138, 0.25);
+  margin-bottom: 2rem;
+}
+
+.bottomBar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .bottomBar {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.bottomMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: rgba(238, 242, 247, 0.5);
+  margin: 0;
+}
+
+.sovereigntyNote {
+  font-size: 0.74rem;
+  color: rgba(238, 242, 247, 0.38);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bottomActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.5rem;
+}
+
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.legalLink {
+  font-size: 0.78rem;
+  color: rgba(238, 242, 247, 0.45);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.legalLink:hover {
+  color: var(--cuxton-teal-light);
+}
+
+.backToTopBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 2.25rem;
+  padding: 0 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(27, 107, 138, 0.25);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(238, 242, 247, 0.7);
+  cursor: pointer;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.backToTopBtn:hover {
+  color: #ffffff;
+  border-color: var(--cuxton-teal-light);
+  background: rgba(27, 107, 138, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(27, 107, 138, 0.3);
+}
+
+/* ─── 4. THEME ─────────────────────────────────────────────────────
+   The footer stays dark regardless of system light/dark preference —
+   same convention as the Hero and CTA sections it sits beside, and
+   the "Why Private" section: the network-graphic + glow treatment is
+   built for a dark backdrop and doesn't adapt to a light one.
+   ───────────────────────────────────────────────────────────────── */

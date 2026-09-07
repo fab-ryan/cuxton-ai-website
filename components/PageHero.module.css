@@ -1,0 +1,379 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CUXTON AI — Reusable Enterprise Page Hero (CSS Module)
+   Clean, solid theme token architecture — NO linear-gradients.
+   Uses the generated enterprise network visual: /page-hero-mesh.jpg
+   ═══════════════════════════════════════════════════════════════════ */
+
+.heroSection {
+  position: relative;
+  overflow: hidden;
+  margin-top: -68px;
+  padding-top: calc(5rem + 68px);
+  padding-bottom: 5rem;
+  background-color: #060d14;
+  background-image: url("/page-hero-mesh.jpg");
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.22);
+}
+
+@media (min-width: 768px) {
+  .heroSection {
+    padding-top: calc(6rem + 68px);
+    padding-bottom: 6rem;
+  }
+}
+
+/* ─── Solid Dark Wash Overlay (NO linear-gradient) ─────────────── */
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(6, 13, 20, 0.86);
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* ─── Layout Grid (Copy on left, Optional Telemetry on right) ─── */
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .heroGridWithAside {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 4rem;
+    align-items: center;
+  }
+}
+
+/* ─── Breadcrumbs Navigation ──────────────────────────────────── */
+
+.breadcrumbNav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.78rem;
+  color: rgba(238, 242, 247, 0.5);
+}
+
+.breadcrumbLink {
+  color: rgba(238, 242, 247, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--cuxton-teal-light);
+}
+
+.breadcrumbSeparator {
+  color: rgba(238, 242, 247, 0.3);
+}
+
+.breadcrumbCurrent {
+  color: var(--cuxton-amber);
+  font-weight: 600;
+}
+
+/* ─── Eyebrow Badge ───────────────────────────────────────────── */
+
+.eyebrowBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.85rem;
+  background-color: rgba(27, 107, 138, 0.2);
+  border: 1px solid rgba(27, 107, 138, 0.4);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+  margin-bottom: 1.25rem;
+  width: fit-content;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-amber);
+}
+
+/* ─── Title & Typography (Solid colors, no gradient text clip) ─── */
+
+.heading {
+  font-size: clamp(2.15rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0 0 1.25rem;
+  max-width: 820px;
+}
+
+.headingHighlight {
+  color: var(--cuxton-teal-light);
+  display: inline;
+}
+
+.headingHighlightAmber {
+  color: var(--cuxton-amber);
+  display: inline;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(238, 242, 247, 0.75);
+  margin: 0 0 2rem;
+  max-width: 660px;
+}
+
+/* ─── Tags / Badges Row ────────────────────────────────────────── */
+
+.tagsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 2.25rem;
+}
+
+.tagPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  background-color: rgba(27, 107, 138, 0.18);
+  border: 1px solid rgba(45, 154, 191, 0.3);
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: #a8d5e5;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.tagPill:hover {
+  background-color: rgba(27, 107, 138, 0.3);
+  border-color: var(--cuxton-teal-light);
+  color: #ffffff;
+}
+
+/* ─── Action Buttons (Solid fills, no gradient washes) ─────────── */
+
+.actionsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  align-items: center;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 3.25rem;
+  padding: 0 1.75rem;
+  background-color: var(--cuxton-teal);
+  border: 1px solid var(--cuxton-teal-mid);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.primaryBtn:hover {
+  background-color: var(--cuxton-teal-mid);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 3.25rem;
+  padding: 0 1.5rem;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(238, 242, 247, 0.28);
+  border-radius: 12px;
+  color: #eef2f7;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.secondaryBtn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--cuxton-teal-light);
+  transform: translateY(-2px);
+}
+
+/* ─── Right Column: Telemetry & Stats Card ─────────────────────── */
+
+.statsCard {
+  background-color: rgba(9, 21, 37, 0.85);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  border-radius: 18px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 20px 45px -12px rgba(6, 13, 20, 0.6);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.2);
+}
+
+.cardTitle {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber);
+  margin: 0;
+}
+
+.statusIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #34d399;
+}
+
+.statusIndicatorDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.statsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.statItem:not(:last-child) {
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.16);
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cuxton-teal-light);
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: rgba(238, 242, 247, 0.65);
+  margin: 0;
+}
+
+/* ─── Light Mode Support ───────────────────────────────────────── */
+
+@media (prefers-color-scheme: light) {
+  .heroOverlay {
+    background-color: rgba(244, 247, 250, 0.9);
+  }
+
+  .heroSection {
+    border-bottom-color: rgba(27, 107, 138, 0.18);
+  }
+
+  .heading {
+    color: #0c2233;
+  }
+
+  .subtitle {
+    color: rgba(12, 34, 51, 0.75);
+  }
+
+  .breadcrumbNav {
+    color: rgba(12, 34, 51, 0.5);
+  }
+
+  .breadcrumbLink {
+    color: rgba(12, 34, 51, 0.65);
+  }
+
+  .breadcrumbSeparator {
+    color: rgba(12, 34, 51, 0.3);
+  }
+
+  .eyebrowBadge {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.25);
+    color: var(--cuxton-teal);
+  }
+
+  .tagPill {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.22);
+    color: #1e293b;
+  }
+
+  .tagPill:hover {
+    background-color: #eaf1f7;
+    border-color: var(--cuxton-teal);
+  }
+
+  .secondaryBtn {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.25);
+    color: #0c2233;
+  }
+
+  .secondaryBtn:hover {
+    background-color: #f1f5f9;
+  }
+
+  .statsCard {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.2);
+    box-shadow: 0 14px 30px -10px rgba(12, 34, 51, 0.08);
+  }
+
+  .statLabel {
+    color: rgba(12, 34, 51, 0.65);
+  }
+}

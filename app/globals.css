@@ -7,36 +7,36 @@
    ───────────────────────────────────────────────────────── */
 :root {
   /* Backgrounds */
-  --background:        #060d14;
-  --bg-surface:        #091525;
-  --bg-elevated:       #0d1f32;
-  --foreground:        #e8edf5;
+  --background: #060d14;
+  --bg-surface: #091525;
+  --bg-elevated: #0d1f32;
+  --foreground: #e8edf5;
 
   /* Brand — Teal (from logo lettermark) */
-  --cuxton-teal:       #1b6b8a;   /* exact logo primary */
-  --cuxton-teal-mid:   #2080a0;   /* lighter for hover / borders */
-  --cuxton-teal-light: #2d9abf;   /* bright interactive */
-  --cuxton-teal-dim:   #0f3d50;   /* dark teal for backgrounds */
+  --cuxton-teal: #1b6b8a; /* exact logo primary */
+  --cuxton-teal-mid: #2080a0; /* lighter for hover / borders */
+  --cuxton-teal-light: #2d9abf; /* bright interactive */
+  --cuxton-teal-dim: #0f3d50; /* dark teal for backgrounds */
 
   /* Brand — Amber (from logo data node) */
-  --cuxton-amber:      #f5a623;   /* exact logo accent */
-  --cuxton-amber-light:#f8bc4b;   /* hover / soft accent */
-  --cuxton-amber-dim:  #7a5210;   /* dark amber for backgrounds */
+  --cuxton-amber: #f5a623; /* exact logo accent */
+  --cuxton-amber-light: #f8bc4b; /* hover / soft accent */
+  --cuxton-amber-dim: #7a5210; /* dark amber for backgrounds */
 
   /* Semantic aliases for backwards compat */
-  --cuxton-orange:      var(--cuxton-amber);
+  --cuxton-orange: var(--cuxton-amber);
   --cuxton-orange-light: var(--cuxton-amber-light);
 
   /* Borders & surfaces */
-  --border:            rgba(27, 107, 138, 0.18);
-  --border-subtle:     rgba(var(--foreground-rgb), 0.05);
-  --border-amber:      rgba(245, 166, 35, 0.2);
+  --border: rgba(27, 107, 138, 0.18);
+  --border-subtle: rgba(var(--foreground-rgb), 0.05);
+  --border-amber: rgba(245, 166, 35, 0.2);
 
   /* RGB triplets — let translucent fills/text (rgba(var(--x-rgb), alpha))
      track the theme even though they can't reference a hex custom property directly. */
-  --foreground-rgb:  232, 237, 245;
-  --background-rgb:  6, 13, 20;
-  --bg-surface-rgb:  9, 21, 37;
+  --foreground-rgb: 232, 237, 245;
+  --background-rgb: 6, 13, 20;
+  --bg-surface-rgb: 9, 21, 37;
   --bg-elevated-rgb: 13, 31, 50;
 }
 
@@ -48,41 +48,41 @@
    ───────────────────────────────────────────────────────── */
 @media (prefers-color-scheme: light) {
   :root {
-    --background:        #f4f7fa;
-    --bg-surface:        #ffffff;
-    --bg-elevated:       #eaf1f7;
-    --foreground:        #0c2233;
+    --background: #f4f7fa;
+    --bg-surface: #ffffff;
+    --bg-elevated: #eaf1f7;
+    --foreground: #0c2233;
 
-    --foreground-rgb:  12, 34, 51;
-    --background-rgb:  244, 247, 250;
-    --bg-surface-rgb:  255, 255, 255;
+    --foreground-rgb: 12, 34, 51;
+    --background-rgb: 244, 247, 250;
+    --bg-surface-rgb: 255, 255, 255;
     --bg-elevated-rgb: 234, 241, 247;
 
-    --border:            rgba(27, 107, 138, 0.28);
-    --border-amber:      rgba(245, 166, 35, 0.32);
+    --border: rgba(27, 107, 138, 0.28);
+    --border-amber: rgba(245, 166, 35, 0.32);
   }
 }
 
 @theme inline {
-  --color-background:         var(--background);
-  --color-bg-surface:         var(--bg-surface);
-  --color-bg-elevated:        var(--bg-elevated);
-  --color-foreground:         var(--foreground);
+  --color-background: var(--background);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-foreground: var(--foreground);
 
-  --color-cuxton-teal:        var(--cuxton-teal);
-  --color-cuxton-teal-mid:    var(--cuxton-teal-mid);
-  --color-cuxton-teal-light:  var(--cuxton-teal-light);
-  --color-cuxton-teal-dim:    var(--cuxton-teal-dim);
+  --color-cuxton-teal: var(--cuxton-teal);
+  --color-cuxton-teal-mid: var(--cuxton-teal-mid);
+  --color-cuxton-teal-light: var(--cuxton-teal-light);
+  --color-cuxton-teal-dim: var(--cuxton-teal-dim);
 
-  --color-cuxton-amber:       var(--cuxton-amber);
+  --color-cuxton-amber: var(--cuxton-amber);
   --color-cuxton-amber-light: var(--cuxton-amber-light);
-  --color-cuxton-amber-dim:   var(--cuxton-amber-dim);
+  --color-cuxton-amber-dim: var(--cuxton-amber-dim);
 
   /* Keep old names so nothing breaks */
-  --color-cuxton-orange:        var(--cuxton-amber);
-  --color-cuxton-orange-light:  var(--cuxton-amber-light);
+  --color-cuxton-orange: var(--cuxton-amber);
+  --color-cuxton-orange-light: var(--cuxton-amber-light);
 
-  --color-border:             var(--border);
+  --color-border: var(--border);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -101,8 +101,10 @@ body {
 
 .sr-only {
   position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -141,7 +143,9 @@ select:focus-visible,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -151,10 +155,19 @@ select:focus-visible,
 
 /* ─── Animated deep space gradient ─── */
 @keyframes cosmicShift {
-  0%, 100% { background-position: 0% 50%; }
-  25%      { background-position: 50% 0%; }
-  50%      { background-position: 100% 50%; }
-  75%      { background-position: 50% 100%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
 }
 
 .bg-cosmic {
@@ -175,10 +188,20 @@ select:focus-visible,
 
 /* ─── Floating particles ─── */
 @keyframes floatParticle {
-  0%   { transform: translateY(0) translateX(0); opacity: 0; }
-  10%  { opacity: 0.6; }
-  90%  { opacity: 0.6; }
-  100% { transform: translateY(-100vh) translateX(40px); opacity: 0; }
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(40px);
+    opacity: 0;
+  }
 }
 
 .particle {
@@ -190,15 +213,14 @@ select:focus-visible,
 
 /* ─── Logo breathe glow ─── */
 @keyframes logoBreathe {
-  0%, 100% {
-    filter:
-      drop-shadow(0 0 30px rgba(27, 107, 138, 0.45))
+  0%,
+  100% {
+    filter: drop-shadow(0 0 30px rgba(27, 107, 138, 0.45))
       drop-shadow(0 0 80px rgba(245, 166, 35, 0.14));
     transform: scale(1);
   }
   50% {
-    filter:
-      drop-shadow(0 0 55px rgba(27, 107, 138, 0.7))
+    filter: drop-shadow(0 0 55px rgba(27, 107, 138, 0.7))
       drop-shadow(0 0 120px rgba(245, 166, 35, 0.32));
     transform: scale(1.02);
   }
@@ -210,11 +232,21 @@ select:focus-visible,
 
 /* ─── Brand gradient utility ─── */
 .brand-gradient {
-  background: linear-gradient(135deg, var(--cuxton-teal) 0%, var(--cuxton-teal-mid) 50%, var(--cuxton-amber) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--cuxton-teal) 0%,
+    var(--cuxton-teal-mid) 50%,
+    var(--cuxton-amber) 100%
+  );
 }
 
 .text-gradient-brand {
-  background: linear-gradient(135deg, var(--cuxton-teal-light) 0%, var(--cuxton-teal-mid) 40%, var(--cuxton-amber) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--cuxton-teal-light) 0%,
+    var(--cuxton-teal-mid) 40%,
+    var(--cuxton-amber) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -222,30 +254,61 @@ select:focus-visible,
 
 /* ─── Concentric rings ─── */
 @keyframes spinSlow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spinReverse {
-  from { transform: rotate(360deg); }
-  to   { transform: rotate(0deg); }
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes ringPulse {
-  0%, 100% { opacity: 0.12; transform: rotate(0deg) scale(1); }
-  50%      { opacity: 0.25; transform: rotate(180deg) scale(1.04); }
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: rotate(180deg) scale(1.04);
+  }
 }
 
-.ring-spin      { animation: spinSlow 25s linear infinite; }
-.ring-reverse   { animation: spinReverse 35s linear infinite; }
-.ring-pulse     { animation: ringPulse 8s ease-in-out infinite; }
+.ring-spin {
+  animation: spinSlow 25s linear infinite;
+}
+.ring-reverse {
+  animation: spinReverse 35s linear infinite;
+}
+.ring-pulse {
+  animation: ringPulse 8s ease-in-out infinite;
+}
 
 /* ─── Neural network connector lines ─── */
 @keyframes neuralFlow {
-  0%   { stroke-dashoffset: 200; opacity: 0; }
-  30%  { opacity: 0.5; }
-  70%  { opacity: 0.5; }
-  100% { stroke-dashoffset: 0; opacity: 0; }
+  0% {
+    stroke-dashoffset: 200;
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
 }
 
 .neural-line {
@@ -255,12 +318,15 @@ select:focus-visible,
 
 /* ─── Glowing neural nodes ─── */
 @keyframes nodePulse {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 6px rgba(245, 166, 35, 0.5);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 18px rgba(245, 166, 35, 0.9), 0 0 40px rgba(245, 166, 35, 0.3);
+    box-shadow:
+      0 0 18px rgba(245, 166, 35, 0.9),
+      0 0 40px rgba(245, 166, 35, 0.3);
     transform: scale(1.4);
   }
 }
@@ -280,8 +346,12 @@ select:focus-visible,
 
 /* ─── Badge shimmer ─── */
 @keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 .badge-shimmer {
@@ -338,18 +408,34 @@ select:focus-visible,
 
 /* ─── Fade in animations ─── */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInScale {
-  from { opacity: 0; transform: scale(0.8); }
-  to   { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .anim-fade-up {
@@ -368,20 +454,45 @@ select:focus-visible,
 }
 
 /* stagger delays */
-.d1 { animation-delay: 0.1s; }
-.d2 { animation-delay: 0.25s; }
-.d3 { animation-delay: 0.4s; }
-.d4 { animation-delay: 0.55s; }
-.d5 { animation-delay: 0.7s; }
-.d6 { animation-delay: 0.85s; }
-.d7 { animation-delay: 1.0s; }
-.d8 { animation-delay: 1.15s; }
-.d9 { animation-delay: 1.3s; }
+.d1 {
+  animation-delay: 0.1s;
+}
+.d2 {
+  animation-delay: 0.25s;
+}
+.d3 {
+  animation-delay: 0.4s;
+}
+.d4 {
+  animation-delay: 0.55s;
+}
+.d5 {
+  animation-delay: 0.7s;
+}
+.d6 {
+  animation-delay: 0.85s;
+}
+.d7 {
+  animation-delay: 1s;
+}
+.d8 {
+  animation-delay: 1.15s;
+}
+.d9 {
+  animation-delay: 1.3s;
+}
 
 /* ─── Progress bar ─── */
 @keyframes progressGlow {
-  0%, 100% { box-shadow: 0 0 8px rgba(245, 166, 35, 0.4); }
-  50%      { box-shadow: 0 0 20px rgba(245, 166, 35, 0.7), 0 0 40px rgba(27, 107, 138, 0.35); }
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(245, 166, 35, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(245, 166, 35, 0.7),
+      0 0 40px rgba(27, 107, 138, 0.35);
+  }
 }
 
 .progress-glow {
@@ -406,27 +517,85 @@ select:focus-visible,
 
 /* ─── Hexagonal grid overlay ─── */
 @keyframes hexFade {
-  0%, 100% { opacity: 0.015; }
-  50%      { opacity: 0.04; }
+  0%,
+  100% {
+    opacity: 0.015;
+  }
+  50% {
+    opacity: 0.04;
+  }
 }
 
 .hex-grid {
   background-image:
-    linear-gradient(30deg, rgba(27,107,138,0.04) 12%, transparent 12.5%, transparent 87%, rgba(27,107,138,0.04) 87.5%, rgba(27,107,138,0.04)),
-    linear-gradient(150deg, rgba(27,107,138,0.04) 12%, transparent 12.5%, transparent 87%, rgba(27,107,138,0.04) 87.5%, rgba(27,107,138,0.04)),
-    linear-gradient(30deg, rgba(27,107,138,0.04) 12%, transparent 12.5%, transparent 87%, rgba(27,107,138,0.04) 87.5%, rgba(27,107,138,0.04)),
-    linear-gradient(150deg, rgba(27,107,138,0.04) 12%, transparent 12.5%, transparent 87%, rgba(27,107,138,0.04) 87.5%, rgba(27,107,138,0.04)),
-    linear-gradient(60deg, rgba(245,166,35,0.025) 25%, transparent 25.5%, transparent 75%, rgba(245,166,35,0.025) 75%, rgba(245,166,35,0.025)),
-    linear-gradient(60deg, rgba(245,166,35,0.025) 25%, transparent 25.5%, transparent 75%, rgba(245,166,35,0.025) 75%, rgba(245,166,35,0.025));
+    linear-gradient(
+      30deg,
+      rgba(27, 107, 138, 0.04) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(27, 107, 138, 0.04) 87.5%,
+      rgba(27, 107, 138, 0.04)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(27, 107, 138, 0.04) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(27, 107, 138, 0.04) 87.5%,
+      rgba(27, 107, 138, 0.04)
+    ),
+    linear-gradient(
+      30deg,
+      rgba(27, 107, 138, 0.04) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(27, 107, 138, 0.04) 87.5%,
+      rgba(27, 107, 138, 0.04)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(27, 107, 138, 0.04) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(27, 107, 138, 0.04) 87.5%,
+      rgba(27, 107, 138, 0.04)
+    ),
+    linear-gradient(
+      60deg,
+      rgba(245, 166, 35, 0.025) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      rgba(245, 166, 35, 0.025) 75%,
+      rgba(245, 166, 35, 0.025)
+    ),
+    linear-gradient(
+      60deg,
+      rgba(245, 166, 35, 0.025) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      rgba(245, 166, 35, 0.025) 75%,
+      rgba(245, 166, 35, 0.025)
+    );
   background-size: 80px 140px;
-  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  background-position:
+    0 0,
+    0 0,
+    40px 70px,
+    40px 70px,
+    0 0,
+    40px 70px;
   animation: hexFade 6s ease-in-out infinite;
 }
 
 /* ─── Cursor blink ─── */
 @keyframes cursorBlink {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .cursor-blink {
@@ -469,11 +638,15 @@ select:focus-visible,
 }
 
 @media (min-width: 768px) {
-  .section-container { padding: 0 2.5rem; }
+  .section-container {
+    padding: 0 2.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
-  .section-container { padding: 0 3rem; }
+  .section-container {
+    padding: 0 3rem;
+  }
 }
 
 /* Section spacing */
@@ -483,7 +656,10 @@ select:focus-visible,
 }
 
 @media (min-width: 1024px) {
-  .section-py { padding-top: 8rem; padding-bottom: 8rem; }
+  .section-py {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
 }
 
 /* Eyebrow / section label */
@@ -547,7 +723,11 @@ select:focus-visible,
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(27, 107, 138, 0.14);
   border-radius: 20px;
-  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .card-enterprise:hover {
@@ -577,7 +757,9 @@ select:focus-visible,
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .card-enterprise:hover .card-icon {
@@ -586,25 +768,31 @@ select:focus-visible,
 }
 
 /* ══════════════════════════════════════════════════
-   NAV
+   NAV — Legacy global nav classes. The primary nav
+   now uses CSS Modules (nav.module.css) for all
+   styling. These global classes are retained as
+   fallbacks for any other component that references
+   them (e.g. footer mega-menu style reuse).
    ══════════════════════════════════════════════════ */
 
 .nav-blur {
-  background: rgba(var(--background-rgb), 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(var(--background-rgb), 0.82);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
   border-bottom: 1px solid rgba(27, 107, 138, 0.12);
+  box-shadow: 0 1px 24px rgba(6, 13, 20, 0.3);
 }
 
 .mega-menu {
   background: rgba(var(--bg-surface-rgb), 0.97);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1px solid rgba(27, 107, 138, 0.16);
+  backdrop-filter: blur(40px) saturate(1.8);
+  -webkit-backdrop-filter: blur(40px) saturate(1.8);
+  border: 1px solid rgba(27, 107, 138, 0.14);
   border-radius: 20px;
   box-shadow:
-    0 24px 80px rgba(6, 13, 20, 0.8),
-    0 0 0 1px rgba(27, 107, 138, 0.08);
+    0 24px 80px rgba(6, 13, 20, 0.7),
+    0 0 0 1px rgba(27, 107, 138, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .mega-menu-item {
@@ -613,13 +801,16 @@ select:focus-visible,
   gap: 0.75rem;
   padding: 0.75rem;
   border-radius: 12px;
-  transition: background 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
   cursor: pointer;
   text-decoration: none;
 }
 
 .mega-menu-item:hover {
   background: rgba(27, 107, 138, 0.1);
+  transform: translateX(2px);
 }
 
 /* ══════════════════════════════════════════════════
@@ -702,7 +893,9 @@ select:focus-visible,
   font-size: 0.9rem;
   font-family: inherit;
   outline: none;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .form-field:focus {
@@ -781,7 +974,11 @@ select:focus-visible,
   top: 44px;
   bottom: -1.5rem;
   width: 1px;
-  background: linear-gradient(180deg, rgba(27, 107, 138, 0.35) 0%, rgba(27, 107, 138, 0.05) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(27, 107, 138, 0.35) 0%,
+    rgba(27, 107, 138, 0.05) 100%
+  );
 }
 
 /* ══════════════════════════════════════════════════
@@ -789,13 +986,35 @@ select:focus-visible,
    ══════════════════════════════════════════════════ */
 
 @keyframes revealUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .reveal {
   opacity: 0;
   animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scroll-triggered reveal (driven by the Reveal client component,
+   via IntersectionObserver) — a transition rather than a keyframe
+   animation, so it only plays once and settles instead of looping. */
+.reveal-io {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-io--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Architecture diagram node */
@@ -826,7 +1045,12 @@ select:focus-visible,
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--cuxton-teal-mid), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cuxton-teal-mid),
+    transparent
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -837,7 +1061,12 @@ select:focus-visible,
 
 /* Amber top border variant */
 .card-top-amber::before {
-  background: linear-gradient(90deg, transparent, var(--cuxton-amber), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cuxton-amber),
+    transparent
+  );
 }
 
 /* ══════════════════════════════════════════════════
@@ -854,7 +1083,12 @@ select:focus-visible,
      Longhand `background-image` (not the `background` shorthand) so
      this doesn't reset `background-clip: text` back to border-box. */
   .text-gradient-hero {
-    background-image: linear-gradient(135deg, #0d3548 0%, #1b6b8a 40%, #f5a623 100%);
+    background-image: linear-gradient(
+      135deg,
+      #0d3548 0%,
+      #1b6b8a 40%,
+      #f5a623 100%
+    );
   }
 
   /* Same "deep space" motion, recast as a soft daylight sky.
@@ -874,3 +1108,38 @@ select:focus-visible,
   }
 }
 
+.footer-link {
+  font-size: 0.85rem;
+  color: rgba(var(--foreground-rgb), 0.48);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: block;
+}
+.footer-link:hover {
+  color: rgba(var(--foreground-rgb), 0.9);
+}
+.footer-legal-link {
+  font-size: 0.78rem;
+  color: rgba(var(--foreground-rgb), 0.3);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-legal-link:hover {
+  color: rgba(var(--foreground-rgb), 0.6);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+@media (min-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}

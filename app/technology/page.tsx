@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Technology — Private AI Architecture and Controlled Deployment",
@@ -74,33 +75,28 @@ export default function TechnologyPage() {
   return (
     <div style={{ background: "var(--background)" }}>
 
-      {/* Hero */}
-      <section style={{ padding: "5rem 0 4.5rem", position: "relative", overflow: "hidden" }}
-        className="bg-cosmic scanlines">
-        <div className="absolute inset-0 hex-grid pointer-events-none" />
-        <div style={{
-          position: "absolute", left: "60%", top: "50%",
-          transform: "translate(-50%,-50%)",
-          width: 600, height: 600,
-          background: "radial-gradient(circle, rgba(27,107,138,0.16) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
-        <div className="section-container" style={{ position: "relative", zIndex: 1, maxWidth: 720 }}>
-          <div className="section-label anim-fade d1">Technology</div>
-          <h1 className="section-heading anim-fade-up d2"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)", marginBottom: "1.25rem" }}>
-            Private AI architecture designed around your environment.
-          </h1>
-          <p className="section-sub anim-fade-up d3" style={{ marginBottom: "2.5rem" }}>
-            Cuxton AI builds AI architecture that begins with where data is allowed to be — not where
-            it is most convenient to process it. Deployment model, model choice and integration design
-            are determined by the organisation&apos;s data sensitivity, regulatory context and technical constraints.
-          </p>
-          <Link href="/contact" className="btn-primary anim-fade-up d4">
-            Request an Architecture Assessment
-          </Link>
-        </div>
-      </section>
+      <PageHero
+        breadcrumbs={[{ label: "Technology" }]}
+        eyebrow="Technology"
+        title="Private AI architecture designed around"
+        titleHighlight="your environment."
+        description="Cuxton AI builds AI architecture that begins with where data is allowed to be — not where it is most convenient to process it. Deployment model, model choice and integration design are determined by your organisation's data sensitivity, regulatory context and technical constraints."
+        primaryCta={{
+          label: "Request an Architecture Assessment",
+          href: "/contact",
+        }}
+        tags={[
+          "On-Premise",
+          "Private Cloud",
+          "Isolated Tenancy",
+          "Hybrid Architecture",
+        ]}
+        stats={[
+          { value: "Air-Gapped", label: "Deployment Ready" },
+          { value: "Zero", label: "Vendor Model Lock-in" },
+          { value: "SOC 2", label: "Control Aligned" },
+        ]}
+      />
 
       {/* Deployment models */}
       <section className="section-py">

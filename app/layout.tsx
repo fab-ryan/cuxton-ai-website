@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "./components/nav";
-import Footer from "./components/footer";
+import Nav from "../components/nav";
+import Footer from "../components/footer";
+import { ScrollTop } from "@/components/scrollTop";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -48,9 +49,11 @@ type LayoutProps = {
 };
 
 export default function RootLayout({ children }: LayoutProps) {
+
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col" style={{ background: "var(--background)" }}>
+      <body className="min-h-full flex flex-col overflow-x-hidden" style={{ background: "var(--background)" }}>
+        <ScrollTop />
         <Nav />
         <main id="main-content" tabIndex={-1} style={{ flex: 1, outline: "none" }}>
           {children}

@@ -1,0 +1,860 @@
+/* ═══════════════════════════════════════════════════════════════════
+   HOW WE WORK SECTION — Enterprise Engagement Methodology
+   Structured 4-Phase Delivery Lifecycle with Interactive Inspector
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 6.5rem 0;
+  background-image: url("/lifecycle/delivery_lifecycle_bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+  isolation: isolate;
+}
+
+@media (max-width: 768px) {
+  .section {
+    background-attachment: scroll;
+    padding: 4.5rem 0;
+  }
+}
+
+/* Solid architectural backdrop tint for high legibility */
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(6, 13, 20, 0.88);
+  z-index: 0;
+  transition: background-color 0.3s ease;
+}
+
+/* Subtle edge blend transitions into adjacent page sections */
+.edgeTransitionTop,
+.edgeTransitionBottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.edgeTransitionTop {
+  top: 0;
+}
+
+.edgeTransitionBottom {
+  bottom: 0;
+}
+
+/* ─── Scoped Theme Variables ────────────────────────────────────── */
+
+.themeWrap {
+  --hww-card-bg: rgba(6, 20, 32, 0.76);
+  --hww-card-hover: rgba(9, 29, 46, 0.88);
+  --hww-card-border: rgba(45, 154, 191, 0.22);
+  --hww-card-border-hover: rgba(45, 154, 191, 0.55);
+  --hww-card-active: rgba(27, 107, 138, 0.28);
+  --hww-text-main: #ffffff;
+  --hww-text-sub: #cce3ed;
+  --hww-text-muted: rgba(204, 227, 237, 0.65);
+  --hww-deliverable-bg: rgba(2, 14, 24, 0.85);
+  --hww-deliverable-border: rgba(245, 166, 35, 0.35);
+  --hww-badge-bg: rgba(27, 107, 138, 0.25);
+  --hww-badge-border: rgba(45, 154, 191, 0.4);
+  --hww-badge-text: #5ecbf2;
+  --hww-amber: var(--cuxton-amber);
+  --hww-console-bg: rgba(3, 16, 27, 0.92);
+  --hww-track-bg: rgba(10, 32, 50, 0.6);
+  --hww-track-line: rgba(45, 154, 191, 0.25);
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Header ────────────────────────────────────────────────────── */
+
+.header {
+  max-width: 720px;
+  margin: 0 0 3rem;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--hww-text-main);
+  letter-spacing: -0.025em;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.headingAccent {
+  color: var(--hww-badge-text);
+}
+
+.subHeading {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--hww-text-sub);
+  max-width: 640px;
+}
+
+/* ─── View Toggle (Dual Perspective) ────────────────────────────── */
+
+.viewToggleWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.75rem;
+}
+
+.viewToggle {
+  display: inline-flex;
+  background: var(--hww-console-bg);
+  border: 1px solid var(--hww-card-border);
+  padding: 0.35rem;
+  border-radius: 9999px;
+  gap: 0.35rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.viewToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--hww-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.viewToggleBtn:hover {
+  color: var(--hww-text-main);
+}
+
+.viewToggleBtnActive {
+  color: var(--hww-text-main);
+  background: rgba(27, 107, 138, 0.45);
+  border: 1px solid rgba(45, 154, 191, 0.45);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.toggleIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MODE 1: 4-PHASE OVERVIEW BENTO GRID
+   ═══════════════════════════════════════════════════════════════════ */
+
+.phaseGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 1100px) {
+  .phaseGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .phaseGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Each phase carries its own accent (.phaseAccent1..4 below) so the
+   4-up grid reads as four distinct stages rather than four repeats
+   of the same amber/teal card. */
+.phaseCard {
+  --hww-accent: var(--hww-amber);
+  background: var(--hww-card-bg);
+  border: 1px solid var(--hww-card-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.phaseCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--hww-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.phaseCard:hover::before,
+.phaseCardActive::before {
+  transform: scaleX(1);
+}
+
+.phaseCard:hover {
+  transform: translateY(-4px);
+  background: var(--hww-card-hover);
+  border-color: var(--hww-accent);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px var(--hww-accent-border);
+}
+
+.phaseCardActive {
+  border-color: var(--hww-accent);
+  background: var(--hww-card-hover);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.45),
+    0 0 0 1px var(--hww-accent-border);
+}
+
+.phaseTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.phaseNumberBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hww-accent);
+  background: var(--hww-accent-bg);
+  border: 1px solid var(--hww-accent-border);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+}
+
+.phaseTimeframe {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--hww-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.phaseTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--hww-text-main);
+  line-height: 1.3;
+  margin-bottom: 0.65rem;
+}
+
+.phaseTagline {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--hww-accent);
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
+}
+
+.phaseDesc {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--hww-text-sub);
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+/* Steps inside the phase */
+.phaseStepsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed rgba(45, 154, 191, 0.2);
+}
+
+.phaseStepChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  background: var(--hww-accent-bg);
+  color: var(--hww-accent);
+  border: 1px solid var(--hww-accent-border);
+}
+
+.phaseStepNum {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}
+
+/* Tangible Milestone Deliverable Box */
+.deliverableBox {
+  background: var(--hww-deliverable-bg);
+  border: 1px solid var(--hww-deliverable-border);
+  border-radius: 8px;
+  padding: 0.85rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.deliverableIconWrap {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: rgba(245, 166, 35, 0.15);
+  color: var(--hww-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deliverableMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.deliverableLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hww-amber);
+}
+
+.deliverableTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--hww-text-main);
+  line-height: 1.35;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MODE 2: INTERACTIVE STEP INSPECTOR CONSOLE
+   ═══════════════════════════════════════════════════════════════════ */
+
+.inspectorConsole {
+  background: var(--hww-console-bg);
+  border: 1px solid var(--hww-card-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+  padding: 2.25rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .inspectorConsole {
+    padding: 1.5rem;
+  }
+}
+
+/* Horizontal Track of 8 Steps */
+.trackWrapper {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.trackLine {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: var(--hww-track-line);
+  z-index: 0;
+}
+
+.trackProgressFill {
+  height: 100%;
+  background: var(--hww-amber);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trackSteps {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  min-width: 680px;
+  gap: 0.75rem;
+}
+
+.trackStepBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  gap: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.trackStepBtn:hover {
+  transform: translateY(-2px);
+}
+
+.trackStepCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--hww-track-bg);
+  border: 2px solid var(--hww-card-border);
+  color: var(--hww-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trackStepBtn:hover .trackStepCircle {
+  border-color: var(--hww-badge-text);
+  color: var(--hww-text-main);
+  background: rgba(27, 107, 138, 0.3);
+}
+
+.trackStepActive .trackStepCircle {
+  background: var(--hww-amber);
+  border-color: var(--cuxton-amber-light);
+  color: #060d14;
+  font-weight: 800;
+  box-shadow: 0 0 16px rgba(245, 166, 35, 0.5);
+}
+
+.trackStepLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--hww-text-muted);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.trackStepActive .trackStepLabel {
+  color: var(--hww-amber);
+  font-weight: 700;
+}
+
+/* Detail Split View inside Inspector */
+.inspectorDetailGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(45, 154, 191, 0.2);
+}
+
+@media (max-width: 900px) {
+  .inspectorDetailGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.inspectorLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.inspectorStepMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.inspectorStepNumber {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--hww-accent, var(--hww-amber));
+  background: var(--hww-accent-bg, rgba(245, 166, 35, 0.12));
+  border: 1px solid var(--hww-accent-border, rgba(245, 166, 35, 0.3));
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+}
+
+.inspectorPhaseTag {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--hww-accent, var(--hww-badge-text));
+  letter-spacing: 0.02em;
+}
+
+.inspectorStepTitle {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--hww-text-main);
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+.inspectorTagline {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--hww-badge-text);
+  margin-bottom: 1.25rem;
+  line-height: 1.45;
+}
+
+.inspectorNarrative {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--hww-text-sub);
+  margin-bottom: 2rem;
+}
+
+/* Nav Buttons (Prev / Next) */
+.inspectorNavRow {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.inspectorNavBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.15rem;
+  background: rgba(27, 107, 138, 0.2);
+  border: 1px solid rgba(45, 154, 191, 0.35);
+  border-radius: 8px;
+  color: var(--hww-text-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.inspectorNavBtn:hover:not(:disabled) {
+  background: rgba(27, 107, 138, 0.4);
+  border-color: rgba(45, 154, 191, 0.6);
+}
+
+.inspectorNavBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Right Column: Inputs and Outputs */
+.inspectorRight {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.specCard {
+  background: var(--hww-deliverable-bg);
+  border: 1px solid var(--hww-card-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.specCardHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--hww-badge-text);
+  margin-bottom: 0.85rem;
+}
+
+.specCardHeadingDeliverable {
+  color: var(--hww-amber);
+}
+
+.specList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.specItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--hww-text-sub);
+}
+
+.specCheck {
+  color: #38ef7d;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.specCheckAmber {
+  color: var(--hww-amber);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   3 DELIVERY GUARANTEES / PRINCIPLES
+   ═══════════════════════════════════════════════════════════════════ */
+
+.guaranteesHeader {
+  margin-bottom: 1.75rem;
+}
+
+.guaranteesTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--hww-text-main);
+  letter-spacing: -0.01em;
+}
+
+.guaranteesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 900px) {
+  .guaranteesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.guaranteeCard {
+  background: var(--hww-card-bg);
+  border: 1px solid var(--hww-card-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.guaranteeCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--hww-card-border-hover);
+}
+
+.guaranteeTop {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.guaranteeIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(45, 154, 191, 0.15);
+  border: 1px solid rgba(45, 154, 191, 0.3);
+  color: var(--hww-badge-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.guaranteeTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--hww-text-main);
+}
+
+.guaranteeDesc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--hww-text-sub);
+}
+
+/* ─── Footer CTA ────────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footerButtons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.85rem;
+  background: var(--hww-amber);
+  color: #060d14;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.25);
+}
+
+.btnPrimary:hover {
+  background: var(--cuxton-amber-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.35);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.85rem;
+  background: rgba(27, 107, 138, 0.2);
+  border: 1px solid rgba(45, 154, 191, 0.4);
+  color: var(--hww-text-main);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btnSecondary:hover {
+  background: rgba(27, 107, 138, 0.35);
+  border-color: rgba(45, 154, 191, 0.7);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LIGHT THEME ADAPTATION
+   Respects system prefers-color-scheme: light and [data-theme="light"]
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (prefers-color-scheme: light) {
+  :global(:root:not([data-theme="dark"])) .bgOverlay {
+    background-color: rgba(246, 249, 252, 0.93);
+  }
+
+  :global(:root:not([data-theme="dark"])) .themeWrap {
+    --hww-card-bg: rgba(255, 255, 255, 0.88);
+    --hww-card-hover: rgba(255, 255, 255, 0.98);
+    --hww-card-border: rgba(27, 107, 138, 0.18);
+    --hww-card-border-hover: rgba(27, 107, 138, 0.45);
+    --hww-card-active: rgba(27, 107, 138, 0.12);
+    --hww-text-main: #0c1a26;
+    --hww-text-sub: #2d4254;
+    --hww-text-muted: #576d80;
+    --hww-deliverable-bg: rgba(240, 246, 250, 0.92);
+    --hww-deliverable-border: rgba(217, 142, 19, 0.45);
+    --hww-badge-bg: rgba(27, 107, 138, 0.1);
+    --hww-badge-border: rgba(27, 107, 138, 0.25);
+    --hww-badge-text: #1b6b8a;
+    --hww-console-bg: rgba(255, 255, 255, 0.94);
+    --hww-track-bg: rgba(230, 239, 245, 0.9);
+    --hww-track-line: rgba(27, 107, 138, 0.2);
+  }
+
+  :global(:root:not([data-theme="dark"])) .viewToggleBtnActive {
+    background: rgba(27, 107, 138, 0.12);
+    border-color: rgba(27, 107, 138, 0.35);
+    color: #0c1a26;
+  }
+
+  :global(:root:not([data-theme="dark"])) .phaseCard:hover {
+    box-shadow:
+      0 12px 28px rgba(12, 26, 38, 0.1),
+      0 0 0 1px rgba(27, 107, 138, 0.25);
+  }
+
+  :global(:root:not([data-theme="dark"])) .inspectorConsole {
+    box-shadow: 0 16px 40px rgba(12, 26, 38, 0.08);
+  }
+}
+
+:global([data-theme="light"]) .bgOverlay {
+  background-color: rgba(246, 249, 252, 0.93);
+}
+
+:global([data-theme="light"]) .themeWrap {
+  --hww-card-bg: rgba(255, 255, 255, 0.88);
+  --hww-card-hover: rgba(255, 255, 255, 0.98);
+  --hww-card-border: rgba(27, 107, 138, 0.18);
+  --hww-card-border-hover: rgba(27, 107, 138, 0.45);
+  --hww-card-active: rgba(27, 107, 138, 0.12);
+  --hww-text-main: #0c1a26;
+  --hww-text-sub: #2d4254;
+  --hww-text-muted: #576d80;
+  --hww-deliverable-bg: rgba(240, 246, 250, 0.92);
+  --hww-deliverable-border: rgba(217, 142, 19, 0.45);
+  --hww-badge-bg: rgba(27, 107, 138, 0.1);
+  --hww-badge-border: rgba(27, 107, 138, 0.25);
+  --hww-badge-text: #1b6b8a;
+  --hww-console-bg: rgba(255, 255, 255, 0.94);
+  --hww-track-bg: rgba(230, 239, 245, 0.9);
+  --hww-track-line: rgba(27, 107, 138, 0.2);
+}
+
+:global([data-theme="light"]) .viewToggleBtnActive {
+  background: rgba(27, 107, 138, 0.12);
+  border-color: rgba(27, 107, 138, 0.35);
+  color: #0c1a26;
+}
+
+:global([data-theme="light"]) .phaseCard:hover {
+  box-shadow:
+    0 12px 28px rgba(12, 26, 38, 0.1),
+    0 0 0 1px rgba(27, 107, 138, 0.25);
+}
+
+:global([data-theme="light"]) .inspectorConsole {
+  box-shadow: 0 16px 40px rgba(12, 26, 38, 0.08);
+}
