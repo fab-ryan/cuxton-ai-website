@@ -382,11 +382,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-        <style>{`
-          @media (min-width: 1024px) {
-            .contact-outer { grid-template-columns: 340px 1fr !important; }
-          }
-        `}</style>
+
       </section>
     </div>
   );

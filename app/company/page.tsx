@@ -200,9 +200,7 @@ export default function CompanyPage() {
             </div>
           </div>
         </div>
-        <style>{`
-          @media (min-width: 1024px) { .company-grid { grid-template-columns: 1fr 1fr !important; } }
-        `}</style>
+        
       </section>
 
       {/* Operating principles */}
