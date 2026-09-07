@@ -1,0 +1,586 @@
+/* ═══════════════════════════════════════════════════════════════════
+   AI AGENTS SECTION — Autonomous Execution & Orchestration Console
+   Features bespoke 3D infrastructure backdrop with seamless transitions
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section
+{
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 0;
+  background-image: url("/agents/ai_agents_orchestration.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  isolation: isolate;
+}
+
+/* Solid architectural backdrop tint for high legibility without gradient clutter */
+.bgOverlay
+{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(6, 13, 20, 0.85);
+  z-index: 0;
+}
+
+/* Subtle edge blend transitions into adjacent page sections */
+.edgeTransitionTop,
+.edgeTransitionBottom
+{
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 48px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+
+/* ─── Scoped Theme Variables ────────────────────────────────────── */
+
+.themeWrap
+{
+  --agent-card-bg: rgba(4, 22, 36, 0.76);
+  --agent-card-border: rgba(45, 154, 191, 0.28);
+  --agent-card-border-hover: rgba(45, 154, 191, 0.6);
+  --agent-text-primary: #ffffff;
+  --agent-text-secondary: #cce3ed;
+  --agent-text-muted: rgba(204, 227, 237, 0.6);
+  --agent-terminal-bg: rgba(2, 16, 28, 0.88);
+  --agent-active-bg: rgba(27, 107, 138, 0.25);
+  --agent-active-border: var(--cuxton-amber);
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── HEADER ────────────────────────────────────────────────────── */
+
+.header
+{
+  text-align: left;
+  margin: 0 auto 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.heading
+{
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--agent-text-primary);
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.headingAccent
+{
+  color: var(--cuxton-amber);
+}
+
+.subHeading
+{
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--agent-text-secondary);
+}
+
+/* ─── SCENARIO SELECTOR TABS ────────────────────────────────────── */
+
+.tabsContainer
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.scenarioTab
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 10px;
+  background: rgba(6, 22, 36, 0.7);
+  border: 1px solid var(--agent-card-border);
+  color: var(--agent-text-secondary);
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.scenarioTab:hover
+{
+  border-color: var(--agent-card-border-hover);
+  color: var(--agent-text-primary);
+}
+
+.scenarioTabActive
+{
+  background: rgba(27, 107, 138, 0.35);
+  border-color: var(--cuxton-amber);
+  color: #ffffff;
+  box-shadow: 0 0 20px -5px rgba(245, 166, 35, 0.35);
+}
+
+.tabIcon
+{
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cuxton-teal-light);
+}
+
+.scenarioTabActive .tabIcon
+{
+  color: var(--cuxton-amber);
+}
+
+/* ─── MAIN ORCHESTRATION CONSOLE (2-COLUMN) ─────────────────────── */
+
+.consoleGrid
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 1024px)
+{
+  .consoleGrid
+  {
+    grid-template-columns: 1.15fr 1fr;
+  }
+}
+
+/* Left Column: Pipeline Steps Card */
+.pipelineCard
+{
+  position: relative;
+  background: var(--agent-card-bg);
+  border: 1px solid var(--agent-card-border);
+  border-radius: 18px;
+  padding: 1.75rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.consoleHeader
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(45, 154, 191, 0.2);
+}
+
+.consoleTitleGroup
+{
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.consolePulseDot
+{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 10px #34d399;
+  animation: consolePulse 2s infinite;
+}
+
+@keyframes consolePulse
+{
+
+  0%,
+  100%
+  {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50%
+  {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+.consoleTitle
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+}
+
+.consoleBadge
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--cuxton-amber);
+  background: rgba(245, 166, 35, 0.12);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Pipeline Steps List */
+.stepList
+{
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stepButton
+{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(6, 16, 28, 0.5);
+  border: 1px solid rgba(45, 154, 191, 0.18);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.stepButton:hover
+{
+  background: rgba(27, 107, 138, 0.18);
+  border-color: rgba(45, 154, 191, 0.45);
+}
+
+.stepButtonActive
+{
+  background: rgba(27, 107, 138, 0.28);
+  border-color: var(--cuxton-amber);
+  box-shadow: 0 4px 18px -4px rgba(245, 166, 35, 0.25);
+}
+
+.stepIndex
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--cuxton-teal-light);
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: rgba(27, 107, 138, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stepButtonActive .stepIndex
+{
+  background: rgba(245, 166, 35, 0.2);
+  color: var(--cuxton-amber);
+}
+
+.stepTextGroup
+{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.stepLabel
+{
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--agent-text-primary);
+}
+
+.stepSummary
+{
+  font-size: 0.78rem;
+  color: var(--agent-text-muted);
+  margin-top: 0.15rem;
+}
+
+.stepStatusChip
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.statusComplete
+{
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.statusReview
+{
+  background: rgba(245, 166, 35, 0.15);
+  color: var(--cuxton-amber);
+  border: 1px solid rgba(245, 166, 35, 0.4);
+}
+
+/* Right Column: Execution Inspector Terminal */
+.inspectorCard
+{
+  position: relative;
+  background: var(--agent-terminal-bg);
+  border: 1px solid var(--agent-card-border);
+  border-radius: 18px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+.inspectorCard::before
+{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--cuxton-teal);
+  opacity: 0.8;
+}
+
+.terminalTopBar
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(45, 154, 191, 0.2);
+  margin-bottom: 1.25rem;
+}
+
+.terminalDots
+{
+  display: flex;
+  gap: 6px;
+}
+
+.terminalDot
+{
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(204, 227, 237, 0.2);
+}
+
+.terminalFileName
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.72rem;
+  color: var(--cuxton-teal-light);
+  font-weight: 700;
+}
+
+.inspectorBody
+{
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex-grow: 1;
+}
+
+.inspectorRow
+{
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.inspectorFieldLabel
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--agent-text-muted);
+  text-transform: uppercase;
+}
+
+.inspectorFieldValue
+{
+  font-size: 0.92rem;
+  color: var(--agent-text-primary);
+  line-height: 1.5;
+}
+
+.codeBlock
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.78rem;
+  background: rgba(6, 13, 20, 0.85);
+  border: 1px solid rgba(45, 154, 191, 0.25);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: #8dc9e0;
+  overflow-x: auto;
+}
+
+.inspectorTelemetryGrid
+{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(45, 154, 191, 0.2);
+  margin-top: 1rem;
+}
+
+.telemetryBox
+{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.telemetryLabel
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--agent-text-muted);
+}
+
+.telemetryValue
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--cuxton-amber);
+}
+
+/* ─── GOVERNANCE TRIAD BENTO CARDS ──────────────────────────────── */
+
+.governanceGrid
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 768px)
+{
+  .governanceGrid
+  {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.govCard
+{
+  position: relative;
+  background: var(--agent-card-bg);
+  border: 1px solid var(--agent-card-border);
+  border-radius: 14px;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.govCard:hover
+{
+  transform: translateY(-3px);
+  border-color: var(--agent-card-border-hover);
+}
+
+.govIcon
+{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(27, 107, 138, 0.18);
+  border: 1px solid rgba(45, 154, 191, 0.35);
+  color: var(--cuxton-teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.govTitle
+{
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--agent-text-primary);
+  margin-bottom: 0.45rem;
+}
+
+.govDesc
+{
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--agent-text-secondary);
+}
+
+/* ─── ACTIONS FOOTER ────────────────────────────────────────────── */
+
+.ctaRow
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.ctaSecondary
+{
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(10px);
+}
+
+.ctaSecondary:hover
+{
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}

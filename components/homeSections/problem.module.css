@@ -1,0 +1,440 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PROBLEM SECTION — left: full list of pain points (always visible,
+   left-aligned). Right: single image that auto-advances on a timer,
+   in sync with whichever pain point is currently highlighted.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.problem
+{
+  position: relative;
+  /* border-bottom: 1px solid var(--border); */
+}
+
+/* Base rectangular grid: 84px × 54px blueprint grid */
+.gridPattern
+{
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(27, 107, 138, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(27, 107, 138, 0.1) 1px, transparent 1px);
+  background-size: 84px 54px;
+  background-position: center center;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, black 25%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, black 25%, transparent 80%);
+  opacity: 0.9;
+}
+
+/* Ambient radial glow spots */
+.glowTeal
+{
+  position: absolute;
+  width: 600px;
+  height: 500px;
+  border-radius: 50%;
+  top: 10%;
+  left: -100px;
+  background: radial-gradient(circle, rgba(27, 107, 138, 0.22) 0%, rgba(27, 107, 138, 0.05) 50%, transparent 75%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.glowAmber
+{
+  position: absolute;
+  position: absolute;
+  width: 500px;
+  height: 450px;
+  border-radius: 50%;
+  bottom: 5%;
+  right: -50px;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.14) 0%, rgba(245, 166, 35, 0.03) 50%, transparent 75%);
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────── */
+
+.header
+{
+  max-width: 760px;
+  margin: 0 0 3.5rem;
+  text-align: left;
+}
+
+.headline
+{
+  font-size: clamp(2.1rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
+  margin: 0.75rem 0 1.25rem;
+  max-width: 700px;
+}
+
+.subhead
+{
+  margin: 0 0;
+  max-width: 620px;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   BODY — text list (left) + image panel (right)
+   ───────────────────────────────────────────────────────────────── */
+
+.body
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 1024px)
+{
+  .body
+  {
+    grid-template-columns: 1fr minmax(300px, 0.75fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   PAIN POINT LIST — all items visible, left-aligned, click to
+   preview that pain point's image.
+   ───────────────────────────────────────────────────────────────── */
+
+.points
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.points__item
+{
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.25rem 0 1.25rem 0.9rem;
+  margin-left: -0.9rem;
+  border: none;
+  border-top: 1px solid var(--border);
+  border-left: 2px solid transparent;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.2s ease;
+}
+
+.points__item:first-child
+{
+  border-top: none;
+  padding-top: 0;
+}
+
+.points__item:hover
+{
+  background: rgba(27, 107, 138, 0.05);
+}
+
+.points__item:focus-visible
+{
+  outline: 2px solid var(--cuxton-amber);
+  outline-offset: -2px;
+}
+
+.points__itemActive
+{
+  border-left-color: var(--cuxton-teal-light);
+}
+
+.points__itemActive .points__icon
+{
+  background: rgba(27, 107, 138, 0.18);
+  border-color: rgba(27, 107, 138, 0.35);
+}
+
+.points__itemActive .points__title
+{
+  color: var(--cuxton-teal-light);
+}
+
+.points__icon
+{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(27, 107, 138, 0.08);
+  border: 1px solid rgba(27, 107, 138, 0.16);
+  color: var(--cuxton-teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.points__body
+{
+  flex: 1;
+  min-width: 0;
+}
+
+.points__title
+{
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.35rem;
+  transition: color 0.3s ease;
+}
+
+.points__desc
+{
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.6);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   IMAGE PANEL — auto-advances on a timer; pauses on hover.
+   ───────────────────────────────────────────────────────────────── */
+
+.visual
+{
+  position: relative;
+}
+
+@media (min-width: 1024px)
+{
+  .visual
+  {
+    position: sticky;
+    top: 6.5rem;
+  }
+}
+
+.visualFrame
+{
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3.1;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #060d14;
+  box-shadow: 0 16px 40px -10px rgba(6, 13, 20, 0.65);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.visualFrame:hover
+{
+  border-color: rgba(27, 107, 138, 0.5);
+  box-shadow: 0 20px 50px -10px rgba(6, 13, 20, 0.75), 0 0 30px -10px rgba(27, 107, 138, 0.3);
+}
+
+.visualFrame:focus-visible
+{
+  outline: 2px solid var(--cuxton-amber);
+  outline-offset: 3px;
+}
+
+.visualGlow
+{
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(27, 107, 138, 0.18) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.visualImage
+{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.6s ease;
+}
+
+.visualImageActive
+{
+  opacity: 1;
+  z-index: 2;
+}
+
+.visualImg
+{
+  object-fit: cover;
+}
+
+.visualZoomHint
+{
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(6, 13, 20, 0.75);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.visualFrame:hover .visualZoomHint
+{
+  opacity: 1;
+}
+
+/* Segmented progress row — one bar per image, the active one fills
+   over the auto-advance interval so the timing is visible. */
+.visualProgress
+{
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+
+.visualProgressBar
+{
+  flex: 1;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(var(--foreground-rgb), 0.12);
+  overflow: hidden;
+}
+
+.visualProgressFill
+{
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--cuxton-teal-light);
+  animation-name: problemProgressFill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes problemProgressFill
+{
+  from
+  {
+    width: 0%;
+  }
+
+  to
+  {
+    width: 100%;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   MODAL — larger view of the active image, opened by click/tap
+   ───────────────────────────────────────────────────────────────── */
+
+.modalOverlay
+{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(6, 13, 20, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.modalContent
+{
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(27, 107, 138, 0.4);
+  background: #060d14;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 50px -10px rgba(27, 107, 138, 0.3);
+}
+
+.modalClose
+{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.modalClose:hover
+{
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.modalImageWrap
+{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.modalImg
+{
+  object-fit: cover;
+}
+
+.modalCaption
+{
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.modalCaptionTitle
+{
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+}
+
+.modalCaptionDesc
+{
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.65);
+}

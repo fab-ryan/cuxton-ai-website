@@ -1,0 +1,804 @@
+/* ═══════════════════════════════════════════════════════════════════
+   WHY CUXTON SECTION — Institutional Engineering Principles
+   Structured Bento Grid, Key Differentiators, and Comparison Matrix
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section
+{
+  position: relative;
+  overflow: hidden;
+  padding: 6.5rem 0;
+  background-color: var(--background);
+  isolation: isolate;
+}
+
+@media (max-width: 768px)
+{
+  .section
+  {
+    padding: 4.5rem 0;
+  }
+}
+
+/* ─── Scoped Theme Variables ────────────────────────────────────── */
+
+.themeWrap
+{
+  --wc-card-bg: rgba(6, 20, 32, 0.82);
+  --wc-card-hover: rgba(9, 29, 46, 0.95);
+  --wc-card-border: rgba(45, 154, 191, 0.24);
+  --wc-card-border-hover: rgba(45, 154, 191, 0.6);
+  --wc-text-main: #ffffff;
+  --wc-text-sub: #cce3ed;
+  --wc-text-muted: rgba(204, 227, 237, 0.65);
+  --wc-badge-bg: rgba(27, 107, 138, 0.25);
+  --wc-badge-border: rgba(45, 154, 191, 0.4);
+  --wc-badge-text: #5ecbf2;
+  --wc-amber: var(--cuxton-amber);
+  --wc-amber-bg: rgba(245, 166, 35, 0.12);
+  --wc-amber-border: rgba(245, 166, 35, 0.35);
+  --wc-table-bg: rgba(3, 16, 27, 0.88);
+  --wc-table-border: rgba(45, 154, 191, 0.2);
+  --wc-table-header: rgba(10, 32, 50, 0.75);
+  --wc-success: #38ef7d;
+  --wc-danger: #ff6b6b;
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Section Header ────────────────────────────────────────────── */
+
+.header
+{
+  text-align: left;
+  margin: 0 auto 2.5rem;
+}
+
+.heading
+{
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--wc-text-main);
+  letter-spacing: -0.025em;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.headingAccent
+{
+  color: var(--wc-badge-text);
+}
+
+.subHeading
+{
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--wc-text-sub);
+  max-width: 720px;
+}
+
+/* ─── Institutional Proof Metrics Bar ───────────────────────────── */
+
+.metricsBar
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.metricPill
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--wc-card-bg);
+  border: 1px solid var(--wc-card-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.6rem 1.15rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.metricPillIcon
+{
+  color: var(--cuxton-amber);
+  display: flex;
+  align-items: center;
+}
+
+.metricPillVal
+{
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--wc-text-main);
+}
+
+.metricPillLabel
+{
+  font-size: 0.8rem;
+  color: var(--wc-text-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BENTO GRID OF PRINCIPLES
+   ═══════════════════════════════════════════════════════════════════ */
+
+.bentoGrid
+{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 1024px)
+{
+  .bentoGrid
+  {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 700px)
+{
+  .bentoGrid
+  {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Base Card Style — each tenet carries its own accent (.tenetAccent1..5
+   below) so the five principles read as distinct rather than five
+   repeats of the same amber/teal card. */
+.bentoCard
+{
+  --wc-accent: var(--wc-amber);
+  --wc-accent-bg: var(--wc-amber-bg);
+  --wc-accent-border: var(--wc-amber-border);
+  background: var(--wc-card-bg);
+  border: 1px solid var(--wc-card-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.bentoCard::before
+{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--wc-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bentoCard:hover::before
+{
+  transform: scaleX(1);
+}
+
+.tenetAccent1
+{
+  --wc-accent: var(--wc-amber);
+  --wc-accent-bg: rgba(245, 166, 35, 0.12);
+  --wc-accent-border: rgba(245, 166, 35, 0.3);
+}
+
+.tenetAccent2
+{
+  --wc-accent: #4f97f7;
+  --wc-accent-bg: rgba(79, 151, 247, 0.12);
+  --wc-accent-border: rgba(79, 151, 247, 0.3);
+}
+
+.tenetAccent3
+{
+  --wc-accent: #a78bfa;
+  --wc-accent-bg: rgba(167, 139, 250, 0.12);
+  --wc-accent-border: rgba(167, 139, 250, 0.3);
+}
+
+.tenetAccent4
+{
+  --wc-accent: var(--cuxton-teal-light);
+  --wc-accent-bg: rgba(45, 154, 191, 0.12);
+  --wc-accent-border: rgba(45, 154, 191, 0.3);
+}
+
+.tenetAccent5
+{
+  --wc-accent: #ec4899;
+  --wc-accent-bg: rgba(236, 72, 153, 0.12);
+  --wc-accent-border: rgba(236, 72, 153, 0.3);
+}
+
+.bentoCard:hover
+{
+  transform: translateY(-3px);
+  background: var(--wc-card-hover);
+  border-color: var(--wc-accent-border);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--wc-accent-border);
+}
+
+/* ─── Hero Feature Card (Span 7) ────────────────────────────────── */
+
+.heroCard
+{
+  grid-column: span 7;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.75rem;
+  padding: 0;
+  min-height: 340px;
+}
+
+@media (max-width: 1024px)
+{
+  .heroCard
+  {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 768px)
+{
+  .heroCard
+  {
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroCardContent
+{
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.heroCardVisual
+{
+  position: relative;
+  overflow: hidden;
+  border-left: 1px solid var(--wc-card-border);
+  min-height: 220px;
+  background-color: rgba(2, 14, 24, 0.9);
+}
+
+@media (max-width: 768px)
+{
+  .heroCardVisual
+  {
+    border-left: none;
+    border-top: 1px solid var(--wc-card-border);
+    height: 200px;
+  }
+}
+
+.heroVisualImg
+{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.heroCard:hover .heroVisualImg
+{
+  transform: scale(1.03);
+}
+
+.heroVisualOverlay
+{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(6, 20, 32, 0.4) 0%, rgba(2, 14, 24, 0.8) 100%);
+  pointer-events: none;
+}
+
+.heroVisualBadge
+{
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  background: rgba(3, 16, 27, 0.88);
+  border: 1px solid var(--wc-amber-border);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.heroVisualDot
+{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--wc-amber);
+  box-shadow: 0 0 10px var(--wc-amber);
+  flex-shrink: 0;
+}
+
+.heroVisualText
+{
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--wc-text-main);
+  line-height: 1.35;
+}
+
+/* ─── Standard Cards (Span 5 and Span 4) ────────────────────────── */
+
+.cardSpan5
+{
+  grid-column: span 5;
+}
+
+.cardSpan4
+{
+  grid-column: span 4;
+}
+
+@media (max-width: 1024px)
+{
+  .cardSpan5
+  {
+    grid-column: span 6;
+  }
+
+  .cardSpan4
+  {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 700px)
+{
+  .heroCard,
+  .cardSpan5,
+  .cardSpan4
+  {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Card Header Components */
+.cardTop
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
+}
+
+.cardIconWrap
+{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--wc-badge-bg);
+  border: 1px solid var(--wc-badge-border);
+  color: var(--wc-badge-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.bentoCard:hover .cardIconWrap
+{
+  border-color: var(--wc-accent);
+  color: var(--wc-accent);
+  background: var(--wc-accent-bg);
+}
+
+.cardTenetBadge
+{
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wc-accent);
+  background: var(--wc-accent-bg);
+  border: 1px solid var(--wc-accent-border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+
+.cardTitle
+{
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--wc-text-main);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.cardTagline
+{
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--wc-badge-text);
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
+}
+
+.cardDesc
+{
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--wc-text-sub);
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+/* Key Differentiator Tag in Card Footer */
+.cardFooter
+{
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(45, 154, 191, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardFooterDot
+{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--wc-amber);
+  flex-shrink: 0;
+}
+
+.cardFooterText
+{
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--wc-text-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   THE CUXTON DIFFERENCE — COMPARISON MATRIX
+   ═══════════════════════════════════════════════════════════════════ */
+
+.matrixContainer
+{
+  background: var(--wc-table-bg);
+  border: 1px solid var(--wc-table-border);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  margin-bottom: 3.5rem;
+}
+
+.matrixHeader
+{
+  padding: 1.75rem 2rem;
+  border-bottom: 1px solid var(--wc-table-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.matrixTitleGroup
+{
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.matrixTitle
+{
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--wc-text-main);
+  letter-spacing: -0.01em;
+}
+
+.matrixSub
+{
+  font-size: 0.85rem;
+  color: var(--wc-text-muted);
+}
+
+.matrixBadge
+{
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--wc-badge-text);
+  background: var(--wc-badge-bg);
+  border: 1px solid var(--wc-badge-border);
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+}
+
+/* Responsive Table Wrapper */
+.tableWrap
+{
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.matrixTable
+{
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 720px;
+}
+
+.matrixTable th
+{
+  padding: 1.15rem 1.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--wc-text-muted);
+  background: var(--wc-table-header);
+  border-bottom: 1px solid var(--wc-table-border);
+}
+
+.thCuxton
+{
+  color: var(--wc-amber) !important;
+  background: rgba(27, 107, 138, 0.35) !important;
+  border-left: 2px solid var(--wc-amber);
+  border-right: 2px solid var(--wc-amber);
+}
+
+.matrixTable td
+{
+  padding: 1.25rem 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--wc-text-sub);
+  border-bottom: 1px solid rgba(45, 154, 191, 0.12);
+  vertical-align: top;
+}
+
+.tdDimension
+{
+  font-weight: 700;
+  color: var(--wc-text-main);
+  width: 22%;
+}
+
+.tdCuxton
+{
+  background: rgba(27, 107, 138, 0.12);
+  border-left: 2px solid var(--wc-amber);
+  border-right: 2px solid var(--wc-amber);
+  color: var(--wc-text-main);
+  font-weight: 600;
+}
+
+.tdCompetitor
+{
+  color: var(--wc-text-muted);
+}
+
+.tableStatusRow
+{
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.statusIconPass
+{
+  color: var(--wc-success);
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+
+.statusIconWarn
+{
+  color: var(--wc-danger);
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+
+/* ─── Footer Action CTA ─────────────────────────────────────────── */
+
+.footer
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footerButtons
+{
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btnPrimary
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.85rem;
+  background: var(--wc-amber);
+  color: #060d14;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.25);
+}
+
+.btnPrimary:hover
+{
+  background: var(--cuxton-amber-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.35);
+}
+
+.btnSecondary
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.85rem;
+  background: rgba(27, 107, 138, 0.2);
+  border: 1px solid rgba(45, 154, 191, 0.4);
+  color: var(--wc-text-main);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btnSecondary:hover
+{
+  background: rgba(27, 107, 138, 0.35);
+  border-color: rgba(45, 154, 191, 0.7);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LIGHT THEME ADAPTATION
+   Respects system prefers-color-scheme: light and [data-theme="light"]
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (prefers-color-scheme: light)
+{
+  :global(:root:not([data-theme="dark"])) .themeWrap
+  {
+    --wc-card-bg: rgba(255, 255, 255, 0.9);
+    --wc-card-hover: rgba(255, 255, 255, 0.98);
+    --wc-card-border: rgba(27, 107, 138, 0.18);
+    --wc-card-border-hover: rgba(27, 107, 138, 0.45);
+    --wc-text-main: #0c1a26;
+    --wc-text-sub: #2d4254;
+    --wc-text-muted: #576d80;
+    --wc-badge-bg: rgba(27, 107, 138, 0.1);
+    --wc-badge-border: rgba(27, 107, 138, 0.25);
+    --wc-badge-text: #1b6b8a;
+    --wc-table-bg: rgba(255, 255, 255, 0.95);
+    --wc-table-border: rgba(27, 107, 138, 0.16);
+    --wc-table-header: rgba(240, 246, 250, 0.95);
+    --wc-success: #15803d;
+    --wc-danger: #dc2626;
+  }
+
+  :global(:root:not([data-theme="dark"])) .heroCardVisual
+  {
+    background-color: #f0f6fa;
+  }
+
+  :global(:root:not([data-theme="dark"])) .heroVisualOverlay
+  {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(240, 246, 250, 0.7) 100%);
+  }
+
+  :global(:root:not([data-theme="dark"])) .heroVisualBadge
+  {
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  :global(:root:not([data-theme="dark"])) .bentoCard:hover
+  {
+    box-shadow: 0 12px 32px rgba(12, 26, 38, 0.1), 0 0 0 1px rgba(27, 107, 138, 0.25);
+  }
+
+  :global(:root:not([data-theme="dark"])) .thCuxton
+  {
+    background: rgba(27, 107, 138, 0.12) !important;
+  }
+
+  :global(:root:not([data-theme="dark"])) .tdCuxton
+  {
+    background: rgba(27, 107, 138, 0.06);
+  }
+}
+
+:global([data-theme="light"]) .themeWrap
+{
+  --wc-card-bg: rgba(255, 255, 255, 0.9);
+  --wc-card-hover: rgba(255, 255, 255, 0.98);
+  --wc-card-border: rgba(27, 107, 138, 0.18);
+  --wc-card-border-hover: rgba(27, 107, 138, 0.45);
+  --wc-text-main: #0c1a26;
+  --wc-text-sub: #2d4254;
+  --wc-text-muted: #576d80;
+  --wc-badge-bg: rgba(27, 107, 138, 0.1);
+  --wc-badge-border: rgba(27, 107, 138, 0.25);
+  --wc-badge-text: #1b6b8a;
+  --wc-table-bg: rgba(255, 255, 255, 0.95);
+  --wc-table-border: rgba(27, 107, 138, 0.16);
+  --wc-table-header: rgba(240, 246, 250, 0.95);
+  --wc-success: #15803d;
+  --wc-danger: #dc2626;
+}
+
+:global([data-theme="light"]) .heroCardVisual
+{
+  background-color: #f0f6fa;
+}
+
+:global([data-theme="light"]) .heroVisualOverlay
+{
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(240, 246, 250, 0.7) 100%);
+}
+
+:global([data-theme="light"]) .heroVisualBadge
+{
+  background: rgba(255, 255, 255, 0.95);
+}
+
+:global([data-theme="light"]) .bentoCard:hover
+{
+  box-shadow: 0 12px 32px rgba(12, 26, 38, 0.1), 0 0 0 1px rgba(27, 107, 138, 0.25);
+}
+
+:global([data-theme="light"]) .thCuxton
+{
+  background: rgba(27, 107, 138, 0.12) !important;
+}
+
+:global([data-theme="light"]) .tdCuxton
+{
+  background: rgba(27, 107, 138, 0.06);
+}

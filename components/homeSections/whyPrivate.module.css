@@ -1,0 +1,702 @@
+/* ═══════════════════════════════════════════════════════════════════
+   WHY PRIVATE AI — Security Perimeter & Data Sovereignty Matrix
+   Features the exact Hero network photograph background (#004a69ed)
+   layered with rotating concentric security rings, blueprint grid, and ambient glow.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.privateSection
+{
+  position: relative;
+  overflow: hidden;
+  padding: 6.5rem 0;
+  background-image: url("/private-security-bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  isolation: isolate;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   SOLID ARCHITECTURAL BACKDROP TINT
+   Clean solid backdrop without artificial linear-gradient washes
+   ───────────────────────────────────────────────────────────────── */
+
+.heroOverlay
+{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(6, 13, 20, 0.82);
+  z-index: 0;
+}
+
+/* ─── Hero-Aligned Tokens (Fixed Light-on-Dark for Network Backdrop) ─ */
+
+.themeWrap
+{
+  --wp-canvas-bg: rgba(6, 13, 20, 0.75);
+  --wp-card-bg: rgba(4, 25, 40, 0.72);
+  --wp-card-border: rgba(45, 154, 191, 0.28);
+  --wp-card-border-hover: rgba(245, 166, 35, 0.55);
+  --wp-text-primary: #ffffff;
+  --wp-text-secondary: #cce3ed;
+  --wp-text-muted: rgba(204, 227, 237, 0.65);
+  --wp-diagram-bg: rgba(2, 18, 30, 0.84);
+  --wp-shadow:
+    0 16px 40px -10px rgba(0, 18, 30, 0.75),
+    0 0 35px -10px rgba(45, 154, 191, 0.25);
+  position: relative;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   IMPRESSIVE BACKGROUND CANVAS: BLUEPRINT MESH & PERIMETER RINGS
+   ───────────────────────────────────────────────────────────────── */
+
+.bgCanvas
+{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Precision 64px × 42px technical grid */
+.gridPattern
+{
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='64' height='42' viewBox='0 0 64 42' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M64 0H0v42' fill='none' stroke='rgba(27,107,138,0.12)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 64px 42px;
+  background-position: center center;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 50%,
+      black 25%,
+      transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 50%,
+      black 25%,
+      transparent 85%);
+  opacity: 0.95;
+}
+
+/* Concentric Security Perimeter Rings radiating from center-right */
+.perimeterRings
+{
+  position: absolute;
+  top: 50%;
+  right: -80px;
+  transform: translateY(-50%);
+  width: 900px;
+  height: 900px;
+  pointer-events: none;
+}
+
+.ring1,
+.ring2,
+.ring3
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.ring1
+{
+  width: 420px;
+  height: 420px;
+  border: 1.5px dashed rgba(27, 107, 138, 0.4);
+  animation: ringSpin 60s linear infinite;
+}
+
+.ring2
+{
+  width: 680px;
+  height: 680px;
+  border: 1px solid rgba(27, 107, 138, 0.25);
+}
+
+.ring3
+{
+  width: 920px;
+  height: 920px;
+  border: 1px dashed rgba(245, 166, 35, 0.2);
+  animation: ringSpinReverse 80s linear infinite;
+}
+
+@keyframes ringSpin
+{
+  from
+  {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to
+  {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes ringSpinReverse
+{
+  from
+  {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to
+  {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@media (max-width: 768px)
+{
+  .perimeterRings
+  {
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 600px;
+    height: 600px;
+    opacity: 0.5;
+  }
+
+  .ring1
+  {
+    width: 260px;
+    height: 260px;
+  }
+
+  .ring2
+  {
+    width: 420px;
+    height: 420px;
+  }
+
+  .ring3
+  {
+    width: 580px;
+    height: 580px;
+  }
+
+  .telemetryTop,
+  .telemetryBottom
+  {
+    display: none;
+  }
+}
+
+/* Floating Telemetry Coordinates */
+.telemetryTop
+{
+  position: absolute;
+  top: 8%;
+  right: 6%;
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cuxton-teal-light);
+  background: rgba(27, 107, 138, 0.16);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  backdrop-filter: blur(8px);
+}
+
+.telemetryBottom
+{
+  position: absolute;
+  bottom: 8%;
+  left: 5%;
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cuxton-amber);
+  background: rgba(245, 166, 35, 0.12);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  backdrop-filter: blur(8px);
+}
+
+.pulseDot
+{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  animation: pulseDotAnim 2s infinite;
+}
+
+@keyframes pulseDotAnim
+{
+
+  0%,
+  100%
+  {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50%
+  {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   MAIN 2-COLUMN LAYOUT
+   ───────────────────────────────────────────────────────────────── */
+
+.grid
+{
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px)
+{
+  .grid
+  {
+    grid-template-columns: 1fr 1.15fr;
+    gap: 4.5rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LEFT COLUMN: NARRATIVE & 3 KEY GUARANTEES
+   ───────────────────────────────────────────────────────────────── */
+
+.leftCol
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.heading
+{
+  font-size: clamp(2.25rem, 4.2vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--wp-text-primary);
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.headingAccent
+{
+  color: var(--cuxton-amber);
+}
+
+.bodyText
+{
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--wp-text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* 3 Core Security Tenets / Guarantees */
+.guarantees
+{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.guaranteeCard
+{
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  border-radius: 12px;
+  background: var(--wp-card-bg);
+  border: 1px solid var(--wp-card-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.guaranteeCard:hover
+{
+  transform: translateX(4px);
+  border-color: var(--wp-card-border-hover);
+}
+
+.guaranteeIcon
+{
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: rgba(27, 107, 138, 0.18);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  color: var(--cuxton-teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.guaranteeTitle
+{
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--wp-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.guaranteeDesc
+{
+  font-size: 0.835rem;
+  color: var(--wp-text-secondary);
+  line-height: 1.5;
+}
+
+.ctaRow
+{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.ctaSecondary
+{
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(10px);
+}
+
+.ctaSecondary:hover
+{
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   RIGHT COLUMN: BOUNDARY ARCHITECTURE & 6 PILLARS
+   ───────────────────────────────────────────────────────────────── */
+
+.rightCol
+{
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ─── Visual Boundary Card ──────────────────────────────────────── */
+
+.boundaryCard
+{
+  position: relative;
+  border-radius: 18px;
+  background: var(--wp-diagram-bg);
+  border: 1px solid rgba(27, 107, 138, 0.4);
+  box-shadow: var(--wp-shadow);
+  padding: 1.75rem;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+}
+
+.boundaryCard::before
+{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: var(--cuxton-teal);
+  opacity: 0.7;
+}
+
+.boundaryHeader
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.boundaryTitle
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.boundaryBadge
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--cuxton-amber);
+  background: rgba(245, 166, 35, 0.12);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* The Triad Input Row */
+.boundaryInputs
+{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.inputPod
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.85rem 0.5rem;
+  border-radius: 10px;
+  background: var(--wp-card-bg);
+  border: 1px solid var(--wp-card-border);
+}
+
+.inputPodIcon
+{
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(27, 107, 138, 0.16);
+  border: 1px solid rgba(27, 107, 138, 0.3);
+  color: var(--cuxton-teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.45rem;
+}
+
+.inputPodLabel
+{
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--wp-text-primary);
+}
+
+.inputPodSub
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.65rem;
+  color: var(--wp-text-muted);
+  margin-top: 0.15rem;
+}
+
+/* Convergence Flow Animation */
+.boundaryConvergence
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0;
+  color: var(--cuxton-teal-light);
+  opacity: 0.8;
+}
+
+/* Core Protected Processing Box */
+.boundaryCore
+{
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  padding: 1.15rem 1.35rem;
+  border-radius: 12px;
+  background: rgba(4, 22, 36, 0.85);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.boundaryCoreIcon
+{
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(245, 166, 35, 0.18);
+  border: 1px solid rgba(245, 166, 35, 0.45);
+  color: var(--cuxton-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.boundaryCoreTitle
+{
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.boundaryCoreSub
+{
+  font-size: 0.8rem;
+  color: rgba(232, 237, 245, 0.8);
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+
+/* ─── 6 Sovereignty Pillars (Bento Grid) ────────────────────────── */
+
+.pillarGrid
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px)
+{
+  .pillarGrid
+  {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pillarCard
+{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.35rem 1.4rem;
+  border-radius: 14px;
+  background: var(--wp-card-bg);
+  border: 1px solid var(--wp-card-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.pillarCard:hover
+{
+  transform: translateY(-3px);
+  border-color: var(--wp-card-border-hover);
+  box-shadow: var(--wp-shadow);
+}
+
+/* Corner ticks on cards */
+.cornerTl,
+.cornerBr
+{
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  opacity: 0.35;
+  transition: opacity 0.2s ease;
+}
+
+.cornerTl
+{
+  top: 8px;
+  left: 8px;
+  border-top: 1.5px solid var(--cuxton-teal-light);
+  border-left: 1.5px solid var(--cuxton-teal-light);
+}
+
+.cornerBr
+{
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 1.5px solid var(--cuxton-teal-light);
+  border-right: 1.5px solid var(--cuxton-teal-light);
+}
+
+.pillarCard:hover .cornerTl,
+.pillarCard:hover .cornerBr
+{
+  opacity: 0.9;
+}
+
+.pillarHeader
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.pillarIcon
+{
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(27, 107, 138, 0.15);
+  border: 1px solid rgba(27, 107, 138, 0.3);
+  color: var(--cuxton-teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.pillarCard:hover .pillarIcon
+{
+  background: rgba(245, 166, 35, 0.18);
+  border-color: rgba(245, 166, 35, 0.4);
+  color: var(--cuxton-amber);
+}
+
+.pillarIndex
+{
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--wp-text-muted);
+}
+
+.pillarTitle
+{
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--wp-text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.pillarDesc
+{
+  font-size: 0.835rem;
+  color: var(--wp-text-secondary);
+  line-height: 1.55;
+}

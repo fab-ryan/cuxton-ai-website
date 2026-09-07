@@ -1,0 +1,896 @@
+/* ═══════════════════════════════════════════════════════════════════
+   SOLUTION DETAIL PAGE — shared template for /solutions/[slug]
+   ═══════════════════════════════════════════════════════════════════ */
+
+.page {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* ─── Header ─────────────────────────────────────────────────────── */
+
+.header {
+  position: relative;
+  overflow: hidden;
+  margin-top: -68px;
+  padding-top: calc(5rem + 68px);
+  padding-bottom: 5rem;
+  background-color: #060d14;
+  background-image: 
+    radial-gradient(circle at 85% 25%, rgba(27, 107, 138, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 15% 75%, rgba(245, 166, 35, 0.08) 0%, transparent 45%),
+    url("/solution-hero.png");
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.25);
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding-top: calc(5.5rem + 68px);
+    padding-bottom: 5.5rem;
+  }
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 13, 20, 0.82) 0%,
+    rgba(6, 13, 20, 0.94) 100%
+  );
+  z-index: 1;
+}
+
+.ambientGlow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  right: -50px;
+  top: 15%;
+  background: radial-gradient(circle, rgba(27, 107, 138, 0.22) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.headerInner {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Breadcrumbs ─────────────────────────────────────────────────── */
+
+.breadcrumbNav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+  color: rgba(var(--foreground-rgb), 0.55);
+}
+
+.breadcrumbLink {
+  color: rgba(var(--foreground-rgb), 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--cuxton-teal-light);
+}
+
+.breadcrumbSeparator {
+  color: rgba(var(--foreground-rgb), 0.28);
+}
+
+.breadcrumbCategory {
+  color: var(--cuxton-teal-light);
+  font-weight: 500;
+}
+
+.breadcrumbCurrent {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* ─── Hero Grid Layout ────────────────────────────────────────────── */
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1.18fr 0.82fr;
+    gap: 3.5rem;
+  }
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+/* ─── Eyebrow Badge ───────────────────────────────────────────────── */
+
+.eyebrowBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  padding: 0.35rem 0.85rem;
+  background-color: rgba(27, 107, 138, 0.18);
+  border: 1px solid rgba(27, 107, 138, 0.38);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.badgeIndex {
+  color: var(--cuxton-amber);
+  font-weight: 800;
+}
+
+.badgeDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--cuxton-amber);
+  box-shadow: 0 0 6px var(--cuxton-amber);
+}
+
+.badgeTag {
+  color: var(--cuxton-teal-light);
+  font-weight: 700;
+}
+
+/* ─── Titles & Copy ───────────────────────────────────────────────── */
+
+.title {
+  font-size: clamp(2.15rem, 4.2vw, 3.25rem);
+  font-weight: 850;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.headline {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  font-weight: 600;
+  color: var(--cuxton-teal-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.bodyText {
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: rgba(var(--foreground-rgb), 0.75);
+  margin: 0;
+}
+
+/* ─── Capability Pills ────────────────────────────────────────────── */
+
+.capabilityPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.capabilityPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  background: rgba(27, 107, 138, 0.12);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  color: rgba(var(--foreground-rgb), 0.88);
+}
+
+/* ─── CTA Group ───────────────────────────────────────────────────── */
+
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3.125rem;
+  padding: 0 1.75rem;
+  background: var(--cuxton-amber);
+  color: #060d14;
+  font-weight: 750;
+  font-size: 0.92rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 18px rgba(245, 166, 35, 0.3);
+}
+
+.primaryCta:hover {
+  background: var(--cuxton-amber-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.42);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3.125rem;
+  padding: 0 1.5rem;
+  background: rgba(27, 107, 138, 0.12);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  border-radius: 8px;
+  color: var(--foreground);
+  font-weight: 650;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.secondaryCta:hover {
+  background: rgba(27, 107, 138, 0.22);
+  border-color: var(--cuxton-teal-light);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ─── Right Column: Architecture Blueprint Card ───────────────────── */
+
+.heroAside {
+  position: relative;
+}
+
+.blueprintCard {
+  position: relative;
+  overflow: hidden;
+  background: rgba(9, 21, 37, 0.75);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blueprintCard:hover {
+  border-color: rgba(27, 107, 138, 0.55);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.5), 0 0 24px rgba(27, 107, 138, 0.15);
+}
+
+.cardGlow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(27, 107, 138, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.35rem;
+  background: rgba(6, 13, 20, 0.65);
+  border-bottom: 1px solid rgba(27, 107, 138, 0.2);
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.cardCode {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--cuxton-amber);
+  letter-spacing: 0.05em;
+}
+
+.cardBody {
+  padding: 1.35rem;
+}
+
+.cardTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 750;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.cardBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(245, 166, 35, 0.12);
+  color: var(--cuxton-amber);
+  border: 1px solid rgba(245, 166, 35, 0.28);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.cardDesc {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: rgba(var(--foreground-rgb), 0.65);
+  margin: 0 0 1.25rem;
+}
+
+.telemetryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.telemetryItem {
+  padding: 0.75rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(6, 13, 20, 0.55);
+  border: 1px solid rgba(27, 107, 138, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.telemetryValue {
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: var(--foreground);
+  letter-spacing: -0.01em;
+}
+
+.telemetryLabel {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cuxton-teal-light);
+}
+
+.deliverablesBox {
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.15rem;
+  background: rgba(27, 107, 138, 0.07);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+}
+
+.deliverablesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(var(--foreground-rgb), 0.85);
+  margin-bottom: 0.6rem;
+}
+
+.deliverablesCount {
+  font-size: 0.68rem;
+  color: var(--cuxton-amber);
+  font-weight: 700;
+}
+
+.deliverablesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.deliverableItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: rgba(var(--foreground-rgb), 0.8);
+}
+
+.deliverableItem svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(27, 107, 138, 0.2);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: rgba(var(--foreground-rgb), 0.7);
+}
+
+/* ─── Sticky Section Navigation Dock ──────────────────────────────── */
+
+.sectionNavWrapper {
+  position: sticky;
+  top: 68px;
+  z-index: 30;
+  background: rgba(6, 13, 20, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(27, 107, 138, 0.24);
+  padding: 0.65rem 0;
+  transition: all 0.25s ease;
+}
+
+.sectionNavContainer {
+  width: 100%;
+}
+
+.sectionNav {
+  width: 100%;
+}
+
+.sectionNavInner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sectionNavLabel {
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: none;
+}
+
+@media (min-width: 860px) {
+  .sectionNavLabel {
+    display: inline-block;
+  }
+}
+
+.sectionNavPills {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 2px;
+}
+
+.sectionNavPills::-webkit-scrollbar {
+  display: none;
+}
+
+.sectionPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: rgba(var(--foreground-rgb), 0.7);
+  text-decoration: none;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sectionPillDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.sectionPill:hover {
+  color: var(--foreground);
+  background: rgba(27, 107, 138, 0.18);
+  border-color: rgba(27, 107, 138, 0.35);
+}
+
+.sectionPill:hover .sectionPillDot {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+.sectionPillActive {
+  color: #060d14 !important;
+  background: var(--cuxton-amber) !important;
+  border-color: var(--cuxton-amber) !important;
+  font-weight: 750;
+  box-shadow: 0 2px 10px rgba(245, 166, 35, 0.35);
+}
+
+.sectionPillActive .sectionPillDot {
+  background: #060d14;
+  opacity: 1;
+}
+
+/* ─── Content sections ──────────────────────────────────────────────── */
+
+.container {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+.section {
+  padding: 2.5rem 0;
+  scroll-margin-top: calc(68px + 52px + 1.25rem);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--foreground);
+  margin: 0 0 1.5rem;
+}
+
+.sectionHeadingDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cuxton-amber);
+  flex-shrink: 0;
+}
+
+/* Problem section */
+
+.eyebrow {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--cuxton-amber);
+  margin: 0 0 0.5rem;
+}
+
+.intro {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(var(--foreground-rgb), 0.75);
+  max-width: 760px;
+  margin: 0 0 2rem;
+}
+
+.challengesHeading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--foreground);
+  margin: 0 0 1rem;
+}
+
+.challengesGrid {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem 2rem;
+}
+
+@media (min-width: 640px) {
+  .challengesGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.challengeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  color: rgba(var(--foreground-rgb), 0.8);
+  line-height: 1.5;
+}
+
+.challengeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cuxton-amber);
+  margin-top: 0.4rem;
+  flex-shrink: 0;
+}
+
+/* Checklist (What we provide / Security / Deliverables) */
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 760px;
+}
+
+.checklistItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: rgba(var(--foreground-rgb), 0.75);
+  line-height: 1.55;
+}
+
+.checkIcon {
+  margin-top: 0.3rem;
+  flex-shrink: 0;
+}
+
+/* How it works — timeline */
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 760px;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.timelineMarker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.timelineNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(27, 107, 138, 0.1);
+  border: 1px solid var(--border);
+  color: var(--cuxton-teal-light);
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+.timelineLine {
+  flex: 1;
+  width: 1px;
+  min-height: 2rem;
+  background: var(--border);
+  margin: 0.35rem 0;
+}
+
+.timelinePhase {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0.4rem 0 0.35rem;
+}
+
+.timelineNote {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.65);
+  margin: 0 0 1.75rem;
+}
+
+/* Typical use cases */
+
+.useCaseList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 760px;
+}
+
+.useCaseItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: rgba(var(--foreground-rgb), 0.75);
+  line-height: 1.55;
+}
+
+.useCaseItem .challengeDot {
+  margin-top: 0.45rem;
+}
+
+/* Related industries */
+
+.industryChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.industryChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1rem;
+  background: rgba(27, 107, 138, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--cuxton-teal-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.industryChip:hover {
+  background: rgba(27, 107, 138, 0.16);
+  border-color: var(--cuxton-teal-light);
+}
+
+/* ─── Closing CTA band ──────────────────────────────────────────────── */
+
+.closing {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  padding: 4rem 0;
+}
+
+.closingInner {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .closingInner {
+    padding: 0 2rem;
+  }
+}
+
+.closingHeading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--foreground);
+  margin: 0 0 0.85rem;
+}
+
+.closingBody {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(var(--foreground-rgb), 0.65);
+  margin: 0 0 2rem;
+}
+
+.closingActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ─── Light Mode Support ────────────────────────────────────────────── */
+
+@media (prefers-color-scheme: light) {
+  .header {
+    background-color: #f4f7fa;
+    background-image:
+      radial-gradient(circle at 85% 25%, rgba(27, 107, 138, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 15% 75%, rgba(245, 166, 35, 0.06) 0%, transparent 45%),
+      url("/solution-hero.png");
+  }
+
+  .heroOverlay {
+    background: linear-gradient(
+      180deg,
+      rgba(244, 247, 250, 0.88) 0%,
+      rgba(244, 247, 250, 0.96) 100%
+    );
+  }
+
+  .title {
+    color: #0c2233;
+  }
+
+  .blueprintCard {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(27, 107, 138, 0.28);
+    box-shadow: 0 16px 36px rgba(12, 34, 51, 0.08);
+  }
+
+  .cardHeader {
+    background: rgba(234, 241, 247, 0.9);
+  }
+
+  .telemetryItem {
+    background: rgba(244, 247, 250, 0.85);
+    border-color: rgba(27, 107, 138, 0.2);
+  }
+
+  .sectionNavWrapper {
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom-color: rgba(27, 107, 138, 0.2);
+  }
+
+  .sectionPill {
+    background: rgba(12, 34, 51, 0.04);
+    color: rgba(12, 34, 51, 0.75);
+  }
+
+  .secondaryCta {
+    background: rgba(27, 107, 138, 0.08);
+    border-color: rgba(27, 107, 138, 0.25);
+    color: #0c2233;
+  }
+}
+
