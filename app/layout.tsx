@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "../components/nav";
@@ -53,7 +54,9 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col overflow-x-hidden" style={{ background: "var(--background)" }}>
-        <ScrollTop />
+        <Suspense fallback={null}>
+          <ScrollTop />
+        </Suspense>
         <Nav />
         <main id="main-content" tabIndex={-1} style={{ flex: 1, outline: "none" }}>
           {children}
