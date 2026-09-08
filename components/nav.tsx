@@ -49,9 +49,9 @@ const industries = [
 ];
 
 const flatLinks: { label: string; href: string }[] = [
-  // { label: "Technology", href: "/technology" },
-  // { label: "How We Work", href: "/how-we-work" },
-  // { label: "Company", href: "/company" },
+  { label: "Technology", href: "/technology" },
+  { label: "How We Work", href: "/how-we-work" },
+  { label: "Company", href: "/company" },
 ];
 
 /* ─── Focusable selector for Tab trapping ─── */

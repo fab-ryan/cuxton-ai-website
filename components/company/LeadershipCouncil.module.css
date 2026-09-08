@@ -1,0 +1,521 @@
+/* ═══════════════════════════════════════════════════════════════════
+   EXECUTIVE COUNCIL — Leadership stage for /company
+
+   Same dual-pane stage idiom as CompanyPrinciplesMatrix and the
+   /technology deployment console: a selector rail over a two-column
+   stage, one record shown at full size at a time.
+
+   Surfaces are token-based so both themes resolve from :root.
+   STRICTLY ZERO linear gradients, ZERO emojis.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 5.5rem 0 6.5rem;
+  background-color: #060d14;
+  border-top: 1px solid rgba(27, 107, 138, 0.22);
+}
+
+/* Operations floor. Quiet and architectural, so it sits behind the
+   stage without competing with the portrait. */
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url("/industries/industries_hero_bg.jpg");
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* The wash sits on top of the image, so the image stays at full strength
+   and this single layer does all the dimming. */
+.washOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(6, 13, 20, 0.88);
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* ─── Header ─────────────────────────────────────────────────────── */
+
+.header {
+  max-width: 840px;
+  margin-bottom: 2.25rem;
+}
+
+.heading {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 850;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin: 0 0 1rem;
+}
+
+.headingHighlight {
+  color: var(--cuxton-teal-text);
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(var(--foreground-rgb), 0.72);
+  margin: 0;
+}
+
+/* ─── Selector rail ──────────────────────────────────────────────── */
+
+.rail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .rail {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .rail {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.railBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+  background-color: rgba(var(--bg-surface-rgb), 0.7);
+  border: 1px solid rgba(27, 107, 138, 0.24);
+  border-radius: 12px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.railBtn:hover {
+  border-color: var(--cuxton-teal-light);
+  background-color: rgba(var(--bg-elevated-rgb), 0.9);
+  transform: translateY(-2px);
+}
+
+.railBtnActive,
+.railBtnActive:hover {
+  border-color: var(--cuxton-teal-light);
+  background-color: rgba(27, 107, 138, 0.22);
+  transform: none;
+}
+
+.railAvatar {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #060d14;
+  border: 1px solid rgba(27, 107, 138, 0.35);
+}
+
+.railBtnActive .railAvatar {
+  border-color: var(--cuxton-teal-light);
+}
+
+.railAvatarImg {
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.railText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.railName {
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.railRole {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: rgba(var(--foreground-rgb), 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.railBtnActive .railRole {
+  color: var(--cuxton-teal-text);
+}
+
+/* ─── Stage ──────────────────────────────────────────────────────── */
+
+.stage {
+  background-color: rgba(var(--bg-surface-rgb), 0.78);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 18px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgba(6, 13, 20, 0.4);
+}
+
+.stageGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .stageGrid {
+    grid-template-columns: 0.82fr 1.18fr;
+  }
+}
+
+/* Portrait pane */
+.portraitPane {
+  position: relative;
+  min-height: 380px;
+  background-color: #060d14;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.25);
+}
+
+@media (min-width: 1024px) {
+  .portraitPane {
+    min-height: 520px;
+    border-bottom: none;
+    border-right: 1px solid rgba(27, 107, 138, 0.25);
+  }
+}
+
+.portrait {
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+/* Sits on the photograph in both themes, so it stays dark on purpose. */
+.portraitScrim {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(6, 13, 20, 0.18);
+  pointer-events: none;
+}
+
+.portraitIndex {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.1rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: rgba(255, 255, 255, 0.28);
+  pointer-events: none;
+}
+
+.portraitBadge {
+  position: absolute;
+  bottom: 1.1rem;
+  left: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  max-width: calc(100% - 2.2rem);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background-color: rgba(6, 13, 20, 0.85);
+  border: 1px solid rgba(27, 107, 138, 0.5);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--cuxton-teal-light);
+  backdrop-filter: blur(6px);
+}
+
+.portraitBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  flex-shrink: 0;
+}
+
+/* Record pane */
+.recordPane {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .recordPane {
+    padding: 2.5rem;
+  }
+}
+
+.recordTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.2);
+}
+
+.recordCounter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber);
+}
+
+.recordCounterDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--cuxton-teal-text);
+  flex-shrink: 0;
+}
+
+.recordCode {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  color: rgba(var(--foreground-rgb), 0.45);
+  white-space: nowrap;
+}
+
+.recordName {
+  font-size: clamp(1.6rem, 2.6vw, 2.15rem);
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin: 0 0 0.35rem;
+}
+
+.recordRole {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--cuxton-amber);
+  margin: 0 0 1.15rem;
+}
+
+.recordBio {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(var(--foreground-rgb), 0.75);
+  margin: 0 0 1.75rem;
+  max-width: 62ch;
+}
+
+/* Oversight mandate box */
+.mandateBox {
+  background-color: rgba(var(--bg-elevated-rgb), 0.6);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.mandateTitle {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber-text);
+  margin: 0 0 0.85rem;
+}
+
+.mandateList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mandateItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgba(var(--foreground-rgb), 0.85);
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* Record footer */
+.recordFooter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(27, 107, 138, 0.2);
+}
+
+.recordLocation {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.45);
+}
+
+.footerControls {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.socialBtn,
+.pagerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background-color: rgba(var(--bg-elevated-rgb), 0.7);
+  border: 1px solid rgba(27, 107, 138, 0.25);
+  color: rgba(var(--foreground-rgb), 0.6);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.socialBtn:hover,
+.pagerBtn:hover {
+  background-color: rgba(27, 107, 138, 0.25);
+  border-color: var(--cuxton-teal-light);
+  color: var(--cuxton-teal-light);
+}
+
+.controlDivider {
+  width: 1px;
+  height: 20px;
+  background-color: rgba(27, 107, 138, 0.28);
+  margin: 0 0.35rem;
+}
+
+/* ─── Charter notice ─────────────────────────────────────────────── */
+
+.charterNotice {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.75rem;
+  background-color: rgba(var(--bg-elevated-rgb), 0.55);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.7);
+}
+
+.charterNoticeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--cuxton-teal-text);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LIGHT MODE
+   Surfaces track the theme through the --bg-* tokens above, so only the
+   accents tuned for a dark ground need adjusting. Anything sitting on
+   the photograph deliberately stays dark.
+   ═══════════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+  .section {
+    background-color: #ffffff;
+  }
+
+  .washOverlay {
+    background-color: rgba(255, 255, 255, 0.92);
+  }
+
+  .railBtn {
+    box-shadow: 0 4px 12px rgba(12, 34, 51, 0.04);
+  }
+
+  .railBtn:hover {
+    border-color: var(--cuxton-teal);
+  }
+
+  .railBtnActive,
+  .railBtnActive:hover {
+    background-color: rgba(27, 107, 138, 0.14);
+    border-color: var(--cuxton-teal);
+  }
+
+  .stage {
+    box-shadow: 0 16px 40px rgba(12, 34, 51, 0.08);
+  }
+
+  .socialBtn:hover,
+  .pagerBtn:hover {
+    background-color: rgba(27, 107, 138, 0.12);
+    border-color: var(--cuxton-teal);
+    color: var(--cuxton-teal);
+  }
+}

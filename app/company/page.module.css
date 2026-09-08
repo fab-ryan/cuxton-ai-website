@@ -1,199 +1,591 @@
-/* ═════════════════════════════════════════════════════════════
-   COMPANY PAGE — Leadership / Board Members section
-   (CSS Module, BEM naming — same convention as app/page.module.css)
+/* ═══════════════════════════════════════════════════════════════════
+   COMPANY PAGE — app/company/page.module.css
 
-   Visual language borrowed from the cuxton-ai.vercel.app reference
-   (structure and patterns only, not its assets or copy): mixed-
-   weight headline emphasis via spans, small "+" corner marks as a
-   blueprint/viewfinder accent on framed panels, and a restrained,
-   card-based grid with a consistent icon-badge treatment.
-   ═════════════════════════════════════════════════════════════ */
+   Follows the shared section language used by /technology, /how-we-work,
+   /solutions and /industries:
+     · left-aligned headers with the global `.section-label` eyebrow
+     · heading clamp(2rem, 3.5vw, 2.75rem) @ 850, teal `headingHighlight`
+     · lead paragraph at 1.05rem / rgba(fg, 0.72), max-width ~840px
+     · cards on rgba(var(--bg-surface-rgb), α) + blur, 16px radius
+     · section rhythm of 5.5rem top / 6.5rem bottom
 
-.leadership {
-  background: var(--bg-surface);
+   Surfaces are token-based rather than hardcoded hexes so both themes
+   resolve from :root. STRICTLY ZERO linear gradients, ZERO emojis.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.page {
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
-.leadership__header {
-  max-width: 640px;
+/* ─── Container ──────────────────────────────────────────────────────
+   Mirrors PageHero's own container (1280px / 2rem) so the sections line
+   up with the hero above them. The global `.section-container` is
+   1200px / 3rem, which put every section on this page 56px further in
+   than its own hero — and further in than the /technology, /how-we-work
+   and home sections, which sit on a 1280px `max-w-7xl` shell.
+   ─────────────────────────────────────────────────────────────────── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* ─── Shared section header ──────────────────────────────────────── */
+
+.sectionHeader {
+  max-width: 840px;
   margin-bottom: 3rem;
 }
 
-/* Mixed-weight/opacity headline emphasis — a lighter secondary
-   clause following the bold lead-in, borrowed from the reference's
-   headline treatment ("Your AI. Your data.") rather than a single
-   flat weight throughout. */
-.leadership__heading {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
+.heading {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 850;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin: 0 0 1rem;
+}
+
+.headingHighlight {
+  color: var(--cuxton-teal-text);
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(var(--foreground-rgb), 0.72);
+  margin: 0;
+}
+
+/* --- Section background layers --------------------------------------
+   A blueprint grid that sits behind .sectionContent, in the same spirit
+   as the /technology and /how-we-work sections. The photographic
+   treatment lives on the principles matrix and the executive council,
+   each in its own module. Solid colours only - no gradients.
+   ------------------------------------------------------------------- */
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M56 0H0v56' fill='none' stroke='rgba(27,107,138,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 56px 56px;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+.sectionContent {
+  position: relative;
+  z-index: 2;
+}
+
+.bgGridPlain {
+  background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M64 0H0v64' fill='none' stroke='rgba(27,107,138,0.16)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 64px 64px;
+  opacity: 1;
+}
+
+/* ─── Section 1: Institutional Mandate & Disciplines ─────────────── */
+
+.mandateSection {
+  position: relative;
+  overflow: hidden;
+  padding: 5.5rem 0 6.5rem;
+  background-color: var(--background);
+}
+
+.mandateGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .mandateGrid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 4rem;
+  }
+}
+
+.mandateHeader {
+  max-width: 640px;
+  margin-bottom: 2rem;
+}
+
+.mandateBody {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(var(--foreground-rgb), 0.72);
+  margin: 0;
+}
+
+/* Mission Box */
+.missionCard {
+  background-color: rgba(var(--bg-surface-rgb), 0.78);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 34px rgba(6, 13, 20, 0.32);
+}
+
+.missionTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber-text);
+  margin-bottom: 0.85rem;
+}
+
+.missionTagDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-amber-text);
+  flex-shrink: 0;
+}
+
+.missionStatement {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--foreground);
+  margin: 0 0 1.5rem;
+}
+
+.missionDivider {
+  height: 1px;
+  background-color: rgba(27, 107, 138, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+.clientArchetypesTitle {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-text);
   margin-bottom: 1rem;
 }
 
-.leadership__headingMuted {
-  font-weight: 500;
-  color: rgba(var(--foreground-rgb), 0.45);
-}
-
-.leadership__frame {
-  position: relative;
-  padding: 2.5rem 0.5rem;
-}
-
-/* Small corner marks — a restrained nod to the reference site's
-   viewfinder/blueprint motif on its larger framed panels. */
-.leadership__corner {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  color: rgba(27, 107, 138, 0.35);
-  pointer-events: none;
-}
-
-.leadership__cornerTl {
-  top: 0;
-  left: 0;
-}
-.leadership__cornerTr {
-  top: 0;
-  right: 0;
-}
-.leadership__cornerBl {
-  bottom: 0;
-  left: 0;
-}
-.leadership__cornerBr {
-  bottom: 0;
-  right: 0;
-}
-
-.leadership__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-}
-
-.member {
-  padding: 1.75rem;
+.clientArchetypesGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
+  gap: 0.7rem;
 }
 
-.member__top {
+.clientArchetypeItem {
   display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: rgba(var(--foreground-rgb), 0.8);
+}
+
+.checkIcon {
+  flex-shrink: 0;
+}
+
+/* Core Disciplines List (Right Pane) */
+.disciplinesHeader {
+  margin-bottom: 1.5rem;
+}
+
+.disciplinesHeading {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--foreground);
+  margin: 0 0 0.4rem;
+}
+
+.disciplinesSub {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.6);
+  margin: 0;
+}
+
+.disciplinesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.disciplineCard {
+  background-color: rgba(var(--bg-surface-rgb), 0.72);
+  border: 1px solid rgba(27, 107, 138, 0.24);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.disciplineCard:hover {
+  border-color: var(--cuxton-teal-light);
+  background-color: rgba(var(--bg-elevated-rgb), 0.85);
+  transform: translateX(4px);
+}
+
+.disciplineTopRow {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.4rem;
 }
 
-.member__avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  flex-shrink: 0;
-  object-fit: cover;
-  background: rgba(27, 107, 138, 0.1);
-  border: 1px solid rgba(27, 107, 138, 0.2);
-}
-
-/* Fallback shown when no photo has been supplied yet — an initials
-   badge rather than a fabricated stock photo. */
-.member__avatarFallback {
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  flex-shrink: 0;
-  background: rgba(27, 107, 138, 0.1);
-  border: 1px solid rgba(27, 107, 138, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
+.disciplineCode {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: var(--cuxton-teal-light);
-}
-
-.member__name {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--foreground);
-  line-height: 1.3;
-}
-
-.member__role {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--cuxton-amber);
-  margin-top: 0.2rem;
-}
-
-.member__bio {
-  font-size: 0.85rem;
-  color: rgba(var(--foreground-rgb), 0.55);
-  line-height: 1.65;
-  margin-bottom: 1.25rem;
-  flex: 1;
-}
-
-.member__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(27, 107, 138, 0.14);
-}
-
-.member__location {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.75rem;
-  color: rgba(var(--foreground-rgb), 0.45);
-  min-width: 0;
-}
-
-.member__locationText {
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: var(--cuxton-amber-text);
   white-space: nowrap;
 }
 
-.member__social {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  flex-shrink: 0;
+.disciplineTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground);
 }
 
-.member__socialLink {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+.disciplineDesc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.62);
+  margin: 0;
+}
+
+/* ─── Section 2: Visual Facility Showcase ────────────────────────── */
+
+.visualSection {
+  padding: 4.5rem 0 5.5rem;
+  background-color: var(--background);
+}
+
+.visualFrame {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  border-radius: 18px;
+  overflow: hidden;
+  /* border: 1px solid rgba(27, 107, 138, 0.28); */
+  box-shadow: 0 20px 50px rgba(6, 13, 20, 0.45);
+  background-color: #060d14;
+}
+
+@media (min-width: 768px) {
+  .visualFrame {
+    height: 520px;
+  }
+}
+
+.visualImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.visualWash {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(6, 13, 20, 0.35);
+  pointer-events: none;
+}
+
+.visualBadgeOverlay {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.95rem;
+  background-color: rgba(6, 13, 20, 0.85);
+  border: 1px solid rgba(27, 107, 138, 0.5);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--cuxton-teal-light);
+  backdrop-filter: blur(8px);
+}
+
+.visualBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.visualTelemetryBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(6, 13, 20, 0.92);
+  border-top: 1px solid rgba(27, 107, 138, 0.3);
+  padding: 1.25rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 768px) {
+  .visualTelemetryBar {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.telemetryStat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.telemetryStatVal {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cuxton-amber);
+}
+
+/* The bar sits on the photograph in both themes, so this label is
+   always light — it never reads against the page background. */
+.telemetryStatLbl {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ─── Section 4: Global Deployment Footprint ─────────────────────── */
+
+.footprintSection {
+  padding: 5.5rem 0 6.5rem;
+  background-color: var(--background);
+}
+
+.nodesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+  .nodesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .nodesGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.nodeCard {
+  background-color: rgba(var(--bg-surface-rgb), 0.78);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background-color 0.22s ease;
+}
+
+.nodeCard:hover {
+  transform: translateY(-3px);
+  border-color: var(--cuxton-teal-light);
+  background-color: rgba(var(--bg-elevated-rgb), 0.88);
+}
+
+.nodeLocation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nodeCity {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+}
+
+.nodeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.nodeRole {
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber-text);
+  /* Two lines reserved so every card's description starts level. */
+  min-height: 2.02rem;
+}
+
+.nodeDesc {
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.62);
+  margin: 0;
+}
+
+/* Footprint Trust Pillars */
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .pillarsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pillarCard {
+  background-color: rgba(var(--bg-elevated-rgb), 0.55);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Matches the global .card-icon treatment used elsewhere on the site. */
+.pillarIconWrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background-color: rgba(27, 107, 138, 0.16);
+  border: 1px solid rgba(27, 107, 138, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--cuxton-teal-text);
+  flex-shrink: 0;
+}
+
+.pillarTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.3rem;
+}
+
+.pillarDesc {
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.62);
+  margin: 0;
+}
+
+/* ─── Section 6: Closing CTA ─────────────────────────────────────── */
+/* Same shape as the /technology and /how-we-work closers: centered,
+   on the shared .section-heading / .section-sub / .btn-primary classes. */
+
+.closingSection {
+  padding: 4rem 0 5rem;
+  background-color: rgba(var(--bg-surface-rgb), 0.55);
+  border-top: 1px solid rgba(27, 107, 138, 0.22);
+}
+
+.closingInner {
+  text-align: center;
+}
+
+.closingActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.trustBadgesBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(27, 107, 138, 0.2);
+}
+
+.trustBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.55);
-  border: 1px solid rgba(27, 107, 138, 0.16);
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.member__socialLink:hover {
-  color: var(--cuxton-teal-light);
-  border-color: rgba(27, 107, 138, 0.4);
-  background: rgba(27, 107, 138, 0.1);
-}
+/* ═══════════════════════════════════════════════════════════════════
+   LIGHT MODE
+   Surfaces already track the theme through the --bg-* tokens above, so
+   only the accents tuned for a dark ground need adjusting: amber and
+   teal-light lose too much contrast on white. Anything sitting on the
+   photograph deliberately stays dark.
+   ═══════════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+  .bgGrid {
+    opacity: 0.45;
+  }
 
-.leadership__note {
-  margin-top: 1.5rem;
-  font-size: 0.78rem;
-  color: rgba(var(--foreground-rgb), 0.35);
-}
-@media (min-width: 1024px) {
-  .company-grid {
-    grid-template-columns: 1fr 1fr !important;
+  .missionCard,
+  .nodeCard {
+    box-shadow: 0 10px 28px rgba(12, 34, 51, 0.07);
+  }
+
+  .disciplineCard {
+    box-shadow: 0 6px 18px rgba(12, 34, 51, 0.05);
+  }
+
+  .disciplineCard:hover,
+  .nodeCard:hover {
+    border-color: var(--cuxton-teal);
+  }
+
+  .visualFrame {
+    box-shadow: 0 20px 50px rgba(12, 34, 51, 0.14);
   }
 }

@@ -1,0 +1,460 @@
+/* ═══════════════════════════════════════════════════════════════════
+   MODEL SELECTION — editorial. Rules and type, not boxes and glow.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section {
+  padding: 6rem 0 6.5rem;
+  background: var(--background);
+  position: relative;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─── Header ──────────────────────────────────────────────────────── */
+
+.header {
+  max-width: 52rem;
+  padding-bottom: 2.75rem;
+}
+
+.kicker {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.4);
+  margin: 0 0 1.5rem;
+}
+
+.heading {
+  font-size: clamp(1.85rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
+  margin: 0 0 1.25rem;
+  text-wrap: balance;
+}
+
+.headingMuted {
+  color: rgba(var(--foreground-rgb), 0.42);
+}
+
+.lead {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: rgba(var(--foreground-rgb), 0.68);
+  margin: 0;
+  max-width: 38rem;
+}
+
+/* ─── Decision inputs — a hairline strip, no boxes ────────────────── */
+
+.criteria {
+  list-style: none;
+  margin: 0 0 4rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(var(--foreground-rgb), 0.14);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .criteria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 3rem;
+  }
+}
+
+@media (min-width: 1060px) {
+  .criteria {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.criterion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.criterionLabel {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.criterionNote {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(var(--foreground-rgb), 0.55);
+}
+
+/* ─── Worked examples ─────────────────────────────────────────────── */
+
+.examples {
+  margin-bottom: 3.5rem;
+}
+
+.examplesLead {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.55);
+  margin: 0 0 1.25rem;
+  max-width: 38rem;
+}
+
+.exampleRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 1.5rem;
+}
+
+@media (min-width: 760px) {
+  .exampleRow {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Each example is a selectable column: a resting hairline that thickens
+   and takes the accent when chosen — an editorial tab, not a pill. */
+.example {
+  appearance: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-top: 2px solid rgba(var(--foreground-rgb), 0.16);
+  padding: 1rem 0 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: border-color 0.18s ease;
+}
+
+.example:hover {
+  border-top-color: rgba(var(--foreground-rgb), 0.45);
+}
+
+.exampleActive {
+  border-top-color: var(--cuxton-amber);
+}
+
+.exampleTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.75);
+  transition: color 0.18s ease;
+}
+
+.example:hover .exampleTitle,
+.exampleActive .exampleTitle {
+  color: var(--foreground);
+}
+
+.exampleConstraint {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(var(--foreground-rgb), 0.48);
+}
+
+.exampleActive .exampleConstraint {
+  color: var(--cuxton-amber);
+}
+
+/* ─── The index of classes ────────────────────────────────────────── */
+
+.index {
+  border-top: 1px solid rgba(var(--foreground-rgb), 0.14);
+}
+
+/* Reserved gutter on every entry so the selected state's accent bar and
+   tint appear without shifting any content sideways. */
+.entry {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  padding: 2.25rem 1.25rem;
+  margin: 0 -1.25rem;
+  border-bottom: 1px solid rgba(var(--foreground-rgb), 0.1);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 900px) {
+  .entry {
+    grid-template-columns: 5.5rem minmax(0, 1fr) 17rem;
+    gap: 2.5rem;
+    padding: 2.5rem 1.25rem;
+  }
+}
+
+.entryIndicated {
+  background: rgba(245, 166, 35, 0.045);
+  box-shadow: inset 3px 0 0 var(--cuxton-amber);
+}
+
+.entryRail {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+}
+
+@media (min-width: 900px) {
+  .entryRail {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
+
+.entryNum {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(var(--foreground-rgb), 0.35);
+}
+
+.entryIndicated .entryNum {
+  color: var(--cuxton-amber);
+}
+
+.entryFlag {
+  font-size: 0.7rem;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--cuxton-amber);
+}
+
+.entryName {
+  font-size: 1.2rem;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+  color: var(--foreground);
+  margin: 0 0 0.35rem;
+}
+
+.entryPositioning {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.62);
+  margin: 0 0 1.5rem;
+}
+
+.entryLabel {
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.38);
+  margin: 0 0 0.7rem;
+}
+
+.entryList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.entryList li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.78);
+}
+
+.entryList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 1px;
+  background: var(--cuxton-teal-light);
+}
+
+/* Right column: definition pairs, hairline separated */
+
+.entryMeta {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-top: 0.15rem;
+}
+
+@media (min-width: 900px) {
+  .entryMeta {
+    border-left: 1px solid rgba(var(--foreground-rgb), 0.1);
+    padding-left: 2rem;
+  }
+}
+
+.metaPair dt {
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.38);
+  margin-bottom: 0.25rem;
+}
+
+.metaPair dd {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(var(--foreground-rgb), 0.8);
+}
+
+.metaTradeoff dd {
+  color: rgba(var(--foreground-rgb), 0.58);
+}
+
+.metaTradeoff dt {
+  color: var(--cuxton-amber);
+  opacity: 0.75;
+}
+
+/* ─── Comparison table ────────────────────────────────────────────── */
+
+.compare {
+  margin-top: 4rem;
+}
+
+.compareTitle {
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: var(--foreground);
+  margin: 0 0 1.25rem;
+}
+
+.tableScroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  min-width: 46rem;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: left;
+}
+
+.table th,
+.table td {
+  padding: 0.85rem 1rem 0.85rem 0;
+  vertical-align: top;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(var(--foreground-rgb), 0.09);
+}
+
+.table thead th {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(var(--foreground-rgb), 0.22);
+  font-size: 0.85rem;
+  font-weight: 750;
+  color: var(--foreground);
+  width: 19%;
+}
+
+.colNum {
+  display: block;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.32);
+  margin-bottom: 0.3rem;
+}
+
+.rowHead {
+  width: 24%;
+  font-weight: 650;
+  color: rgba(var(--foreground-rgb), 0.55);
+  padding-right: 1.5rem;
+}
+
+.table td {
+  color: rgba(var(--foreground-rgb), 0.82);
+}
+
+.colIndicated {
+  background: rgba(245, 166, 35, 0.06);
+  box-shadow: inset 2px 0 0 var(--cuxton-amber);
+  padding-left: 1rem !important;
+}
+
+.table thead th.colIndicated {
+  color: var(--cuxton-amber);
+}
+
+.table thead th.colIndicated .colNum {
+  color: var(--cuxton-amber);
+  opacity: 0.8;
+}
+
+/* ─── Closing line ───────────────────────────────────────────────── */
+
+.closing {
+  margin: 2.75rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(var(--foreground-rgb), 0.6);
+  max-width: 44rem;
+}
+
+.closingLink {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--cuxton-amber);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+  transition: color 0.18s ease;
+}
+
+.closingLink:hover {
+  color: var(--cuxton-amber);
+}
+
+/* ─── Light mode ──────────────────────────────────────────────────── */
+
+@media (prefers-color-scheme: light) {
+  .entryIndicated {
+    background: rgba(245, 166, 35, 0.07);
+  }
+
+  .colIndicated {
+    background: rgba(245, 166, 35, 0.08);
+  }
+
+  .metaTradeoff dt {
+    color: var(--cuxton-amber-dim);
+    opacity: 1;
+  }
+
+  .entryFlag,
+  .exampleActive .exampleConstraint {
+    color: var(--cuxton-amber-dim);
+  }
+
+  .table thead th.colIndicated {
+    color: var(--cuxton-amber-dim);
+  }
+}

@@ -23,6 +23,13 @@
   --cuxton-amber-light: #f8bc4b; /* hover / soft accent */
   --cuxton-amber-dim: #7a5210; /* dark amber for backgrounds */
 
+  /* Accent-as-text. The brand amber and the bright teal only carry enough
+     contrast on a dark ground, so these two flip in the light block while
+     the raw brand values stay fixed for borders, fills and dots on photos.
+     Using a token means no component needs a light-mode `color` override. */
+  --cuxton-amber-text: #f5a623;
+  --cuxton-teal-text: #2d9abf;
+
   /* Semantic aliases for backwards compat */
   --cuxton-orange: var(--cuxton-amber);
   --cuxton-orange-light: var(--cuxton-amber-light);
@@ -38,6 +45,25 @@
   --background-rgb: 6, 13, 20;
   --bg-surface-rgb: 9, 21, 37;
   --bg-elevated-rgb: 13, 31, 50;
+
+  /* Inline-SVG schematic palette. Shared by the technology / how-we-work
+     diagrams so they follow the theme instead of staying dark-on-light. */
+  --sch-panel: #091525;
+  --sch-panel-2: #0d293d;
+  --sch-deep: #060d14;
+  --sch-deepest: #040a10;
+  --sch-line: #14314f;
+  --sch-text: #ffffff;
+  --sch-text-2: #e2e8f0;
+  --sch-text-dim: #94a3b8;
+  --sch-text-faint: #64748b;
+  --sch-chip: #0c2233;
+  /* Amber as *text* inside a schematic. The brand amber only carries
+     enough contrast on a dark panel; the light block darkens it. */
+  --sch-amber-text: #f5a623;
+  --sch-amber-bg: #2b1f0c;
+  --sch-green-bg: #061d15;
+  --sch-red-bg: #1f1113;
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -60,6 +86,24 @@
 
     --border: rgba(27, 107, 138, 0.28);
     --border-amber: rgba(245, 166, 35, 0.32);
+
+    --cuxton-amber-text: #7a5210;
+    --cuxton-teal-text: #1b6b8a;
+
+    --sch-panel: #ffffff;
+    --sch-panel-2: #e3edf5;
+    --sch-deep: #f4f7fa;
+    --sch-deepest: #eaf1f7;
+    --sch-line: #c9d8e4;
+    --sch-text: #0c2233;
+    --sch-text-2: #24384a;
+    --sch-text-dim: #5b7186;
+    --sch-text-faint: #7c8ea0;
+    --sch-chip: #dbe6f0;
+    --sch-amber-text: #8a5c12;
+    --sch-amber-bg: #fdf1dc;
+    --sch-green-bg: #e4f6ef;
+    --sch-red-bg: #fdeaea;
   }
 }
 
