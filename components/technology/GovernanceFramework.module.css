@@ -1,0 +1,520 @@
+/* ═══════════════════════════════════════════════════════════════════
+   INSTITUTIONAL AI GOVERNANCE FRAMEWORK & AUDIT VAULT
+   Clean solid token architecture. STRICTLY ZERO linear gradients.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  background-color: #060d14;
+  isolation: isolate;
+}
+
+/* ─── Cinematic High Definition Governance Vault Background ──────── */
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url("/governance-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: 0;
+}
+
+/* ─── Solid Architectural Wash Overlay (NO linear gradient) ─────── */
+
+.washOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(6, 13, 20, 0.82);
+  z-index: 1;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Section Header ──────────────────────────────────────────────── */
+
+.header {
+  max-width: 820px;
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber);
+  margin-bottom: 0.85rem;
+}
+
+.eyebrowDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--cuxton-amber);
+  box-shadow: 0 0 10px var(--cuxton-amber);
+  flex-shrink: 0;
+}
+
+.heading {
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  font-weight: 850;
+  color: var(--foreground);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  margin: 0 0 1rem;
+}
+
+.headingAccent {
+  color: var(--cuxton-teal-light);
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(var(--foreground-rgb), 0.78);
+  margin: 0;
+}
+
+/* ─── Dual Column Governance Console ──────────────────────────────── */
+
+.consoleGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 1024px) {
+  .consoleGrid {
+    grid-template-columns: 1.25fr 1fr;
+    align-items: start;
+  }
+}
+
+/* ─── Left Column: Six Core Governance Tenets Grid ────────────────── */
+
+.tenetsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .tenetsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.tenetCard {
+  background-color: rgba(9, 21, 37, 0.85);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 14px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  text-align: left;
+}
+
+.tenetCard:hover {
+  background-color: rgba(13, 31, 50, 0.95);
+  border-color: rgba(45, 154, 191, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.tenetCardActive {
+  background-color: rgba(13, 31, 50, 0.98);
+  border-color: var(--cuxton-amber);
+  box-shadow: 0 0 20px rgba(245, 166, 35, 0.22);
+}
+
+.tenetTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+
+.tenetIconBox {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background-color: rgba(27, 107, 138, 0.2);
+  border: 1px solid rgba(45, 154, 191, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cuxton-teal-light);
+  flex-shrink: 0;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.tenetCardActive .tenetIconBox {
+  background-color: rgba(245, 166, 35, 0.18);
+  border-color: var(--cuxton-amber);
+  color: var(--cuxton-amber);
+}
+
+.tenetIndex {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: rgba(var(--foreground-rgb), 0.45);
+  letter-spacing: 0.08em;
+}
+
+.tenetTitle {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--foreground);
+  line-height: 1.3;
+  margin: 0 0 0.45rem;
+}
+
+.tenetDesc {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.7);
+  margin: 0 0 1rem;
+}
+
+.tenetFooter {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(27, 107, 138, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tenetBadge {
+  font-size: 0.65rem;
+  font-weight: 750;
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+}
+
+.tenetCardActive .tenetBadge {
+  color: var(--cuxton-amber);
+}
+
+.activeIndicatorDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-amber);
+  box-shadow: 0 0 8px var(--cuxton-amber);
+}
+
+/* ─── Right Column: Verification & Audit Console Card ─────────────── */
+
+.inspectorCard {
+  background-color: rgba(9, 21, 37, 0.92);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  border-radius: 18px;
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 90px;
+}
+
+.inspectorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.22);
+}
+
+.inspectorTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.inspectorTitleIcon {
+  color: var(--cuxton-amber);
+  display: flex;
+  align-items: center;
+}
+
+.inspectorTitleText {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+
+.statusPillVerified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.68rem;
+  font-family: var(--font-mono), monospace;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  background-color: rgba(27, 107, 138, 0.22);
+  border: 1px solid rgba(45, 154, 191, 0.4);
+  color: var(--cuxton-teal-light);
+}
+
+.statusLiveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-teal-light);
+  box-shadow: 0 0 8px var(--cuxton-teal-light);
+}
+
+/* Active Focus Tenet Callout */
+.focusBox {
+  background-color: rgba(6, 13, 20, 0.7);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.focusLabel {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber);
+  margin-bottom: 0.35rem;
+}
+
+.focusTitle {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: var(--foreground);
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.focusStatement {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.78);
+  margin: 0;
+}
+
+/* Three Core Inspection Boundaries */
+.boundariesHeader {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.45);
+  margin-bottom: 0.85rem;
+}
+
+.boundariesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.boundaryItem {
+  background-color: rgba(6, 13, 20, 0.5);
+  border: 1px solid rgba(27, 107, 138, 0.2);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.boundaryCheckIcon {
+  color: var(--cuxton-teal-light);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.boundaryTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.boundaryName {
+  font-size: 0.82rem;
+  font-weight: 750;
+  color: var(--foreground);
+}
+
+.boundaryDetail {
+  font-size: 0.74rem;
+  color: rgba(var(--foreground-rgb), 0.65);
+  line-height: 1.5;
+}
+
+/* Compliance Badges Row */
+.frameworksRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  background-color: rgba(6, 13, 20, 0.6);
+  border: 1px solid rgba(27, 107, 138, 0.2);
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.frameworksLabel {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.45);
+  margin-right: 0.25rem;
+}
+
+.frameworkBadge {
+  font-size: 0.68rem;
+  font-weight: 750;
+  font-family: var(--font-mono), monospace;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  background-color: rgba(27, 107, 138, 0.15);
+  border: 1px solid rgba(45, 154, 191, 0.3);
+  color: var(--cuxton-teal-light);
+}
+
+/* Inspector CTA */
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  height: 2.85rem;
+  padding: 0 1.5rem;
+  background-color: var(--cuxton-teal);
+  border: 1px solid var(--cuxton-teal-light);
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 750;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.actionBtn:hover {
+  background-color: var(--cuxton-teal-mid);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(27, 107, 138, 0.35);
+}
+
+/* ─── Light Mode Overrides (NO linear gradient) ───────────────────── */
+
+@media (prefers-color-scheme: light) {
+  .section {
+    background-color: #ffffff;
+  }
+
+  .bgImage {
+    opacity: 0.2;
+    filter: invert(0.92) hue-rotate(180deg);
+  }
+
+  .washOverlay {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .tenetCard {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.22);
+    box-shadow: 0 4px 14px rgba(12, 34, 51, 0.04);
+  }
+
+  .tenetCard:hover {
+    background-color: #f7fafc;
+    border-color: var(--cuxton-teal);
+    box-shadow: 0 8px 24px rgba(12, 34, 51, 0.08);
+  }
+
+  .tenetCardActive {
+    background-color: #f7fafc;
+    border-color: var(--cuxton-amber);
+  }
+
+  .tenetTitle {
+    color: #0c2233;
+  }
+
+  .tenetDesc {
+    color: rgba(12, 34, 51, 0.75);
+  }
+
+  .tenetIndex {
+    color: rgba(12, 34, 51, 0.45);
+  }
+
+  .inspectorCard {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.22);
+    box-shadow: 0 12px 32px rgba(12, 34, 51, 0.07);
+  }
+
+  .inspectorTitleText {
+    color: #0c2233;
+  }
+
+  .focusBox {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.2);
+  }
+
+  .focusTitle {
+    color: #0c2233;
+  }
+
+  .focusStatement {
+    color: rgba(12, 34, 51, 0.78);
+  }
+
+  .boundaryItem {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.16);
+  }
+
+  .boundaryName {
+    color: #0c2233;
+  }
+
+  .boundaryDetail {
+    color: rgba(12, 34, 51, 0.68);
+  }
+
+  .frameworksRow {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.16);
+  }
+}

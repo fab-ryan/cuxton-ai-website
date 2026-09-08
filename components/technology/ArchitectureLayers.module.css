@@ -1,0 +1,682 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ARCHITECTURE LAYERS — Bounded Layered Control Plane Diagram
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section
+{
+  padding: 5.5rem 0 6rem;
+  background: #060d14;
+  position: relative;
+  overflow: hidden;
+}
+
+/* High-definition architectural render backdrop */
+.bgImage
+{
+  position: absolute;
+  inset: 0;
+  background-image: url("/architecture-bg.jpg");
+  background-size: cover;
+  background-position:fixed;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.42;
+  transition: opacity 0.3s ease;
+}
+
+/* Dark wash overlay ensuring pristine contrast and high readability */
+.bgOverlay
+{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(85% 75% at 50% 45%, #060d14b8 0%, #060d14ab 75%, #060d14 100%);
+}
+
+/* Precision CAD blueprint vector coordinate grid */
+.bgPattern
+{
+  position: absolute;
+  inset: 0;
+  background-image: url("/architecture-blueprint.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.7;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, black 25%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, black 25%, transparent 90%);
+}
+
+.content
+{
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Section Header ──────────────────────────────────────────────── */
+
+.header
+{
+  max-width: 780px;
+  margin-bottom: 2.75rem;
+}
+
+.eyebrow
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+  margin-bottom: 0.85rem;
+}
+
+.eyebrowDot
+{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-teal-light);
+  box-shadow: 0 0 8px var(--cuxton-teal-light);
+}
+
+.heading
+{
+  font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+  font-weight: 850;
+  color: var(--foreground);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin: 0 0 1rem;
+}
+
+.lead
+{
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(var(--foreground-rgb), 0.72);
+  margin: 0;
+}
+
+/* ─── Governance Boundary Frame ───────────────────────────────────── */
+
+.boundary
+{
+  position: relative;
+  border: 1px dashed rgba(45, 154, 191, 0.4);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem 1.5rem;
+  background: rgba(6, 13, 20, 0.35);
+}
+
+@media (min-width: 768px)
+{
+  .boundary
+  {
+    padding: 2.75rem 2rem 2rem;
+  }
+}
+
+.boundaryLabel
+{
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(45, 154, 191, 0.4);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+  white-space: nowrap;
+}
+
+.boundaryDot
+{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cuxton-teal-light);
+  box-shadow: 0 0 8px var(--cuxton-teal-light);
+  flex-shrink: 0;
+}
+
+.boundaryNote
+{
+  display: none;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(var(--foreground-rgb), 0.5);
+}
+
+@media (min-width: 640px)
+{
+  .boundaryNote
+  {
+    display: inline;
+  }
+}
+
+/* ─── Plane Grouping (Control vs Execution) ───────────────────────── */
+
+.plane
+{
+  --plane-accent: var(--cuxton-teal-light);
+  --plane-accent-rgb: 45, 154, 191;
+}
+
+.plane+.plane
+{
+  margin-top: 1.75rem;
+}
+
+.control
+{
+  --plane-accent: var(--cuxton-teal-light);
+  --plane-accent-rgb: 45, 154, 191;
+}
+
+.execution
+{
+  --plane-accent: var(--cuxton-amber);
+  --plane-accent-rgb: 245, 166, 35;
+}
+
+.planeHeader
+{
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.planeMarker
+{
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--plane-accent);
+  flex-shrink: 0;
+}
+
+.planeLabel
+{
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--plane-accent);
+  white-space: nowrap;
+}
+
+.planeNote
+{
+  display: none;
+  font-size: 0.76rem;
+  color: rgba(var(--foreground-rgb), 0.45);
+  white-space: nowrap;
+}
+
+@media (min-width: 900px)
+{
+  .planeNote
+  {
+    display: inline;
+  }
+}
+
+.planeRule
+{
+  flex: 1;
+  height: 1px;
+  background: rgba(var(--plane-accent-rgb), 0.25);
+  min-width: 1rem;
+}
+
+/* ─── Layer Slab ──────────────────────────────────────────────────── */
+
+.layerGroup
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.layer
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  border-radius: 14px;
+  background: rgba(9, 21, 37, 0.85);
+  border: 1px solid rgba(var(--plane-accent-rgb), 0.22);
+  border-left: 3px solid var(--plane-accent);
+  padding: 1.5rem;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+@media (min-width: 1024px)
+{
+  .layer
+  {
+    grid-template-columns: 68px minmax(0, 1fr) 330px;
+    gap: 1.75rem;
+    align-items: start;
+    padding: 1.6rem 1.75rem;
+  }
+}
+
+.layer:hover
+{
+  border-color: rgba(var(--plane-accent-rgb), 0.5);
+  background: rgba(13, 31, 50, 0.9);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Left rail: index + icon */
+
+.rail
+{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 1024px)
+{
+  .rail
+  {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+}
+
+.layerNum
+{
+  font-family: var(--font-mono), monospace;
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--plane-accent);
+}
+
+.layerIcon
+{
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(var(--plane-accent-rgb), 0.12);
+  border: 1px solid rgba(var(--plane-accent-rgb), 0.3);
+  color: var(--plane-accent);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.layer:hover .layerIcon
+{
+  background: rgba(var(--plane-accent-rgb), 0.2);
+  border-color: rgba(var(--plane-accent-rgb), 0.5);
+}
+
+/* Narrative body */
+
+.bodyHead
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.tagline
+{
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.5);
+}
+
+.controlBadge
+{
+  font-size: 0.67rem;
+  font-weight: 700;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(var(--plane-accent-rgb), 0.12);
+  border: 1px solid rgba(var(--plane-accent-rgb), 0.3);
+  color: var(--plane-accent);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.layerTitle
+{
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--foreground);
+  line-height: 1.3;
+  margin: 0 0 0.45rem;
+}
+
+.layerDesc
+{
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: rgba(var(--foreground-rgb), 0.68);
+  margin: 0;
+}
+
+/* Modules contained in the layer */
+
+.modules
+{
+  border-top: 1px solid rgba(var(--plane-accent-rgb), 0.15);
+  padding-top: 0.9rem;
+}
+
+@media (min-width: 1024px)
+{
+  .modules
+  {
+    border-top: none;
+    border-left: 1px solid rgba(var(--plane-accent-rgb), 0.15);
+    padding-top: 0;
+    padding-left: 1.75rem;
+  }
+}
+
+.moduleLabel
+{
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.4);
+  margin-bottom: 0.6rem;
+}
+
+.moduleGrid
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem;
+}
+
+.module
+{
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 650;
+  line-height: 1.3;
+  color: rgba(var(--foreground-rgb), 0.85);
+  background: rgba(var(--plane-accent-rgb), 0.07);
+  border: 1px solid rgba(var(--plane-accent-rgb), 0.2);
+  border-radius: 7px;
+  padding: 0.45rem 0.6rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.layer:hover .module
+{
+  background: rgba(var(--plane-accent-rgb), 0.13);
+  border-color: rgba(var(--plane-accent-rgb), 0.35);
+}
+
+/* ─── Interface Connector Between Layers ──────────────────────────── */
+
+.connector
+{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  margin-left: 1.5rem;
+}
+
+@media (min-width: 1024px)
+{
+  .connector
+  {
+    margin-left: 2.5rem;
+  }
+}
+
+.connectorLine
+{
+  height: 1px;
+  flex: 1;
+  background: rgba(var(--plane-accent-rgb), 0.25);
+  min-width: 0.5rem;
+}
+
+.connectorLine:first-of-type
+{
+  max-width: 2.5rem;
+}
+
+.connectorLabel
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 650;
+  color: rgba(var(--foreground-rgb), 0.5);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.connectorLabel svg
+{
+  color: var(--plane-accent);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+/* ─── Guarantee Strip (docked inside the boundary) ────────────────── */
+
+.guaranteeStrip
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(45, 154, 191, 0.3);
+}
+
+@media (min-width: 860px)
+{
+  .guaranteeStrip
+  {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.guaranteeItem
+{
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.guaranteeIcon
+{
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: rgba(45, 154, 191, 0.14);
+  border: 1px solid rgba(45, 154, 191, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cuxton-teal-light);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.guaranteeTitle
+{
+  font-size: 0.82rem;
+  font-weight: 750;
+  color: var(--foreground);
+  margin: 0 0 0.2rem;
+}
+
+.guaranteeDesc
+{
+  font-size: 0.76rem;
+  line-height: 1.55;
+  color: rgba(var(--foreground-rgb), 0.6);
+  margin: 0;
+}
+
+/* ─── Footer CTA ──────────────────────────────────────────────────── */
+
+.footer
+{
+  margin-top: 2.25rem;
+}
+
+.overviewCta
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 3rem;
+  padding: 0 1.5rem;
+  background: rgba(27, 107, 138, 0.15);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--foreground);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.overviewCta:hover
+{
+  background: var(--cuxton-teal);
+  border-color: var(--cuxton-teal-light);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(27, 107, 138, 0.25);
+}
+
+/* ─── Light Mode Overrides ────────────────────────────────────────── */
+
+@media (prefers-color-scheme: light)
+{
+  .section
+  {
+    background: #ffffff;
+  }
+
+  .bgImage
+  {
+    opacity: 0.07;
+    filter: invert(0.92) hue-rotate(180deg);
+  }
+
+  .bgOverlay
+  {
+    background: radial-gradient(85% 75% at 50% 45%, #ffffff00 0%, #ffffff00 80%, #ffffff12 100%)
+  }
+
+  .bgPattern
+  {
+    opacity: 0.25;
+    filter: invert(0.85) brightness(0.6);
+  }
+
+  .boundary
+  {
+    background: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.35);
+  }
+
+  .boundaryLabel
+  {
+    background: #ffffff;
+    border-color: rgba(27, 107, 138, 0.3);
+    color: var(--cuxton-teal);
+  }
+
+  .boundaryNote
+  {
+    color: rgba(12, 34, 51, 0.5);
+  }
+
+  .layer
+  {
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(12, 34, 51, 0.04);
+  }
+
+  .layer:hover
+  {
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(12, 34, 51, 0.08);
+  }
+
+  .layerDesc
+  {
+    color: rgba(12, 34, 51, 0.7);
+  }
+
+  .tagline
+  {
+    color: rgba(12, 34, 51, 0.5);
+  }
+
+  .module
+  {
+    color: #0c2233;
+    background: rgba(var(--plane-accent-rgb), 0.06);
+  }
+
+  .connectorLabel
+  {
+    color: rgba(12, 34, 51, 0.55);
+  }
+
+  .guaranteeDesc
+  {
+    color: rgba(12, 34, 51, 0.65);
+  }
+
+  .guaranteeStrip
+  {
+    border-top-color: rgba(27, 107, 138, 0.25);
+  }
+
+  .overviewCta
+  {
+    background: rgba(27, 107, 138, 0.08);
+    border-color: rgba(27, 107, 138, 0.25);
+    color: #0c2233;
+  }
+}

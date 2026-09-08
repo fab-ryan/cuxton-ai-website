@@ -1,0 +1,954 @@
+/* ===================================================================
+   INDUSTRY DETAIL PAGE — shared template for /industries/[slug]
+   Strict rules: ZERO LINEAR GRADIENTS, ZERO EMOJIS, high-end sovereign aesthetic
+   =================================================================== */
+
+.page {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* --- Header ------------------------------------------------------- */
+
+.header {
+  position: relative;
+  overflow: hidden;
+  margin-top: -68px;
+  padding-top: calc(5rem + 68px);
+  padding-bottom: 5rem;
+  background-color: #060d14;
+  background-image: 
+    radial-gradient(circle at 85% 25%, rgba(27, 107, 138, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 15% 75%, rgba(245, 166, 35, 0.08) 0%, transparent 45%),
+    url("/solution-hero.png");
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.25);
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding-top: calc(5.5rem + 68px);
+    padding-bottom: 5.5rem;
+  }
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(6, 13, 20, 0.88);
+  z-index: 1;
+}
+
+.ambientGlow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  right: -50px;
+  top: 15%;
+  background-color: rgba(27, 107, 138, 0.16);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.headerInner {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Breadcrumbs --------------------------------------------------- */
+
+.breadcrumbNav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+  color: rgba(var(--foreground-rgb), 0.55);
+}
+
+.breadcrumbLink {
+  color: rgba(var(--foreground-rgb), 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--cuxton-teal-light);
+}
+
+.breadcrumbSeparator {
+  color: rgba(var(--foreground-rgb), 0.28);
+}
+
+.breadcrumbCategory {
+  color: var(--cuxton-teal-light);
+  font-weight: 500;
+}
+
+.breadcrumbCurrent {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* --- Hero Grid Layout ---------------------------------------------- */
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
+  }
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+/* --- Eyebrow Badge ------------------------------------------------- */
+
+.eyebrowBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  padding: 0.35rem 0.85rem;
+  background-color: rgba(27, 107, 138, 0.18);
+  border: 1px solid rgba(27, 107, 138, 0.38);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.badgeIndex {
+  color: var(--cuxton-amber);
+  font-weight: 700;
+}
+
+.badgeDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(var(--foreground-rgb), 0.35);
+}
+
+.badgeTag {
+  color: var(--cuxton-teal-light);
+  font-weight: 600;
+}
+
+/* --- Typography ---------------------------------------------------- */
+
+.title {
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.subtext {
+  font-size: 0.82rem;
+  color: rgba(var(--foreground-rgb), 0.48);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: -0.5rem;
+}
+
+.headline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--cuxton-teal-light);
+  margin: 0;
+}
+
+.bodyText {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(var(--foreground-rgb), 0.72);
+  margin: 0;
+}
+
+/* --- Capability Pills ---------------------------------------------- */
+
+.capabilityPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.capabilityPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(var(--foreground-rgb), 0.85);
+  background-color: rgba(13, 27, 42, 0.75);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+/* --- CTA Group ----------------------------------------------------- */
+
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: 3rem;
+  padding: 0 1.75rem;
+  background-color: var(--cuxton-amber);
+  color: #060d14;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.primaryCta:hover {
+  background-color: #f7b33d;
+  transform: translateY(-2px);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: 3rem;
+  padding: 0 1.5rem;
+  background-color: rgba(13, 27, 42, 0.65);
+  color: var(--foreground);
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid rgba(27, 107, 138, 0.4);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.secondaryCta:hover {
+  border-color: var(--cuxton-teal-light);
+  background-color: rgba(27, 107, 138, 0.15);
+}
+
+/* --- Right Aside: Blueprint Card ----------------------------------- */
+
+.heroAside {
+  position: relative;
+}
+
+.blueprintCard {
+  position: relative;
+  background-color: #09131d;
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  background-color: #0d1e2e;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.25);
+  overflow: hidden;
+}
+
+.sectorImage {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.blueprintCard:hover .sectorImage {
+  transform: scale(1.03);
+}
+
+.imageWash {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(6, 13, 20, 0.35);
+  pointer-events: none;
+}
+
+.imageBadge {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.65rem;
+  background-color: rgba(6, 13, 20, 0.85);
+  border: 1px solid rgba(27, 107, 138, 0.5);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cuxton-teal-light);
+  backdrop-filter: blur(8px);
+}
+
+.imageBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-teal-light);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  background-color: rgba(13, 27, 42, 0.85);
+  border-bottom: 1px solid rgba(27, 107, 138, 0.22);
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--cuxton-teal-light);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.cardCode {
+  font-size: 0.72rem;
+  font-family: monospace;
+  color: rgba(var(--foreground-rgb), 0.55);
+}
+
+.cardBody {
+  padding: 1.5rem;
+}
+
+.cardTitleRow {
+  margin-bottom: 0.65rem;
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.cardDesc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(var(--foreground-rgb), 0.6);
+  margin: 0 0 1.25rem 0;
+}
+
+/* --- Telemetry Grid ------------------------------------------------ */
+
+.telemetryGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.telemetryItem {
+  background-color: rgba(13, 27, 42, 0.6);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+  border-radius: 6px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.telemetryValue {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cuxton-amber);
+}
+
+.telemetryLabel {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(var(--foreground-rgb), 0.45);
+}
+
+/* --- Deliverables Snapshot Box ------------------------------------- */
+
+.deliverablesBox {
+  background-color: rgba(13, 27, 42, 0.4);
+  border: 1px solid rgba(27, 107, 138, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.deliverablesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cuxton-teal-light);
+  margin-bottom: 0.75rem;
+}
+
+.deliverablesCount {
+  font-size: 0.68rem;
+  color: rgba(var(--foreground-rgb), 0.45);
+}
+
+.deliverablesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.deliverableItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(var(--foreground-rgb), 0.75);
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(var(--foreground-rgb), 0.6);
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(27, 107, 138, 0.18);
+}
+
+/* --- Section Nav Dock ---------------------------------------------- */
+
+.sectionNavWrapper {
+  position: sticky;
+  top: 68px;
+  z-index: 40;
+  background-color: #060d14;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.22);
+}
+
+.sectionNavContainer {
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+.sectionNavInner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.sectionNavInner::-webkit-scrollbar {
+  display: none;
+}
+
+.sectionNavLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.45);
+  white-space: nowrap;
+}
+
+.sectionNavPills {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.sectionPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(var(--foreground-rgb), 0.65);
+  text-decoration: none;
+  background-color: rgba(13, 27, 42, 0.5);
+  border: 1px solid rgba(27, 107, 138, 0.2);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.sectionPill:hover {
+  color: var(--foreground);
+  border-color: var(--cuxton-teal-light);
+  background-color: rgba(27, 107, 138, 0.15);
+}
+
+.sectionPillActive {
+  color: #060d14;
+  background-color: var(--cuxton-teal-light);
+  border-color: var(--cuxton-teal-light);
+}
+
+.sectionPillDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+/* --- Content Sections ---------------------------------------------- */
+
+.container {
+  padding-top: 4.5rem;
+  padding-bottom: 5rem;
+  max-width: 960px;
+}
+
+.section {
+  scroll-margin-top: 130px;
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber);
+  margin-bottom: 0.65rem;
+}
+
+.intro {
+  font-size: 1.18rem;
+  line-height: 1.6;
+  color: var(--foreground);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--foreground);
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.015em;
+}
+
+.sectionHeadingDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--cuxton-amber);
+}
+
+.challengesHeading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.75);
+  margin-bottom: 1.15rem;
+}
+
+.challengesGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .challengesGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.challengeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  background-color: rgba(13, 27, 42, 0.45);
+  border: 1px solid rgba(27, 107, 138, 0.2);
+  border-radius: 8px;
+  padding: 0.95rem 1rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(var(--foreground-rgb), 0.85);
+}
+
+.challengeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-amber);
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+.divider {
+  height: 1px;
+  background-color: rgba(27, 107, 138, 0.18);
+  margin: 3.5rem 0;
+}
+
+/* --- Checklist ----------------------------------------------------- */
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .checklist {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.checklistItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: rgba(13, 27, 42, 0.4);
+  border: 1px solid rgba(27, 107, 138, 0.18);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgba(var(--foreground-rgb), 0.85);
+}
+
+/* --- Timeline ------------------------------------------------------ */
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.timelineMarker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timelineNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(27, 107, 138, 0.2);
+  border: 1px solid var(--cuxton-teal-light);
+  color: var(--cuxton-teal-light);
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+.timelineLine {
+  width: 1px;
+  height: 100%;
+  min-height: 40px;
+  background-color: rgba(27, 107, 138, 0.25);
+  margin-top: 0.5rem;
+}
+
+.timelinePhase {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.35rem 0;
+}
+
+.timelineNote {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.65);
+  margin: 0;
+}
+
+/* --- Use Cases ----------------------------------------------------- */
+
+.useCaseList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .useCaseList {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.useCaseItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: rgba(13, 27, 42, 0.4);
+  border: 1px solid rgba(27, 107, 138, 0.2);
+  border-radius: 8px;
+  padding: 1.15rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgba(var(--foreground-rgb), 0.82);
+}
+
+/* --- Related Solutions Chips --------------------------------------- */
+
+.industryChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.industryChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  background-color: rgba(13, 27, 42, 0.65);
+  border: 1px solid rgba(27, 107, 138, 0.3);
+  border-radius: 8px;
+  color: var(--cuxton-teal-light);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.industryChip:hover {
+  background-color: rgba(27, 107, 138, 0.2);
+  border-color: var(--cuxton-teal-light);
+  color: var(--foreground);
+  transform: translateY(-2px);
+}
+
+/* --- Closing Section ----------------------------------------------- */
+
+.closing {
+  background-color: #060d14;
+  border-top: 1px solid rgba(27, 107, 138, 0.25);
+  padding: 5rem 0;
+}
+
+.closingInner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.closingHeading {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.closingBody {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(var(--foreground-rgb), 0.65);
+  margin-bottom: 2.25rem;
+}
+
+.closingActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LIGHT MODE
+   Text colours already track --foreground-rgb, but every surface below
+   was a hardcoded dark value, so light mode rendered dark islands (hero,
+   section nav, closing) with dark-on-dark text, and the translucent
+   panels composited into muddy grey blocks.
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (prefers-color-scheme: light) {
+  .header {
+    background-color: #f4f7fa;
+    border-bottom-color: rgba(27, 107, 138, 0.18);
+  }
+
+  .heroOverlay {
+    background-color: rgba(244, 247, 250, 0.9);
+  }
+
+  .capabilityPill {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.24);
+    color: rgba(12, 34, 51, 0.85);
+  }
+
+  .secondaryCta {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.28);
+    color: rgba(12, 34, 51, 0.85);
+  }
+
+  .secondaryCta:hover {
+    background-color: #eef3f8;
+    border-color: var(--cuxton-teal);
+  }
+
+  .blueprintCard {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.2);
+    box-shadow: 0 10px 30px rgba(12, 34, 51, 0.07);
+  }
+
+  .cardHeader {
+    background-color: #f7fafc;
+    border-bottom-color: rgba(27, 107, 138, 0.16);
+  }
+
+  .imageWrapper {
+    background-color: #eaf1f7;
+  }
+
+  /* Sits on the photograph, so it stays a dark scrim — just lighter. */
+  .imageWash {
+    background-color: rgba(6, 13, 20, 0.18);
+  }
+
+  .telemetryItem,
+  .deliverablesBox,
+  .challengeItem,
+  .checklistItem,
+  .useCaseItem {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.16);
+  }
+
+  .sectionNavWrapper {
+    background-color: rgba(244, 247, 250, 0.92);
+    border-bottom-color: rgba(27, 107, 138, 0.18);
+  }
+
+  .sectionPill {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.22);
+    color: rgba(12, 34, 51, 0.75);
+  }
+
+  .sectionPill:hover {
+    background-color: #eef3f8;
+    color: #0c2233;
+  }
+
+  /* Must come after .sectionPill above — same specificity, so without
+     this the light override flattened the active pill and the
+     "you are here" state disappeared. */
+  .sectionPillActive {
+    background-color: var(--cuxton-teal);
+    border-color: var(--cuxton-teal);
+    color: #ffffff;
+  }
+
+  .industryChip {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.24);
+    color: rgba(12, 34, 51, 0.85);
+  }
+
+  .industryChip:hover {
+    background-color: #eef3f8;
+    border-color: var(--cuxton-teal);
+  }
+
+  /* Amber on a near-white ground measures ~1.4:1. The dim token exists
+     for exactly this; the dots/fills stay full-strength amber. */
+  .eyebrow,
+  .telemetryValue,
+  .badgeIndex {
+    color: var(--cuxton-amber-dim);
+  }
+
+  /* badgeIndex sits inside this pill, so the pill needs a near-white
+     ground for the dimmed amber to read against. */
+  .eyebrowBadge {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.3);
+  }
+
+  .closing {
+    background-color: #f4f7fa;
+    border-top-color: rgba(27, 107, 138, 0.18);
+  }
+}

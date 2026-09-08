@@ -1,0 +1,447 @@
+/* ===================================================================
+   COMPANY PRINCIPLES MATRIX — Interactive 7-Principle Doctrine Stage
+   Strict rules: ZERO LINEAR GRADIENTS, ZERO EMOJIS, high-contrast dark theme
+   =================================================================== */
+
+.matrixSection {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 5.5rem 0 6.5rem;
+  background-color: #060d14;
+  
+}
+
+/* --- Section background layers --------------------------------------
+   Mirrors app/company/page.module.css and the /technology + /how-we-work
+   sections: still at full strength, one solid wash carrying the
+   contrast, and a blueprint grid. Solid colours only - no gradients.
+   ------------------------------------------------------------------- */
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url("/lifecycle/ai_enablement_training.jpg");
+  background-size: cover;
+  background-position: center 45%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.washOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(6, 13, 20, 0.86);
+  z-index: 0;
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M56 0H0v56' fill='none' stroke='rgba(27,107,138,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 56px 56px;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+.sectionContent {
+  position: relative;
+  z-index: 2;
+}
+
+/* Matches the company page's container so this section lines up with the
+   ones above and below it (see app/company/page.module.css). */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.sectionHeader {
+  max-width: 840px;
+  margin-bottom: 3rem;
+}
+
+.heading {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 850;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin: 0 0 1rem;
+}
+
+.headingHighlight {
+  color: var(--cuxton-teal-text);
+}
+
+.subtext {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(var(--foreground-rgb), 0.72);
+  margin: 0;
+}
+
+/* --- Quick Selector Tabs Bar --- */
+
+.tabBar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  margin-bottom: 2.25rem;
+  scrollbar-width: none;
+}
+
+.tabBar::-webkit-scrollbar {
+  display: none;
+}
+
+.tabBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background-color: rgba(var(--bg-elevated-rgb), 0.65);
+  border: 1px solid rgba(27, 107, 138, 0.25);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(var(--foreground-rgb), 0.7);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.tabBtn:hover {
+  background-color: rgba(27, 107, 138, 0.18);
+  border-color: var(--cuxton-teal-light);
+  color: var(--foreground);
+}
+
+.tabBtnActive {
+  background-color: var(--cuxton-teal);
+  border-color: var(--cuxton-teal-light);
+  color: #ffffff;
+}
+
+.tabNum {
+  font-family: monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--cuxton-amber-text);
+}
+
+.tabBtnActive .tabNum {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Featured Stage Dual-Pane Card --- */
+
+.stageCard {
+  background-color: rgba(var(--bg-surface-rgb), 0.78);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 18px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgba(6, 13, 20, 0.4);
+}
+
+.stageGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .stageGrid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+/* Left Narrative Column */
+.narrativeCol {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .narrativeCol {
+    padding: 3rem;
+  }
+}
+
+.narrativeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.2);
+}
+
+.tenetBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber-text);
+}
+
+.tenetBadgeDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--cuxton-teal-light);
+}
+
+.tenetCode {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: rgba(var(--foreground-rgb), 0.45);
+}
+
+.principleTitle {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--foreground);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.principleTagline {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cuxton-teal-text);
+  margin: 0 0 1.25rem 0;
+  line-height: 1.45;
+}
+
+.principleDesc {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(var(--foreground-rgb), 0.75);
+  margin: 0 0 2rem 0;
+}
+
+/* Commitments Box */
+.commitmentsBox {
+  background-color: rgba(var(--bg-elevated-rgb), 0.6);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.commitmentsTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber-text);
+  margin-bottom: 0.85rem;
+}
+
+.commitmentsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.commitmentItem {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(var(--foreground-rgb), 0.88);
+}
+
+.checkIcon {
+  flex-shrink: 0;
+}
+
+/* Navigation Pager */
+.pagerFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(27, 107, 138, 0.2);
+}
+
+.pagerIndex {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.5);
+  font-family: monospace;
+}
+
+.pagerControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pagerBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background-color: rgba(var(--bg-elevated-rgb), 0.65);
+  border: 1px solid rgba(27, 107, 138, 0.3);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagerBtn:hover {
+  background-color: rgba(27, 107, 138, 0.2);
+  border-color: var(--cuxton-teal-light);
+  color: var(--cuxton-teal-light);
+}
+
+/* Right Schematic Column */
+.schematicCol {
+  background-color: rgba(var(--background-rgb), 0.55);
+  border-top: 1px solid rgba(27, 107, 138, 0.25);
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+  .schematicCol {
+    border-top: none;
+    border-left: 1px solid rgba(27, 107, 138, 0.25);
+    padding: 3rem;
+  }
+}
+
+.schematicHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.schematicBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.65rem;
+  background-color: rgba(27, 107, 138, 0.15);
+  border: 1px solid rgba(27, 107, 138, 0.4);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cuxton-teal-text);
+}
+
+.schematicDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.schematicCode {
+  font-size: 0.72rem;
+  font-family: monospace;
+  color: rgba(var(--foreground-rgb), 0.45);
+}
+
+.schematicVisualStage {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  background-color: rgba(var(--bg-elevated-rgb), 0.5);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.schematicFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(var(--foreground-rgb), 0.6);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(27, 107, 138, 0.18);
+}
+
+.schematicFooterIcon {
+  color: var(--cuxton-teal-text);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LIGHT MODE
+   Surfaces track the theme through the --bg-* tokens above, so only the
+   accents tuned for a dark ground need adjusting: amber and teal-light
+   lose too much contrast on white.
+   ═══════════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+  .matrixSection {
+    background-color: #ffffff;
+  }
+
+  .washOverlay {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .bgGrid {
+    opacity: 0.45;
+  }
+
+  .stageCard {
+    box-shadow: 0 14px 36px rgba(12, 34, 51, 0.08);
+  }
+
+  .tabBtn {
+    box-shadow: 0 4px 12px rgba(12, 34, 51, 0.04);
+  }
+
+  .tabBtn:hover {
+    border-color: var(--cuxton-teal);
+  }
+
+  /* One step darker than --sch-deep / --sch-panel so the diagram's own
+     rects still sit visibly on top of the stage. */
+  .schematicVisualStage {
+    background-color: #eef3f8;
+  }
+
+  .schematicBadge {
+    background-color: rgba(27, 107, 138, 0.1);
+    border-color: rgba(27, 107, 138, 0.3);
+  }
+}

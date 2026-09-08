@@ -1,110 +1,20 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { industries } from "@/data/industries";
+import styles from "@/components/industries/IndustriesIndex.module.css";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Industries — AI for Financial Services, Healthcare, Government and More",
+  title: "Industries & Sector Practices — Cuxton AI",
   description:
-    "Cuxton AI works with institutions in financial services, healthcare, government, education, telecommunications and legal services to deliver secure, practical AI solutions.",
+    "Cuxton AI engineers sovereign, verifiable AI systems for financial services, healthcare, national defense, academic research, telecommunications, and legal advisory.",
 };
-
-const industries = [
-  {
-    id: "finance",
-    name: "Financial Services",
-    sub: "Banks · Insurers · Asset Managers · Financial Infrastructure",
-    intro:
-      "Financial institutions handle sensitive client data, operate under strict regulatory requirements and face growing demand for efficient, accurate and compliant operations. AI must fit within approved data boundaries, regulatory frameworks and risk controls.",
-    useCases: [
-      ["Compliance monitoring assistants", "Support compliance teams with document review, flagging and classification within controlled environments."],
-      ["Internal knowledge systems", "Connect AI to approved policies, regulations, product documentation and internal guidance for staff use."],
-      ["Fraud and anomaly detection", "Real-time analysis of transactional data to identify patterns that require investigation."],
-      ["Customer service agents", "Automated handling of routine enquiries within defined response boundaries and escalation paths."],
-      ["Report preparation support", "AI-assisted drafting of regulatory reports, client communications and internal documents."],
-      ["Data analysis and modelling", "Accelerate quantitative work on approved internal or market data sets."],
-    ],
-  },
-  {
-    id: "healthcare",
-    name: "Healthcare",
-    sub: "Hospitals · Clinics · Research Organisations · Health Authorities",
-    intro:
-      "Healthcare AI must operate under strict data-protection, clinical governance and patient-safety requirements. AI may not make clinical decisions but can support professionals, improve information access and reduce administrative burden.",
-    useCases: [
-      ["Clinical knowledge assistants", "Provide clinical staff with fast access to approved protocols, guidelines and evidence — without exposing patient data."],
-      ["Medical document support", "AI-assisted review, summarisation and classification of clinical documentation within appropriate boundaries."],
-      ["Operational analytics", "Pattern analysis across operational data to support resource planning, capacity management and service design."],
-      ["Research knowledge retrieval", "Connect research teams to approved internal data and literature with source attribution."],
-      ["Administrative workflow automation", "Reduce administrative repetition across scheduling, correspondence, reporting and data capture."],
-      ["Staff training and information support", "AI systems that answer staff questions about procedures, policies and operational information."],
-    ],
-  },
-  {
-    id: "government",
-    name: "Government",
-    sub: "Ministries · Regulatory Bodies · Public Service Institutions",
-    intro:
-      "Government institutions require AI that can operate within sovereign data boundaries, meet public accountability standards and support — not replace — informed human decision-making on matters that affect citizens.",
-    useCases: [
-      ["Sovereign knowledge systems", "Knowledge retrieval systems that operate entirely within national infrastructure."],
-      ["Service request automation", "Handle citizen enquiries, routing, triage and status tracking at scale within defined procedures."],
-      ["Institutional assistants", "Internal AI tools that help civil servants access policy documents, procedures and institutional knowledge."],
-      ["Document processing", "Classification, extraction and summarisation of government documents within controlled environments."],
-      ["Operational intelligence", "AI analysis of aggregated operational data to support planning, resource allocation and reporting."],
-      ["Regulatory support", "Assist regulatory teams with document review, pattern identification and classification tasks."],
-    ],
-  },
-  {
-    id: "education",
-    name: "Education & Research",
-    sub: "Universities · Research Institutes · Schools · Training Providers",
-    intro:
-      "Educational and research institutions accumulate significant institutional knowledge, manage complex student populations and produce research that benefits from improved information retrieval and analytical support.",
-    useCases: [
-      ["Research knowledge assistants", "Enable researchers to retrieve, synthesise and reference approved internal and external literature."],
-      ["Student analytics", "Early identification of students at risk of disengagement or poor outcomes using approved data."],
-      ["Institutional knowledge systems", "Connect staff to approved policies, procedures, course information and guidance."],
-      ["Administrative automation", "Reduce repetitive administrative work across enrolment, correspondence and reporting."],
-      ["Training and curriculum support", "AI tools that support course designers, educators and assessment teams."],
-      ["AI literacy education", "Develop institutional AI literacy and governance frameworks for responsible use."],
-    ],
-  },
-  {
-    id: "telecom",
-    name: "Telecommunications",
-    sub: "Network Operators · Large Enterprise · Data-Rich Operations",
-    intro:
-      "Large telecommunications and enterprise organisations manage complex operations, vast data volumes and customer interactions at scale. AI can improve operational intelligence, customer service and internal efficiency where data governance allows.",
-    useCases: [
-      ["Customer service agents", "Automated resolution of routine customer enquiries and issue triage within controlled boundaries."],
-      ["Network operations intelligence", "Pattern detection and anomaly identification across network data to support operations teams."],
-      ["Knowledge systems for technical staff", "Fast access to approved technical documentation, procedures and troubleshooting guidance."],
-      ["Workflow and process automation", "Reduce manual work across operations, billing support, provisioning and reporting."],
-      ["Enterprise integration", "Connect AI to existing CRM, billing and operational systems securely."],
-      ["Data analysis support", "AI-assisted analysis of large operational datasets for capacity planning and decision support."],
-    ],
-  },
-  {
-    id: "legal",
-    name: "Legal & Audit",
-    sub: "Law Firms · In-House Legal · Audit Practices · Professional Services",
-    intro:
-      "Legal and audit work is fundamentally about analysing documents, applying professional judgement and maintaining accurate attribution. AI can accelerate information retrieval and document analysis while human judgement remains central to decisions.",
-    useCases: [
-      ["Document review support", "AI-assisted review of large document sets to identify relevant materials, patterns and inconsistencies."],
-      ["Evidence retrieval", "Connect AI to approved matter documents and institutional knowledge with source attribution."],
-      ["Contract analysis", "Extract and classify key provisions, obligations and risk indicators from large contract volumes."],
-      ["Research assistance", "AI tools that help legal professionals retrieve relevant precedent and statutory material."],
-      ["Knowledge management", "Connect teams to accumulated institutional knowledge with attribution and version control."],
-      ["Compliance and audit support", "AI tools that support compliance monitoring, reporting and exception identification."],
-    ],
-  },
-];
 
 export default function IndustriesPage() {
   return (
-    <div style={{ background: "var(--background)" }}>
-
+    <div className={styles.page}>
+      {/* --- Hero Section with Visual Background --------------------------- */}
       <PageHero
         breadcrumbs={[{ label: "Industries" }]}
         eyebrow="Industries"
@@ -125,99 +35,182 @@ export default function IndustriesPage() {
         ]}
       />
 
-      {/* Industry panels */}
-      <section className="section-py">
-        <div className="section-container">
-          <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
-            {industries.map((ind, i) => (
-              <div key={ind.id} id={ind.id}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2.5rem" }}
-                  className={`ind-grid ${i % 2 === 1 ? "ind-reverse" : ""}`}>
+      {/* --- Alternating Industry Showcase Cards --------------------------- */}
+      <section id="showcase" className={styles.showcaseSection}>
+        <div className={`section-container ${styles.showcaseContainer}`}>
+          {industries.map((ind, i) => (
+            <article
+              key={ind.id}
+              id={ind.id}
+              className={styles.industryCard}
+            >
+              <div className={`${styles.cardInnerGrid} ${i % 2 === 1 ? styles.cardReverse : ""}`}>
+                {/* Left: Content Column */}
+                <div className={styles.cardContent}>
+                  <div className={styles.cardHeaderArea}>
+                    <div className={styles.cardSectorBadge}>
+                      <span>SECTOR {ind.label}</span>
+                      <span className={styles.cardBadgeDot} aria-hidden="true" />
+                      <span className={styles.cardBadgeTag}>{ind.tag}</span>
+                    </div>
 
-                  {/* Info */}
-                  <div>
-                    <div className="section-label">{ind.name}</div>
-                    <h2 style={{
-                      fontSize: "1.5rem", fontWeight: 800, color: "var(--foreground)",
-                      lineHeight: 1.25, marginBottom: "0.5rem",
-                    }}>
-                      {ind.name}
-                    </h2>
-                    <p style={{
-                      fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.35)",
-                      marginBottom: "1.25rem", letterSpacing: "0.02em",
-                    }}>
-                      {ind.sub}
-                    </p>
-                    <p style={{ fontSize: "0.9rem", color: "rgba(var(--foreground-rgb),0.55)", lineHeight: 1.75, marginBottom: "2rem" }}>
-                      {ind.intro}
-                    </p>
-                    <Link href="/contact" className="btn-primary"
-                      style={{ height: "2.75rem", padding: "0 1.5rem", fontSize: "0.85rem", display: "inline-flex" }}>
-                      Discuss {ind.name}
-                    </Link>
+                    <h2 className={styles.cardTitle}>{ind.name}</h2>
+                    <p className={styles.cardSub}>{ind.sub}</p>
+                    <p className={styles.cardHeadline}>{ind.headline}</p>
+                    <p className={styles.cardBody}>{ind.body}</p>
+
+                    {/* Solutions this sector actually draws on. Real,
+                        per-sector links rather than uniform stat cells. */}
+                    <div className={styles.appliedSolutions}>
+                      <p className={styles.appliedSolutionsLabel}>Solutions applied here</p>
+                      <ul className={styles.appliedSolutionsList}>
+                        {ind.relatedSolutions.map((sol) => (
+                          <li key={sol.id}>
+                            <Link href={sol.href} className={styles.appliedSolutionChip}>
+                              {sol.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
 
-                  {/* Use cases */}
-                  <div className="card-enterprise" style={{ padding: "1.75rem" }}>
-                    <p style={{
-                      fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.18em",
-                      textTransform: "uppercase", color: "var(--cuxton-amber)",
-                      marginBottom: "1.25rem", opacity: 0.8,
-                    }}>
-                      Example Use Cases
-                    </p>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
-                      {ind.useCases.map(([title, desc]) => (
-                        <div key={title} style={{ display: "flex", gap: "0.875rem", alignItems: "flex-start" }}>
-                          <div style={{
-                            width: 6, height: 6, borderRadius: "50%",
-                            background: "var(--cuxton-teal-light)",
-                            flexShrink: 0, marginTop: "0.45rem",
-                          }} />
-                          <div>
-                            <p style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "0.2rem" }}>
-                              {title}
-                            </p>
-                            <p style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.45)", lineHeight: 1.55 }}>
-                              {desc}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                  {/* Actions */}
+                  <div className={styles.cardActions}>
+                    <Link href={`/industries/${ind.id}`} className={styles.cardPrimaryBtn}>
+                      <span>Explore {ind.name} Architecture</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+
+                    <Link href="/contact" className={styles.cardSecondaryBtn}>
+                      <span>Consult Specialists</span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </Link>
                   </div>
                 </div>
 
-                {i < industries.length - 1 && (
-                  <div className="section-divider" style={{ marginTop: "4rem" }} />
-                )}
+                {/* Right: Visual Image & Use Cases Preview */}
+                <div className={styles.cardMediaColumn}>
+                  <div className={styles.imageFrame}>
+                    <Image
+                      src={ind.image}
+                      alt={`${ind.name} sovereign architecture visual preview`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 550px"
+                      className={styles.cardImage}
+                    />
+                    <div className={styles.imageOverlayWash} aria-hidden="true" />
+                    <div className={styles.imageBadgeOverlay}>
+                      <span className={styles.imageBadgeDot} aria-hidden="true" />
+                      <span>CUX-IND-{ind.label}</span>
+                    </div>
+                  </div>
+
+                  {/* Use Cases Preview */}
+                  <div className={styles.useCasesContainer}>
+                    <p className={styles.useCasesTitle}>Key Enterprise Use Cases</p>
+                    <ul className={styles.useCasesGrid}>
+                      {ind.typicalUseCases.slice(0, 3).map((uc) => (
+                        <li key={uc} className={styles.useCaseCard}>
+                          <span className={styles.useCaseBullet} aria-hidden="true" />
+                          <div>
+                            <p className={styles.useCaseSnippet}>{uc}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
-        <style>{`
-          @media (min-width: 1024px) {
-            .ind-grid { grid-template-columns: 1fr 1fr !important; }
-            .ind-reverse { direction: rtl; }
-            .ind-reverse > * { direction: ltr; }
-          }
-        `}</style>
       </section>
 
-      {/* CTA */}
-      <section style={{ padding: "4rem 0", background: "var(--bg-surface)" }}>
-        <div className="section-container" style={{ textAlign: "center" }}>
-          <h2 className="section-heading" style={{ marginBottom: "1rem" }}>
-            Working in a different sector?
-          </h2>
-          <p className="section-sub" style={{ margin: "0 auto 2rem" }}>
-            Cuxton AI works with any institution where AI must fit within data-sensitivity, compliance
-            and operational constraints. Get in touch to discuss your specific context.
+      {/* --- Governance & Compliance Guarantees ----------------------------- */}
+      <section className={styles.governanceSection}>
+        <div className="section-container">
+          <div className={styles.sectionHeaderCenter}>
+            <p className={styles.centerEyebrow}>Sovereign Operating Baseline</p>
+            <h2 className={styles.centerTitle}>Non-negotiable security across all sectors</h2>
+            <p className={styles.centerDesc}>
+              Every industry implementation adheres to our hardened engineering principles. No client
+              data ever trains external models, leaves your approved boundaries, or compromises institutional auditability.
+            </p>
+          </div>
+
+          <div className={styles.governanceGrid}>
+            <div className={styles.governanceCard}>
+              <div className={styles.govIconWrapper} aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </div>
+              <h3 className={styles.govCardTitle}>Sovereign Enclave Isolation</h3>
+              <p className={styles.govCardDesc}>
+                Deployed exclusively within client-owned VPCs, on-premise hardware, or air-gapped data centers.
+                Zero multi-tenant risks or external API dependencies.
+              </p>
+            </div>
+
+            <div className={styles.governanceCard}>
+              <div className={styles.govIconWrapper} aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+              </div>
+              <h3 className={styles.govCardTitle}>Deterministic Lineage &amp; Citations</h3>
+              <p className={styles.govCardDesc}>
+                Every retrieved fact or generated analysis is strictly grounded in authorized source documents,
+                providing clickable provenance for audits and regulatory reviews.
+              </p>
+            </div>
+
+            <div className={styles.governanceCard}>
+              <div className={styles.govIconWrapper} aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 12 11 14 15 10" />
+                </svg>
+              </div>
+              <h3 className={styles.govCardTitle}>Continuous Compliance &amp; Audit</h3>
+              <p className={styles.govCardDesc}>
+                Comprehensive role-based access control, cryptographic audit logs, and alignment with
+                SOC 2 Type II, ISO 27001, HIPAA, and federal regulatory standards.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Bottom CTA ---------------------------------------------------- */}
+      <section className={styles.bottomCta}>
+        <div className={styles.bottomCtaInner}>
+          <h2 className={styles.ctaHeading}>Operating in a specialized or regulated domain?</h2>
+          <p className={styles.ctaSub}>
+            Cuxton AI works with institutions where standard AI models fail compliance or security boundaries.
+            Speak with our sector engineering practice to assess feasibility and architecture options.
           </p>
-          <Link href="/contact" className="btn-primary" style={{ height: "3.25rem", padding: "0 2rem" }}>
-            Start a conversation
-          </Link>
+          <div className={styles.ctaBtnGroup}>
+            <Link href="/contact" className={styles.primaryHeroBtn}>
+              <span>Start a Confidential Conversation</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link href="/solutions" className={styles.secondaryHeroBtn}>
+              <span>Explore All Solutions</span>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

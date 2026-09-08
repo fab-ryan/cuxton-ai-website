@@ -1,0 +1,568 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CUXTON AI — OPERATING PRINCIPLES ANIMATED SLIDESHOW & SHOWCASE
+   Strict solid token architecture. STRICTLY ZERO linear gradients.
+   STRICTLY ZERO emojis.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--background);
+  padding: 6rem 0 7.5rem;
+}
+
+/* ─── Cinematic Background Image (16:9 Generated Artwork) ─────────── */
+
+/* The wash sits on top of the image, so the image is dimmed twice. Keep
+   the image at full strength and let the single wash do the dimming —
+   otherwise 0.24 under an 0.88 wash works out to roughly 3% visible. */
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url("/operating-principles-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 1;
+  z-index: 0;
+}
+
+/* ─── Solid Architectural Wash Overlay (NO linear gradient) ─────── */
+
+.washOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(6, 13, 20, 0.82);
+  z-index: 0;
+}
+
+/* Ambient Blueprint Grid */
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M56 0H0v56' fill='none' stroke='rgba(27,107,138,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 56px 56px;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+/* ─── Section Header ──────────────────────────────────────────────── */
+
+.header {
+  max-width: 840px;
+  margin-bottom: 2.75rem;
+}
+
+.heading {
+  font-size: clamp(2.1rem, 3.6vw, 3rem);
+  font-weight: 850;
+  color: var(--foreground);
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  margin: 0.85rem 0 1.15rem;
+}
+
+.headingHighlight {
+  color: var(--cuxton-teal-light);
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(var(--foreground-rgb), 0.78);
+  margin: 0;
+}
+
+/* ─── Top Control Bar: Slide Navigation & Play/Pause ──────────────── */
+
+.controlBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.22);
+}
+
+.navPillsRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.navPillBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 8px;
+  background-color: rgba(9, 21, 37, 0.75);
+  border: 1px solid rgba(27, 107, 138, 0.25);
+  color: rgba(var(--foreground-rgb), 0.72);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navPillBtn:hover {
+  background-color: rgba(27, 107, 138, 0.16);
+  border-color: rgba(45, 154, 191, 0.4);
+  color: var(--foreground);
+}
+
+.navPillBtnActive {
+  background-color: rgba(13, 31, 50, 0.95);
+  border-color: var(--cuxton-teal-light);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.pillNum {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  color: var(--cuxton-amber);
+}
+
+.pillLabel {
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+/* Playback & Direction Controls */
+.actionGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.iconBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background-color: rgba(9, 21, 37, 0.8);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.iconBtn:hover {
+  background-color: rgba(27, 107, 138, 0.25);
+  border-color: var(--cuxton-teal-light);
+  transform: translateY(-1px);
+}
+
+/* ─── FEATURED SLIDE STAGE (Dual Column Deep-Dive) ────────────────── */
+
+.slideStage {
+  background-color: rgba(9, 21, 37, 0.88);
+  border: 1px solid rgba(27, 107, 138, 0.32);
+  border-radius: 20px;
+  padding: 2.25rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  margin-bottom: 3.5rem;
+  animation: slideFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stageGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .stageGrid {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: center;
+  }
+}
+
+/* Left Column: Principle Narrative & Guarantees */
+.slideNarrativeCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.slideMetaHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.slideIndexBadge {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.74rem;
+  font-weight: 850;
+  padding: 0.22rem 0.65rem;
+  border-radius: 6px;
+  background-color: rgba(245, 166, 35, 0.16);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  color: var(--cuxton-amber);
+}
+
+.slideCategoryTag {
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+}
+
+.slideTitle {
+  font-size: clamp(1.85rem, 2.8vw, 2.4rem);
+  font-weight: 850;
+  color: var(--foreground);
+  line-height: 1.18;
+  margin: 0 0 0.45rem;
+}
+
+.slideTagline {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--cuxton-teal-light);
+  line-height: 1.5;
+  margin: 0 0 1.25rem;
+}
+
+.slideDescription {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: rgba(var(--foreground-rgb), 0.85);
+  margin: 0 0 1.75rem;
+}
+
+/* Guarantees Box */
+.guaranteesBox {
+  background-color: rgba(6, 13, 20, 0.65);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.guaranteesTitle {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.45);
+  margin-bottom: 0.85rem;
+}
+
+.guaranteesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.guaranteeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  line-height: 1.48;
+  color: rgba(var(--foreground-rgb), 0.9);
+}
+
+.guaranteeIcon {
+  color: var(--cuxton-amber);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Stage Bottom Metrics Row */
+.stageFooterRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(27, 107, 138, 0.2);
+}
+
+.statusIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 750;
+  color: var(--cuxton-teal-light);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-teal-light);
+}
+
+.tenetMetricBadge {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--cuxton-amber);
+  background-color: rgba(6, 13, 20, 0.75);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+}
+
+/* Right Column: Visual Picture & Technical Schematic Card */
+.slideVisualCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.visualCard {
+  background-color: rgba(6, 13, 20, 0.82);
+  border: 1px solid rgba(27, 107, 138, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.visualCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.2);
+}
+
+.visualCardTitle {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.visualCardStatus {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  font-weight: 750;
+  color: var(--cuxton-amber);
+}
+
+.visualGraphicBox {
+  width: 100%;
+}
+
+/* ─── ALL-PRINCIPLES QUICK-SELECTOR GRID (6 Cards) ────────────────── */
+
+.gridSectionTitle {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.5);
+  margin-bottom: 1.25rem;
+}
+
+.principlesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .principlesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .principlesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gridCard {
+  background-color: rgba(9, 21, 37, 0.75);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+  border-radius: 14px;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.gridCard:hover {
+  background-color: rgba(13, 31, 50, 0.88);
+  border-color: rgba(45, 154, 191, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.gridCardActive {
+  background-color: rgba(13, 31, 50, 0.95);
+  border-color: var(--cuxton-teal-light);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+}
+
+.gridCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.gridCardNum {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--cuxton-amber);
+}
+
+.gridCardActiveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-teal-light);
+}
+
+.gridCardTitle {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--foreground);
+  margin: 0 0 0.35rem;
+}
+
+.gridCardSummary {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: rgba(var(--foreground-rgb), 0.7);
+  margin: 0;
+}
+
+/* ─── Light Mode Overrides (NO linear gradient) ───────────────────── */
+
+@media (prefers-color-scheme: light) {
+  .section {
+    background-color: #ffffff;
+  }
+
+  .bgImage {
+    opacity: 1;
+  }
+
+  .washOverlay {
+    background-color: rgba(255, 255, 255, 0.88);
+  }
+
+  .tenetMetricBadge {
+    background-color: rgba(245, 166, 35, 0.1);
+    color: var(--cuxton-amber-dim);
+    border-color: rgba(245, 166, 35, 0.4);
+  }
+
+  .bgGrid {
+    opacity: 0.4;
+  }
+
+  .navPillBtn {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.2);
+    color: #0c2233;
+  }
+
+  .navPillBtnActive {
+    background-color: var(--cuxton-teal);
+    color: #ffffff;
+  }
+
+  .iconBtn {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.2);
+    color: #0c2233;
+  }
+
+  .slideStage {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.22);
+    box-shadow: 0 12px 36px rgba(12, 34, 51, 0.08);
+  }
+
+  .slideTitle {
+    color: #0c2233;
+  }
+
+  .slideDescription {
+    color: rgba(12, 34, 51, 0.85);
+  }
+
+  .guaranteesBox {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.18);
+  }
+
+  .guaranteeItem {
+    color: #0c2233;
+  }
+
+  .visualCard {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.22);
+    box-shadow: 0 8px 24px rgba(12, 34, 51, 0.06);
+  }
+
+  .gridCard {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.2);
+    box-shadow: 0 4px 14px rgba(12, 34, 51, 0.04);
+  }
+
+  .gridCard:hover {
+    background-color: #f7fafc;
+    border-color: var(--cuxton-teal);
+  }
+
+  .gridCardActive {
+    background-color: #eaf1f7;
+    border-color: var(--cuxton-teal);
+  }
+
+  .gridCardTitle {
+    color: #0c2233;
+  }
+
+  .gridCardSummary {
+    color: rgba(12, 34, 51, 0.75);
+  }
+}

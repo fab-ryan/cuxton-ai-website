@@ -1,0 +1,1056 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CUXTON AI — 8-STEP SCROLL-DRIVEN ENGAGEMENT MODEL (SCROLLYTELLING)
+   Strict solid token architecture. STRICTLY ZERO linear gradients.
+   STRICTLY ZERO emojis.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* No `overflow: hidden` here — it would make this section a scroll
+   container and stop the left deck from sticking. .bgGrid is inset:0,
+   so there is nothing to clip anyway. */
+.section {
+  position: relative;
+  background-color: var(--background);
+  padding: 5.5rem 0 7.5rem;
+}
+
+/* ─── Ambient Blueprint SVG Grid (NO linear gradient) ─────────────── */
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M56 0H0v56' fill='none' stroke='rgba(27,107,138,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 56px 56px;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+/* ─── Cinematic Blueprint Background Graphic (Generated 16:9 Image) ── */
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url("/engagement-model-bg.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 1;
+  z-index: 0;
+}
+
+/* ─── Solid Architectural Wash Overlay (NO linear gradient) ─────── */
+
+.washOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(6, 13, 20, 0.82);
+  z-index: 0;
+}
+
+/* ─── Section Header ──────────────────────────────────────────────── */
+
+.header {
+  max-width: 840px;
+  margin-bottom: 3.5rem;
+}
+
+.heading {
+  font-size: clamp(2.1rem, 3.6vw, 3rem);
+  font-weight: 850;
+  color: var(--foreground);
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  margin: 0.85rem 0 1.15rem;
+}
+
+.headingHighlight {
+  color: var(--cuxton-teal-light);
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(var(--foreground-rgb), 0.78);
+  margin: 0;
+}
+
+/* ─── Mobile Sticky Top HUD (< 1024px) ────────────────────────────── */
+
+.mobileStickyBar {
+  display: block;
+  position: sticky;
+  top: 4.25rem;
+  z-index: 35;
+  background-color: rgba(6, 13, 20, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(27, 107, 138, 0.3);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 2.25rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 1024px) {
+  .mobileStickyBar {
+    display: none;
+  }
+}
+
+.mobileTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.mobileStepBadge {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--cuxton-amber);
+}
+
+.mobileStepName {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--foreground);
+}
+
+.mobileProgressBarTrack {
+  height: 4px;
+  width: 100%;
+  background-color: rgba(27, 107, 138, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.65rem;
+}
+
+.mobileProgressBarFill {
+  height: 100%;
+  background-color: var(--cuxton-teal-light);
+  transition: width 0.25s ease;
+}
+
+.mobilePillsRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+  scrollbar-width: none;
+}
+
+.mobilePillsRow::-webkit-scrollbar {
+  display: none;
+}
+
+.mobilePillBtn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  background-color: rgba(9, 21, 37, 0.8);
+  border: 1px solid rgba(27, 107, 138, 0.25);
+  color: rgba(var(--foreground-rgb), 0.75);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.mobilePillBtnActive {
+  background-color: var(--cuxton-teal);
+  border-color: var(--cuxton-teal-light);
+  color: #ffffff;
+}
+
+/* ─── Dual-Column Sticky Scroll Architecture ──────────────────────── */
+
+.scrollLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .scrollLayout {
+    grid-template-columns: 360px 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+}
+
+/* ─── Desktop Sticky Command Deck (Left Column) ───────────────────── */
+
+.stickyDeck {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  /* No max-height / overflow here: the deck must never become its own
+     scroll area. Everything below is sized to fit one viewport instead. */
+  .stickyDeck {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    position: sticky;
+    top: 5.5rem;
+  }
+}
+
+/* Text in the deck is swapped out as the reader scrolls between phases.
+   Re-keyed in the component so this replays on each change. */
+@keyframes deckSwap {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.deckSwap {
+  animation: deckSwap 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Active Phase Card */
+.phaseOverviewCard {
+  background-color: rgba(9, 21, 37, 0.92);
+  border: 1px solid rgba(27, 107, 138, 0.32);
+  border-radius: 16px;
+  padding: 1.1rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.phaseMetaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.phaseCodeBadge {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  background-color: rgba(245, 166, 35, 0.16);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  color: var(--cuxton-amber);
+}
+
+.progressText {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  color: rgba(var(--foreground-rgb), 0.55);
+}
+
+.phaseTitle {
+  font-size: 1.12rem;
+  font-weight: 850;
+  color: var(--foreground);
+  margin: 0 0 0.35rem;
+  line-height: 1.25;
+}
+
+.phaseObjective {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(var(--foreground-rgb), 0.65);
+  margin: 0 0 0.8rem;
+}
+
+/* Overall Progress Indicator Bar */
+.overallProgressBarTrack {
+  height: 4px;
+  width: 100%;
+  background-color: rgba(27, 107, 138, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.overallProgressBarFill {
+  height: 100%;
+  background-color: var(--cuxton-teal-light);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Vertical Connected Timeline Navigation Rail */
+.timelineNav {
+  background-color: rgba(9, 21, 37, 0.88);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.timelineTitle {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.45);
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.2);
+}
+
+.timelineNodesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  position: relative;
+}
+
+/* Solid vertical spine */
+.timelineNodesList::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 13px;
+  bottom: 13px;
+  width: 2px;
+  background-color: rgba(27, 107, 138, 0.25);
+  z-index: 1;
+}
+
+.timelineNodeBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.32rem 0.5rem;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.timelineNodeBtn:hover {
+  background-color: rgba(27, 107, 138, 0.12);
+  border-color: rgba(45, 154, 191, 0.25);
+}
+
+.timelineNodeBtnActive {
+  background-color: rgba(13, 31, 50, 0.95);
+  border-color: var(--cuxton-teal-light);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.nodeDot {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background-color: rgba(6, 13, 20, 0.9);
+  border: 1px solid rgba(27, 107, 138, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.66rem;
+  font-weight: 800;
+  color: rgba(var(--foreground-rgb), 0.6);
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.timelineNodeBtnActive .nodeDot {
+  background-color: var(--cuxton-amber);
+  border-color: var(--cuxton-amber);
+  color: #060d14;
+  transform: scale(1.06);
+}
+
+.timelineNodeBtnPast .nodeDot {
+  background-color: rgba(27, 107, 138, 0.25);
+  border-color: var(--cuxton-teal-light);
+  color: var(--cuxton-teal-light);
+}
+
+.nodeContentGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.nodeName {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+.nodeCadence {
+  font-size: 0.68rem;
+  color: rgba(var(--foreground-rgb), 0.48);
+}
+
+.timelineNodeBtnActive .nodeCadence {
+  color: var(--cuxton-teal-light);
+}
+
+/* Active Gate HUD Snippet */
+.activeGateHud {
+  background-color: rgba(6, 13, 20, 0.85);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  border-left: 4px solid var(--cuxton-amber);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+}
+
+.gateHudHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.35rem;
+}
+
+.gateHudLabel {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber);
+}
+
+.gateHudText {
+  font-size: 0.76rem;
+  line-height: 1.55;
+  color: rgba(var(--foreground-rgb), 0.8);
+  margin: 0;
+}
+
+/* ─── STICKY DECK TOPOLOGY RADAR BOX ──────────────────────────────── */
+
+/* The radar is the one decorative block in the deck, so it is the first
+   thing to go when the viewport is too short to hold the whole deck
+   without a scrollbar. Milestone navigation always wins. */
+.deckRadarBox {
+  background-color: rgba(6, 13, 20, 0.8);
+  border: 1px solid rgba(27, 107, 138, 0.26);
+  border-radius: 14px;
+  padding: 0.8rem;
+  display: none;
+  flex-direction: column;
+}
+
+@media (min-height: 1000px) {
+  .deckRadarBox {
+    display: flex;
+  }
+}
+
+.deckRadarBox svg {
+  max-height: 210px;
+}
+
+.deckRadarTitle {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.5);
+  margin-bottom: 0.65rem;
+}
+
+/* Deck CTA Button */
+.deckCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  height: 2.85rem;
+  border-radius: 10px;
+  background-color: var(--cuxton-teal);
+  border: 1px solid var(--cuxton-teal-light);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.deckCtaBtn:hover {
+  background-color: var(--cuxton-teal-mid);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(27, 107, 138, 0.35);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SCROLLING MILESTONE CARDS STREAM (Right Column)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.milestoneStream {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.milestoneCard {
+  background-color: rgba(9, 21, 37, 0.85);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 20px;
+  padding: 2.25rem;
+  position: relative;
+  scroll-margin-top: 6.5rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.milestoneCardActive {
+  border-color: var(--cuxton-teal-light);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
+}
+
+/* Card Header */
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.22);
+  margin-bottom: 1.75rem;
+}
+
+.cardMetaGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.stepNumBadge {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.74rem;
+  font-weight: 850;
+  padding: 0.22rem 0.65rem;
+  border-radius: 6px;
+  background-color: rgba(245, 166, 35, 0.16);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  color: var(--cuxton-amber);
+}
+
+.phaseTag {
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+}
+
+.cardTitle {
+  font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+  font-weight: 850;
+  color: var(--foreground);
+  line-height: 1.18;
+  margin: 0 0 0.45rem;
+}
+
+.cardTagline {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--cuxton-teal-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cadencePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  background-color: rgba(6, 13, 20, 0.75);
+  border: 1px solid rgba(27, 107, 138, 0.25);
+  font-size: 0.72rem;
+  font-family: var(--font-mono), monospace;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.75);
+}
+
+/* ─── BESPOKE TECHNICAL SCHEMATIC VISUAL BOX ───────────────────────── */
+
+.schematicContainer {
+  margin-bottom: 2rem;
+  background-color: rgba(6, 13, 20, 0.75);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 14px;
+  padding: 1.25rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.schematicHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.18);
+}
+
+.schematicTitle {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.schematicStatus {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--cuxton-amber);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.schematicStatusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-amber);
+}
+
+/* ─── VISUAL WORKFLOW PIPELINE DIAGRAM (NO linear gradient) ────────── */
+
+.pipelineSection {
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  border-radius: 14px;
+  background-color: rgba(6, 13, 20, 0.65);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+}
+
+.pipelineLabel {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.45);
+  margin-bottom: 1rem;
+}
+
+.pipelineFlow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .pipelineFlow {
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+  }
+}
+
+.pipelineNode {
+  background-color: rgba(9, 21, 37, 0.95);
+  border: 1px solid rgba(27, 107, 138, 0.28);
+  border-radius: 10px;
+  padding: 0.95rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.nodeRoleBadge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-light);
+}
+
+.nodeValue {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.pipelineConnector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cuxton-amber);
+  padding: 0.25rem;
+}
+
+/* ─── Narrative Methodology Block ─────────────────────────────────── */
+
+.methodologySection {
+  margin-bottom: 2rem;
+}
+
+.sectionBlockLabel {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.45);
+  margin-bottom: 0.65rem;
+}
+
+.methodologyText {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: rgba(var(--foreground-rgb), 0.86);
+  margin: 0;
+}
+
+/* ─── Two-Column Specification Box: Stakeholders & Deliverables ──── */
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .specsGrid {
+    grid-template-columns: 1fr 1.25fr;
+  }
+}
+
+.specsBox {
+  background-color: rgba(6, 13, 20, 0.65);
+  border: 1px solid rgba(27, 107, 138, 0.22);
+  border-radius: 14px;
+  padding: 1.35rem;
+}
+
+.stakeholdersList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.stakeholderRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--foreground);
+}
+
+.stakeholderDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cuxton-teal-light);
+  flex-shrink: 0;
+}
+
+.deliverablesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.deliverableRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  line-height: 1.48;
+  color: rgba(var(--foreground-rgb), 0.9);
+}
+
+.deliverableCheckIcon {
+  color: var(--cuxton-teal-light);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ─── Milestone Advancement Gate Card ─────────────────────────────── */
+
+.advancementGateCard {
+  background-color: rgba(6, 13, 20, 0.88);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  border-left: 4px solid var(--cuxton-amber);
+  border-radius: 12px;
+  padding: 1.15rem 1.35rem;
+}
+
+.gateHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.4rem;
+}
+
+.gateTitle {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cuxton-amber);
+}
+
+.gateDescription {
+  font-size: 0.84rem;
+  line-height: 1.62;
+  color: rgba(var(--foreground-rgb), 0.82);
+  margin: 0;
+}
+
+/* ─── Bottom Action Bar at the end of the 8 steps ─────────────────── */
+
+.streamFooter {
+  background-color: rgba(9, 21, 37, 0.92);
+  border: 1px solid rgba(27, 107, 138, 0.3);
+  border-radius: 18px;
+  padding: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.streamFooterText {
+  max-width: 560px;
+}
+
+.streamFooterTitle {
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: var(--foreground);
+  margin: 0 0 0.35rem;
+}
+
+.streamFooterDesc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.7);
+  margin: 0;
+}
+
+.streamFooterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 2.95rem;
+  padding: 0 1.65rem;
+  border-radius: 10px;
+  background-color: var(--cuxton-teal);
+  border: 1px solid var(--cuxton-teal-light);
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.streamFooterBtn:hover {
+  background-color: var(--cuxton-teal-mid);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(27, 107, 138, 0.35);
+}
+
+/* ─── Light Mode Overrides (NO linear gradient) ───────────────────── */
+
+@media (prefers-color-scheme: light) {
+
+  .section {
+    background-color: #ffffff;
+  }
+
+  .bgGrid {
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M56 0H0v56' fill='none' stroke='rgba(27,107,138,0.1)' stroke-width='1'/%3E%3C/svg%3E");
+  }
+
+  .mobileStickyBar {
+    background-color: rgba(255, 255, 255, 0.94);
+    border-color: rgba(27, 107, 138, 0.22);
+    box-shadow: 0 4px 14px rgba(12, 34, 51, 0.08);
+  }
+
+  .mobilePillBtn {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.2);
+    color: #0c2233;
+  }
+
+  .mobilePillBtnActive {
+    background-color: var(--cuxton-teal);
+    color: #ffffff;
+  }
+
+  .phaseOverviewCard {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.22);
+    box-shadow: 0 8px 24px rgba(12, 34, 51, 0.06);
+  }
+
+  .phaseTitle {
+    color: #0c2233;
+  }
+
+  .phaseObjective {
+    color: rgba(12, 34, 51, 0.7);
+  }
+
+  .timelineNav {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.22);
+    box-shadow: 0 8px 24px rgba(12, 34, 51, 0.06);
+  }
+
+  .timelineNodesList::before {
+    background-color: rgba(27, 107, 138, 0.15);
+  }
+
+  .timelineNodeBtn:hover {
+    background-color: #f7fafc;
+  }
+
+  .timelineNodeBtnActive {
+    background-color: #eaf1f7;
+    border-color: var(--cuxton-teal);
+  }
+
+  .nodeDot {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.22);
+    color: #0c2233;
+  }
+
+  .nodeName {
+    color: #0c2233;
+  }
+
+  .activeGateHud {
+    background-color: rgba(245, 166, 35, 0.08);
+    border-color: rgba(245, 166, 35, 0.35);
+  }
+
+  .gateHudText {
+    color: rgba(12, 34, 51, 0.85);
+  }
+
+  .milestoneCard {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.22);
+    box-shadow: 0 10px 28px rgba(12, 34, 51, 0.06);
+  }
+
+  .milestoneCardActive {
+    border-color: var(--cuxton-teal);
+    box-shadow: 0 16px 36px rgba(12, 34, 51, 0.1);
+  }
+
+  .cardTitle {
+    color: #0c2233;
+  }
+
+  .cadencePill {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.2);
+    color: #0c2233;
+  }
+
+  .pipelineSection {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.18);
+  }
+
+  .pipelineNode {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.2);
+  }
+
+  .nodeValue {
+    color: #0c2233;
+  }
+
+  .methodologyText {
+    color: rgba(12, 34, 51, 0.85);
+  }
+
+  .specsBox {
+    background-color: #f7fafc;
+    border-color: rgba(27, 107, 138, 0.18);
+  }
+
+  .stakeholderRow {
+    color: #0c2233;
+  }
+
+  .deliverableRow {
+    color: #0c2233;
+  }
+
+  .advancementGateCard {
+    background-color: rgba(245, 166, 35, 0.08);
+    border-color: rgba(245, 166, 35, 0.35);
+  }
+
+  .gateDescription {
+    color: rgba(12, 34, 51, 0.85);
+  }
+
+  .streamFooter {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.22);
+    box-shadow: 0 8px 24px rgba(12, 34, 51, 0.06);
+  }
+
+  .streamFooterTitle {
+    color: #0c2233;
+  }
+
+  .streamFooterDesc {
+    color: rgba(12, 34, 51, 0.7);
+  }
+
+  .bgImage {
+    opacity: 1;
+  }
+
+  .washOverlay {
+    background-color: rgba(255, 255, 255, 0.88);
+  }
+
+  .deckRadarBox {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.2);
+  }
+
+  .schematicContainer {
+    background-color: #ffffff;
+    border-color: rgba(27, 107, 138, 0.22);
+    box-shadow: 0 4px 16px rgba(12, 34, 51, 0.04);
+  }
+}
