@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "../components/nav";
-import Footer from "../components/footer";
+import { SiteNav, SiteFooter } from "@/components/SiteChrome";
 import { ScrollTop } from "@/components/scrollTop";
 
 const inter = Inter({
@@ -57,11 +56,11 @@ export default function RootLayout({ children }: LayoutProps) {
         <Suspense fallback={null}>
           <ScrollTop />
         </Suspense>
-        <Nav />
+        <SiteNav />
         <main id="main-content" tabIndex={-1} style={{ flex: 1, outline: "none" }}>
           {children}
         </main>
-        <Footer />
+        <SiteFooter />
       </body>
     </html>
   );

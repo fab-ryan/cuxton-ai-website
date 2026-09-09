@@ -108,7 +108,7 @@ export default function CompanyPage() {
         eyebrow="About Cuxton AI"
         title="Enterprise AI consultancy built for institutions that"
         titleHighlight="need control."
-        description="Cuxton AI exists to help organisations with complex, sensitive or regulated operations discover where AI creates real value — and then build, integrate and deploy it safely, responsibly and with lasting effect."
+        description="Cuxton AI exists to help organisations with complex, sensitive or regulated operations discover where AI creates real value  and then build, integrate and deploy it safely, responsibly and with lasting effect."
         primaryCta={{
           label: "Book a Discovery Session",
           href: "/contact",

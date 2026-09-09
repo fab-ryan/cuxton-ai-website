@@ -2,140 +2,50 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { usePathname } from "next/navigation";
 import s from "./nav.module.css";
 
 /* ═══════════════════════════════════════════════════════════════
-   COMMAND-CENTRE NAVBAR — Cuxton AI
-
-   • Full-width and transparent over the hero, then detaches into a
-     framed glass console panel with bracket corner ticks on scroll
-   • Mono, letterspaced route labels; the active route is bracketed
-   • Mega-menus as indexed, icon-led capability cards
-   • Brand-gradient scroll progress rail along the bar's bottom edge
-   • Full keyboard support (Escape, Tab trap, focus management)
-   • Art-directed logo — colour on light, white on dark *and* over
-     the hero photo, which stays dark in either theme
+   PREMIUM ENTERPRISE NAVBAR — Cuxton AI
+   
+   Features:
+   • Progressive frosted-glass blur on scroll
+   • Animated mega-menu dropdowns (fade + slide, mouse-leave delay)
+   • Active-page amber underline indicator with glow
+   • Animated hamburger ≡ → × morph
+   • Staggered mobile menu entrance animations
+   • Full keyboard accessibility (Escape, Tab trap, focus management)
+   • Art-directed logo (light/dark system preference)
+   • Solutions mega-menu with featured CTA sidebar
+   • Reduced-motion support
    ═══════════════════════════════════════════════════════════════ */
 
-/* ─── Logo — art-directed by system colour scheme ─── */
-const LOGO_ALT = "Cuxton AI — home";
-
-/* ─── Icon wrapper — keeps every menu glyph on the same grid ─── */
-function I({ children }: { children: React.ReactNode }) {
-  return (
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {children}
-    </svg>
-  );
-}
+/* ─── Logo — art-directed by system color scheme ─── */
+const logoCommon = { alt: "Cuxton AI — home", width: 140, height: 34 };
+const { props: logoLightProps } = getImageProps({ ...logoCommon, src: "/full_color.png" });
+const { props: logoDarkProps } = getImageProps({ ...logoCommon, src: "/full_color-white.png" });
 
 /* ─── Nav data ─── */
 const solutions = [
-  {
-    name: "AI Strategy & Discovery",
-    href: "/solutions#strategy",
-    desc: "Identify high-value AI opportunities first",
-    icon: <I><circle cx="12" cy="12" r="9" /><path d="m15.5 8.5-2.1 5-5 2.1 2.1-5z" /></I>,
-  },
-  {
-    name: "Private AI Deployment",
-    href: "/solutions#private-ai",
-    desc: "AI in controlled, approved environments",
-    icon: <I><path d="M12 21s7-3.5 7-9V6l-7-3-7 3v6c0 5.5 7 9 7 9z" /><path d="M12 11v3" /></I>,
-  },
-  {
-    name: "Knowledge-Grounded AI",
-    href: "/solutions#knowledge",
-    desc: "Connect AI to authorised institutional knowledge",
-    icon: <I><ellipse cx="12" cy="6" rx="8" ry="3" /><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6" /><path d="M20 12c0 1.7-3.6 3-8 3s-8-1.3-8-3" /></I>,
-  },
-  {
-    name: "AI Agents",
-    href: "/solutions#agents",
-    desc: "Task-oriented agents across approved workflows",
-    icon: <I><rect x="6" y="6" width="12" height="12" rx="2" /><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" /></I>,
-  },
-  {
-    name: "Workflow Automation",
-    href: "/solutions#automation",
-    desc: "Reduce repetitive manual work with AI",
-    icon: <I><path d="M13 2 4.5 13H11l-1 9 8.5-11H12z" /></I>,
-  },
-  {
-    name: "Enterprise Integration",
-    href: "/solutions#integration",
-    desc: "Connect AI to existing systems safely",
-    icon: <I><path d="M9.5 14.5a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1.2 1.2" /><path d="M14.5 9.5a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1.2-1.2" /></I>,
-  },
-  {
-    name: "Custom AI Solutions",
-    href: "/solutions#custom",
-    desc: "Specialised applications for unique needs",
-    icon: <I><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3" /><path d="M1 14h6M9 8h6M17 16h6" /></I>,
-  },
-  {
-    name: "Real-Time Intelligence",
-    href: "/solutions#realtime",
-    desc: "Patterns, anomalies and operational signals",
-    icon: <I><path d="M3 12h4l3 8 4-16 3 8h4" /></I>,
-  },
-  {
-    name: "AI Training & Enablement",
-    href: "/solutions#training",
-    desc: "Prepare teams to adopt AI responsibly",
-    icon: <I><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="3.5" /><path d="M19 8v6M22 11h-6" /></I>,
-  },
+  { name: "AI Strategy & Discovery", href: "/solutions#strategy", desc: "Identify high-value AI opportunities first" },
+  { name: "Private AI Deployment", href: "/solutions#private-ai", desc: "AI in controlled, approved environments" },
+  { name: "Knowledge-Grounded AI", href: "/solutions#knowledge", desc: "Connect AI to authorised institutional knowledge" },
+  { name: "AI Agents", href: "/solutions#agents", desc: "Task-oriented agents across approved workflows" },
+  { name: "Workflow Automation", href: "/solutions#automation", desc: "Reduce repetitive manual work with AI" },
+  { name: "Enterprise Integration", href: "/solutions#integration", desc: "Connect AI to existing systems safely" },
+  { name: "Custom AI Solutions", href: "/solutions#custom", desc: "Specialised applications for unique needs" },
+  { name: "Real-Time Intelligence", href: "/solutions#realtime", desc: "Patterns, anomalies and operational signals" },
+  { name: "AI Training & Enablement", href: "/solutions#training", desc: "Prepare teams to adopt AI responsibly" },
 ];
 
 const industries = [
-  {
-    name: "Financial Services",
-    href: "/industries#finance",
-    desc: "Banks, insurers, asset managers",
-    icon: <I><path d="M12 2v20" /><path d="M17 6.5c0-2-2.2-3.2-5-3.2s-5 1.2-5 3.4c0 4.4 10 2.4 10 6.8 0 2.2-2.2 3.5-5 3.5s-5-1.2-5-3.2" /></I>,
-  },
-  {
-    name: "Healthcare",
-    href: "/industries#healthcare",
-    desc: "Hospitals and research organisations",
-    icon: <I><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z" /></I>,
-  },
-  {
-    name: "Government",
-    href: "/industries#government",
-    desc: "Ministries and public institutions",
-    icon: <I><path d="M3 21h18" /><path d="M4 21V9.5L12 4l8 5.5V21" /><path d="M9.5 21v-6h5v6" /></I>,
-  },
-  {
-    name: "Education & Research",
-    href: "/industries#education",
-    desc: "Universities and research bodies",
-    icon: <I><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22z" /><path d="M8 7h8M8 11h5" /></I>,
-  },
-  {
-    name: "Telecommunications",
-    href: "/industries#telecom",
-    desc: "Large enterprise and data-rich operations",
-    icon: <I><path d="M5 17.5a9 9 0 0 1 0-11M19 6.5a9 9 0 0 1 0 11" /><path d="M8.5 14.5a4.5 4.5 0 0 1 0-5M15.5 9.5a4.5 4.5 0 0 1 0 5" /><circle cx="12" cy="12" r="1.5" /></I>,
-  },
-  {
-    name: "Legal & Audit",
-    href: "/industries#legal",
-    desc: "Document-intensive professional services",
-    icon: <I><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" /><path d="m9 14 2 2 4-4" /></I>,
-  },
+  { name: "Financial Services", href: "/industries#finance", desc: "Banks, insurers, asset managers" },
+  { name: "Healthcare", href: "/industries#healthcare", desc: "Hospitals and research organisations" },
+  { name: "Government", href: "/industries#government", desc: "Ministries and public institutions" },
+  { name: "Education & Research", href: "/industries#education", desc: "Universities and research bodies" },
+  { name: "Telecommunications", href: "/industries#telecom", desc: "Large enterprise and data-rich operations" },
+  { name: "Legal & Audit", href: "/industries#legal", desc: "Document-intensive professional services" },
 ];
 
 const flatLinks: { label: string; href: string }[] = [
@@ -148,16 +58,16 @@ const flatLinks: { label: string; href: string }[] = [
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-const pad = (n: number) => String(n).padStart(2, "0");
-
+/* ─── Chevron icon ─── */
 function ChevronSvg() {
   return (
-    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-      <path d="M2.5 4.5L6 7.5L9.5 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <path d="M2.5 4.5L6 7.5L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
+/* ─── Small arrow for mobile links ─── */
 function ArrowSvg() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -166,17 +76,6 @@ function ArrowSvg() {
   );
 }
 
-/* Bracket ticks that frame the bar and the mega panels */
-function CornerTicks() {
-  return (
-    <>
-      <span className={`${s.tick} ${s.tickTl}`} aria-hidden="true" />
-      <span className={`${s.tick} ${s.tickTr}`} aria-hidden="true" />
-      <span className={`${s.tick} ${s.tickBl}`} aria-hidden="true" />
-      <span className={`${s.tick} ${s.tickBr}`} aria-hidden="true" />
-    </>
-  );
-}
 
 export default function Nav() {
   const pathname = usePathname();
@@ -185,40 +84,19 @@ export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
 
-  const navRef = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const solutionsBtnRef = useRef<HTMLButtonElement>(null);
   const industriesBtnRef = useRef<HTMLButtonElement>(null);
   const mobilePanelRef = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  /* ─── Scroll: collapse state + progress rail ───
-     Progress is written straight to a CSS custom property so the rail
-     tracks the scrollbar without re-rendering the tree on every frame. */
+  /* ─── Scroll listener ─── */
   useEffect(() => {
-    let frame = 0;
-    const measure = () => {
-      frame = 0;
-      const y = window.scrollY;
-      setScrolled(y > 20);
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      navRef.current?.style.setProperty(
-        "--nav-progress",
-        max > 0 ? String(Math.min(Math.max(y / max, 0), 1)) : "0"
-      );
-    };
-    const handler = () => {
-      if (frame) return;
-      frame = requestAnimationFrame(measure);
-    };
-    measure();
+    const handler = () => setScrolled(window.scrollY > 20);
+    handler(); // set initial state
     window.addEventListener("scroll", handler, { passive: true });
-    window.addEventListener("resize", handler);
-    return () => {
-      window.removeEventListener("scroll", handler);
-      window.removeEventListener("resize", handler);
-      if (frame) cancelAnimationFrame(frame);
-    };
+    return () => window.removeEventListener("scroll", handler);
   }, []);
 
   /* ─── Close dropdown on outside click ─── */
@@ -297,7 +175,7 @@ export default function Nav() {
   };
 
   /* Close on blur outside header */
-  const handleHeaderBlur = (e: React.FocusEvent<HTMLElement>) => {
+  const handleHeaderBlur = (e: React.FocusEvent<HTMLDivElement>) => {
     if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
       setOpenMenu(null);
     }
@@ -315,10 +193,10 @@ export default function Nav() {
      The homepage hero is a fixed dark photo that never follows the
      light/dark theme (its own copy uses hardcoded light colours for
      the same reason). While the nav is still transparent over it —
-     home route, not yet scrolled, no opaque dropdown behind it — the
-     bar's contents stay light too, regardless of theme. Once scrolled
+     home route, not yet scrolled, no opaque dropdown behind it — nav
+     links need to stay light too, regardless of theme. Once scrolled
      (or a mega-menu opens the glass backdrop) the bar sits on a
-     theme-matched surface again and can follow --foreground. */
+     theme-matched surface again and links can follow --foreground. */
   const onHero = pathname === "/" && !scrolled && !openMenu;
   const headerClass = [
     s.header,
@@ -340,31 +218,20 @@ export default function Nav() {
         className={headerClass}
       >
         <div className={s.headerInner}>
-          <CornerTicks />
-
-          <div className={s.navInner}>
+          <div className="section-container">
             <nav aria-label="Primary" className={s.nav}>
 
-              {/* ─── Brand cluster ─── */}
-              <div className={s.brand}>
-                <Link
-                  href="/"
-                  className={s.logo}
-                  onClick={() => { setOpenMenu(null); setMobileOpen(false); }}
-                >
-                  {/* Both marks ship; CSS picks one, so switching between the
-                      hero and the rest of the page never remounts the image. */}
-                  <Image src="/full_color-white.png" alt={LOGO_ALT} width={140} height={34} className={s.logoOnDark} fetchPriority="high" />
-                  <Image src="/full_color.png" alt={LOGO_ALT} width={140} height={34} className={s.logoOnLight} fetchPriority="high" />
-                </Link>
-
-                <span className={s.brandDivider} aria-hidden="true" />
-
-                <span className={s.status}>
-                  <span className={s.statusDot} aria-hidden="true" />
-                  Private AI
-                </span>
-              </div>
+              {/* ─── Logo ─── */}
+              <Link
+                href="/"
+                className={s.logo}
+                onClick={() => { setOpenMenu(null); setMobileOpen(false); }}
+              >
+                <picture>
+                  <source media="(prefers-color-scheme: light)" srcSet={logoLightProps.srcSet || logoLightProps.src} />
+                  <img {...logoDarkProps} alt={logoCommon.alt} className="object-contain" fetchPriority="high" />
+                </picture>
+              </Link>
 
               {/* ─── Desktop nav links ─── */}
               <div className={s.desktopLinks}>
@@ -392,7 +259,6 @@ export default function Nav() {
                   <span className={`${s.chevron} ${openMenu === "solutions" ? s["chevron--open"] : ""}`}>
                     <ChevronSvg />
                   </span>
-                  <span className={s.navUnderline} aria-hidden="true" />
                 </button>
 
                 {/* Industries trigger */}
@@ -418,11 +284,10 @@ export default function Nav() {
                   <span className={`${s.chevron} ${openMenu === "industries" ? s["chevron--open"] : ""}`}>
                     <ChevronSvg />
                   </span>
-                  <span className={s.navUnderline} aria-hidden="true" />
                 </button>
 
                 {/* Flat links */}
-                {flatLinks.map(({ label, href }) => (
+                {flatLinks  && flatLinks.map(({ label, href }) => (
                   <Link
                     key={label}
                     href={href}
@@ -435,7 +300,6 @@ export default function Nav() {
                     ].filter(Boolean).join(" ")}
                   >
                     {label}
-                    <span className={s.navUnderline} aria-hidden="true" />
                   </Link>
                 ))}
 
@@ -449,42 +313,33 @@ export default function Nav() {
                     onMouseLeave={handleMegaMouseLeave}
                     onMouseEnter={handleMegaMouseEnter}
                   >
-                    <div className={s.megaPanel}>
-                      <CornerTicks />
-
-                      <div className={s.megaHead}>
-                        <span className={s.megaLabel}>Solutions</span>
-                        <span className={s.megaMeta}>{pad(solutions.length)} capabilities</span>
-                      </div>
-
+                    <div className={`${s.megaPanel} section-container`}>
                       <div className={s.megaSolutions}>
-                        <div className={s.megaGrid}>
-                          {solutions.map((item, i) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              className={s.megaItem}
-                              onClick={() => setOpenMenu(null)}
-                            >
-                              <span className={s.megaItemIcon}>{item.icon}</span>
-                              <span className={s.megaItemText}>
-                                <span className={s.megaItemTop}>
-                                  <span className={s.megaItemIndex}>{pad(i + 1)}</span>
-                                  <span className={s.megaItemTitle}>{item.name}</span>
-                                </span>
-                                <span className={s.megaItemDesc}>{item.desc}</span>
-                              </span>
-                            </Link>
-                          ))}
+                        {/* Left: items grid */}
+                        <div>
+                          <p className={s.megaLabel}>Solutions</p>
+                          <div className={s.megaGrid}>
+                            {solutions.map(item => (
+                              <Link
+                                key={item.name}
+                                href={item.href}
+                                className={s.megaItem}
+                                onClick={() => setOpenMenu(null)}
+                              >
+                                <div className={s.megaItemDot} aria-hidden="true" />
+                                <div>
+                                  <p className={s.megaItemTitle}>{item.name}</p>
+                                  <p className={s.megaItemDesc}>{item.desc}</p>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
                         </div>
 
-                        {/* Featured console card */}
+                        {/* Right: featured sidebar */}
                         <div className={s.megaFeatured}>
                           <div>
-                            <span className={s.megaFeaturedLabel}>
-                              <span className={s.statusDot} aria-hidden="true" />
-                              Get started
-                            </span>
+                            <p className={s.megaFeaturedLabel}>Get Started</p>
                             <p className={s.megaFeaturedTitle}>
                               Not sure which solution fits your challenge?
                             </p>
@@ -495,11 +350,11 @@ export default function Nav() {
                           </div>
                           <Link
                             href="/contact"
-                            className={`${s.navCta} ${s["navCta--block"]}`}
+                            className="btn-primary"
                             onClick={() => setOpenMenu(null)}
+                            style={{ fontSize: "0.8rem", height: "2.5rem", justifyContent: "center" }}
                           >
-                            Book a session
-                            <span className={s.navCtaArrow}><ArrowSvg /></span>
+                            Book an AI Discovery Session →
                           </Link>
                         </div>
                       </div>
@@ -517,46 +372,35 @@ export default function Nav() {
                     onMouseLeave={handleMegaMouseLeave}
                     onMouseEnter={handleMegaMouseEnter}
                   >
-                    <div className={s.megaPanel}>
-                      <CornerTicks />
-
-                      <div className={s.megaHead}>
-                        <span className={s.megaLabel}>Industries</span>
-                        <span className={s.megaMeta}>{pad(industries.length)} sectors</span>
-                      </div>
-
-                      <div className={s.megaGrid}>
-                        {industries.map((item, i) => (
+                    <div className={`${s.megaPanel} section-container`}>
+                      <p className={s.megaLabel}>Industries</p>
+                      <div className={`${s.megaGrid} ${s["megaGrid--industries"]}`}>
+                        {industries.map(item => (
                           <Link
                             key={item.name}
                             href={item.href}
                             className={s.megaItem}
                             onClick={() => setOpenMenu(null)}
                           >
-                            <span className={s.megaItemIcon}>{item.icon}</span>
-                            <span className={s.megaItemText}>
-                              <span className={s.megaItemTop}>
-                                <span className={s.megaItemIndex}>{pad(i + 1)}</span>
-                                <span className={s.megaItemTitle}>{item.name}</span>
-                              </span>
-                              <span className={s.megaItemDesc}>{item.desc}</span>
-                            </span>
+                            <div className={s.megaItemDot} aria-hidden="true" />
+                            <div>
+                              <p className={s.megaItemTitle}>{item.name}</p>
+                              <p className={s.megaItemDesc}>{item.desc}</p>
+                            </div>
                           </Link>
                         ))}
                       </div>
-
                       <div className={s.megaFooter}>
-                        <span className={s.megaFooterText}>
-                          <span className={s.statusDot} aria-hidden="true" />
-                          Any data-sensitive institution
-                        </span>
+                        <p className={s.megaFooterText}>
+                          We work with any data-sensitive institution.
+                        </p>
                         <Link
                           href="/industries"
-                          className={s.megaFooterLink}
+                          className="btn-secondary"
                           onClick={() => setOpenMenu(null)}
+                          style={{ height: "2.375rem", padding: "0 1.125rem", fontSize: "0.8rem" }}
                         >
                           All industries
-                          <ArrowSvg />
                         </Link>
                       </div>
                     </div>
@@ -564,15 +408,16 @@ export default function Nav() {
                 )}
               </div>
 
-              {/* ─── Desktop CTA ─── */}
+              {/* ─── Desktop CTAs ─── */}
               <div className={s.desktopCtas}>
+
                 <Link
                   href="/contact"
-                  className={s.navCta}
+                  className={`btn-primary ${s.ctaGlow}`}
                   onClick={() => setOpenMenu(null)}
+                  style={{ height: "2.625rem", padding: "0 1.25rem", fontSize: "0.8rem" }}
                 >
                   Book a Discovery Session
-                  <span className={s.navCtaArrow}><ArrowSvg /></span>
                 </Link>
               </div>
 
@@ -586,20 +431,15 @@ export default function Nav() {
                 aria-controls="mobile-menu"
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
               >
-                <span className={s.hamburgerBars}>
+                <div className={s.hamburgerBars}>
                   <span className={s.hamburgerBar} />
                   <span className={s.hamburgerBar} />
                   <span className={s.hamburgerBar} />
-                </span>
+                </div>
               </button>
 
             </nav>
           </div>
-
-          {/* ─── Scroll progress rail ─── */}
-          <span className={s.progressTrack} aria-hidden="true">
-            <span className={s.progressBar} />
-          </span>
         </div>
       </header>
 
@@ -614,17 +454,9 @@ export default function Nav() {
         inert={!mobileOpen}
         className={`${s.mobileOverlay} ${mobileOpen ? s["mobileOverlay--open"] : ""}`}
       >
-        <nav aria-label="Mobile" className={s.mobileNav}>
+        <nav aria-label="Mobile" className={`section-container ${s.mobileNav}`}>
 
-          <div className={s.mobileMeta}>
-            <span>Navigation</span>
-            <span className={s.mobileMetaStatus}>
-              <span className={s.statusDot} aria-hidden="true" />
-              Private AI
-            </span>
-          </div>
-
-          {/* Solutions accordion */}
+          {/* Mobile: Solutions accordion */}
           <div className={s.mobileItem}>
             <button
               type="button"
@@ -632,10 +464,9 @@ export default function Nav() {
               aria-expanded={mobileExpanded === "solutions"}
               aria-controls="mobile-solutions-panel"
               onClick={() => setMobileExpanded(v => v === "solutions" ? null : "solutions")}
-              className={s.mobileRow}
+              className={s.mobileAccordion}
             >
-              <span className={s.mobileIndex}>01</span>
-              <span className={s.mobileRowLabel}>Solutions</span>
+              Solutions
               <span className={`${s.chevron} ${mobileExpanded === "solutions" ? s["chevron--open"] : ""}`}>
                 <ChevronSvg />
               </span>
@@ -650,7 +481,6 @@ export default function Nav() {
                       onClick={closeMobile}
                       className={s.mobileSubLink}
                     >
-                      <span className={s.mobileSubIcon}>{item.icon}</span>
                       {item.name}
                     </Link>
                   ))}
@@ -659,7 +489,7 @@ export default function Nav() {
             )}
           </div>
 
-          {/* Industries accordion */}
+          {/* Mobile: Industries accordion */}
           <div className={s.mobileItem}>
             <button
               type="button"
@@ -667,10 +497,9 @@ export default function Nav() {
               aria-expanded={mobileExpanded === "industries"}
               aria-controls="mobile-industries-panel"
               onClick={() => setMobileExpanded(v => v === "industries" ? null : "industries")}
-              className={s.mobileRow}
+              className={s.mobileAccordion}
             >
-              <span className={s.mobileIndex}>02</span>
-              <span className={s.mobileRowLabel}>Industries</span>
+              Industries
               <span className={`${s.chevron} ${mobileExpanded === "industries" ? s["chevron--open"] : ""}`}>
                 <ChevronSvg />
               </span>
@@ -685,7 +514,6 @@ export default function Nav() {
                       onClick={closeMobile}
                       className={s.mobileSubLink}
                     >
-                      <span className={s.mobileSubIcon}>{item.icon}</span>
                       {item.name}
                     </Link>
                   ))}
@@ -694,18 +522,19 @@ export default function Nav() {
             )}
           </div>
 
-          {/* Flat links */}
-          {flatLinks.map(({ label, href }, i) => (
+          {/* Mobile: flat links */}
+          {[...flatLinks].map(({ label, href }) => (
             <div key={label} className={s.mobileItem}>
               <Link
                 href={href}
                 aria-current={isCurrent(href) ? "page" : undefined}
                 onClick={closeMobile}
-                className={`${s.mobileRow} ${isCurrent(href) ? s["mobileRow--active"] : ""}`}
+                className={`${s.mobileLink} ${isCurrent(href) ? s["mobileLink--active"] : ""}`}
               >
-                <span className={s.mobileIndex}>{pad(i + 3)}</span>
-                <span className={s.mobileRowLabel}>{label}</span>
-                <span className={s.mobileTrail}><ArrowSvg /></span>
+                {label}
+                <span className={s.mobileLinkArrow}>
+                  <ArrowSvg />
+                </span>
               </Link>
             </div>
           ))}
@@ -714,18 +543,13 @@ export default function Nav() {
           <div className={s.mobileCta}>
             <Link
               href="/contact"
-              className={`${s.navCta} ${s["navCta--block"]}`}
+              className="btn-primary"
               onClick={closeMobile}
+              style={{ width: "100%", justifyContent: "center", height: "3.25rem", fontSize: "0.9rem" }}
             >
               Book a Discovery Session
-              <span className={s.navCtaArrow}><ArrowSvg /></span>
             </Link>
           </div>
-
-          <p className={s.mobileFoot}>
-            <span className={s.statusDot} aria-hidden="true" />
-            Your data · Your perimeter
-          </p>
 
         </nav>
       </div>

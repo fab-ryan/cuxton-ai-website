@@ -79,7 +79,7 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════
           9. INSIGHTS
           ════════════════════════════════════════════ */}
-      {/* <InsightsSection /> */}
+      <InsightsSection />
 
       {/* ════════════════════════════════════════════
           10. FINAL CTA — second, subtler use of the hero photo
