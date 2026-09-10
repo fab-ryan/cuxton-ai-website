@@ -8,7 +8,7 @@ export default function NotFound() {
         <div className="mb-10">
           <Image
             src="/full_color.png"
-            alt="Cuxton AI"
+            alt="CuxtonAI"
             width={96}
             height={96}
             className="object-contain"

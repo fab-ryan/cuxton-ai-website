@@ -30,7 +30,9 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(16, 27, 38, 0.86);
+  background-color: rgba(16, 27, 38, 0.96);
+  /* backdrop-filter: blur(5px) saturate(150%); */
+  /* -webkit-backdrop-filter: blur(5px) saturate(150%); */
   z-index: 1;
 }
 
@@ -113,8 +115,6 @@
 }
 
 .eyebrowDot {
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
   background-color: var(--cuxton-amber);
 }
@@ -163,10 +163,10 @@
   align-items: center;
   padding: 0.3rem 0.75rem;
   background-color: rgba(27, 107, 138, 0.18);
-  border: 1px solid rgba(45, 154, 191, 0.3);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.3);
   font-size: 0.76rem;
   font-weight: 500;
-  color: #a8d5e5;
+  color: var(--cuxton-teal-text);
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
@@ -270,14 +270,12 @@
   gap: 0.45rem;
   font-size: 0.72rem;
   font-weight: 600;
-  color: #34d399;
 }
 
 .statusIndicatorDot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #10b981;
 }
 
 .statsGrid {

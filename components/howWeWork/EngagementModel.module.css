@@ -334,7 +334,7 @@
 
 .timelineNodeBtn:hover {
   background-color: rgba(27, 107, 138, 0.12);
-  border-color: rgba(45, 154, 191, 0.25);
+  border-color: rgba(var(--cuxton-teal-mid-rgb), 0.25);
 }
 
 .timelineNodeBtnActive {
@@ -607,7 +607,6 @@
 .schematicStatusDot {
   width: 6px;
   height: 6px;
-  border-radius: 50%;
   background-color: var(--cuxton-amber);
 }
 
@@ -732,7 +731,6 @@
 .stakeholderDot {
   width: 6px;
   height: 6px;
-  border-radius: 50%;
   background-color: var(--cuxton-teal-light);
   flex-shrink: 0;
 }

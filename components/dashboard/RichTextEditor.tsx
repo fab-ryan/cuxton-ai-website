@@ -282,7 +282,7 @@ export default function RichTextEditor({ initialDoc, onChange, placeholder }: Pr
         </span>
         <span>
           {error ? (
-            <span style={{ color: "#d15757", fontWeight: 700 }}>{error}</span>
+            <span style={{ color: "var(--status-error)", fontWeight: 700 }}>{error}</span>
           ) : (
             "Drag, drop or paste an image straight into the article"
           )}

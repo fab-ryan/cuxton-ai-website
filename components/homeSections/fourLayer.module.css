@@ -207,6 +207,10 @@
   align-items: center;
   justify-content: center;
   background: rgba(var(--bg-surface-rgb), 0.92);
+  /* The four layers are peers, so they share the structure colour.
+     Amber is kept for the capstone — the governance boundary. */
+  border: 1.5px solid rgba(27, 107, 138, 0.45);
+  color: var(--cuxton-teal-light);
   transition:
     transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -249,46 +253,6 @@
   }
 }
 
-.nodeColor1
-{
-  border: 1.5px solid rgba(245, 166, 35, 0.4);
-  color: var(--cuxton-amber);
-}
-
-.nodeColor2
-{
-  border: 1.5px solid rgba(59, 130, 246, 0.4);
-  color: #4f97f7;
-}
-
-.nodeColor3
-{
-  border: 1.5px solid rgba(139, 92, 246, 0.4);
-  color: #a78bfa;
-}
-
-.nodeColor4
-{
-  border: 1.5px solid rgba(27, 107, 138, 0.45);
-  color: var(--cuxton-teal-light);
-}
-
-.row:hover .nodeColor1
-{
-}
-
-.row:hover .nodeColor2
-{
-}
-
-.row:hover .nodeColor3
-{
-}
-
-.row:hover .nodeColor4
-{
-}
-
 /* Capstone — the flow's terminus: all four layers resolve into
    one governed outcome, so it breaks the zigzag and sits centered
    on the spine with a rotating brand-gradient ring instead of a
@@ -327,7 +291,7 @@
   inset: -3px;
   border-radius: 50%;
   z-index: -1;
-  background-color: var(--cuxton-tael-light);
+  background-color: var(--cuxton-teal-light);
 }
 
 .capstoneCard

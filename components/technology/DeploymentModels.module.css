@@ -46,8 +46,6 @@
 }
 
 .eyebrowDot {
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
   background-color: var(--cuxton-amber);
 }
@@ -195,8 +193,8 @@
   font-size: 0.72rem;
   font-weight: 750;
   padding: 0.22rem 0.65rem;
-  background: rgba(45, 154, 191, 0.15);
-  border: 1px solid rgba(45, 154, 191, 0.35);
+  background: rgba(var(--cuxton-teal-mid-rgb), 0.15);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.35);
   color: var(--cuxton-teal-light);
   letter-spacing: 0.05em;
 }
@@ -358,7 +356,6 @@
 .legendDot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
   flex-shrink: 0;
 }
 
@@ -395,7 +392,7 @@
 }
 
 .telemetryCard:hover {
-  border-color: rgba(45, 154, 191, 0.4);
+  border-color: rgba(var(--cuxton-teal-mid-rgb), 0.4);
   background: rgba(28, 42, 55, 0.85);
 }
 
@@ -896,9 +893,9 @@
 }
 
 .pillTeal {
-  background: rgba(45, 154, 191, 0.14);
+  background: rgba(var(--cuxton-teal-mid-rgb), 0.14);
   color: var(--cuxton-teal-light);
-  border: 1px solid rgba(45, 154, 191, 0.32);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.32);
 }
 
 .pillNeutral {
@@ -917,8 +914,8 @@
 /* Active Highlight Column */
 .activeCell {
   background: rgba(27, 107, 138, 0.18) !important;
-  border-left: 1px solid rgba(45, 154, 191, 0.35);
-  border-right: 1px solid rgba(45, 154, 191, 0.35);
+  border-left: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.35);
+  border-right: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.35);
 }
 
 .activeCell .valueDetail {
@@ -939,7 +936,6 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.4rem 0.85rem;
-  border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 700;
   background: rgba(27, 107, 138, 0.1);
@@ -1137,5 +1133,14 @@
     background: rgba(27, 107, 138, 0.08);
     border-color: rgba(27, 107, 138, 0.2);
     color: rgba(12, 34, 51, 0.75);
+  }
+}
+
+@media (max-width: 768px) {
+  .selectorBar {
+    grid-template-columns: unset;
+  }
+  .telemetryGrid {
+    grid-template-columns: unset;
   }
 }

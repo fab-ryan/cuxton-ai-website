@@ -141,7 +141,7 @@ export default function SolutionsCatalog({ solutions }: SolutionsCatalogProps) {
   }, [activeTab]);
 
   return (
-    <section className={styles.catalogSection} aria-label="Cuxton AI Solutions Portfolio">
+    <section className={styles.catalogSection} aria-label="CuxtonAI Solutions Portfolio">
       {/* Sticky Filter Navigation Bar */}
       <div className={styles.stickyFilterNav}>
         <div className="section-container">

@@ -197,10 +197,10 @@
 }
 
 .tenetBadgeDot {
-  width: 5px;
+  /* width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: var(--cuxton-teal-light);
+  background-color: var(--cuxton-teal-light); */
 }
 
 .tenetCode {
@@ -354,7 +354,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #10b981;
+  background-color: var(--cuxton-teal-light);
 }
 
 .schematicCode {

@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import s from "./nav.module.css";
 
 /* ═══════════════════════════════════════════════════════════════
-   PREMIUM ENTERPRISE NAVBAR — Cuxton AI
+   PREMIUM ENTERPRISE NAVBAR — CuxtonAI
    
    Features:
    • Progressive frosted-glass blur on scroll
@@ -22,7 +22,7 @@ import s from "./nav.module.css";
    ═══════════════════════════════════════════════════════════════ */
 
 /* ─── Logo — art-directed by system color scheme ─── */
-const logoCommon = { alt: "Cuxton AI — home", width: 140, height: 34 };
+const logoCommon = { alt: "CuxtonAI — home", width: 140, height: 34 };
 const { props: logoLightProps } = getImageProps({ ...logoCommon, src: "/full_color.png" });
 const { props: logoDarkProps } = getImageProps({ ...logoCommon, src: "/full_color-white.png" });
 
@@ -332,7 +332,7 @@ export default function Nav() {
                                 className={s.megaItem}
                                 onClick={() => setOpenMenu(null)}
                               >
-                                <div className={s.megaItemDot} aria-hidden="true" />
+                                {/* <div className={s.megaItemDot} aria-hidden="true" /> */}
                                 <div>
                                   <p className={s.megaItemTitle}>{item.name}</p>
                                   <p className={s.megaItemDesc}>{item.desc}</p>
@@ -388,7 +388,7 @@ export default function Nav() {
                             className={s.megaItem}
                             onClick={() => setOpenMenu(null)}
                           >
-                            <div className={s.megaItemDot} aria-hidden="true" />
+                            {/* <div className={s.megaItemDot} aria-hidden="true" /> */}
                             <div>
                               <p className={s.megaItemTitle}>{item.name}</p>
                               <p className={s.megaItemDesc}>{item.desc}</p>

@@ -229,7 +229,7 @@ function ContactDetail({
   const [notesSaved, setNotesSaved] = useState(false);
 
   const [subject, setSubject] = useState(
-    `Re: your enquiry to Cuxton AI`
+    `Re: your enquiry to CuxtonAI`
   );
   const [body, setBody] = useState("");
   const [sending, setSending] = useState(false);

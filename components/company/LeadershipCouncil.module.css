@@ -254,7 +254,6 @@
   gap: 0.45rem;
   max-width: calc(100% - 2.2rem);
   padding: 0.35rem 0.75rem;
-  border-radius: 999px;
   background-color: rgba(16, 27, 38, 0.85);
   border: 1px solid rgba(27, 107, 138, 0.5);
   font-size: 0.66rem;
@@ -267,10 +266,8 @@
 }
 
 .portraitBadgeDot {
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
-  background-color: #10b981;
+  background-color: var(--cuxton-teal-light);
   flex-shrink: 0;
 }
 
@@ -309,7 +306,6 @@
 .recordCounterDot {
   width: 5px;
   height: 5px;
-  border-radius: 50%;
   background-color: var(--cuxton-teal-text);
   flex-shrink: 0;
 }
@@ -457,8 +453,6 @@
 }
 
 .charterNoticeDot {
-  width: 7px;
-  height: 7px;
   border-radius: 50%;
   background-color: var(--cuxton-teal-text);
   flex-shrink: 0;

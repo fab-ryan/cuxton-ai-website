@@ -15,27 +15,27 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://cuxtonai.com"),
   title: {
-    default: "Cuxton AI — Enterprise AI Built Around Your Data, Workflows and Control",
-    template: "%s | Cuxton AI",
+    default: "CuxtonAI — Enterprise AI Built Around Your Data, Workflows and Control",
+    template: "%s | CuxtonAI",
   },
   description:
-    "Cuxton AI helps institutions discover where AI can create real value, then integrates, customises or builds secure AI systems, agents and automations around the organisation's own knowledge, infrastructure and operational needs.",
+    "CuxtonAI helps institutions discover where AI can create real value, then integrates, customises or builds secure AI systems, agents and automations around the organisation's own knowledge, infrastructure and operational needs.",
   keywords: [
     "enterprise AI", "private AI", "AI consultancy", "AI agents", "workflow automation",
-    "knowledge-grounded AI", "AI integration", "Cuxton AI",
+    "knowledge-grounded AI", "AI integration", "CuxtonAI",
   ],
-  authors: [{ name: "Cuxton AI" }],
+  authors: [{ name: "CuxtonAI" }],
   openGraph: {
     type: "website",
     locale: "en_GB",
-    siteName: "Cuxton AI",
-    title: "Cuxton AI — Enterprise AI Built Around Your Data, Workflows and Control",
+    siteName: "CuxtonAI",
+    title: "CuxtonAI - Enterprise AI Built Around Your Data, Workflows and Control",
     description:
-      "Private AI. Your data. Your infrastructure. Under your control. Cuxton AI helps institutions deploy secure AI systems, agents and automations.",
+      "Private AI. Your data. Your infrastructure. Under your control. CuxtonAI helps institutions deploy secure AI systems, agents and automations.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cuxton AI — Enterprise AI",
+    title: "CuxtonAI - Enterprise AI",
     description: "Private AI, knowledge-grounded systems and workflow automation for institutions.",
   },
   robots: {

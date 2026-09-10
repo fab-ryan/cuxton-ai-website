@@ -22,7 +22,7 @@ export const IndustriesSection = () => {
             </h2>
           </div>
           <p className={s.headerIntro}>
-            In financial services, healthcare, and regulated enterprise, AI architecture must start with legal and operational data residency. Cuxton AI operates fully inside your private infrastructure with zero external data leakage.
+            In financial services, healthcare, and regulated enterprise, AI architecture must start with legal and operational data residency. CuxtonAI operates fully inside your private infrastructure with zero external data leakage.
           </p>
         </Reveal>
 

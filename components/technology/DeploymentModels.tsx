@@ -39,8 +39,8 @@ const OnPremiseSchematic = () => (
 
     {/* Bare-Metal Private AI Enclave */}
     <rect x="222" y="62" width="222" height="248" rx="12" fill="#1c2a37" stroke="var(--cuxton-teal)" strokeWidth="1.5" />
-    <rect x="238" y="80" width="190" height="32" rx="6" fill="rgba(27,107,138,0.22)" stroke="rgba(45,154,191,0.32)" />
-    <circle cx="253" cy="96" r="4.5" fill="#2d9abf" className={styles.pulseDot} filter="url(#glow-onprem)" />
+    <rect x="238" y="80" width="190" height="32" rx="6" fill="rgba(27,107,138,0.22)" stroke="rgba(var(--cuxton-teal-mid-rgb), 0.32)" />
+    <circle cx="253" cy="96" r="4.5" fill="var(--cuxton-teal-mid)" className={styles.pulseDot} filter="url(#glow-onprem)" />
     <text x="265" y="101" fill="#ffffff" fontSize="10.5" fontWeight="750">Bare-Metal GPU Server Enclave</text>
 
     {/* Compute Specs */}
@@ -79,7 +79,7 @@ const PrivateCloudSchematic = () => (
     <text x="90" y="104" fill="#e8edf5" fontSize="11" fontWeight="750" textAnchor="middle">Client Infrastructure</text>
     <text x="90" y="144" fill="rgba(232,237,245,0.65)" fontSize="9.5" textAnchor="middle">Internal Core Apps</text>
     <text x="90" y="163" fill="rgba(232,237,245,0.65)" fontSize="9.5" textAnchor="middle">Identity &amp; Okta / AD</text>
-    <rect x="34" y="228" width="112" height="28" rx="5" fill="rgba(45,154,191,0.14)" stroke="rgba(45,154,191,0.32)" />
+    <rect x="34" y="228" width="112" height="28" rx="5" fill="rgba(var(--cuxton-teal-mid-rgb), 0.14)" stroke="rgba(var(--cuxton-teal-mid-rgb), 0.32)" />
     <text x="90" y="246" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="750" textAnchor="middle">No Public IP</text>
 
     {/* Dedicated PrivateLink Conduit */}
@@ -99,7 +99,7 @@ const PrivateCloudSchematic = () => (
     </text>
 
     {/* Compute Stack inside VPC */}
-    <rect x="345" y="72" width="160" height="80" rx="8" fill="#16222e" stroke="rgba(45,154,191,0.35)" />
+    <rect x="345" y="72" width="160" height="80" rx="8" fill="#16222e" stroke="rgba(var(--cuxton-teal-mid-rgb), 0.35)" />
     <text x="358" y="94" fill="#ffffff" fontSize="10.5" fontWeight="750">Isolated Inference</text>
     <text x="358" y="111" fill="rgba(232,237,245,0.7)" fontSize="9">Dedicated GPUs (H100/A100)</text>
     <text x="358" y="127" fill="rgba(232,237,245,0.7)" fontSize="9">Zero Shared Host</text>
@@ -195,7 +195,7 @@ const HybridSchematic = () => (
 
     {/* Tier 2: Dedicated Cloud Elastic Enclave */}
     <rect x="384" y="30" width="136" height="290" rx="10" fill="#16222e" stroke="var(--cuxton-teal)" strokeWidth="1.2" strokeDasharray="3 3" />
-    <rect x="397" y="46" width="110" height="30" rx="5" fill="rgba(27,107,138,0.2)" stroke="rgba(45,154,191,0.3)" />
+    <rect x="397" y="46" width="110" height="30" rx="5" fill="rgba(27,107,138,0.2)" stroke="rgba(var(--cuxton-teal-mid-rgb), 0.3)" />
     <text x="452" y="66" fill="var(--cuxton-teal-light)" fontSize="9.5" fontWeight="750" textAnchor="middle">Tier 2: Dedicated Cloud</text>
     <text x="397" y="108" fill="#ffffff" fontSize="10" fontWeight="700">Elastic Scale Tasks</text>
     <text x="397" y="130" fill="rgba(232,237,245,0.7)" fontSize="8.5">• Sanitized Summaries</text>

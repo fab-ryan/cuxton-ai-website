@@ -32,7 +32,7 @@ export const industries: Industry[] = [
     sub: "Banks · Insurers · Asset Managers · Clearing Houses & FinTech",
     headline:
       "Compliant, deterministic AI for mission-critical financial operations.",
-    body: "Financial institutions handle highly regulated customer data, execute low-latency capital flows, and face unforgiving regulatory expectations. Standard cloud AI models with unknown data retention risks are unacceptable. Cuxton AI builds sovereign, auditable AI infrastructure deployed entirely within private VPCs or on-premise hardware, ensuring strict adherence to Basel, FINRA, FCA, and SEC compliance mandates.",
+    body: "Financial institutions handle highly regulated customer data, execute low-latency capital flows, and face unforgiving regulatory expectations. Standard cloud AI models with unknown data retention risks are unacceptable. CuxtonAI builds sovereign, auditable AI infrastructure deployed entirely within private VPCs or on-premise hardware, ensuring strict adherence to Basel, FINRA, FCA, and SEC compliance mandates.",
     image: "/industries/finance_enterprise_ai.jpg",
     outputs: [
       "Auditable real-time compliance review pipelines",
@@ -125,7 +125,7 @@ export const industries: Industry[] = [
     sub: "Hospital Networks · Academic Medical Centers · Pharma · Diagnostic Labs",
     headline:
       "Clinical-grade AI systems engineered for patient privacy and research velocity.",
-    body: "Healthcare and pharmaceutical organizations operate under intense patient data confidentiality regulations and rigorous clinical governance. Cuxton AI delivers HIPAA- and GDPR-compliant intelligence engines that assist clinicians with evidence retrieval, accelerate pharmaceutical research, and streamline hospital operations without exposing Protected Health Information (PHI) to public infrastructure.",
+    body: "Healthcare and pharmaceutical organizations operate under intense patient data confidentiality regulations and rigorous clinical governance. CuxtonAI delivers HIPAA- and GDPR-compliant intelligence engines that assist clinicians with evidence retrieval, accelerate pharmaceutical research, and streamline hospital operations without exposing Protected Health Information (PHI) to public infrastructure.",
     image: "/industries/healthcare_clinical_ai.jpg",
     outputs: [
       "HIPAA-compliant clinical protocol knowledge assistants",
@@ -218,7 +218,7 @@ export const industries: Industry[] = [
     sub: "Federal Ministries · National Security · Regional Authorities · Regulators",
     headline:
       "Sovereign AI systems engineered within national defense boundaries.",
-    body: "Public sector institutions require sovereign AI architectures that eliminate external geopolitical dependencies, safeguard classified data, and uphold absolute public transparency. Cuxton AI designs air-gapped, sovereign infrastructure for government agencies, enabling automated citizen triage, policy synthesis, and secure intelligence analysis entirely on domestic sovereign compute.",
+    body: "Public sector institutions require sovereign AI architectures that eliminate external geopolitical dependencies, safeguard classified data, and uphold absolute public transparency. CuxtonAI designs air-gapped, sovereign infrastructure for government agencies, enabling automated citizen triage, policy synthesis, and secure intelligence analysis entirely on domestic sovereign compute.",
     image: "/industries/government_sovereign_ai.jpg",
     outputs: [
       "Air-gapped national intelligence and policy retrieval engines",
@@ -311,7 +311,7 @@ export const industries: Industry[] = [
     sub: "Research Universities · Academic Consortia · Medical Colleges · EdTech",
     headline:
       "Empowering academic breakthroughs while protecting institutional IP.",
-    body: "Universities and research consortia face a dual challenge: unlocking the transformative power of generative AI for students and faculty while fiercely safeguarding proprietary laboratory research, patent disclosures, and student privacy. Cuxton AI builds high-performance research retrieval environments, personalized student learning scaffolds, and institutional knowledge systems that respect academic freedom and intellectual property.",
+    body: "Universities and research consortia face a dual challenge: unlocking the transformative power of generative AI for students and faculty while fiercely safeguarding proprietary laboratory research, patent disclosures, and student privacy. CuxtonAI builds high-performance research retrieval environments, personalized student learning scaffolds, and institutional knowledge systems that respect academic freedom and intellectual property.",
     image: "/industries/education_research_ai.jpg",
     outputs: [
       "Academic research synthesis pipelines with DOI citation grounding",
@@ -394,7 +394,7 @@ export const industries: Industry[] = [
     ],
     closing: {
       heading: "Accelerate academic discovery safely.",
-      body: "Discover how top universities deploy Cuxton AI to empower faculty research and student success within protected institutional boundaries.",
+      body: "Discover how top universities deploy CuxtonAI to empower faculty research and student success within protected institutional boundaries.",
     },
   },
   {
@@ -405,7 +405,7 @@ export const industries: Industry[] = [
     sub: "Mobile Network Operators · Fiber Carriers · Cloud Providers · Hyperscalers",
     headline:
       "Carrier-scale telemetry intelligence and autonomous network operations.",
-    body: "Telecommunications operators and global enterprises operate under extreme throughput demands, managing petabytes of network telemetry, millions of subscriber interactions, and critical SLA commitments. Cuxton AI deploys real-time anomaly detection, predictive outage mitigation, and automated subscriber service agents engineered to operate reliably across hybrid cloud and multi-region telco infrastructure.",
+    body: "Telecommunications operators and global enterprises operate under extreme throughput demands, managing petabytes of network telemetry, millions of subscriber interactions, and critical SLA commitments. CuxtonAI deploys real-time anomaly detection, predictive outage mitigation, and automated subscriber service agents engineered to operate reliably across hybrid cloud and multi-region telco infrastructure.",
     image: "/industries/telecom_network_ai.jpg",
     outputs: [
       "Real-time network telemetry anomaly detection and fault triage",
@@ -499,7 +499,7 @@ export const industries: Industry[] = [
     sub: "Global Law Firms · Big 4 Audit Practices · In-House Corporate Counsel · Risk Consultancies",
     headline:
       "Precision contract intelligence and evidentiary audit verification.",
-    body: "Legal practitioners, external auditors, and corporate compliance officers handle immense volumes of contracts, statutory filings, and transaction documentation where missing a single clause carries catastrophic financial liability. Cuxton AI builds sovereign document intelligence, contract discovery, and audit workpaper synthesis tools that enhance professional judgement with verifiable citations and zero data leakage.",
+    body: "Legal practitioners, external auditors, and corporate compliance officers handle immense volumes of contracts, statutory filings, and transaction documentation where missing a single clause carries catastrophic financial liability. CuxtonAI builds sovereign document intelligence, contract discovery, and audit workpaper synthesis tools that enhance professional judgement with verifiable citations and zero data leakage.",
     image: "/industries/legal_audit_ai.jpg",
     outputs: [
       "Deep contract intelligence with clause extraction & deviation scoring",

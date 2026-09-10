@@ -8,7 +8,7 @@ import SolutionsCatalog from "@/components/solutions/SolutionsCatalog";
 export const metadata: Metadata = {
   title: "Solutions — Enterprise AI Integration, Deployment and Automation",
   description:
-    "From AI strategy and private deployment to AI agents, workflow automation and knowledge-grounded systems. Cuxton AI delivers the right solution for your organisation's needs.",
+    "From AI strategy and private deployment to AI agents, workflow automation and knowledge-grounded systems. CuxtonAI delivers the right solution for your organisation's needs.",
 };
 
 export default function SolutionsPage() {

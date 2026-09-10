@@ -7,7 +7,7 @@ import Reveal from "../Reveal";
 import s from "./whyCuxton.module.css";
 
 export const WhyCuxtonSection = () => {
-  const [showMatrix, setShowMatrix] = useState(true);
+  const [showMatrix, setShowMatrix] = useState(false);
 
   return (
     <section className={s.section} id="why-cuxton">
@@ -180,7 +180,7 @@ export const WhyCuxtonSection = () => {
                 <thead>
                   <tr>
                     <th>Dimension</th>
-                    <th className={s.thCuxton}>Cuxton AI</th>
+                    <th className={s.thCuxton}>CuxtonAI</th>
                     <th>Generic SaaS Vendors</th>
                     <th>Traditional IT Consultancies</th>
                   </tr>

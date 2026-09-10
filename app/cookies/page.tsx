@@ -3,9 +3,9 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy — Cuxton AI",
+  title: "Cookie Policy — CuxtonAI",
   description:
-    "Information on cookies, tracking, and minimal telemetry used on the Cuxton AI website.",
+    "Information on cookies, tracking, and minimal telemetry used on the CuxtonAI website.",
 };
 
 export default function CookiePolicyPage() {
@@ -17,7 +17,7 @@ export default function CookiePolicyPage() {
         title="Minimal &"
         titleHighlight="Transparent Cookie Policy"
         showVisual={false}
-        description="Cuxton AI respects user privacy. We do not use intrusive third-party cross-site advertising cookies or commercial tracking beacons."
+        description="CuxtonAI respects user privacy. We do not use intrusive third-party cross-site advertising cookies or commercial tracking beacons."
         tags={["Zero Tracking Ads", "Essential Only", "User Managed"]}
       />
 
@@ -39,7 +39,7 @@ export default function CookiePolicyPage() {
             </h2>
             <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
               You can block or disable cookies at any time through your browser settings. Doing so will not degrade your ability
-              to review Cuxton AI solutions and content.
+              to review CuxtonAI solutions and content.
             </p>
             <div style={{ marginTop: "1.5rem" }}>
               <Link href="/privacy" className="btn-secondary" style={{ display: "inline-flex", height: "2.75rem", padding: "0 1.25rem", fontSize: "0.85rem" }}>

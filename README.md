@@ -1,6 +1,6 @@
-# Cuxton AI — website & console
+# CuxtonAI — website & console
 
-The marketing site for Cuxton AI, plus the admin console that runs its
+The marketing site for CuxtonAI, plus the admin console that runs its
 insights and enquiries. One Next.js app that builds to **static HTML** and is
 backed by Supabase for everything dynamic.
 

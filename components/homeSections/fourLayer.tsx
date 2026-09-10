@@ -36,7 +36,7 @@ export const FourLayersSection = () => {
                             </div>
                         </div>
 
-                        <div className={`${s.node} ${s[`nodeColor${i + 1}`]}`}>
+                        <div className={s.node}>
                             <span className={s.nodeRing} aria-hidden="true" />
                             <span className={s.nodeIcon}>{l.icon}</span>
                         </div>

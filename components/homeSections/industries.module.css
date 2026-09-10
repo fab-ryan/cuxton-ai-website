@@ -13,13 +13,13 @@
 /* Scoped Theme Variables */
 .themeWrap {
   --ind-card-bg: rgba(6, 22, 36, 0.72);
-  --ind-card-border: rgba(45, 154, 191, 0.25);
-  --ind-card-border-hover: rgba(45, 154, 191, 0.55);
+  --ind-card-border: rgba(var(--cuxton-teal-mid-rgb), 0.25);
+  --ind-card-border-hover: rgba(var(--cuxton-teal-mid-rgb), 0.55);
   --ind-text-primary: #ffffff;
   --ind-text-secondary: #cce3ed;
   --ind-text-muted: rgba(204, 227, 237, 0.6);
   --ind-badge-bg: rgba(27, 107, 138, 0.16);
-  --ind-badge-border: rgba(45, 154, 191, 0.35);
+  --ind-badge-border: rgba(var(--cuxton-teal-mid-rgb), 0.35);
   --ind-active-bg: rgba(27, 107, 138, 0.24);
   --ind-active-border: rgba(245, 166, 35, 0.5);
   position: relative;
@@ -179,7 +179,7 @@
   aspect-ratio: 16 / 9;
   border-radius: 0;
   overflow: hidden;
-  border: 1px solid rgba(45, 154, 191, 0.3);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.3);
   background: #101b26;
 }
 
@@ -244,7 +244,7 @@
   align-items: center;
   gap: 0.45rem;
   background: rgba(16, 27, 38, 0.85);
-  border: 1px solid rgba(45, 154, 191, 0.4);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.4);
   padding: 0.25rem 0.6rem;
   border-radius: 0;
   font-size: 0.65rem;
@@ -354,7 +354,7 @@
   padding: 0.75rem 0.9rem;
   border-radius: 0;
   background: rgba(6, 15, 25, 0.4);
-  border: 1px solid rgba(45, 154, 191, 0.15);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.15);
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: left;

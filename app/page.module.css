@@ -15,73 +15,6 @@
    gradient text clipping.
    ═════════════════════════════════════════════════════════════ */
 
-/* ─── Colourful icon badges ──────────────────────────────────
-   A varied, multi-hue palette layered on top of the brand's
-   teal/amber accents for card icons across this page — rotate
-   through iconBadge1..6 by index for a lively, "modern SaaS" mix
-   rather than a single flat colour everywhere. */
-
-.iconBadge {
-  width: 44px;
-  height: 44px;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition:
-    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    background 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.iconBadgeLg {
-  width: 52px;
-  height: 52px;
-  border-radius: 0;
-}
-
-a:hover > .iconBadge,
-.cardAccent:hover .iconBadge {
-  transform: translateY(-2px) scale(1.05);
-}
-
-.iconBadge1 {
-  background: rgba(245, 166, 35, 0.12);
-  border: 1px solid rgba(245, 166, 35, 0.25);
-  color: var(--cuxton-amber);
-}
-
-.iconBadge2 {
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  color: #4f97f7;
-}
-
-.iconBadge3 {
-  background: rgba(139, 92, 246, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  color: #a78bfa;
-}
-
-.iconBadge4 {
-  background: rgba(27, 107, 138, 0.14);
-  border: 1px solid rgba(27, 107, 138, 0.3);
-  color: var(--cuxton-teal-light);
-}
-
-.iconBadge5 {
-  background: rgba(236, 72, 153, 0.12);
-  border: 1px solid rgba(236, 72, 153, 0.25);
-  color: #ec4899;
-}
-
-.iconBadge6 {
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  color: #34d399;
-}
-
 /* ─── 1. HERO ───────────────────────────────────────────────────
    Nav is fixed at the top with a glass treatment and a height of
    68px. Pull the hero back up by that same amount and add it to the
@@ -145,7 +78,7 @@ a:hover > .iconBadge,
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #27c93f;
+  background: var(--status-ok);
   flex-shrink: 0;
 }
 
@@ -338,58 +271,6 @@ a:hover > .iconBadge,
 
 .cardAccentAmber::before {
   background: var(--cuxton-amber);
-}
-
-/* ─── Problem-card accent variants — top bar + hover glow tuned to
-       each card's icon colour, so the hover state reinforces which
-       icon hue the card belongs to instead of one flat teal for all ── */
-
-.problem__cardAccent1::before {
-  background: var(--cuxton-amber);
-}
-
-.problem__cardAccent2::before {
-  background: #4f97f7;
-}
-
-.problem__cardAccent3::before {
-  background: #a78bfa;
-}
-
-.problem__cardAccent4::before {
-  background: var(--cuxton-teal-light);
-}
-
-.problem__cardAccent5::before {
-  background: #ec4899;
-}
-
-.problem__cardAccent6::before {
-  background: #34d399;
-}
-
-.problem__card.problem__cardAccent1:hover {
-  border-color: rgba(245, 166, 35, 0.32);
-}
-
-.problem__card.problem__cardAccent2:hover {
-  border-color: rgba(79, 151, 247, 0.32);
-}
-
-.problem__card.problem__cardAccent3:hover {
-  border-color: rgba(167, 139, 250, 0.32);
-}
-
-.problem__card.problem__cardAccent4:hover {
-  border-color: rgba(27, 107, 138, 0.35);
-}
-
-.problem__card.problem__cardAccent5:hover {
-  border-color: rgba(236, 72, 153, 0.32);
-}
-
-.problem__card.problem__cardAccent6:hover {
-  border-color: rgba(52, 211, 153, 0.32);
 }
 
 /* ─── 3. WHAT CUXTON AI DOES (services) ─────────────────────── */

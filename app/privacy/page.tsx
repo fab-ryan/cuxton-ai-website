@@ -3,9 +3,9 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Privacy & Data Governance — Cuxton AI",
+  title: "Privacy & Data Governance — CuxtonAI",
   description:
-    "Cuxton AI's commitment to data sovereignty, zero unauthorized data retention, and enterprise security standards.",
+    "CuxtonAI's commitment to data sovereignty, zero unauthorized data retention, and enterprise security standards.",
 };
 
 export default function PrivacyPage() {
@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         title="Privacy &"
         titleHighlight="Data Sovereignty Policy"
         showVisual={false}
-        description="Cuxton AI is engineered around enterprise data sovereignty. We design, integrate, and deploy AI architectures that respect proprietary institutional information, client confidentiality, and strict jurisdictional boundaries."
+        description="CuxtonAI is engineered around enterprise data sovereignty. We design, integrate, and deploy AI architectures that respect proprietary institutional information, client confidentiality, and strict jurisdictional boundaries."
         tags={["Zero Model Training", "Private VPC Boundaries", "SOC 2 Aligned", "Full IP Ownership"]}
       />
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
               1. Principles of Data Sovereignty
             </h2>
             <p style={{ color: "rgba(var(--foreground-rgb), 0.75)", marginBottom: "1rem" }}>
-              Unlike consumer AI products, Cuxton AI does not harvest client interactions, operational data, or internal
+              Unlike consumer AI products, CuxtonAI does not harvest client interactions, operational data, or internal
               documentation to train public base models. When we build or integrate an AI solution:
             </p>
             <ul style={{ paddingLeft: "1.25rem", color: "rgba(var(--foreground-rgb), 0.75)", display: "flex", flexDirection: "column", gap: "0.5rem" }}>

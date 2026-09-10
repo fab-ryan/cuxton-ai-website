@@ -1,4 +1,4 @@
-# Cuxton AI — console backend
+# CuxtonAI — console backend
 
 The public site is a **static export** (`output: "export"` in `next.config.ts`).
 There is no Next.js server, so nothing in this repo can hold a secret or run
@@ -89,7 +89,7 @@ supabase functions deploy send-contact-reply
 
 supabase secrets set \
   RESEND_API_KEY=re_xxxxxxxxxxxx \
-  REPLY_FROM="Cuxton AI <hello@cuxtonai.com>"
+  REPLY_FROM="CuxtonAI <hello@cuxtonai.com>"
 ```
 
 Optionally pin the browser origin allowed to call it:

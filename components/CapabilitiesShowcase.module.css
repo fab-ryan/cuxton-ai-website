@@ -403,8 +403,7 @@
 }
 
 .footerTagDot {
-  width: 5px;
-  height: 5px;
+
   border-radius: 50%;
   background: var(--cuxton-amber);
   flex-shrink: 0;

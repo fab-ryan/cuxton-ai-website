@@ -3,9 +3,9 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — Cuxton AI",
+  title: "Terms of Use — CuxtonAI",
   description:
-    "Terms of use and enterprise engagement policies for Cuxton AI.",
+    "Terms of use and enterprise engagement policies for CuxtonAI.",
 };
 
 export default function TermsPage() {
@@ -17,7 +17,7 @@ export default function TermsPage() {
         title="Terms of"
         titleHighlight="Service & Engagement"
         showVisual={false}
-        description="These terms govern the use of the Cuxton AI website, enterprise consultative engagements, and software evaluation frameworks."
+        description="These terms govern the use of the CuxtonAI website, enterprise consultative engagements, and software evaluation frameworks."
         tags={["Enterprise Master Agreements", "Client IP Protection", "Jurisdictional Compliance"]}
       />
 
@@ -28,7 +28,7 @@ export default function TermsPage() {
               1. Engagement &amp; Advisory Scope
             </h2>
             <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
-              Cuxton AI provides enterprise AI consultancy, architectural design, and deployment services under tailored
+              CuxtonAI provides enterprise AI consultancy, architectural design, and deployment services under tailored
               Master Services Agreements (MSAs) and Statements of Work (SOWs). Information published on this site is provided
               for informational purposes regarding capabilities and methodology.
             </p>

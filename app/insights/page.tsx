@@ -6,7 +6,7 @@ import { fetchPublishedInsights } from "@/lib/supabase/build";
 export const metadata: Metadata = {
   title: "Insights",
   description:
-    "Practical thinking on private and enterprise AI — deployment models, governance, knowledge grounding and agent design, from the Cuxton AI team.",
+    "Practical thinking on private and enterprise AI — deployment models, governance, knowledge grounding and agent design, from the CuxtonAI team.",
 };
 
 export default async function InsightsPage() {

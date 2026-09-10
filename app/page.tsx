@@ -17,7 +17,7 @@ import { CTASection } from "@/components/homeSections/cta";
 export const metadata: Metadata = {
   title: "Enterprise AI Built Around Your Data, Workflows and Control",
   description:
-    "Cuxton AI helps institutions discover where AI can create real value, then integrates, customises or builds secure AI systems, agents and automations around the organisation's own knowledge and infrastructure.",
+    "CuxtonAI helps institutions discover where AI can create real value, then integrates, customises or builds secure AI systems, agents and automations around the organisation's own knowledge and infrastructure.",
 };
 
 export default function HomePage() {

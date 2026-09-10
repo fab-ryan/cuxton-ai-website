@@ -8,7 +8,7 @@
 //  Deploy:
 //    supabase functions deploy send-contact-reply
 //    supabase secrets set RESEND_API_KEY=re_xxx \
-//                         REPLY_FROM="Cuxton AI <hello@cuxtonai.com>"
+//                         REPLY_FROM="CuxtonAI <hello@cuxtonai.com>"
 // ═══════════════════════════════════════════════════════════════════
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
@@ -16,7 +16,7 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")!;
-const REPLY_FROM = Deno.env.get("REPLY_FROM") ?? "Cuxton AI <hello@cuxtonai.com>";
+const REPLY_FROM = Deno.env.get("REPLY_FROM") ?? "CuxtonAI <hello@cuxtonai.com>";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": Deno.env.get("ALLOWED_ORIGIN") ?? "*",
@@ -50,7 +50,7 @@ function renderEmail(recipientName: string, body: string) {
   return `<!doctype html>
 <html><body style="margin:0;padding:32px 16px;background:#f4f7fa;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#0c2233;">
   <div style="max-width:560px;margin:0 auto;background:#ffffff;border:1px solid #dbe6f0;border-radius:16px;padding:32px;">
-    <p style="margin:0 0 24px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#1b6b8a;">Cuxton AI</p>
+    <p style="margin:0 0 24px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#1b6b8a;">CuxtonAI</p>
     <p style="margin:0 0 16px;line-height:1.7;">Hello ${escapeHtml(recipientName)},</p>
     ${paragraphs}
     <hr style="border:none;border-top:1px solid #dbe6f0;margin:28px 0;" />

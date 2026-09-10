@@ -362,20 +362,20 @@ export default function ContactPage() {
                     {/* Submit */}
                     {status === "error" && (
                       <p style={{
-                        fontSize: "0.8rem", color: "#f87171",
+                        fontSize: "0.8rem", color: "var(--status-error)",
                         marginBottom: "1rem", padding: "0.75rem 1rem",
-                        background: "rgba(248,113,113,0.06)",
-                        border: "1px solid rgba(248,113,113,0.15)",
+                        background: "rgba(var(--status-error-rgb), 0.06)",
+                        border: "1px solid rgba(var(--status-error-rgb), 0.15)",
                       }}>
                         {errorMessage ?? "Something went wrong. Please try again."} If the problem
                         persists, email us directly at{" "}
-                        <a href="mailto:hello@cuxtonai.com" style={{ color: "#f87171" }}>hello@cuxtonai.com</a>.
+                        <a href="mailto:hello@cuxtonai.com" style={{ color: "var(--status-error)" }}>hello@cuxtonai.com</a>.
                       </p>
                     )}
 
                     <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
                       <p style={{ fontSize: "0.72rem", color: "rgba(var(--foreground-rgb),0.25)", maxWidth: 360, lineHeight: 1.5 }}>
-                        By submitting this form you agree to being contacted by Cuxton AI regarding your enquiry.
+                        By submitting this form you agree to being contacted by CuxtonAI regarding your enquiry.
                         We do not share your information with third parties.
                       </p>
                       <button

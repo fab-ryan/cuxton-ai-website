@@ -153,7 +153,7 @@ export default function LeadershipCouncil() {
         <div className={styles.header}>
           <h2 id="council-heading" className={styles.heading}>
             Leadership{" "}
-            <span className={styles.headingHighlight}>accountable for how Cuxton AI operates.</span>
+            <span className={styles.headingHighlight}>accountable for how CuxtonAI operates.</span>
           </h2>
           <p className={styles.lead}>
             Our executive council directly oversees institutional engagements, enforcing strict data-custody

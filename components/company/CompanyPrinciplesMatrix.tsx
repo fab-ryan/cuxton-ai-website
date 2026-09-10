@@ -111,8 +111,8 @@ const principlesData: PrincipleData[] = [
         {/* Metric 2 */}
         <text x="35" y="95" fill="var(--sch-text-dim)" fontSize="9">Compliance Clearance</text>
         <rect x="130" y="87" width="120" height="8" rx="4" fill="var(--sch-panel)" />
-        <rect x="130" y="87" width="120" height="8" rx="4" fill="#10b981" />
-        <text x="260" y="95" fill="#10b981" fontSize="9" fontWeight="700">100% PASS</text>
+        <rect x="130" y="87" width="120" height="8" rx="4" fill="var(--cuxton-teal-light)" />
+        <text x="260" y="95" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700">100% PASS</text>
 
         {/* Metric 3 */}
         <text x="35" y="115" fill="var(--sch-text-dim)" fontSize="9">Projected ROI Delta</text>
@@ -153,8 +153,8 @@ const principlesData: PrincipleData[] = [
         <path d="M160 85h20" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
         
         {/* Blocked external connection */}
-        <line x1="295" y1="85" x2="330" y2="85" stroke="#ef4444" strokeWidth="2" strokeDasharray="2 2" />
-        <circle cx="312" cy="85" r="7" fill="#ef4444" />
+        <line x1="295" y1="85" x2="330" y2="85" stroke="var(--status-error)" strokeWidth="2" strokeDasharray="2 2" />
+        <circle cx="312" cy="85" r="7" fill="var(--status-error)" />
         <line x1="308" y1="81" x2="316" y2="89" stroke="var(--sch-text)" strokeWidth="1.5" />
         <line x1="316" y1="81" x2="308" y2="89" stroke="var(--sch-text)" strokeWidth="1.5" />
       </svg>
@@ -175,13 +175,13 @@ const principlesData: PrincipleData[] = [
     renderGraphic: () => (
       <svg width="100%" height="160" viewBox="0 0 340 160" fill="none" aria-hidden="true">
         {/* Matrix comparison */}
-        <rect x="25" y="30" width="135" height="100" rx="8" fill="var(--sch-deep)" stroke="#ef4444" strokeWidth="1.5" strokeOpacity="0.6" />
-        <text x="92" y="50" fill="#ef4444" fontSize="9" fontWeight="700" textAnchor="middle">MONOLITHIC LLM</text>
+        <rect x="25" y="30" width="135" height="100" rx="8" fill="var(--sch-deep)" stroke="var(--status-error)" strokeWidth="1.5" strokeOpacity="0.6" />
+        <text x="92" y="50" fill="var(--status-error)" fontSize="9" fontWeight="700" textAnchor="middle">MONOLITHIC LLM</text>
         <text x="92" y="70" fill="var(--sch-text-dim)" fontSize="8" textAnchor="middle">High Latency: 2,400ms</text>
         <text x="92" y="85" fill="var(--sch-text-dim)" fontSize="8" textAnchor="middle">Cost: $$$$ per token</text>
         <text x="92" y="100" fill="var(--sch-text-dim)" fontSize="8" textAnchor="middle">Risk: Hallucinations</text>
-        <rect x="52" y="110" width="80" height="14" rx="3" fill="rgba(239, 68, 68, 0.2)" />
-        <text x="92" y="121" fill="#ef4444" fontSize="8" fontWeight="700" textAnchor="middle">REJECTED</text>
+        <rect x="52" y="110" width="80" height="14" rx="3" fill="rgba(var(--status-error-rgb), 0.2)" />
+        <text x="92" y="121" fill="var(--status-error)" fontSize="8" fontWeight="700" textAnchor="middle">REJECTED</text>
 
         <rect x="180" y="30" width="135" height="100" rx="8" fill="var(--sch-deep)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
         <text x="247" y="50" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" textAnchor="middle">TASK-OPTIMIZED SLM</text>
@@ -198,7 +198,7 @@ const principlesData: PrincipleData[] = [
     code: "CUX-PRI-05",
     label: "Human Oversight",
     tagline: "AI accelerates synthesis; authorized human operators hold ultimate authority.",
-    desc: "Consequential decisions must remain with authorized human professionals. AI systems engineered by Cuxton AI are built to elevate human judgement, enforce verification sign-offs, and provide instant manual overrides.",
+    desc: "Consequential decisions must remain with authorized human professionals. AI systems engineered by CuxtonAI are built to elevate human judgement, enforce verification sign-offs, and provide instant manual overrides.",
     commitments: [
       "Irrevocable human-in-the-loop validation gates on critical paths",
       "Explicit confidence scoring and ambiguity thresholds",
@@ -224,9 +224,9 @@ const principlesData: PrincipleData[] = [
         <path d="M215 80h25" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
 
         {/* Execution */}
-        <rect x="240" y="55" width="80" height="50" rx="6" fill="var(--sch-panel)" stroke="#10b981" strokeWidth="1.5" />
+        <rect x="240" y="55" width="80" height="50" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
         <text x="280" y="78" fill="var(--sch-text)" fontSize="10" fontWeight="700" textAnchor="middle">Certified</text>
-        <text x="280" y="93" fill="#10b981" fontSize="9" textAnchor="middle">Execution</text>
+        <text x="280" y="93" fill="var(--cuxton-teal-light)" fontSize="9" textAnchor="middle">Execution</text>
       </svg>
     ),
   },
@@ -261,8 +261,8 @@ const principlesData: PrincipleData[] = [
         <path d="M220 80h25" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
 
         {/* Verifiable Output */}
-        <rect x="245" y="45" width="80" height="70" rx="6" fill="var(--sch-panel)" stroke="#10b981" strokeWidth="1.5" />
-        <text x="285" y="72" fill="#10b981" fontSize="9" fontWeight="700" textAnchor="middle">Output</text>
+        <rect x="245" y="45" width="80" height="70" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
+        <text x="285" y="72" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" textAnchor="middle">Output</text>
         <text x="285" y="87" fill="var(--sch-text)" fontSize="8" textAnchor="middle">+ Source Citations</text>
         <text x="285" y="100" fill="var(--sch-amber-text)" fontSize="8" textAnchor="middle">Audit Ready</text>
       </svg>
@@ -294,8 +294,8 @@ const principlesData: PrincipleData[] = [
         <circle cx="160" cy="85" r="4" fill="var(--cuxton-teal-light)" />
         <text x="160" y="102" fill="var(--sch-text-dim)" fontSize="8" textAnchor="middle">Phase 2: Deploy</text>
 
-        <circle cx="285" cy="45" r="5" fill="#10b981" />
-        <text x="285" y="35" fill="#10b981" fontSize="9" fontWeight="700" textAnchor="middle">Autonomous Client Mastery</text>
+        <circle cx="285" cy="45" r="5" fill="var(--cuxton-teal-light)" />
+        <text x="285" y="35" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" textAnchor="middle">Autonomous Client Mastery</text>
       </svg>
     ),
   },
