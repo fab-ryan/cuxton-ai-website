@@ -67,14 +67,6 @@ function ChevronSvg() {
   );
 }
 
-/* ─── Small arrow for mobile links ─── */
-function ArrowSvg() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 12h14M12 5l7 7-7 7" />
-    </svg>
-  );
-}
 
 
 export default function Nav() {
@@ -197,12 +189,16 @@ export default function Nav() {
      links need to stay light too, regardless of theme. Once scrolled
      (or a mega-menu opens the glass backdrop) the bar sits on a
      theme-matched surface again and links can follow --foreground. */
-  const onHero = pathname === "/" && !scrolled && !openMenu;
+  const onHero =
+    pathname === "/" && !scrolled && !openMenu && !mobileOpen;
   const headerClass = [
     s.header,
     scrolled ? s["header--scrolled"] : "",
     openMenu ? s["header--menuOpen"] : "",
     onHero ? s["header--onHero"] : "",
+    /* Keeps .btn-primary and the hamburger on the dark palette while
+       the bar floats over the hero photo — see globals.css. */
+    onHero ? "on-dark" : "",
   ].filter(Boolean).join(" ");
 
   return (
@@ -228,7 +224,17 @@ export default function Nav() {
                 onClick={() => { setOpenMenu(null); setMobileOpen(false); }}
               >
                 <picture>
-                  <source media="(prefers-color-scheme: light)" srcSet={logoLightProps.srcSet || logoLightProps.src} />
+                  {/* Art-directed by theme everywhere except over the
+                      hero, where the ground is dark in both themes and
+                      only the white lettermark is readable. */}
+                  <source
+                    media="(prefers-color-scheme: light)"
+                    srcSet={
+                      onHero
+                        ? logoDarkProps.srcSet || logoDarkProps.src
+                        : logoLightProps.srcSet || logoLightProps.src
+                    }
+                  />
                   <img {...logoDarkProps} alt={logoCommon.alt} className="object-contain" fetchPriority="high" />
                 </picture>
               </Link>
@@ -354,7 +360,7 @@ export default function Nav() {
                             onClick={() => setOpenMenu(null)}
                             style={{ fontSize: "0.8rem", height: "2.5rem", justifyContent: "center" }}
                           >
-                            Book an AI Discovery Session →
+                            Book an AI Discovery Session
                           </Link>
                         </div>
                       </div>
@@ -533,7 +539,6 @@ export default function Nav() {
               >
                 {label}
                 <span className={s.mobileLinkArrow}>
-                  <ArrowSvg />
                 </span>
               </Link>
             </div>

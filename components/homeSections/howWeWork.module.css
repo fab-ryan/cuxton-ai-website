@@ -28,7 +28,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(6, 13, 20, 0.88);
+  background-color: rgba(16, 27, 38, 0.88);
   z-index: 0;
   transition: background-color 0.3s ease;
 }
@@ -55,7 +55,7 @@
 /* ─── Scoped Theme Variables ────────────────────────────────────── */
 
 .themeWrap {
-  --hww-card-bg: rgba(6, 20, 32, 0.76);
+  --hww-card-bg: rgba(20, 32, 44, 0.76);
   --hww-card-hover: rgba(9, 29, 46, 0.88);
   --hww-card-border: rgba(45, 154, 191, 0.22);
   --hww-card-border-hover: rgba(45, 154, 191, 0.55);
@@ -69,8 +69,8 @@
   --hww-badge-border: rgba(45, 154, 191, 0.4);
   --hww-badge-text: #5ecbf2;
   --hww-amber: var(--cuxton-amber);
-  --hww-console-bg: rgba(3, 16, 27, 0.92);
-  --hww-track-bg: rgba(10, 32, 50, 0.6);
+  --hww-console-bg: rgba(14, 24, 34, 0.92);
+  --hww-track-bg: rgba(26, 40, 53, 0.6);
   --hww-track-line: rgba(45, 154, 191, 0.25);
   position: relative;
   z-index: 2;
@@ -85,7 +85,7 @@
 
 .heading {
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.15;
   color: var(--hww-text-main);
   letter-spacing: -0.025em;
@@ -117,9 +117,8 @@
   background: var(--hww-console-bg);
   border: 1px solid var(--hww-card-border);
   padding: 0.35rem;
-  border-radius: 9999px;
+  /* border-radius: 9999px; */
   gap: 0.35rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .viewToggleBtn {
@@ -127,7 +126,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.55rem 1.25rem;
-  border-radius: 9999px;
+  /* border-radius: 9999px; */
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--hww-text-muted);
@@ -145,7 +144,6 @@
   color: var(--hww-text-main);
   background: rgba(27, 107, 138, 0.45);
   border: 1px solid rgba(45, 154, 191, 0.45);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .toggleIcon {
@@ -187,17 +185,14 @@
   --hww-accent: var(--hww-amber);
   background: var(--hww-card-bg);
   border: 1px solid var(--hww-card-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 1.75rem 1.5rem;
   display: flex;
   flex-direction: column;
   transition:
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.25s ease,
-    background-color 0.25s ease,
-    box-shadow 0.25s ease;
+    background-color 0.25s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -226,17 +221,11 @@
   transform: translateY(-4px);
   background: var(--hww-card-hover);
   border-color: var(--hww-accent);
-  box-shadow:
-    0 12px 32px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--hww-accent-border);
 }
 
 .phaseCardActive {
   border-color: var(--hww-accent);
   background: var(--hww-card-hover);
-  box-shadow:
-    0 12px 32px rgba(0, 0, 0, 0.45),
-    0 0 0 1px var(--hww-accent-border);
 }
 
 .phaseTopRow {
@@ -250,12 +239,11 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--hww-accent);
   background: var(--hww-accent-bg);
   border: 1px solid var(--hww-accent-border);
   padding: 0.25rem 0.65rem;
-  border-radius: 6px;
+  border-radius: 0;
 }
 
 .phaseTimeframe {
@@ -306,7 +294,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.2rem 0.55rem;
-  border-radius: 4px;
+  border-radius: 0;
   background: var(--hww-accent-bg);
   color: var(--hww-accent);
   border: 1px solid var(--hww-accent-border);
@@ -321,7 +309,7 @@
 .deliverableBox {
   background: var(--hww-deliverable-bg);
   border: 1px solid var(--hww-deliverable-border);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0.85rem;
   display: flex;
   align-items: flex-start;
@@ -332,7 +320,7 @@
   width: 28px;
   height: 28px;
   flex-shrink: 0;
-  border-radius: 6px;
+  border-radius: 0;
   background: rgba(245, 166, 35, 0.15);
   color: var(--hww-amber);
   display: flex;
@@ -350,7 +338,6 @@
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--hww-amber);
 }
 
@@ -368,11 +355,8 @@
 .inspectorConsole {
   background: var(--hww-console-bg);
   border: 1px solid var(--hww-card-border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 2.25rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
   margin-bottom: 3.5rem;
 }
 
@@ -457,9 +441,8 @@
 .trackStepActive .trackStepCircle {
   background: var(--hww-amber);
   border-color: var(--cuxton-amber-light);
-  color: #060d14;
-  font-weight: 800;
-  box-shadow: 0 0 16px rgba(245, 166, 35, 0.5);
+  color: #101b26;
+  font-weight: 600;
 }
 
 .trackStepLabel {
@@ -505,12 +488,12 @@
 
 .inspectorStepNumber {
   font-size: 0.85rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--hww-accent, var(--hww-amber));
   background: var(--hww-accent-bg, rgba(245, 166, 35, 0.12));
   border: 1px solid var(--hww-accent-border, rgba(245, 166, 35, 0.3));
   padding: 0.25rem 0.6rem;
-  border-radius: 6px;
+  border-radius: 0;
 }
 
 .inspectorPhaseTag {
@@ -522,7 +505,7 @@
 
 .inspectorStepTitle {
   font-size: 1.75rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--hww-text-main);
   line-height: 1.25;
   margin-bottom: 0.5rem;
@@ -558,7 +541,7 @@
   padding: 0.6rem 1.15rem;
   background: rgba(27, 107, 138, 0.2);
   border: 1px solid rgba(45, 154, 191, 0.35);
-  border-radius: 8px;
+  border-radius: 0;
   color: var(--hww-text-main);
   font-size: 0.85rem;
   font-weight: 600;
@@ -586,7 +569,7 @@
 .specCard {
   background: var(--hww-deliverable-bg);
   border: 1px solid var(--hww-card-border);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 1.25rem;
 }
 
@@ -597,7 +580,6 @@
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: var(--hww-badge-text);
   margin-bottom: 0.85rem;
 }
@@ -670,9 +652,7 @@
 .guaranteeCard {
   background: var(--hww-card-bg);
   border: 1px solid var(--hww-card-border);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 1.5rem;
   transition:
     transform 0.2s ease,
@@ -694,7 +674,7 @@
 .guaranteeIcon {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
+  border-radius: 0;
   background: rgba(45, 154, 191, 0.15);
   border: 1px solid rgba(45, 154, 191, 0.3);
   color: var(--hww-badge-text);
@@ -738,19 +718,17 @@
   gap: 0.5rem;
   padding: 0.85rem 1.85rem;
   background: var(--hww-amber);
-  color: #060d14;
+  color: #101b26;
   font-weight: 700;
   font-size: 0.95rem;
-  border-radius: 8px;
+  border-radius: 0;
   text-decoration: none;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.25);
 }
 
 .btnPrimary:hover {
   background: var(--cuxton-amber-light);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.35);
 }
 
 .btnSecondary {
@@ -763,7 +741,7 @@
   color: var(--hww-text-main);
   font-weight: 600;
   font-size: 0.95rem;
-  border-radius: 8px;
+  border-radius: 0;
   text-decoration: none;
   transition: all 0.2s ease;
 }
@@ -810,13 +788,9 @@
   }
 
   :global(:root:not([data-theme="dark"])) .phaseCard:hover {
-    box-shadow:
-      0 12px 28px rgba(12, 26, 38, 0.1),
-      0 0 0 1px rgba(27, 107, 138, 0.25);
   }
 
   :global(:root:not([data-theme="dark"])) .inspectorConsole {
-    box-shadow: 0 16px 40px rgba(12, 26, 38, 0.08);
   }
 }
 
@@ -850,11 +824,14 @@
 }
 
 :global([data-theme="light"]) .phaseCard:hover {
-  box-shadow:
-    0 12px 28px rgba(12, 26, 38, 0.1),
-    0 0 0 1px rgba(27, 107, 138, 0.25);
 }
 
 :global([data-theme="light"]) .inspectorConsole {
-  box-shadow: 0 16px 40px rgba(12, 26, 38, 0.08);
+}
+
+/* Headlines carry emphasis through scale and position, not hue. These accent
+   classes remain so existing markup keeps working, but they no longer tint a
+   fragment of a heading a different colour from the rest of it. */
+.headingAccent {
+  color: inherit;
 }

@@ -36,7 +36,7 @@ export default function TermsPage() {
 
           <article className="card-enterprise" style={{ padding: "2rem 2.5rem", lineHeight: 1.8 }}>
             <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "1rem" }}>
-              2. Intellectual Property &amp; Sovereign Code
+              2. Intellectual Property &amp; Code
             </h2>
             <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
               Unless otherwise agreed in an enterprise SOW, custom models, system prompts, pipelines, and integrations developed

@@ -41,15 +41,13 @@ export const HowWeWorkSection = () => {
 
   return (
     <section className={s.section} id="how-we-work">
-      {/* ─── SOLID ARCHITECTURAL BACKDROP & SEAMLESS SECTION BLENDS ─── */}
-      <div className={s.bgOverlay} />
+            <div className={s.bgOverlay} />
       <div className={s.edgeTransitionTop} aria-hidden="true" />
       <div className={s.edgeTransitionBottom} aria-hidden="true" />
 
       <div className={`container max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 ${s.themeWrap}`}>
         {/* ─── SECTION HEADER ────────────────────────────────────────── */}
         <Reveal className={s.header}>
-          <div className="section-label">How We Work · Engagement Model</div>
           <h2 className={s.heading}>
             Start with the problem.<br />
             <span className={s.headingAccent}>Scale what delivers verifiable value.</span>
@@ -163,7 +161,7 @@ export const HowWeWorkSection = () => {
                         handleInspectStep(phase.steps[0].index);
                       }}
                     >
-                      Inspect Phase Steps &rarr;
+                      Inspect Phase Steps
                     </button>
                   </div>
                 );
@@ -311,7 +309,7 @@ export const HowWeWorkSection = () => {
         <Reveal delay={160} className={s.footer}>
           <div className={s.footerButtons}>
             <Link href="/how-we-work" className={s.btnPrimary}>
-              See Full Engagement Model &rarr;
+              See Full Engagement Model
             </Link>
             <Link href="/contact" className={s.btnSecondary}>
               Schedule Opportunity Assessment
@@ -469,7 +467,7 @@ const engagementSteps: StepData[] = [
 
 const guarantees = [
   {
-    title: "100% Client IP Sovereignty",
+    title: "100% Client IP ownership",
     desc: "All custom prompt pipelines, integration middleware, specialized datasets, and fine-tuned weights remain the exclusive intellectual property of your institution.",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -492,8 +490,8 @@ const guarantees = [
     ),
   },
   {
-    title: "Air-Gapped & Sovereign Boundaries",
-    desc: "Your enterprise records never leave your designated sovereign environment. Zero data is shared, leaked, or utilized to train external public foundation models.",
+    title: "Air-Gapped & Boundaries",
+    desc: "Your enterprise records never leave your designated environment. Zero data is shared, leaked, or utilized to train external public foundation models.",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />

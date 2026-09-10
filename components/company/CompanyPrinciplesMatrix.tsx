@@ -126,7 +126,7 @@ const principlesData: PrincipleData[] = [
     n: "03",
     code: "CUX-PRI-03",
     label: "Data Control",
-    tagline: "Total institutional sovereignty. Zero multi-tenant cloud exposure.",
+    tagline: "Runs on your own infrastructure, never shared with other tenants.",
     desc: "For institutions handling sensitive, proprietary, or regulated information, control over data residency and computational custody is non-negotiable. We architect private environments that ensure zero data leaks to public foundation models.",
     commitments: [
       "On-premise, air-gapped, or VPC single-tenant execution",
@@ -202,7 +202,7 @@ const principlesData: PrincipleData[] = [
     commitments: [
       "Irrevocable human-in-the-loop validation gates on critical paths",
       "Explicit confidence scoring and ambiguity thresholds",
-      "Comprehensive cryptographic audit logs recording human approvals",
+      "Audit logs recording who approved what, and when",
     ],
     footerNote: "No black-box execution on mission-critical workflows.",
     renderGraphic: () => (
@@ -273,7 +273,7 @@ const principlesData: PrincipleData[] = [
     code: "CUX-PRI-07",
     label: "Long-Term Partnership",
     tagline: "Autonomous client teams, enduring architectures, complete IP custody.",
-    desc: "A well-deployed AI architecture continues to expand in value as institutional capability matures. We empower client engineers and operators to fully own, adapt, and run their systems autonomously without vendor lock-in.",
+    desc: "A system that is well built keeps earning its keep as your teams get better at using it. We train your engineers and operators to run it, change it and extend it without calling us.",
     commitments: [
       "100% intellectual property, custom code, and model weights custody transferred to client",
       "Formal engineering enablement, runbook training, and architectural handoff",
@@ -317,11 +317,9 @@ export default function CompanyPrinciplesMatrix() {
     <section className={styles.matrixSection}>
       <div className={styles.bgImage} aria-hidden="true" />
       <div className={styles.washOverlay} aria-hidden="true" />
-      <div className={styles.bgGrid} aria-hidden="true" />
 
       <div className={`${styles.container} ${styles.sectionContent}`}>
         <div className={styles.sectionHeader}>
-          <div className="section-label">Operating Convictions</div>
           <h2 className={styles.heading}>
             Principles that govern our{" "}
             <span className={styles.headingHighlight}>advisory &amp; engineering.</span>
@@ -359,7 +357,6 @@ export default function CompanyPrinciplesMatrix() {
                   <div className={styles.tenetBadge}>
                     <span>TENET {current.n} / 07</span>
                     <span className={styles.tenetBadgeDot} aria-hidden="true" />
-                    <span>DOCTRINE</span>
                   </div>
                   <span className={styles.tenetCode}>{current.code}</span>
                 </div>
@@ -411,9 +408,8 @@ export default function CompanyPrinciplesMatrix() {
               <div className={styles.schematicHeader}>
                 <div className={styles.schematicBadge}>
                   <span className={styles.schematicDot} aria-hidden="true" />
-                  <span>SPECIFICATION VERIFIED</span>
                 </div>
-                <span className={styles.schematicCode}>SYSTEM DIAGRAM</span>
+                
               </div>
 
               <div className={styles.schematicVisualStage}>

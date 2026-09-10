@@ -30,15 +30,13 @@
 .kicker {
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: rgba(var(--foreground-rgb), 0.4);
   margin: 0 0 1.5rem;
 }
 
 .heading {
   font-size: clamp(1.85rem, 3.4vw, 2.6rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.03em;
   color: var(--foreground);
@@ -190,7 +188,7 @@
   padding: 2.25rem 1.25rem;
   margin: 0 -1.25rem;
   border-bottom: 1px solid rgba(var(--foreground-rgb), 0.1);
-  transition: background 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 @media (min-width: 900px) {
@@ -203,7 +201,6 @@
 
 .entryIndicated {
   background: rgba(245, 166, 35, 0.045);
-  box-shadow: inset 3px 0 0 var(--cuxton-amber);
 }
 
 .entryRail {
@@ -220,7 +217,6 @@
 }
 
 .entryNum {
-  font-family: var(--font-mono), monospace;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -256,8 +252,6 @@
 .entryLabel {
   font-size: 0.68rem;
   font-weight: 750;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: rgba(var(--foreground-rgb), 0.38);
   margin: 0 0 0.7rem;
 }
@@ -309,8 +303,6 @@
 .metaPair dt {
   font-size: 0.68rem;
   font-weight: 750;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: rgba(var(--foreground-rgb), 0.38);
   margin-bottom: 0.25rem;
 }
@@ -377,7 +369,6 @@
 
 .colNum {
   display: block;
-  font-family: var(--font-mono), monospace;
   font-size: 0.7rem;
   font-weight: 700;
   color: rgba(var(--foreground-rgb), 0.32);
@@ -397,7 +388,6 @@
 
 .colIndicated {
   background: rgba(245, 166, 35, 0.06);
-  box-shadow: inset 2px 0 0 var(--cuxton-amber);
   padding-left: 1rem !important;
 }
 

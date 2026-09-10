@@ -13,7 +13,7 @@ import styles from "./footer.module.css";
    • Legal & utility bar
    ═══════════════════════════════════════════════════════════════════ */
 
-const footerLogoCommon = { alt: "Cuxton AI — Sovereign Enterprise AI", width: 148, height: 36 };
+const footerLogoCommon = { alt: "Cuxton AI — Enterprise AI", width: 148, height: 36 };
 const { props: footerLogoDarkProps } = getImageProps({ ...footerLogoCommon, src: "/full_color-white.png" });
 
 type LinkItem = {
@@ -55,7 +55,7 @@ const companyLinks: LinkItem[] = [
 const trustBadges = [
   "SOC 2 Aligned",
   "Zero Data Retention",
-  "100% IP Sovereignty",
+  "100% IP ownership",
   "VPC / On-Premise Ready",
 ];
 
@@ -87,9 +87,7 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer} role="contentinfo" aria-label="Site Footer">
-      {/* Background Texture (matches ambient hex-grid used site-wide) */}
       <div className={styles.overlay} aria-hidden="true" />
-      <div className="absolute inset-0 hex-grid pointer-events-none" aria-hidden="true" />
       <div className={styles.glowTopBorder} aria-hidden="true" />
 
       <div className={styles.container}>
@@ -143,7 +141,7 @@ export default function Footer() {
 
             <p className={styles.brandTagline}>
               Enterprise AI consultancy, integration and solutions. Transforming institutional knowledge
-              and critical workflows into secure, resilient, and sovereign AI capabilities.
+              and critical workflows into secure, resilient, and private AI capabilities.
             </p>
 
             {/* Architecture Standards Chips */}

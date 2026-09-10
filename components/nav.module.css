@@ -25,7 +25,6 @@
   transition: padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
               top 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   animation: navEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  backdrop-filter: blur(2px);
 }
 
 /* When scrolled, pull down slightly and add side padding so the
@@ -40,13 +39,7 @@
 .headerInner
 {
   position: relative;
-  transition: background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              border-radius 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              margin 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.45s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1), margin 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid transparent;
   border-radius: 0;
   max-width: 100%;
@@ -56,18 +49,10 @@
 .header--scrolled .headerInner
 {
   background: rgba(var(--background-rgb), 0.72);
-  backdrop-filter: blur(26px) saturate(1.8);
-  -webkit-backdrop-filter: blur(26px) saturate(1.8);
   border-color: rgba(27, 107, 138, 0.18);
-  border-radius: 999px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 18px 50px -12px rgba(6, 13, 20, 0.55),
-    0 0 0 1px rgba(27, 107, 138, 0.1),
-    0 0 40px -10px rgba(27, 107, 138, 0.28),
-    0 0 30px -14px rgba(245, 166, 35, 0.18);
   max-width: 1200px;
   margin: 0 auto;
+  backdrop-filter: blur(12px) saturate(1.2);
 }
 
 .header--scrolled .headerInner:hover
@@ -79,8 +64,6 @@
 .header--menuOpen .headerInner
 {
   background: rgba(var(--background-rgb), 0.92);
-  backdrop-filter: blur(32px) saturate(1.8);
-  -webkit-backdrop-filter: blur(32px) saturate(1.8);
   border-color: rgba(27, 107, 138, 0.18);
 }
 
@@ -128,8 +111,8 @@
   content: "";
   position: absolute;
   inset: -4px -8px;
-  border-radius: 12px;
-  background: radial-gradient(circle, rgba(27, 107, 138, 0.08) 0%, transparent 70%);
+  border-radius: 0;
+  background: none;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -167,7 +150,7 @@
   align-items: center;
   gap: 0.3rem;
   padding: 0.5rem 0.875rem;
-  border-radius: 10px;
+  border-radius: 0;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -201,9 +184,8 @@
   transform: translateX(-50%);
   width: 18px;
   height: 2px;
-  border-radius: 1px;
+  border-radius: 0;
   background: var(--cuxton-amber);
-  box-shadow: 0 0 8px rgba(245, 166, 35, 0.5);
 }
 
 /* Hover indicator — subtle underline that grows */
@@ -215,7 +197,7 @@
   left: 50%;
   width: 0;
   height: 2px;
-  border-radius: 1px;
+  border-radius: 0;
   background: rgba(27, 107, 138, 0.4);
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -277,24 +259,18 @@
   padding: 0.5rem clamp(1rem, 3vw, 3rem) 1.5rem;
   animation: megaEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   z-index: 99;
-  backdrop-filter: blur(2px);
 }
 
 .megaPanel
 {
   background: rgba(var(--bg-surface-rgb), 0.97);
-  backdrop-filter: blur(40px) saturate(1.8);
-  -webkit-backdrop-filter: blur(40px) saturate(1.8);
   border: 1px solid rgba(27, 107, 138, 0.14);
-  border-radius: 20px;
-  box-shadow:
-    0 24px 80px rgba(6, 13, 20, 0.7),
-    0 0 0 1px rgba(27, 107, 138, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  border-radius: 0;
   padding: 1.75rem;
   position: relative;
   overflow: hidden;
   background-clip: padding-box;
+  backdrop-filter: blur(12px) saturate(1.2);
 }
 
 /* Subtle ambient glow on the mega-menu */
@@ -307,7 +283,7 @@
   transform: translateX(-50%);
   width: 70%;
   height: 80%;
-  background: radial-gradient(ellipse, rgba(27, 107, 138, 0.06) 0%, transparent 70%);
+  background: none;
   pointer-events: none;
 }
 
@@ -315,8 +291,6 @@
 {
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--cuxton-amber);
   margin-bottom: 1rem;
   opacity: 0.85;
@@ -349,7 +323,7 @@
   align-items: flex-start;
   gap: 0.75rem;
   padding: 0.75rem;
-  border-radius: 12px;
+  border-radius: 0;
   cursor: pointer;
   text-decoration: none;
   transition: background 0.2s ease, transform 0.2s ease;
@@ -370,13 +344,12 @@
   background: var(--cuxton-teal-mid);
   flex-shrink: 0;
   margin-top: 5px;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .megaItem:hover .megaItemDot
 {
   background: var(--cuxton-amber);
-  box-shadow: 0 0 6px rgba(245, 166, 35, 0.4);
 }
 
 .megaItemTitle
@@ -406,7 +379,7 @@
 {
   background: rgba(27, 107, 138, 0.06);
   border: 1px solid rgba(27, 107, 138, 0.12);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -418,8 +391,6 @@
 {
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
   color: var(--cuxton-teal-light);
   margin-bottom: 0.25rem;
 }
@@ -466,7 +437,7 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  border-radius: 12px;
+  border-radius: 0;
   background: rgba(27, 107, 138, 0.08);
   border: 1px solid rgba(27, 107, 138, 0.16);
   cursor: pointer;
@@ -503,7 +474,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  border-radius: 1px;
+  border-radius: 0;
   background: currentColor;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.25s ease,
@@ -571,11 +542,9 @@
   content: "";
   position: absolute;
   inset: -2px;
-  border-radius: 14px;
+  border-radius: 0;
   background: var(--cuxton-amber);
   opacity: 0;
-  filter: blur(12px);
-  animation: ctaPulse 3s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
@@ -589,8 +558,6 @@
   inset: 0;
   z-index: 90;
   background: rgba(var(--background-rgb), 0.98);
-  backdrop-filter: blur(32px) saturate(1.5);
-  -webkit-backdrop-filter: blur(32px) saturate(1.5);
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -655,7 +622,7 @@
   font-size: 0.9rem;
   color: rgba(var(--foreground-rgb), 0.6);
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 0;
   transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 

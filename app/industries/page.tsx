@@ -8,7 +8,7 @@ import PageHero from "@/components/PageHero";
 export const metadata: Metadata = {
   title: "Industries & Sector Practices — Cuxton AI",
   description:
-    "Cuxton AI engineers sovereign, verifiable AI systems for financial services, healthcare, national defense, academic research, telecommunications, and legal advisory.",
+    "Cuxton AI builds verifiable AI systems for financial services, healthcare, national defense, academic research, telecommunications, and legal advisory.",
 };
 
 export default function IndustriesPage() {
@@ -37,7 +37,7 @@ export default function IndustriesPage() {
 
       {/* --- Alternating Industry Showcase Cards --------------------------- */}
       <section id="showcase" className={styles.showcaseSection}>
-        <div className={`section-container ${styles.showcaseContainer}`}>
+        <div className={`container max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 text-left ${styles.showcaseContainer}`}>
           {industries.map((ind, i) => (
             <article
               key={ind.id}
@@ -78,18 +78,10 @@ export default function IndustriesPage() {
                   {/* Actions */}
                   <div className={styles.cardActions}>
                     <Link href={`/industries/${ind.id}`} className={styles.cardPrimaryBtn}>
-                      <span>Explore {ind.name} Architecture</span>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
-                    </Link>
+                      <span>Explore {ind.name} Architecture</span></Link>
 
                     <Link href="/contact" className={styles.cardSecondaryBtn}>
-                      <span>Consult Specialists</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
-                    </Link>
+                      <span>Consult Specialists</span></Link>
                   </div>
                 </div>
 
@@ -98,7 +90,7 @@ export default function IndustriesPage() {
                   <div className={styles.imageFrame}>
                     <Image
                       src={ind.image}
-                      alt={`${ind.name} sovereign architecture visual preview`}
+                      alt={`${ind.name} architecture visual preview`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 550px"
                       className={styles.cardImage}
@@ -135,7 +127,7 @@ export default function IndustriesPage() {
       <section className={styles.governanceSection}>
         <div className="section-container">
           <div className={styles.sectionHeaderCenter}>
-            <p className={styles.centerEyebrow}>Sovereign Operating Baseline</p>
+            <p className={styles.centerEyebrow}>Operating Baseline</p>
             <h2 className={styles.centerTitle}>Non-negotiable security across all sectors</h2>
             <p className={styles.centerDesc}>
               Every industry implementation adheres to our hardened engineering principles. No client
@@ -151,7 +143,7 @@ export default function IndustriesPage() {
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                 </svg>
               </div>
-              <h3 className={styles.govCardTitle}>Sovereign Enclave Isolation</h3>
+              <h3 className={styles.govCardTitle}>Private Enclave Isolation</h3>
               <p className={styles.govCardDesc}>
                 Deployed exclusively within client-owned VPCs, on-premise hardware, or air-gapped data centers.
                 Zero multi-tenant risks or external API dependencies.
@@ -184,7 +176,7 @@ export default function IndustriesPage() {
               </div>
               <h3 className={styles.govCardTitle}>Continuous Compliance &amp; Audit</h3>
               <p className={styles.govCardDesc}>
-                Comprehensive role-based access control, cryptographic audit logs, and alignment with
+                Role-based access control, cryptographic audit logs, and alignment with
                 SOC 2 Type II, ISO 27001, HIPAA, and federal regulatory standards.
               </p>
             </div>
@@ -202,11 +194,7 @@ export default function IndustriesPage() {
           </p>
           <div className={styles.ctaBtnGroup}>
             <Link href="/contact" className={styles.primaryHeroBtn}>
-              <span>Start a Confidential Conversation</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
+              <span>Start a Confidential Conversation</span></Link>
             <Link href="/solutions" className={styles.secondaryHeroBtn}>
               <span>Explore All Solutions</span>
             </Link>

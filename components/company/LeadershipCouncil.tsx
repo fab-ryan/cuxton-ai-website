@@ -68,7 +68,7 @@ const council: CouncilMember[] = [
     role: "Chief Executive & Founder",
     shortRole: "Chief Executive",
     domain: "Executive Strategy",
-    bio: "Former enterprise systems architect with two decades advising tier-1 capital markets and aerospace institutions on sovereign infrastructure.",
+    bio: "Former enterprise systems architect with two decades advising tier-1 capital markets and aerospace institutions on infrastructure.",
     mandate: [
       "Final approval on every institutional engagement mandate",
       "Chairs the client data-custody and escalation board",
@@ -83,8 +83,8 @@ const council: CouncilMember[] = [
   {
     code: "CUX-EXE-02",
     name: "Dr. Elena Rostova",
-    role: "Head of Sovereign Intelligence",
-    shortRole: "Sovereign Intelligence",
+    role: "Head of Intelligence",
+    shortRole: "Intelligence",
     domain: "Research & Verification",
     bio: "PhD in Formal Methods and Distributed Machine Learning. Directs private model fine-tuning, deterministic evaluation, and zero-hallucination pipelines.",
     mandate: [
@@ -151,7 +151,6 @@ export default function LeadershipCouncil() {
 
       <div className={styles.container}>
         <div className={styles.header}>
-          <div className="section-label">Executive Governance</div>
           <h2 id="council-heading" className={styles.heading}>
             Leadership{" "}
             <span className={styles.headingHighlight}>accountable for how Cuxton AI operates.</span>

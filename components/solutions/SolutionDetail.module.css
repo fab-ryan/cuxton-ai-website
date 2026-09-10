@@ -15,11 +15,8 @@
   margin-top: -68px;
   padding-top: calc(5rem + 68px);
   padding-bottom: 5rem;
-  background-color: #060d14;
-  background-image: 
-    radial-gradient(circle at 85% 25%, rgba(27, 107, 138, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 15% 75%, rgba(245, 166, 35, 0.08) 0%, transparent 45%),
-    url("/solution-hero.png");
+  background-color: #101b26;
+  background-image: url("/solution-hero.png");
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
@@ -39,8 +36,8 @@
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(6, 13, 20, 0.82) 0%,
-    rgba(6, 13, 20, 0.94) 100%
+    rgba(16, 27, 38, 0.82) 0%,
+    rgba(16, 27, 38, 0.94) 100%
   );
   z-index: 1;
 }
@@ -51,8 +48,7 @@
   height: 500px;
   right: -50px;
   top: 15%;
-  background: radial-gradient(circle, rgba(27, 107, 138, 0.22) 0%, transparent 70%);
-  filter: blur(60px);
+  background: none;
   pointer-events: none;
   z-index: 1;
 }
@@ -130,15 +126,12 @@
   padding: 0.35rem 0.85rem;
   background-color: rgba(27, 107, 138, 0.18);
   border: 1px solid rgba(27, 107, 138, 0.38);
-  border-radius: 999px;
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .badgeIndex {
   color: var(--cuxton-amber);
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .badgeDot {
@@ -146,7 +139,6 @@
   height: 5px;
   border-radius: 50%;
   background-color: var(--cuxton-amber);
-  box-shadow: 0 0 6px var(--cuxton-amber);
 }
 
 .badgeTag {
@@ -158,7 +150,7 @@
 
 .title {
   font-size: clamp(2.15rem, 4.2vw, 3.25rem);
-  font-weight: 850;
+  font-weight: 600;
   line-height: 1.12;
   letter-spacing: -0.025em;
   color: #ffffff;
@@ -194,7 +186,7 @@
   align-items: center;
   gap: 0.45rem;
   padding: 0.35rem 0.75rem;
-  border-radius: 6px;
+  border-radius: 0;
   font-size: 0.76rem;
   font-weight: 600;
   background: rgba(27, 107, 138, 0.12);
@@ -220,19 +212,17 @@
   height: 3.125rem;
   padding: 0 1.75rem;
   background: var(--cuxton-amber);
-  color: #060d14;
+  color: #101b26;
   font-weight: 750;
   font-size: 0.92rem;
-  border-radius: 8px;
+  border-radius: 0;
   text-decoration: none;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 18px rgba(245, 166, 35, 0.3);
 }
 
 .primaryCta:hover {
   background: var(--cuxton-amber-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.42);
 }
 
 .secondaryCta {
@@ -244,7 +234,7 @@
   padding: 0 1.5rem;
   background: rgba(27, 107, 138, 0.12);
   border: 1px solid rgba(27, 107, 138, 0.35);
-  border-radius: 8px;
+  border-radius: 0;
   color: var(--foreground);
   font-weight: 650;
   font-size: 0.9rem;
@@ -268,18 +258,14 @@
 .blueprintCard {
   position: relative;
   overflow: hidden;
-  background: rgba(9, 21, 37, 0.75);
+  background: rgba(22, 34, 46, 0.75);
   border: 1px solid rgba(27, 107, 138, 0.35);
-  border-radius: 16px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0;
+  transition: border-color 0.3s ease;
 }
 
 .blueprintCard:hover {
   border-color: rgba(27, 107, 138, 0.55);
-  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.5), 0 0 24px rgba(27, 107, 138, 0.15);
 }
 
 .cardGlow {
@@ -288,7 +274,7 @@
   right: 0;
   width: 220px;
   height: 220px;
-  background: radial-gradient(circle, rgba(27, 107, 138, 0.22) 0%, transparent 70%);
+  background: none;
   pointer-events: none;
 }
 
@@ -297,7 +283,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.35rem;
-  background: rgba(6, 13, 20, 0.65);
+  background: rgba(16, 27, 38, 0.65);
   border-bottom: 1px solid rgba(27, 107, 138, 0.2);
 }
 
@@ -308,7 +294,6 @@
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--cuxton-teal-light);
 }
 
@@ -317,11 +302,9 @@
   height: 7px;
   border-radius: 50%;
   background: #10b981;
-  box-shadow: 0 0 8px #10b981;
 }
 
 .cardCode {
-  font-family: var(--font-mono), monospace;
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--cuxton-amber);
@@ -351,11 +334,10 @@
   font-size: 0.7rem;
   font-weight: 700;
   padding: 0.2rem 0.55rem;
-  border-radius: 4px;
+  border-radius: 0;
   background: rgba(245, 166, 35, 0.12);
   color: var(--cuxton-amber);
   border: 1px solid rgba(245, 166, 35, 0.28);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
 }
@@ -376,8 +358,8 @@
 
 .telemetryItem {
   padding: 0.75rem 0.85rem;
-  border-radius: 8px;
-  background: rgba(6, 13, 20, 0.55);
+  border-radius: 0;
+  background: rgba(16, 27, 38, 0.55);
   border: 1px solid rgba(27, 107, 138, 0.2);
   display: flex;
   flex-direction: column;
@@ -394,14 +376,13 @@
 .telemetryLabel {
   font-size: 0.68rem;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--cuxton-teal-light);
 }
 
 .deliverablesBox {
   padding: 0.9rem 1rem;
-  border-radius: 10px;
+  border-radius: 0;
   margin-bottom: 1.15rem;
   background: rgba(27, 107, 138, 0.07);
   border: 1px solid rgba(27, 107, 138, 0.22);
@@ -413,7 +394,6 @@
   justify-content: space-between;
   font-size: 0.74rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
   color: rgba(var(--foreground-rgb), 0.85);
   margin-bottom: 0.6rem;
@@ -465,9 +445,7 @@
   position: sticky;
   top: 68px;
   z-index: 30;
-  background: rgba(6, 13, 20, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(16, 27, 38, 0.88);
   border-bottom: 1px solid rgba(27, 107, 138, 0.24);
   padding: 0.65rem 0;
   transition: all 0.25s ease;
@@ -490,8 +468,6 @@
 .sectionNavLabel {
   font-size: 0.72rem;
   font-weight: 750;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: var(--cuxton-teal-light);
   white-space: nowrap;
   flex-shrink: 0;
@@ -525,7 +501,6 @@
   white-space: nowrap;
   flex-shrink: 0;
   padding: 0.42rem 0.9rem;
-  border-radius: 999px;
   font-size: 0.78rem;
   font-weight: 650;
   color: rgba(var(--foreground-rgb), 0.7);
@@ -541,7 +516,9 @@
   border-radius: 50%;
   background: currentColor;
   opacity: 0.5;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .sectionPill:hover {
@@ -556,15 +533,14 @@
 }
 
 .sectionPillActive {
-  color: #060d14 !important;
+  color: #101b26 !important;
   background: var(--cuxton-amber) !important;
   border-color: var(--cuxton-amber) !important;
   font-weight: 750;
-  box-shadow: 0 2px 10px rgba(245, 166, 35, 0.35);
 }
 
 .sectionPillActive .sectionPillDot {
-  background: #060d14;
+  background: #101b26;
   opacity: 1;
 }
 
@@ -590,7 +566,7 @@
   align-items: center;
   gap: 0.6rem;
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--foreground);
   margin: 0 0 1.5rem;
 }
@@ -622,7 +598,7 @@
 
 .challengesHeading {
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--foreground);
   margin: 0 0 1rem;
 }
@@ -715,11 +691,11 @@
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background: rgba(27, 107, 138, 0.1);
   border: 1px solid var(--border);
   color: var(--cuxton-teal-light);
-  font-weight: 800;
+  font-weight: 600;
   font-size: 0.8rem;
 }
 
@@ -784,7 +760,6 @@
   padding: 0.55rem 1rem;
   background: rgba(27, 107, 138, 0.08);
   border: 1px solid var(--border);
-  border-radius: 999px;
   color: var(--cuxton-teal-light);
   font-size: 0.85rem;
   font-weight: 600;
@@ -820,7 +795,7 @@
 
 .closingHeading {
   font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 800;
+  font-weight: 600;
   color: var(--foreground);
   margin: 0 0 0.85rem;
 }
@@ -844,10 +819,7 @@
 @media (prefers-color-scheme: light) {
   .header {
     background-color: #f4f7fa;
-    background-image:
-      radial-gradient(circle at 85% 25%, rgba(27, 107, 138, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 15% 75%, rgba(245, 166, 35, 0.06) 0%, transparent 45%),
-      url("/solution-hero.png");
+    background-image: url("/solution-hero.png");
   }
 
   .heroOverlay {
@@ -865,7 +837,6 @@
   .blueprintCard {
     background: rgba(255, 255, 255, 0.9);
     border-color: rgba(27, 107, 138, 0.28);
-    box-shadow: 0 16px 36px rgba(12, 34, 51, 0.08);
   }
 
   .cardHeader {
@@ -893,4 +864,3 @@
     color: #0c2233;
   }
 }
-

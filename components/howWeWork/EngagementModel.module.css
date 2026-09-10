@@ -45,7 +45,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(6, 13, 20, 0.82);
+  background-color: rgba(16, 27, 38, 0.82);
   z-index: 0;
 }
 
@@ -58,7 +58,7 @@
 
 .heading {
   font-size: clamp(2.1rem, 3.6vw, 3rem);
-  font-weight: 850;
+  font-weight: 600;
   color: var(--foreground);
   line-height: 1.16;
   letter-spacing: -0.025em;
@@ -83,14 +83,11 @@
   position: sticky;
   top: 4.25rem;
   z-index: 35;
-  background-color: rgba(6, 13, 20, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(16, 27, 38, 0.94);
   border: 1px solid rgba(27, 107, 138, 0.3);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 0.75rem 1rem;
   margin-bottom: 2.25rem;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
 }
 
 @media (min-width: 1024px) {
@@ -107,15 +104,14 @@
 }
 
 .mobileStepBadge {
-  font-family: var(--font-mono), monospace;
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--cuxton-amber);
 }
 
 .mobileStepName {
   font-size: 0.82rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--foreground);
 }
 
@@ -123,7 +119,7 @@
   height: 4px;
   width: 100%;
   background-color: rgba(27, 107, 138, 0.2);
-  border-radius: 2px;
+  border-radius: 0;
   overflow: hidden;
   margin-bottom: 0.65rem;
 }
@@ -153,8 +149,8 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.3rem 0.65rem;
-  border-radius: 6px;
-  background-color: rgba(9, 21, 37, 0.8);
+  border-radius: 0;
+  background-color: rgba(22, 34, 46, 0.8);
   border: 1px solid rgba(27, 107, 138, 0.25);
   color: rgba(var(--foreground-rgb), 0.75);
   font-size: 0.72rem;
@@ -223,11 +219,10 @@
 
 /* Active Phase Card */
 .phaseOverviewCard {
-  background-color: rgba(9, 21, 37, 0.92);
+  background-color: rgba(22, 34, 46, 0.92);
   border: 1px solid rgba(27, 107, 138, 0.32);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 1.1rem;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
 }
 
 .phaseMetaRow {
@@ -238,25 +233,23 @@
 }
 
 .phaseCodeBadge {
-  font-family: var(--font-mono), monospace;
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 600;
   padding: 0.2rem 0.55rem;
-  border-radius: 6px;
+  border-radius: 0;
   background-color: rgba(245, 166, 35, 0.16);
   border: 1px solid rgba(245, 166, 35, 0.35);
   color: var(--cuxton-amber);
 }
 
 .progressText {
-  font-family: var(--font-mono), monospace;
   font-size: 0.72rem;
   color: rgba(var(--foreground-rgb), 0.55);
 }
 
 .phaseTitle {
   font-size: 1.12rem;
-  font-weight: 850;
+  font-weight: 600;
   color: var(--foreground);
   margin: 0 0 0.35rem;
   line-height: 1.25;
@@ -274,7 +267,7 @@
   height: 4px;
   width: 100%;
   background-color: rgba(27, 107, 138, 0.2);
-  border-radius: 2px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -286,21 +279,18 @@
 
 /* Vertical Connected Timeline Navigation Rail */
 .timelineNav {
-  background-color: rgba(9, 21, 37, 0.88);
+  background-color: rgba(22, 34, 46, 0.88);
   border: 1px solid rgba(27, 107, 138, 0.28);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   position: relative;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
 }
 
 .timelineTitle {
   font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.45);
   margin-bottom: 0.6rem;
   padding-bottom: 0.4rem;
@@ -331,7 +321,7 @@
   align-items: center;
   gap: 0.7rem;
   padding: 0.32rem 0.5rem;
-  border-radius: 10px;
+  border-radius: 0;
   background-color: transparent;
   border: 1px solid transparent;
   text-align: left;
@@ -348,23 +338,21 @@
 }
 
 .timelineNodeBtnActive {
-  background-color: rgba(13, 31, 50, 0.95);
+  background-color: rgba(28, 42, 55, 0.95);
   border-color: var(--cuxton-teal-light);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 .nodeDot {
   width: 26px;
   height: 26px;
-  border-radius: 7px;
-  background-color: rgba(6, 13, 20, 0.9);
+  border-radius: 0;
+  background-color: rgba(16, 27, 38, 0.9);
   border: 1px solid rgba(27, 107, 138, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono), monospace;
   font-size: 0.66rem;
-  font-weight: 800;
+  font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.6);
   flex-shrink: 0;
   transition: all 0.2s ease;
@@ -373,7 +361,7 @@
 .timelineNodeBtnActive .nodeDot {
   background-color: var(--cuxton-amber);
   border-color: var(--cuxton-amber);
-  color: #060d14;
+  color: #101b26;
   transform: scale(1.06);
 }
 
@@ -392,7 +380,7 @@
 
 .nodeName {
   font-size: 0.82rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--foreground);
   line-height: 1.2;
 }
@@ -408,10 +396,10 @@
 
 /* Active Gate HUD Snippet */
 .activeGateHud {
-  background-color: rgba(6, 13, 20, 0.85);
+  background-color: rgba(16, 27, 38, 0.85);
   border: 1px solid rgba(245, 166, 35, 0.35);
   border-left: 4px solid var(--cuxton-amber);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 1rem 1.15rem;
 }
 
@@ -424,9 +412,7 @@
 
 .gateHudLabel {
   font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--cuxton-amber);
 }
 
@@ -443,9 +429,9 @@
    thing to go when the viewport is too short to hold the whole deck
    without a scrollbar. Milestone navigation always wins. */
 .deckRadarBox {
-  background-color: rgba(6, 13, 20, 0.8);
+  background-color: rgba(16, 27, 38, 0.8);
   border: 1px solid rgba(27, 107, 138, 0.26);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 0.8rem;
   display: none;
   flex-direction: column;
@@ -463,9 +449,7 @@
 
 .deckRadarTitle {
   font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.5);
   margin-bottom: 0.65rem;
 }
@@ -477,7 +461,7 @@
   justify-content: center;
   gap: 0.55rem;
   height: 2.85rem;
-  border-radius: 10px;
+  border-radius: 0;
   background-color: var(--cuxton-teal);
   border: 1px solid var(--cuxton-teal-light);
   color: #ffffff;
@@ -491,7 +475,6 @@
 .deckCtaBtn:hover {
   background-color: var(--cuxton-teal-mid);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(27, 107, 138, 0.35);
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -505,19 +488,17 @@
 }
 
 .milestoneCard {
-  background-color: rgba(9, 21, 37, 0.85);
+  background-color: rgba(22, 34, 46, 0.85);
   border: 1px solid rgba(27, 107, 138, 0.28);
-  border-radius: 20px;
+  border-radius: 0;
   padding: 2.25rem;
   position: relative;
   scroll-margin-top: 6.5rem;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease;
 }
 
 .milestoneCardActive {
   border-color: var(--cuxton-teal-light);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
 }
 
 /* Card Header */
@@ -540,11 +521,10 @@
 }
 
 .stepNumBadge {
-  font-family: var(--font-mono), monospace;
   font-size: 0.74rem;
-  font-weight: 850;
+  font-weight: 600;
   padding: 0.22rem 0.65rem;
-  border-radius: 6px;
+  border-radius: 0;
   background-color: rgba(245, 166, 35, 0.16);
   border: 1px solid rgba(245, 166, 35, 0.35);
   color: var(--cuxton-amber);
@@ -553,14 +533,12 @@
 .phaseTag {
   font-size: 0.72rem;
   font-weight: 750;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--cuxton-teal-light);
 }
 
 .cardTitle {
   font-size: clamp(1.65rem, 2.5vw, 2.2rem);
-  font-weight: 850;
+  font-weight: 600;
   color: var(--foreground);
   line-height: 1.18;
   margin: 0 0 0.45rem;
@@ -579,11 +557,10 @@
   align-items: center;
   gap: 0.45rem;
   padding: 0.35rem 0.8rem;
-  border-radius: 6px;
-  background-color: rgba(6, 13, 20, 0.75);
+  border-radius: 0;
+  background-color: rgba(16, 27, 38, 0.75);
   border: 1px solid rgba(27, 107, 138, 0.25);
   font-size: 0.72rem;
-  font-family: var(--font-mono), monospace;
   font-weight: 700;
   color: rgba(var(--foreground-rgb), 0.75);
 }
@@ -592,9 +569,9 @@
 
 .schematicContainer {
   margin-bottom: 2rem;
-  background-color: rgba(6, 13, 20, 0.75);
+  background-color: rgba(16, 27, 38, 0.75);
   border: 1px solid rgba(27, 107, 138, 0.28);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 1.25rem;
   overflow: hidden;
   position: relative;
@@ -611,9 +588,7 @@
 
 .schematicTitle {
   font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--cuxton-teal-light);
   display: flex;
   align-items: center;
@@ -621,7 +596,6 @@
 }
 
 .schematicStatus {
-  font-family: var(--font-mono), monospace;
   font-size: 0.68rem;
   font-weight: 700;
   color: var(--cuxton-amber);
@@ -642,16 +616,14 @@
 .pipelineSection {
   margin-bottom: 2rem;
   padding: 1.25rem;
-  border-radius: 14px;
-  background-color: rgba(6, 13, 20, 0.65);
+  border-radius: 0;
+  background-color: rgba(16, 27, 38, 0.65);
   border: 1px solid rgba(27, 107, 138, 0.22);
 }
 
 .pipelineLabel {
   font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.45);
   margin-bottom: 1rem;
 }
@@ -670,9 +642,9 @@
 }
 
 .pipelineNode {
-  background-color: rgba(9, 21, 37, 0.95);
+  background-color: rgba(22, 34, 46, 0.95);
   border: 1px solid rgba(27, 107, 138, 0.28);
-  border-radius: 10px;
+  border-radius: 0;
   padding: 0.95rem 1rem;
   display: flex;
   flex-direction: column;
@@ -681,9 +653,7 @@
 
 .nodeRoleBadge {
   font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--cuxton-teal-light);
 }
 
@@ -710,9 +680,7 @@
 
 .sectionBlockLabel {
   font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.45);
   margin-bottom: 0.65rem;
 }
@@ -740,9 +708,9 @@
 }
 
 .specsBox {
-  background-color: rgba(6, 13, 20, 0.65);
+  background-color: rgba(16, 27, 38, 0.65);
   border: 1px solid rgba(27, 107, 138, 0.22);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 1.35rem;
 }
 
@@ -793,10 +761,10 @@
 /* ─── Milestone Advancement Gate Card ─────────────────────────────── */
 
 .advancementGateCard {
-  background-color: rgba(6, 13, 20, 0.88);
+  background-color: rgba(16, 27, 38, 0.88);
   border: 1px solid rgba(245, 166, 35, 0.35);
   border-left: 4px solid var(--cuxton-amber);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 1.15rem 1.35rem;
 }
 
@@ -809,9 +777,7 @@
 
 .gateTitle {
   font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--cuxton-amber);
 }
 
@@ -825,16 +791,15 @@
 /* ─── Bottom Action Bar at the end of the 8 steps ─────────────────── */
 
 .streamFooter {
-  background-color: rgba(9, 21, 37, 0.92);
+  background-color: rgba(22, 34, 46, 0.92);
   border: 1px solid rgba(27, 107, 138, 0.3);
-  border-radius: 18px;
+  border-radius: 0;
   padding: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1.5rem;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
 }
 
 .streamFooterText {
@@ -843,7 +808,7 @@
 
 .streamFooterTitle {
   font-size: 1.25rem;
-  font-weight: 850;
+  font-weight: 600;
   color: var(--foreground);
   margin: 0 0 0.35rem;
 }
@@ -861,7 +826,7 @@
   gap: 0.55rem;
   height: 2.95rem;
   padding: 0 1.65rem;
-  border-radius: 10px;
+  border-radius: 0;
   background-color: var(--cuxton-teal);
   border: 1px solid var(--cuxton-teal-light);
   color: #ffffff;
@@ -875,13 +840,11 @@
 .streamFooterBtn:hover {
   background-color: var(--cuxton-teal-mid);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(27, 107, 138, 0.35);
 }
 
 /* ─── Light Mode Overrides (NO linear gradient) ───────────────────── */
 
 @media (prefers-color-scheme: light) {
-
   .section {
     background-color: #ffffff;
   }
@@ -894,7 +857,6 @@
   .mobileStickyBar {
     background-color: rgba(255, 255, 255, 0.94);
     border-color: rgba(27, 107, 138, 0.22);
-    box-shadow: 0 4px 14px rgba(12, 34, 51, 0.08);
   }
 
   .mobilePillBtn {
@@ -911,7 +873,6 @@
   .phaseOverviewCard {
     background-color: #ffffff;
     border-color: rgba(27, 107, 138, 0.22);
-    box-shadow: 0 8px 24px rgba(12, 34, 51, 0.06);
   }
 
   .phaseTitle {
@@ -925,7 +886,6 @@
   .timelineNav {
     background-color: #ffffff;
     border-color: rgba(27, 107, 138, 0.22);
-    box-shadow: 0 8px 24px rgba(12, 34, 51, 0.06);
   }
 
   .timelineNodesList::before {
@@ -963,12 +923,10 @@
   .milestoneCard {
     background-color: #ffffff;
     border-color: rgba(27, 107, 138, 0.22);
-    box-shadow: 0 10px 28px rgba(12, 34, 51, 0.06);
   }
 
   .milestoneCardActive {
     border-color: var(--cuxton-teal);
-    box-shadow: 0 16px 36px rgba(12, 34, 51, 0.1);
   }
 
   .cardTitle {
@@ -1024,7 +982,6 @@
   .streamFooter {
     background-color: #ffffff;
     border-color: rgba(27, 107, 138, 0.22);
-    box-shadow: 0 8px 24px rgba(12, 34, 51, 0.06);
   }
 
   .streamFooterTitle {
@@ -1051,6 +1008,12 @@
   .schematicContainer {
     background-color: #ffffff;
     border-color: rgba(27, 107, 138, 0.22);
-    box-shadow: 0 4px 16px rgba(12, 34, 51, 0.04);
   }
+}
+
+/* Headlines carry emphasis through scale and position, not hue. These accent
+   classes remain so existing markup keeps working, but they no longer tint a
+   fragment of a heading a different colour from the rest of it. */
+.headingHighlight {
+  color: inherit;
 }

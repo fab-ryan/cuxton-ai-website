@@ -10,7 +10,7 @@
   margin-top: -68px;
   padding-top: calc(5rem + 68px);
   padding-bottom: 5rem;
-  background-color: #060d14;
+  background-color: #101b26;
   background-image: url("/page-hero-mesh.jpg");
   background-size: cover;
   background-position: center 30%;
@@ -30,7 +30,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(6, 13, 20, 0.86);
+  background-color: rgba(16, 27, 38, 0.86);
   z-index: 1;
 }
 
@@ -105,11 +105,8 @@
   padding: 0.35rem 0.85rem;
   background-color: rgba(27, 107, 138, 0.2);
   border: 1px solid rgba(27, 107, 138, 0.4);
-  border-radius: 999px;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: var(--cuxton-teal-light);
   margin-bottom: 1.25rem;
   width: fit-content;
@@ -126,7 +123,7 @@
 
 .heading {
   font-size: clamp(2.15rem, 4.5vw, 3.5rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
@@ -167,11 +164,13 @@
   padding: 0.3rem 0.75rem;
   background-color: rgba(27, 107, 138, 0.18);
   border: 1px solid rgba(45, 154, 191, 0.3);
-  border-radius: 999px;
   font-size: 0.76rem;
   font-weight: 500;
   color: #a8d5e5;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .tagPill:hover {
@@ -197,12 +196,14 @@
   padding: 0 1.75rem;
   background-color: var(--cuxton-teal);
   border: 1px solid var(--cuxton-teal-mid);
-  border-radius: 12px;
+  border-radius: 0;
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .primaryBtn:hover {
@@ -219,12 +220,15 @@
   padding: 0 1.5rem;
   background-color: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(238, 242, 247, 0.28);
-  border-radius: 12px;
+  border-radius: 0;
   color: #eef2f7;
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .secondaryBtn:hover {
@@ -236,14 +240,13 @@
 /* ─── Right Column: Telemetry & Stats Card ─────────────────────── */
 
 .statsCard {
-  background-color: rgba(9, 21, 37, 0.85);
+  background-color: rgba(22, 34, 46, 0.85);
   border: 1px solid rgba(27, 107, 138, 0.35);
-  border-radius: 18px;
+  border-radius: 0;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  box-shadow: 0 20px 45px -12px rgba(6, 13, 20, 0.6);
 }
 
 .cardHeader {
@@ -257,8 +260,6 @@
 .cardTitle {
   font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: var(--cuxton-amber);
   margin: 0;
 }
@@ -298,7 +299,7 @@
 
 .statValue {
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--cuxton-teal-light);
 }
 
@@ -369,10 +370,17 @@
   .statsCard {
     background-color: #ffffff;
     border-color: rgba(27, 107, 138, 0.2);
-    box-shadow: 0 14px 30px -10px rgba(12, 34, 51, 0.08);
   }
 
   .statLabel {
     color: rgba(12, 34, 51, 0.65);
   }
+}
+
+/* Headlines carry emphasis through scale and position, not hue. These accent
+   classes remain so existing markup keeps working, but they no longer tint a
+   fragment of a heading a different colour from the rest of it. */
+.headingHighlight,
+.headingHighlightAmber {
+  color: inherit;
 }

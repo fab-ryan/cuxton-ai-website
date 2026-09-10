@@ -1,0 +1,1156 @@
+/* ═══════════════════════════════════════════════════════════════════
+   NAV — Command-centre navigation (CSS Module)
+
+   Structured as:
+   1. Header shell, glass frame & corner ticks
+   2. Brand cluster & status readout
+   3. Desktop nav links (mono, bracketed active state)
+   4. Mega-menu panels & item cards
+   5. CTA
+   6. Scroll progress rail
+   7. Animated hamburger
+   8. Mobile full-screen menu
+   9. Keyframes & reduced motion
+
+   Height contract: the unscrolled bar is 68px. `app/page.module.css`
+   and `components/PageHero.module.css` both pull their hero up by that
+   exact amount, so .nav's unscrolled height and .spacer must stay 68px.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── 1. HEADER SHELL ──────────────────────────────────────────── */
+
+.header
+{
+  /* Written from JS on scroll — drives the progress rail without a re-render */
+  --nav-progress: 0;
+  /* Where the mega panel hangs; shifts as the bar changes height */
+  --mega-top: 76px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              top 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: navEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scrolled — the bar detaches into a framed console panel */
+.header--scrolled
+{
+  top: 12px;
+  padding: 0 clamp(0.75rem, 2vw, 2rem);
+  --mega-top: 84px;
+}
+
+.headerInner
+{
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: background 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.45s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.header--scrolled .headerInner
+{
+  max-width: 1248px;
+  background: rgba(var(--bg-surface-rgb), 0.78);
+  border-color: rgba(27, 107, 138, 0.22);
+  border-radius: 0;
+}
+
+/* An open dropdown makes the bar fully opaque so the panel reads as one unit */
+.header--menuOpen .headerInner
+{
+  background: rgba(var(--bg-surface-rgb), 0.94);
+  border-color: rgba(27, 107, 138, 0.24);
+}
+
+/* Corner ticks — the bracket framing used across the site's technical panels */
+.tick
+{
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  color: var(--cuxton-teal-light);
+}
+
+.header--scrolled .tick,
+.header--menuOpen .tick
+{
+  opacity: 0.55;
+}
+
+.tickTl { top: 6px;    left: 6px;  border-top: 1.5px solid currentColor;    border-left: 1.5px solid currentColor; }
+.tickTr { top: 6px;    right: 6px; border-top: 1.5px solid currentColor;    border-right: 1.5px solid currentColor; }
+.tickBl { bottom: 6px; left: 6px;  border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }
+.tickBr { bottom: 6px; right: 6px; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }
+
+/* Inner rail — matches the site content grid so the logo lines up with
+   page copy when the bar is full-width */
+.navInner
+{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  transition: padding 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 768px)
+{
+  .navInner { padding: 0 2.5rem; }
+}
+
+@media (min-width: 1024px)
+{
+  .navInner { padding: 0 3rem; }
+}
+
+/* Inside the floating panel the grid tightens up */
+.header--scrolled .navInner
+{
+  max-width: 100%;
+  padding: 0 1.25rem;
+}
+
+.nav
+{
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header--scrolled .nav
+{
+  height: 60px;
+}
+
+
+/* ─── 2. BRAND CLUSTER & STATUS READOUT ────────────────────────── */
+
+.brand
+{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* The logo files are 3508×2480 export artboards whose actual lockup covers
+   only the middle 27% × 39% — dropped in as-is it renders tiny inside a
+   band of transparent padding. These percentages crop the box to the mark
+   itself; they are the measured bounds (x 1153, y 761, 947 × 974) expressed
+   relative to the wrapper, so the crop holds at any wrapper size. */
+.logo
+{
+  position: relative;
+  display: block;
+  width: 37px;
+  height: 38px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo:hover
+{
+  opacity: 0.85;
+}
+
+.header--scrolled .logo
+{
+  transform: scale(0.92);
+}
+
+.logo img
+{
+  position: absolute;
+  left: -121.8%;
+  top: -78.1%;
+  width: 370.4%;
+  height: 254.6%;
+  max-width: none;
+}
+
+/* Art-directed wordmark. The colour logo is legible on a light page, the
+   white one on a dark page — but the homepage hero is a fixed dark photo
+   regardless of theme, so the white mark is forced back on over it. */
+.logoOnLight
+{
+  display: none;
+}
+
+@media (prefers-color-scheme: light)
+{
+  .logoOnLight { display: block; }
+  .logoOnDark  { display: none; }
+
+  .header--onHero .logoOnLight { display: none; }
+  .header--onHero .logoOnDark  { display: block; }
+}
+
+.brandDivider
+{
+  width: 1px;
+  height: 22px;
+  background: rgba(var(--foreground-rgb), 0.14);
+  flex-shrink: 0;
+}
+
+.status
+{
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.5);
+  white-space: nowrap;
+}
+
+@media (min-width: 1400px)
+{
+  .status { display: inline-flex; }
+}
+
+.statusDot
+{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cuxton-teal-light);
+  flex-shrink: 0;
+}
+
+
+/* ─── 3. DESKTOP NAV LINKS ─────────────────────────────────────── */
+
+.desktopLinks
+{
+  display: none;
+  align-items: center;
+  gap: 0.125rem;
+  flex: 1;
+  justify-content: center;
+}
+
+@media (min-width: 1080px)
+{
+  .desktopLinks { display: flex; }
+}
+
+.navLink
+{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.62);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+@media (min-width: 1280px)
+{
+  .navLink { padding: 0.5rem 0.85rem;  }
+  .navUnderline { left: 0.85rem; right: 0.85rem; }
+}
+
+.navLink:hover
+{
+  color: var(--foreground);
+  background: rgba(27, 107, 138, 0.09);
+}
+
+.navLink--open
+{
+  color: var(--foreground);
+  background: rgba(27, 107, 138, 0.12);
+}
+
+.navLink--active
+{
+  color: var(--foreground);
+}
+
+/* Bracket framing on the active route — [ TECHNOLOGY ] */
+.navLink--active::before,
+.navLink--active::after
+{
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 4px;
+  height: 14px;
+  transform: translateY(-50%);
+  border-color: var(--cuxton-amber);
+  opacity: 0.9;
+}
+
+.navLink--active::before
+{
+  left: 0.15rem;
+  border-left: 1.5px solid;
+  border-top: 1.5px solid;
+  border-bottom: 1.5px solid;
+  border-radius: 0;
+}
+
+.navLink--active::after
+{
+  right: 0.15rem;
+  border-right: 1.5px solid;
+  border-top: 1.5px solid;
+  border-bottom: 1.5px solid;
+  border-radius: 0;
+}
+
+/* Hover underline — draws in from the left */
+.navUnderline
+{
+  position: absolute;
+  left: 0.65rem;
+  right: 0.65rem;
+  bottom: 0.25rem;
+  height: 1.5px;
+  border-radius: 0;
+  background: var(--cuxton-teal-light);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navLink:hover .navUnderline,
+.navLink--open .navUnderline
+{
+  transform: scaleX(1);
+}
+
+.navLink--active .navUnderline
+{
+  display: none;
+}
+
+/* Chevron */
+.chevron
+{
+  display: inline-flex;
+  opacity: 0.7;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.navLink:hover .chevron
+{
+  opacity: 1;
+}
+
+.chevron--open
+{
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Over the homepage hero photo (always dark, whatever the theme) the bar
+   contents stay light instead of following --foreground. */
+.header--onHero .navLink     { color: rgba(238, 242, 247, 0.72); }
+.header--onHero .navLink:hover,
+.header--onHero .navLink--active,
+.header--onHero .navLink--open { color: #eef2f7; }
+.header--onHero .navLink:hover { background: rgba(238, 242, 247, 0.1); }
+.header--onHero .status        { color: rgba(238, 242, 247, 0.6); }
+.header--onHero .brandDivider  { background: rgba(238, 242, 247, 0.22); }
+.header--onHero .hamburger     { color: #eef2f7; border-color: rgba(238, 242, 247, 0.24); background: rgba(238, 242, 247, 0.08); }
+.header--onHero .progressTrack { background: rgba(238, 242, 247, 0.12); }
+
+
+/* ─── 4. MEGA-MENU ─────────────────────────────────────────────── */
+
+.megaWrap
+{
+  position: fixed;
+  top: var(--mega-top);
+  left: 0;
+  right: 0;
+  padding: 0 1.5rem 1.5rem;
+  animation: megaEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 99;
+}
+
+@media (min-width: 768px)
+{
+  .megaWrap { padding: 0 2.5rem 1.5rem; }
+}
+
+@media (min-width: 1024px)
+{
+  .megaWrap { padding: 0 3rem 1.5rem; }
+}
+
+.header--scrolled .megaWrap
+{
+  padding: 0 clamp(2rem, 2vw + 1.25rem, 3.25rem) 1.5rem;
+}
+
+.megaPanel
+{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: rgba(var(--bg-surface-rgb), 0.97);
+  border: 1px solid rgba(27, 107, 138, 0.2);
+  border-radius: 0;
+  overflow: hidden;
+  background-clip: padding-box;
+}
+
+.header--scrolled .megaPanel
+{
+  max-width: 1248px;
+}
+
+/* Blueprint mesh behind the panel contents */
+.megaPanel::before
+{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(27, 107, 138, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(27, 107, 138, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 80% at 30% 0%, black, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 30% 0%, black, transparent 75%);
+  pointer-events: none;
+}
+
+.megaPanel .tick
+{
+  opacity: 0.45;
+  color: var(--cuxton-teal-light);
+}
+
+.megaHead
+{
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.16);
+}
+
+.megaLabel
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--cuxton-amber-text);
+}
+
+.megaLabel::before
+{
+  content: "";
+  width: 18px;
+  height: 1.5px;
+  background: var(--cuxton-amber);
+  opacity: 0.8;
+}
+
+.megaMeta
+{
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.38);
+  white-space: nowrap;
+}
+
+/* Solutions: item grid + featured console card */
+.megaSolutions
+{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 272px;
+  gap: 1.5rem;
+}
+
+.megaGrid
+{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+}
+
+/* ── Item card ── */
+.megaItem
+{
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.7rem;
+  padding: 0.7rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.megaItem:hover
+{
+  background: rgba(27, 107, 138, 0.09);
+  border-color: rgba(27, 107, 138, 0.24);
+  transform: translateY(-1px);
+}
+
+.megaItemIcon
+{
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 0;
+  background: rgba(27, 107, 138, 0.14);
+  border: 1px solid rgba(27, 107, 138, 0.26);
+  color: var(--cuxton-teal-light);
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.megaItem:hover .megaItemIcon
+{
+  background: rgba(245, 166, 35, 0.16);
+  border-color: rgba(245, 166, 35, 0.42);
+  color: var(--cuxton-amber);
+}
+
+.megaItemText
+{
+  display: block;
+  min-width: 0;
+}
+
+.megaItemTop
+{
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.megaItemIndex
+{
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.32);
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.megaItem:hover .megaItemIndex
+{
+  color: var(--cuxton-amber-text);
+}
+
+.megaItemTitle
+{
+  display: block;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--foreground);
+  line-height: 1.3;
+}
+
+.megaItemDesc
+{
+  display: block;
+  font-size: 0.73rem;
+  color: rgba(var(--foreground-rgb), 0.52);
+  margin-top: 0.2rem;
+  line-height: 1.45;
+  transition: color 0.2s ease;
+}
+
+.megaItem:hover .megaItemDesc
+{
+  color: rgba(var(--foreground-rgb), 0.72);
+}
+
+/* ── Featured console card ── */
+.megaFeatured
+{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 0;
+  background: rgba(27, 107, 138, 0.08);
+  border: 1px solid rgba(27, 107, 138, 0.2);
+  overflow: hidden;
+}
+
+.megaFeatured::before
+{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--cuxton-teal-mid), var(--cuxton-amber));
+  opacity: 0.75;
+}
+
+.megaFeaturedLabel
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--cuxton-teal-text);
+  margin-bottom: 0.5rem;
+}
+
+.megaFeaturedTitle
+{
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.35;
+}
+
+.megaFeaturedBody
+{
+  font-size: 0.78rem;
+  color: rgba(var(--foreground-rgb), 0.55);
+  line-height: 1.55;
+  margin-top: 0.4rem;
+}
+
+/* ── Industries footer row ── */
+.megaFooter
+{
+  position: relative;
+  margin-top: 1.15rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(27, 107, 138, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.megaFooterText
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: rgba(var(--foreground-rgb), 0.45);
+}
+
+.megaFooterLink
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0;
+  border: 1px solid rgba(27, 107, 138, 0.3);
+  background: transparent;
+  color: var(--foreground);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.megaFooterLink:hover
+{
+  background: rgba(27, 107, 138, 0.12);
+  border-color: rgba(27, 107, 138, 0.55);
+}
+
+
+/* ─── 5. CTA ───────────────────────────────────────────────────── */
+
+.desktopCtas
+{
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1080px)
+{
+  .desktopCtas { display: flex; }
+}
+
+.navCta
+{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 0.95rem;
+  border-radius: 0;
+  background: var(--cuxton-amber);
+  color: #0b1a24;
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.navCta::before
+{
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 0;
+  background: var(--cuxton-amber);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.navCta:hover
+{
+  background: var(--cuxton-amber-light);
+  transform: translateY(-1px);
+}
+
+.navCtaArrow
+{
+  display: inline-flex;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navCta:hover .navCtaArrow
+{
+  transform: translateX(3px);
+}
+
+.navCta--block
+{
+  display: flex;
+  width: 100%;
+  height: 3rem;
+  justify-content: center;
+  font-size: 0.72rem;
+}
+
+
+/* ─── 6. SCROLL PROGRESS RAIL ──────────────────────────────────── */
+
+.progressTrack
+{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(var(--foreground-rgb), 0.07);
+  pointer-events: none;
+}
+
+.header--scrolled .progressTrack
+{
+  left: 14px;
+  right: 14px;
+  bottom: 1px;
+  border-radius: 0;
+}
+
+.progressBar
+{
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(var(--nav-progress));
+  transform-origin: left center;
+  background: linear-gradient(90deg,
+    var(--cuxton-teal-mid) 0%,
+    var(--cuxton-teal-light) 45%,
+    var(--cuxton-amber) 100%);
+}
+
+
+/* ─── 7. ANIMATED HAMBURGER ────────────────────────────────────── */
+
+.hamburger
+{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 0;
+  background: rgba(27, 107, 138, 0.08);
+  border: 1px solid rgba(27, 107, 138, 0.2);
+  color: var(--foreground);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+@media (min-width: 1080px)
+{
+  .hamburger { display: none; }
+}
+
+.hamburger:hover
+{
+  background: rgba(27, 107, 138, 0.16);
+  border-color: rgba(27, 107, 138, 0.36);
+}
+
+.hamburgerBars
+{
+  position: relative;
+  width: 18px;
+  height: 12px;
+}
+
+.hamburgerBar
+{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  border-radius: 0;
+  background: currentColor;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease,
+              width 0.25s ease;
+}
+
+.hamburgerBar:nth-child(1) { top: 0; }
+.hamburgerBar:nth-child(2) { top: 5px; width: 70%; }
+.hamburgerBar:nth-child(3) { top: 10px; }
+
+.hamburger--open .hamburgerBar:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.hamburger--open .hamburgerBar:nth-child(2) { opacity: 0; width: 0; }
+.hamburger--open .hamburgerBar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+
+/* ─── 8. MOBILE FULL-SCREEN MENU ───────────────────────────────── */
+
+.mobileOverlay
+{
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(var(--background-rgb), 0.98);
+  transform: translateX(100%);
+  opacity: 0;
+  overflow-y: auto;
+  padding-top: 76px;
+  padding-bottom: 2.5rem;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobileOverlay--open
+{
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.mobileNav
+{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 0;
+}
+
+/* Console readout at the top of the sheet */
+.mobileMeta
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.9rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.18);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.4);
+}
+
+.mobileMetaStatus
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--cuxton-teal-text);
+}
+
+.mobileItem
+{
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.mobileOverlay--open .mobileItem
+{
+  animation: staggerIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* :nth-child starts at 2 — .mobileMeta is the first child of .mobileNav */
+.mobileOverlay--open .mobileItem:nth-child(2) { animation-delay: 0.05s; }
+.mobileOverlay--open .mobileItem:nth-child(3) { animation-delay: 0.1s; }
+.mobileOverlay--open .mobileItem:nth-child(4) { animation-delay: 0.15s; }
+.mobileOverlay--open .mobileItem:nth-child(5) { animation-delay: 0.2s; }
+.mobileOverlay--open .mobileItem:nth-child(6) { animation-delay: 0.25s; }
+.mobileOverlay--open .mobileItem:nth-child(7) { animation-delay: 0.3s; }
+
+/* Shared row: index + label + trailing affordance */
+.mobileRow
+{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.05rem 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.12);
+  color: var(--foreground);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.mobileRow:hover
+{
+  color: var(--cuxton-teal-text);
+}
+
+.mobileIndex
+{
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.3);
+  flex-shrink: 0;
+}
+
+.mobileRowLabel
+{
+  flex: 1;
+  min-width: 0;
+}
+
+.mobileRow--active
+{
+  color: var(--cuxton-amber-text);
+}
+
+.mobileRow--active .mobileIndex
+{
+  color: var(--cuxton-amber-text);
+}
+
+.mobileTrail
+{
+  display: inline-flex;
+  color: var(--cuxton-teal-mid);
+  opacity: 0.55;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.mobileRow:hover .mobileTrail
+{
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.mobilePanel
+{
+  overflow: hidden;
+  animation: accordionOpen 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mobilePanelInner
+{
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.6rem 0 0.9rem;
+}
+
+.mobileSubLink
+{
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 0;
+  border: 1px solid transparent;
+  font-size: 0.87rem;
+  color: rgba(var(--foreground-rgb), 0.62);
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.mobileSubLink:hover
+{
+  color: var(--foreground);
+  background: rgba(27, 107, 138, 0.09);
+  border-color: rgba(27, 107, 138, 0.22);
+  transform: translateX(3px);
+}
+
+.mobileSubIcon
+{
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 0;
+  background: rgba(27, 107, 138, 0.14);
+  border: 1px solid rgba(27, 107, 138, 0.24);
+  color: var(--cuxton-teal-light);
+  flex-shrink: 0;
+}
+
+.mobileCta
+{
+  margin-top: 2rem;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.mobileOverlay--open .mobileCta
+{
+  animation: staggerIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.36s forwards;
+}
+
+.mobileFoot
+{
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.35);
+}
+
+
+/* ─── NAV SPACER ───────────────────────────────────────────────── */
+
+.spacer
+{
+  height: 68px;
+}
+
+
+/* ─── 9. KEYFRAMES ─────────────────────────────────────────────── */
+
+@keyframes navEnter
+{
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes megaEnter
+{
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes staggerIn
+{
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes accordionOpen
+{
+  from { max-height: 0; opacity: 0; }
+  to   { max-height: 620px; opacity: 1; }
+}
+
+@keyframes ctaPulse
+{
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 0.28; }
+}
+
+@keyframes statusPulse
+{
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.82); }
+}
+
+
+/* ─── REDUCED MOTION ───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce)
+{
+  .header,
+  .megaWrap,
+  .mobileItem,
+  .mobileCta,
+  .mobilePanel
+  {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .statusDot,
+  .navCta::before
+  {
+    animation: none !important;
+  }
+
+  .hamburgerBar,
+  .chevron,
+  .logo,
+  .navUnderline,
+  .navCtaArrow,
+  .mobileTrail
+  {
+    transition: none !important;
+  }
+}

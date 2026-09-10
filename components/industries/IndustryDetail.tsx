@@ -43,9 +43,6 @@ export default function IndustryDetail({ industry }: { industry: Industry }) {
   return (
     <article className={styles.page}>
       <header className={styles.header}>
-        <div className={styles.heroOverlay} aria-hidden="true" />
-        <div className="absolute inset-0 hex-grid pointer-events-none" aria-hidden="true" />
-        <div className={styles.ambientGlow} aria-hidden="true" />
 
         <div className={`${styles.headerInner} section-container`}>
           {/* Breadcrumbs */}
@@ -83,7 +80,7 @@ export default function IndustryDetail({ industry }: { industry: Industry }) {
                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                     <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                   </svg>
-                  Sovereign Enclave
+                  Private Enclave
                 </span>
                 <span className={styles.capabilityPill}>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -103,11 +100,7 @@ export default function IndustryDetail({ industry }: { industry: Industry }) {
               {/* Action Buttons */}
               <div className={styles.ctaGroup}>
                 <Link href="/contact" className={styles.primaryCta}>
-                  <span>Consult Sector Specialists</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
+                  <span>Consult Sector Specialists</span></Link>
 
                 <a href="#how-it-works" className={styles.secondaryCta}>
                   <span>Explore Execution Roadmap</span>
@@ -125,7 +118,7 @@ export default function IndustryDetail({ industry }: { industry: Industry }) {
                 <div className={styles.imageWrapper}>
                   <Image
                     src={image}
-                    alt={`${name} sovereign AI architecture showcase`}
+                    alt={`${name} private AI architecture showcase`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 500px"
                     priority
@@ -198,7 +191,7 @@ export default function IndustryDetail({ industry }: { industry: Industry }) {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--cuxton-teal-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     </svg>
-                    <span>ISO 27001, SOC 2 &amp; Sovereign Enclave Ready</span>
+                    <span>ISO 27001, SOC 2 &amp; Private Enclave Ready</span>
                   </div>
                 </div>
               </div>
@@ -338,11 +331,7 @@ export default function IndustryDetail({ industry }: { industry: Industry }) {
           <div className={styles.industryChips}>
             {relatedSolutions.map((sol) => (
               <Link key={sol.id} href={sol.href} className={styles.industryChip}>
-                <span>{sol.name}</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
+                <span>{sol.name}</span></Link>
             ))}
           </div>
         </section>

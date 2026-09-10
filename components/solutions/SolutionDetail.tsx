@@ -30,8 +30,6 @@ export default function SolutionDetail({ solution }: { solution: Solution }) {
     <article className={styles.page}>
       <header className={styles.header}>
         <div className={styles.heroOverlay} aria-hidden="true" />
-        <div className="absolute inset-0 hex-grid pointer-events-none" aria-hidden="true" />
-        <div className={styles.ambientGlow} aria-hidden="true" />
 
         <div className={`${styles.headerInner} section-container`}>
           {/* Breadcrumbs */}
@@ -88,11 +86,7 @@ export default function SolutionDetail({ solution }: { solution: Solution }) {
               {/* Action Buttons */}
               <div className={styles.ctaGroup}>
                 <Link href="/contact" className={styles.primaryCta}>
-                  <span>Discuss This Solution</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
+                  <span>Discuss This Solution</span></Link>
 
                 <a href="#how-it-works" className={styles.secondaryCta}>
                   <span>Explore Methodology</span>
@@ -103,10 +97,9 @@ export default function SolutionDetail({ solution }: { solution: Solution }) {
               </div>
             </div>
 
-            {/* Right Column: Sovereign Solution Blueprint & Telemetry HUD Card */}
+            {/* Right Column: Solution Blueprint & Telemetry HUD Card */}
             <aside className={styles.heroAside} aria-label="Architecture Specification">
               <div className={styles.blueprintCard}>
-                <div className={styles.cardGlow} aria-hidden="true" />
 
                 {/* Card Terminal Header */}
                 <div className={styles.cardHeader}>
@@ -169,7 +162,7 @@ export default function SolutionDetail({ solution }: { solution: Solution }) {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--cuxton-teal-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     </svg>
-                    <span>ISO 27001 &amp; SOC 2 Sovereign Readiness</span>
+                    <span>ISO 27001 &amp; SOC 2 Readiness</span>
                   </div>
                 </div>
               </div>

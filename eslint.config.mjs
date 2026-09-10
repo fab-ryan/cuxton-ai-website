@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Deno runtime, linted by `deno lint` rather than the Next.js config.
+    "supabase/functions/**",
   ]),
 ]);
 

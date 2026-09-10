@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import { getSupabase } from "@/lib/supabase/client";
 
 /* ── Form state ── */
 type FormData = {
@@ -48,6 +49,7 @@ const teamSizes = [
 export default function ContactPage() {
   const [form, setForm] = useState<FormData>(INITIAL);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const set = (field: keyof FormData, value: string) =>
     setForm(prev => ({ ...prev, [field]: value }));
@@ -60,25 +62,45 @@ export default function ContactPage() {
         : [...prev.topics, topic],
     }));
 
+  /* Submissions land in the `contacts` table, where the console reads them.
+     The anon key is public, so the "anyone may submit a contact" policy in
+     supabase/schema.sql grants INSERT and nothing else — a visitor cannot
+     read back what anyone, including themselves, has sent. */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    /* ─── Replace the action URL below with your Formspree or backend endpoint ─── */
-    try {
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          topics: form.topics.join(", "),
-          _subject: `Cuxton AI Discovery Session — ${form.firstName} ${form.lastName}`,
-        }),
-      });
-      if (res.ok) setStatus("sent");
-      else setStatus("error");
-    } catch {
+    setErrorMessage(null);
+
+    const supabase = getSupabase();
+    if (!supabase) {
+      setErrorMessage(
+        "The enquiry form is not connected yet. Please email hello@cuxtonai.com instead."
+      );
       setStatus("error");
+      return;
     }
+
+    const { error } = await supabase.from("contacts").insert({
+      first_name: form.firstName.trim(),
+      last_name: form.lastName.trim(),
+      email: form.email.trim(),
+      organisation: form.organisation.trim() || null,
+      role: form.role.trim() || null,
+      sector: form.sector || null,
+      team_size: form.teamSize || null,
+      message: form.message.trim(),
+      topics: form.topics,
+    });
+
+    if (error) {
+      setErrorMessage(
+        "We could not record your enquiry. Please try again, or email hello@cuxtonai.com."
+      );
+      setStatus("error");
+      return;
+    }
+
+    setStatus("sent");
   };
 
   return (
@@ -142,12 +164,12 @@ export default function ContactPage() {
               <div style={{
                 background: "rgba(27,107,138,0.06)",
                 border: "1px solid rgba(27,107,138,0.15)",
-                borderRadius: 16, padding: "1.25rem",
+                 padding: "1.25rem",
               }}>
                 <p style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.4)", lineHeight: 1.65 }}>
                   <span style={{ color: "var(--cuxton-teal-light)", fontWeight: 700 }}>Privacy: </span>
                   Do not submit confidential client data, patient-identifiable information or sensitive
-                  internal data through this public form. Describe your situation at a high level — we
+                  internal data through this public form. Describe your situation at a high level we
                   can discuss details under a formal confidentiality arrangement if appropriate.
                 </p>
               </div>
@@ -166,7 +188,7 @@ export default function ContactPage() {
               {status === "sent" ? (
                 <div className="card-enterprise" style={{ padding: "3rem", textAlign: "center" }}>
                   <div style={{
-                    width: 56, height: 56, borderRadius: 16,
+                    width: 56, height: 56,
                     background: "rgba(27,107,138,0.15)",
                     border: "1px solid rgba(27,107,138,0.3)",
                     display: "flex", alignItems: "center", justifyContent: "center",
@@ -177,7 +199,7 @@ export default function ContactPage() {
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
-                  <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "var(--foreground)", marginBottom: "0.75rem" }}>
+                  <h2 style={{ fontSize: "1.375rem", fontWeight: 600, color: "var(--foreground)", marginBottom: "0.75rem" }}>
                     Submission received.
                   </h2>
                   <p style={{ fontSize: "0.9rem", color: "rgba(var(--foreground-rgb),0.5)", lineHeight: 1.7, marginBottom: "2rem" }}>
@@ -297,7 +319,7 @@ export default function ContactPage() {
                             onClick={() => toggleTopic(topic)}
                             style={{
                               display: "flex", alignItems: "center", gap: "0.5rem",
-                              padding: "0.5rem 0.75rem", borderRadius: 10, cursor: "pointer",
+                              padding: "0.5rem 0.75rem",  cursor: "pointer",
                               background: selected ? "rgba(27,107,138,0.15)" : "rgba(var(--bg-surface-rgb),0.6)",
                               border: `1px solid ${selected ? "rgba(27,107,138,0.4)" : "rgba(27,107,138,0.14)"}`,
                               color: selected ? "var(--cuxton-teal-light)" : "rgba(var(--foreground-rgb),0.45)",
@@ -306,14 +328,14 @@ export default function ContactPage() {
                             }}
                           >
                             <div style={{
-                              width: 14, height: 14, borderRadius: 4, flexShrink: 0,
+                              width: 14, height: 14, flexShrink: 0,
                               border: `1.5px solid ${selected ? "var(--cuxton-teal-light)" : "rgba(27,107,138,0.35)"}`,
                               background: selected ? "var(--cuxton-teal-light)" : "transparent",
                               display: "flex", alignItems: "center", justifyContent: "center",
                             }}>
                               {selected && (
                                 <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
-                                  <path d="M2 6l3 3 5-5" stroke="#060d14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                  <path d="M2 6l3 3 5-5" stroke="#101b26" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                               )}
                             </div>
@@ -344,9 +366,9 @@ export default function ContactPage() {
                         marginBottom: "1rem", padding: "0.75rem 1rem",
                         background: "rgba(248,113,113,0.06)",
                         border: "1px solid rgba(248,113,113,0.15)",
-                        borderRadius: 10,
                       }}>
-                        Something went wrong. Please try again or email us directly at{" "}
+                        {errorMessage ?? "Something went wrong. Please try again."} If the problem
+                        persists, email us directly at{" "}
                         <a href="mailto:hello@cuxtonai.com" style={{ color: "#f87171" }}>hello@cuxtonai.com</a>.
                       </p>
                     )}
@@ -368,12 +390,6 @@ export default function ContactPage() {
                         }}
                       >
                         {status === "sending" ? "Sending…" : "Submit enquiry"}
-                        {status !== "sending" && (
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                          </svg>
-                        )}
                       </button>
                     </div>
                   </div>

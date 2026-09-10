@@ -5,11 +5,6 @@ import Link from "next/link";
 import type { Solution } from "@/data/solutions";
 import styles from "./SolutionsCatalog.module.css";
 
-const ArrowIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M5 12h14M12 5l7 7-7 7" />
-  </svg>
-);
 
 const iconProps = {
   width: 22,
@@ -104,9 +99,9 @@ const PILLARS = [
   },
   {
     id: "infrastructure-privacy",
-    label: "Sovereign Infrastructure",
+    label: "Infrastructure",
     count: 2,
-    eyebrow: "Sovereignty & Security",
+    eyebrow: "Security",
     title: "Private Enclaves & Native Enterprise Integration",
     tagline: "Deploy secure, network-isolated compute environments that guarantee client data never trains external models.",
     solutionIds: ["private-ai", "integration"],
@@ -117,7 +112,7 @@ const PILLARS = [
     count: 2,
     eyebrow: "Operational Execution",
     title: "Autonomous Agents & Multi-Step Workflow Pipelines",
-    tagline: "Empower deterministic AI agents to handle repetitive processes with strict human-in-the-loop oversight.",
+    tagline: "Hand repetitive processes to agents that stop for a person-in-the-loop oversight.",
     solutionIds: ["agents", "automation"],
   },
   {
@@ -172,7 +167,7 @@ export default function SolutionsCatalog({ solutions }: SolutionsCatalogProps) {
 
             <div className={styles.catalogStats}>
               <span className={styles.catalogStatsDot} aria-hidden="true" />
-              <span>Sovereign &amp; Enterprise-Ready Architecture</span>
+              <span>&amp; Enterprise-Ready Architecture</span>
             </div>
           </div>
         </div>
@@ -221,7 +216,6 @@ export default function SolutionsCatalog({ solutions }: SolutionsCatalogProps) {
 
                     <span className={styles.cardCta}>
                       Learn more
-                      <ArrowIcon />
                     </span>
                   </Link>
                 ))}

@@ -3,8 +3,7 @@
    Structured Bento Grid, Key Differentiators, and Comparison Matrix
    ═══════════════════════════════════════════════════════════════════ */
 
-.section
-{
+.section {
   position: relative;
   overflow: hidden;
   padding: 6.5rem 0;
@@ -12,19 +11,16 @@
   isolation: isolate;
 }
 
-@media (max-width: 768px)
-{
-  .section
-  {
+@media (max-width: 768px) {
+  .section {
     padding: 4.5rem 0;
   }
 }
 
 /* ─── Scoped Theme Variables ────────────────────────────────────── */
 
-.themeWrap
-{
-  --wc-card-bg: rgba(6, 20, 32, 0.82);
+.themeWrap {
+  --wc-card-bg: rgba(20, 32, 44, 0.82);
   --wc-card-hover: rgba(9, 29, 46, 0.95);
   --wc-card-border: rgba(45, 154, 191, 0.24);
   --wc-card-border-hover: rgba(45, 154, 191, 0.6);
@@ -37,9 +33,9 @@
   --wc-amber: var(--cuxton-amber);
   --wc-amber-bg: rgba(245, 166, 35, 0.12);
   --wc-amber-border: rgba(245, 166, 35, 0.35);
-  --wc-table-bg: rgba(3, 16, 27, 0.88);
+  --wc-table-bg: rgba(14, 24, 34, 0.88);
   --wc-table-border: rgba(45, 154, 191, 0.2);
-  --wc-table-header: rgba(10, 32, 50, 0.75);
+  --wc-table-header: rgba(26, 40, 53, 0.75);
   --wc-success: #38ef7d;
   --wc-danger: #ff6b6b;
   position: relative;
@@ -48,16 +44,14 @@
 
 /* ─── Section Header ────────────────────────────────────────────── */
 
-.header
-{
+.header {
   text-align: left;
   margin: 0 auto 2.5rem;
 }
 
-.heading
-{
+.heading {
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.15;
   color: var(--wc-text-main);
   letter-spacing: -0.025em;
@@ -65,13 +59,11 @@
   margin-bottom: 1.25rem;
 }
 
-.headingAccent
-{
+.headingAccent {
   color: var(--wc-badge-text);
 }
 
-.subHeading
-{
+.subHeading {
   font-size: 1.05rem;
   line-height: 1.65;
   color: var(--wc-text-sub);
@@ -80,8 +72,7 @@
 
 /* ─── Institutional Proof Metrics Bar ───────────────────────────── */
 
-.metricsBar
-{
+.metricsBar {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -89,36 +80,29 @@
   margin-bottom: 3.5rem;
 }
 
-.metricPill
-{
+.metricPill {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
   background: var(--wc-card-bg);
   border: 1px solid var(--wc-card-border);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   padding: 0.6rem 1.15rem;
   border-radius: 9999px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
-.metricPillIcon
-{
+.metricPillIcon {
   color: var(--cuxton-amber);
   display: flex;
   align-items: center;
 }
 
-.metricPillVal
-{
-  font-weight: 800;
+.metricPillVal {
+  font-weight: 600;
   font-size: 0.9rem;
   color: var(--wc-text-main);
 }
 
-.metricPillLabel
-{
+.metricPillLabel {
   font-size: 0.8rem;
   color: var(--wc-text-muted);
 }
@@ -127,26 +111,21 @@
    BENTO GRID OF PRINCIPLES
    ═══════════════════════════════════════════════════════════════════ */
 
-.bentoGrid
-{
+.bentoGrid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1.25rem;
   margin-bottom: 3.5rem;
 }
 
-@media (max-width: 1024px)
-{
-  .bentoGrid
-  {
+@media (max-width: 1024px) {
+  .bentoGrid {
     grid-template-columns: repeat(6, 1fr);
   }
 }
 
-@media (max-width: 700px)
-{
-  .bentoGrid
-  {
+@media (max-width: 700px) {
+  .bentoGrid {
     grid-template-columns: 1fr;
   }
 }
@@ -154,29 +133,25 @@
 /* Base Card Style — each tenet carries its own accent (.tenetAccent1..5
    below) so the five principles read as distinct rather than five
    repeats of the same amber/teal card. */
-.bentoCard
-{
+.bentoCard {
   --wc-accent: var(--wc-amber);
   --wc-accent-bg: var(--wc-amber-bg);
   --wc-accent-border: var(--wc-amber-border);
   background: var(--wc-card-bg);
   border: 1px solid var(--wc-card-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.25s ease,
-    background-color 0.25s ease,
-    box-shadow 0.25s ease;
+    background-color 0.25s ease;
 }
 
-.bentoCard::before
-{
+.bentoCard::before {
   content: "";
   position: absolute;
   top: 0;
@@ -189,58 +164,49 @@
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.bentoCard:hover::before
-{
+.bentoCard:hover::before {
   transform: scaleX(1);
 }
 
-.tenetAccent1
-{
+.tenetAccent1 {
   --wc-accent: var(--wc-amber);
   --wc-accent-bg: rgba(245, 166, 35, 0.12);
   --wc-accent-border: rgba(245, 166, 35, 0.3);
 }
 
-.tenetAccent2
-{
+.tenetAccent2 {
   --wc-accent: #4f97f7;
   --wc-accent-bg: rgba(79, 151, 247, 0.12);
   --wc-accent-border: rgba(79, 151, 247, 0.3);
 }
 
-.tenetAccent3
-{
+.tenetAccent3 {
   --wc-accent: #a78bfa;
   --wc-accent-bg: rgba(167, 139, 250, 0.12);
   --wc-accent-border: rgba(167, 139, 250, 0.3);
 }
 
-.tenetAccent4
-{
+.tenetAccent4 {
   --wc-accent: var(--cuxton-teal-light);
   --wc-accent-bg: rgba(45, 154, 191, 0.12);
   --wc-accent-border: rgba(45, 154, 191, 0.3);
 }
 
-.tenetAccent5
-{
+.tenetAccent5 {
   --wc-accent: #ec4899;
   --wc-accent-bg: rgba(236, 72, 153, 0.12);
   --wc-accent-border: rgba(236, 72, 153, 0.3);
 }
 
-.bentoCard:hover
-{
+.bentoCard:hover {
   transform: translateY(-3px);
   background: var(--wc-card-hover);
   border-color: var(--wc-accent-border);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--wc-accent-border);
 }
 
 /* ─── Hero Feature Card (Span 7) ────────────────────────────────── */
 
-.heroCard
-{
+.heroCard {
   grid-column: span 7;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -249,24 +215,19 @@
   min-height: 340px;
 }
 
-@media (max-width: 1024px)
-{
-  .heroCard
-  {
+@media (max-width: 1024px) {
+  .heroCard {
     grid-column: span 6;
   }
 }
 
-@media (max-width: 768px)
-{
-  .heroCard
-  {
+@media (max-width: 768px) {
+  .heroCard {
     grid-template-columns: 1fr;
   }
 }
 
-.heroCardContent
-{
+.heroCardContent {
   padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
@@ -274,8 +235,7 @@
   z-index: 1;
 }
 
-.heroCardVisual
-{
+.heroCardVisual {
   position: relative;
   overflow: hidden;
   border-left: 1px solid var(--wc-card-border);
@@ -283,18 +243,15 @@
   background-color: rgba(2, 14, 24, 0.9);
 }
 
-@media (max-width: 768px)
-{
-  .heroCardVisual
-  {
+@media (max-width: 768px) {
+  .heroCardVisual {
     border-left: none;
     border-top: 1px solid var(--wc-card-border);
     height: 200px;
   }
 }
 
-.heroVisualImg
-{
+.heroVisualImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -302,46 +259,44 @@
   transition: transform 0.4s ease;
 }
 
-.heroCard:hover .heroVisualImg
-{
+.heroCard:hover .heroVisualImg {
   transform: scale(1.03);
 }
 
-.heroVisualOverlay
-{
+.heroVisualOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(6, 20, 32, 0.4) 0%, rgba(2, 14, 24, 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(20, 32, 44, 0.4) 0%,
+    rgba(2, 14, 24, 0.8) 100%
+  );
   pointer-events: none;
 }
 
-.heroVisualBadge
-{
+.heroVisualBadge {
   position: absolute;
   bottom: 1.25rem;
   left: 1.25rem;
   right: 1.25rem;
-  background: rgba(3, 16, 27, 0.88);
+  background: rgba(14, 24, 34, 0.88);
   border: 1px solid var(--wc-amber-border);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0.65rem 0.85rem;
   display: flex;
   align-items: center;
   gap: 0.65rem;
 }
 
-.heroVisualDot
-{
+.heroVisualDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--wc-amber);
-  box-shadow: 0 0 10px var(--wc-amber);
   flex-shrink: 0;
 }
 
-.heroVisualText
-{
+.heroVisualText {
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--wc-text-main);
@@ -350,53 +305,44 @@
 
 /* ─── Standard Cards (Span 5 and Span 4) ────────────────────────── */
 
-.cardSpan5
-{
+.cardSpan5 {
   grid-column: span 5;
 }
 
-.cardSpan4
-{
+.cardSpan4 {
   grid-column: span 4;
 }
 
-@media (max-width: 1024px)
-{
-  .cardSpan5
-  {
+@media (max-width: 1024px) {
+  .cardSpan5 {
     grid-column: span 6;
   }
 
-  .cardSpan4
-  {
+  .cardSpan4 {
     grid-column: span 3;
   }
 }
 
-@media (max-width: 700px)
-{
+@media (max-width: 700px) {
   .heroCard,
   .cardSpan5,
-  .cardSpan4
-  {
+  .cardSpan4 {
     grid-column: 1 / -1;
   }
 }
 
 /* Card Header Components */
-.cardTop
-{
+.cardTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.15rem;
 }
 
-.cardIconWrap
-{
+.cardIconWrap {
   width: 40px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 0;
   background: var(--wc-badge-bg);
   border: 1px solid var(--wc-badge-border);
   color: var(--wc-badge-text);
@@ -407,28 +353,24 @@
   transition: all 0.2s ease;
 }
 
-.bentoCard:hover .cardIconWrap
-{
+.bentoCard:hover .cardIconWrap {
   border-color: var(--wc-accent);
   color: var(--wc-accent);
   background: var(--wc-accent-bg);
 }
 
-.cardTenetBadge
-{
+.cardTenetBadge {
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--wc-accent);
   background: var(--wc-accent-bg);
   border: 1px solid var(--wc-accent-border);
   padding: 0.2rem 0.6rem;
-  border-radius: 6px;
+  border-radius: 0;
 }
 
-.cardTitle
-{
+.cardTitle {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--wc-text-main);
@@ -436,8 +378,7 @@
   margin-bottom: 0.5rem;
 }
 
-.cardTagline
-{
+.cardTagline {
   font-size: 0.85rem;
   font-style: italic;
   color: var(--wc-badge-text);
@@ -445,8 +386,7 @@
   line-height: 1.4;
 }
 
-.cardDesc
-{
+.cardDesc {
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--wc-text-sub);
@@ -455,8 +395,7 @@
 }
 
 /* Key Differentiator Tag in Card Footer */
-.cardFooter
-{
+.cardFooter {
   padding-top: 1rem;
   border-top: 1px dashed rgba(45, 154, 191, 0.2);
   display: flex;
@@ -464,8 +403,7 @@
   gap: 0.5rem;
 }
 
-.cardFooterDot
-{
+.cardFooterDot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -473,8 +411,7 @@
   flex-shrink: 0;
 }
 
-.cardFooterText
-{
+.cardFooterText {
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--wc-text-muted);
@@ -484,20 +421,15 @@
    THE CUXTON DIFFERENCE — COMPARISON MATRIX
    ═══════════════════════════════════════════════════════════════════ */
 
-.matrixContainer
-{
+.matrixContainer {
   background: var(--wc-table-bg);
   border: 1px solid var(--wc-table-border);
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
   margin-bottom: 3.5rem;
 }
 
-.matrixHeader
-{
+.matrixHeader {
   padding: 1.75rem 2rem;
   border-bottom: 1px solid var(--wc-table-border);
   display: flex;
@@ -507,77 +439,66 @@
   gap: 1rem;
 }
 
-.matrixTitleGroup
-{
+.matrixTitleGroup {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.matrixTitle
-{
+.matrixTitle {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--wc-text-main);
   letter-spacing: -0.01em;
 }
 
-.matrixSub
-{
+.matrixSub {
   font-size: 0.85rem;
   color: var(--wc-text-muted);
 }
 
-.matrixBadge
-{
+.matrixBadge {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: var(--wc-badge-text);
   background: var(--wc-badge-bg);
   border: 1px solid var(--wc-badge-border);
   padding: 0.3rem 0.75rem;
-  border-radius: 6px;
+  border-radius: 0;
 }
 
 /* Responsive Table Wrapper */
-.tableWrap
-{
+.tableWrap {
   overflow-x: auto;
   scrollbar-width: thin;
 }
 
-.matrixTable
-{
+.matrixTable {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
   min-width: 720px;
 }
 
-.matrixTable th
-{
+.matrixTable th {
   padding: 1.15rem 1.5rem;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
   color: var(--wc-text-muted);
   background: var(--wc-table-header);
   border-bottom: 1px solid var(--wc-table-border);
 }
 
-.thCuxton
-{
+.thCuxton {
   color: var(--wc-amber) !important;
   background: rgba(27, 107, 138, 0.35) !important;
   border-left: 2px solid var(--wc-amber);
   border-right: 2px solid var(--wc-amber);
 }
 
-.matrixTable td
-{
+.matrixTable td {
   padding: 1.25rem 1.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -586,15 +507,13 @@
   vertical-align: top;
 }
 
-.tdDimension
-{
+.tdDimension {
   font-weight: 700;
   color: var(--wc-text-main);
   width: 22%;
 }
 
-.tdCuxton
-{
+.tdCuxton {
   background: rgba(27, 107, 138, 0.12);
   border-left: 2px solid var(--wc-amber);
   border-right: 2px solid var(--wc-amber);
@@ -602,31 +521,27 @@
   font-weight: 600;
 }
 
-.tdCompetitor
-{
+.tdCompetitor {
   color: var(--wc-text-muted);
 }
 
-.tableStatusRow
-{
+.tableStatusRow {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
 }
 
-.statusIconPass
-{
+.statusIconPass {
   color: var(--wc-success);
-  font-weight: 800;
+  font-weight: 600;
   font-size: 0.95rem;
   line-height: 1.3;
   flex-shrink: 0;
 }
 
-.statusIconWarn
-{
+.statusIconWarn {
   color: var(--wc-danger);
-  font-weight: 800;
+  font-weight: 600;
   font-size: 0.95rem;
   line-height: 1.3;
   flex-shrink: 0;
@@ -634,8 +549,7 @@
 
 /* ─── Footer Action CTA ─────────────────────────────────────────── */
 
-.footer
-{
+.footer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -643,39 +557,33 @@
   text-align: center;
 }
 
-.footerButtons
-{
+.footerButtons {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.btnPrimary
-{
+.btnPrimary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.85rem 1.85rem;
   background: var(--wc-amber);
-  color: #060d14;
+  color: #101b26;
   font-weight: 700;
   font-size: 0.95rem;
-  border-radius: 8px;
+  border-radius: 0;
   text-decoration: none;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.25);
 }
 
-.btnPrimary:hover
-{
+.btnPrimary:hover {
   background: var(--cuxton-amber-light);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.35);
 }
 
-.btnSecondary
-{
+.btnSecondary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -685,13 +593,12 @@
   color: var(--wc-text-main);
   font-weight: 600;
   font-size: 0.95rem;
-  border-radius: 8px;
+  border-radius: 0;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
-.btnSecondary:hover
-{
+.btnSecondary:hover {
   background: rgba(27, 107, 138, 0.35);
   border-color: rgba(45, 154, 191, 0.7);
   transform: translateY(-2px);
@@ -702,10 +609,8 @@
    Respects system prefers-color-scheme: light and [data-theme="light"]
    ═══════════════════════════════════════════════════════════════════ */
 
-@media (prefers-color-scheme: light)
-{
-  :global(:root:not([data-theme="dark"])) .themeWrap
-  {
+@media (prefers-color-scheme: light) {
+  :global(:root:not([data-theme="dark"])) .themeWrap {
     --wc-card-bg: rgba(255, 255, 255, 0.9);
     --wc-card-hover: rgba(255, 255, 255, 0.98);
     --wc-card-border: rgba(27, 107, 138, 0.18);
@@ -723,39 +628,35 @@
     --wc-danger: #dc2626;
   }
 
-  :global(:root:not([data-theme="dark"])) .heroCardVisual
-  {
+  :global(:root:not([data-theme="dark"])) .heroCardVisual {
     background-color: #f0f6fa;
   }
 
-  :global(:root:not([data-theme="dark"])) .heroVisualOverlay
-  {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(240, 246, 250, 0.7) 100%);
+  :global(:root:not([data-theme="dark"])) .heroVisualOverlay {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(240, 246, 250, 0.7) 100%
+    );
   }
 
-  :global(:root:not([data-theme="dark"])) .heroVisualBadge
-  {
+  :global(:root:not([data-theme="dark"])) .heroVisualBadge {
     background: rgba(255, 255, 255, 0.95);
   }
 
-  :global(:root:not([data-theme="dark"])) .bentoCard:hover
-  {
-    box-shadow: 0 12px 32px rgba(12, 26, 38, 0.1), 0 0 0 1px rgba(27, 107, 138, 0.25);
+  :global(:root:not([data-theme="dark"])) .bentoCard:hover {
   }
 
-  :global(:root:not([data-theme="dark"])) .thCuxton
-  {
+  :global(:root:not([data-theme="dark"])) .thCuxton {
     background: rgba(27, 107, 138, 0.12) !important;
   }
 
-  :global(:root:not([data-theme="dark"])) .tdCuxton
-  {
+  :global(:root:not([data-theme="dark"])) .tdCuxton {
     background: rgba(27, 107, 138, 0.06);
   }
 }
 
-:global([data-theme="light"]) .themeWrap
-{
+:global([data-theme="light"]) .themeWrap {
   --wc-card-bg: rgba(255, 255, 255, 0.9);
   --wc-card-hover: rgba(255, 255, 255, 0.98);
   --wc-card-border: rgba(27, 107, 138, 0.18);
@@ -773,32 +674,36 @@
   --wc-danger: #dc2626;
 }
 
-:global([data-theme="light"]) .heroCardVisual
-{
+:global([data-theme="light"]) .heroCardVisual {
   background-color: #f0f6fa;
 }
 
-:global([data-theme="light"]) .heroVisualOverlay
-{
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(240, 246, 250, 0.7) 100%);
+:global([data-theme="light"]) .heroVisualOverlay {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(240, 246, 250, 0.7) 100%
+  );
 }
 
-:global([data-theme="light"]) .heroVisualBadge
-{
+:global([data-theme="light"]) .heroVisualBadge {
   background: rgba(255, 255, 255, 0.95);
 }
 
-:global([data-theme="light"]) .bentoCard:hover
-{
-  box-shadow: 0 12px 32px rgba(12, 26, 38, 0.1), 0 0 0 1px rgba(27, 107, 138, 0.25);
+:global([data-theme="light"]) .bentoCard:hover {
 }
 
-:global([data-theme="light"]) .thCuxton
-{
+:global([data-theme="light"]) .thCuxton {
   background: rgba(27, 107, 138, 0.12) !important;
 }
 
-:global([data-theme="light"]) .tdCuxton
-{
+:global([data-theme="light"]) .tdCuxton {
   background: rgba(27, 107, 138, 0.06);
+}
+
+/* Headlines carry emphasis through scale and position, not hue. These accent
+   classes remain so existing markup keeps working, but they no longer tint a
+   fragment of a heading a different colour from the rest of it. */
+.headingAccent {
+  color: inherit;
 }

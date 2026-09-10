@@ -25,7 +25,7 @@ const OnPremiseSchematic = () => (
     </text>
 
     {/* Internal Enterprise Sources */}
-    <rect x="42" y="80" width="118" height="210" rx="10" fill="#091525" stroke="rgba(27,107,138,0.32)" strokeWidth="1" />
+    <rect x="42" y="80" width="118" height="210" rx="10" fill="#16222e" stroke="rgba(27,107,138,0.32)" strokeWidth="1" />
     <circle cx="101" cy="132" r="24" fill="rgba(27,107,138,0.16)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" filter="url(#glow-onprem)" />
     <path d="M92 132h18M101 123v18" stroke="var(--cuxton-teal-light)" strokeWidth="2" strokeLinecap="round" />
     <text x="101" y="177" fill="#e8edf5" fontSize="11.5" fontWeight="750" textAnchor="middle">Local Data</text>
@@ -37,8 +37,8 @@ const OnPremiseSchematic = () => (
     <line x1="160" y1="185" x2="212" y2="185" className={styles.flowLine} stroke="var(--cuxton-teal-light)" strokeWidth="2" />
     <polygon points="210,181 219,185 210,189" fill="var(--cuxton-teal-light)" />
 
-    {/* Bare-Metal Sovereign AI Enclave */}
-    <rect x="222" y="62" width="222" height="248" rx="12" fill="#0d1f32" stroke="var(--cuxton-teal)" strokeWidth="1.5" />
+    {/* Bare-Metal Private AI Enclave */}
+    <rect x="222" y="62" width="222" height="248" rx="12" fill="#1c2a37" stroke="var(--cuxton-teal)" strokeWidth="1.5" />
     <rect x="238" y="80" width="190" height="32" rx="6" fill="rgba(27,107,138,0.22)" stroke="rgba(45,154,191,0.32)" />
     <circle cx="253" cy="96" r="4.5" fill="#2d9abf" className={styles.pulseDot} filter="url(#glow-onprem)" />
     <text x="265" y="101" fill="#ffffff" fontSize="10.5" fontWeight="750">Bare-Metal GPU Server Enclave</text>
@@ -55,8 +55,8 @@ const OnPremiseSchematic = () => (
     <line x1="444" y1="205" x2="466" y2="205" className={styles.flowLineAmber} stroke="rgba(245,166,35,0.65)" strokeWidth="1.5" />
     <circle cx="498" cy="168" r="21" fill="rgba(245,166,35,0.15)" stroke="var(--cuxton-amber)" strokeWidth="1.5" filter="url(#glow-onprem)" />
     <path d="M490 160l16 16M506 160l-16 16" stroke="var(--cuxton-amber)" strokeWidth="2" strokeLinecap="round" />
-    <text x="498" y="208" fill="var(--cuxton-amber)" fontSize="10" fontWeight="800" textAnchor="middle">EGRESS</text>
-    <text x="498" y="224" fill="var(--cuxton-amber)" fontSize="10" fontWeight="800" textAnchor="middle">BLOCKED</text>
+    <text x="498" y="208" fill="var(--cuxton-amber)" fontSize="10" fontWeight="600" textAnchor="middle">EGRESS</text>
+    <text x="498" y="224" fill="var(--cuxton-amber)" fontSize="10" fontWeight="600" textAnchor="middle">BLOCKED</text>
     <text x="498" y="250" fill="rgba(232,237,245,0.5)" fontSize="8.5" textAnchor="middle">No Internet</text>
   </svg>
 );
@@ -74,7 +74,7 @@ const PrivateCloudSchematic = () => (
     </defs>
 
     {/* Enterprise Origin */}
-    <rect x="20" y="68" width="140" height="210" rx="10" fill="#091525" stroke="rgba(27,107,138,0.32)" strokeWidth="1" />
+    <rect x="20" y="68" width="140" height="210" rx="10" fill="#16222e" stroke="rgba(27,107,138,0.32)" strokeWidth="1" />
     <rect x="34" y="84" width="112" height="30" rx="5" fill="rgba(27,107,138,0.2)" />
     <text x="90" y="104" fill="#e8edf5" fontSize="11" fontWeight="750" textAnchor="middle">Client Infrastructure</text>
     <text x="90" y="144" fill="rgba(232,237,245,0.65)" fontSize="9.5" textAnchor="middle">Internal Core Apps</text>
@@ -83,7 +83,7 @@ const PrivateCloudSchematic = () => (
     <text x="90" y="246" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="750" textAnchor="middle">No Public IP</text>
 
     {/* Dedicated PrivateLink Conduit */}
-    <rect x="180" y="140" width="130" height="62" rx="8" fill="#0d1f32" stroke="var(--cuxton-teal-light)" strokeWidth="1.2" />
+    <rect x="180" y="140" width="130" height="62" rx="8" fill="#1c2a37" stroke="var(--cuxton-teal-light)" strokeWidth="1.2" />
     <circle cx="245" cy="160" r="3.5" fill="var(--cuxton-teal-light)" className={styles.pulseDot} filter="url(#glow-privatecloud)" />
     <text x="245" y="177" fill="#ffffff" fontSize="9.5" fontWeight="750" textAnchor="middle">AWS PrivateLink</text>
     <text x="245" y="191" fill="var(--cuxton-amber)" fontSize="8.5" fontWeight="700" textAnchor="middle">Encrypted Dedicated Tunnel</text>
@@ -99,14 +99,14 @@ const PrivateCloudSchematic = () => (
     </text>
 
     {/* Compute Stack inside VPC */}
-    <rect x="345" y="72" width="160" height="80" rx="8" fill="#091525" stroke="rgba(45,154,191,0.35)" />
+    <rect x="345" y="72" width="160" height="80" rx="8" fill="#16222e" stroke="rgba(45,154,191,0.35)" />
     <text x="358" y="94" fill="#ffffff" fontSize="10.5" fontWeight="750">Isolated Inference</text>
     <text x="358" y="111" fill="rgba(232,237,245,0.7)" fontSize="9">Dedicated GPUs (H100/A100)</text>
     <text x="358" y="127" fill="rgba(232,237,245,0.7)" fontSize="9">Zero Shared Host</text>
     <text x="358" y="144" fill="var(--cuxton-teal-light)" fontSize="8" fontFamily="monospace">Non-Training Contract Enforced</text>
 
     {/* Vector DB inside VPC */}
-    <rect x="345" y="164" width="160" height="80" rx="8" fill="#0d1f32" stroke="rgba(27,107,138,0.32)" />
+    <rect x="345" y="164" width="160" height="80" rx="8" fill="#1c2a37" stroke="rgba(27,107,138,0.32)" />
     <text x="358" y="186" fill="var(--cuxton-amber)" fontSize="10.5" fontWeight="750">Dedicated Vector Mesh</text>
     <text x="358" y="205" fill="rgba(232,237,245,0.65)" fontSize="9">Encrypted at rest (CMK)</text>
     <text x="358" y="222" fill="rgba(232,237,245,0.45)" fontSize="8">SOC 2 Type II · ISO 27001</text>
@@ -129,14 +129,14 @@ const IsolatedTenancySchematic = () => (
       </filter>
     </defs>
 
-    {/* Sovereign Regional Boundary */}
-    <rect x="20" y="30" width="500" height="290" rx="12" stroke="rgba(27,107,138,0.4)" strokeWidth="1.2" strokeDasharray="3 3" fill="rgba(9,21,37,0.4)" />
+    {/* Regional Boundary */}
+    <rect x="20" y="30" width="500" height="290" rx="12" stroke="rgba(27,107,138,0.4)" strokeWidth="1.2" strokeDasharray="3 3" fill="rgba(22, 34, 46,0.4)" />
     <text x="36" y="55" fill="var(--cuxton-teal-light)" fontSize="10.5" fontWeight="750" letterSpacing="0.06em" fontFamily="monospace">
-      SOVEREIGN CLOUD REGION (EU / UK / US)
+      CLOUD REGION (EU / UK / US)
     </text>
 
     {/* Compartment Isolation Box */}
-    <rect x="40" y="72" width="300" height="210" rx="10" fill="#091525" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
+    <rect x="40" y="72" width="300" height="210" rx="10" fill="#16222e" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
     <rect x="56" y="88" width="268" height="32" rx="6" fill="rgba(27,107,138,0.22)" />
     <text x="190" y="109" fill="#ffffff" fontSize="11" fontWeight="750" textAnchor="middle">Tenant Isolated IAM Compartment</text>
 
@@ -149,7 +149,7 @@ const IsolatedTenancySchematic = () => (
     <line x1="340" y1="177" x2="362" y2="177" className={styles.flowLineAmber} stroke="rgba(245,166,35,0.65)" strokeWidth="1.5" />
 
     {/* Egress Gate & Filter */}
-    <rect x="365" y="72" width="140" height="210" rx="10" fill="#0d1f32" stroke="rgba(245,166,35,0.4)" strokeWidth="1" />
+    <rect x="365" y="72" width="140" height="210" rx="10" fill="#1c2a37" stroke="rgba(245,166,35,0.4)" strokeWidth="1" />
     <circle cx="435" cy="118" r="21" fill="rgba(245,166,35,0.15)" stroke="var(--cuxton-amber)" strokeWidth="1.5" filter="url(#glow-isolated)" />
     <path d="M427 118l5.5 5.5L444 111" stroke="var(--cuxton-amber)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
     <text x="435" y="162" fill="var(--cuxton-amber)" fontSize="10.5" fontWeight="750" textAnchor="middle">Strict Egress</text>
@@ -173,7 +173,7 @@ const HybridSchematic = () => (
     </defs>
 
     {/* Tier 1: On-Premise Core Vault */}
-    <rect x="20" y="30" width="230" height="290" rx="10" fill="#091525" stroke="var(--cuxton-amber)" strokeWidth="1.2" strokeDasharray="3 3" />
+    <rect x="20" y="30" width="230" height="290" rx="10" fill="#16222e" stroke="var(--cuxton-amber)" strokeWidth="1.2" strokeDasharray="3 3" />
     <rect x="36" y="46" width="198" height="30" rx="5" fill="rgba(245,166,35,0.15)" stroke="rgba(245,166,35,0.3)" />
     <text x="135" y="66" fill="var(--cuxton-amber)" fontSize="10.5" fontWeight="750" textAnchor="middle">Tier 1: On-Premise Core Vault</text>
     <text x="36" y="108" fill="#ffffff" fontSize="10.5" fontWeight="700">Highest Sensitivity Data</text>
@@ -184,9 +184,9 @@ const HybridSchematic = () => (
     <text x="36" y="216" fill="rgba(232,237,245,0.45)" fontSize="8.5">Zero external transmission</text>
 
     {/* Dynamic Classification Router in Middle */}
-    <rect x="272" y="110" width="90" height="120" rx="8" fill="#0d1f32" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
+    <rect x="272" y="110" width="90" height="120" rx="8" fill="#1c2a37" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
     <circle cx="317" cy="140" r="4" fill="var(--cuxton-teal-light)" className={styles.pulseDot} filter="url(#glow-hybrid)" />
-    <text x="317" y="163" fill="#ffffff" fontSize="9.5" fontWeight="800" textAnchor="middle">DYNAMIC</text>
+    <text x="317" y="163" fill="#ffffff" fontSize="9.5" fontWeight="600" textAnchor="middle">DYNAMIC</text>
     <text x="317" y="180" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" textAnchor="middle">POLICY</text>
     <text x="317" y="196" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" textAnchor="middle">ROUTER</text>
     <line x1="250" y1="170" x2="270" y2="170" className={styles.flowLine} stroke="var(--cuxton-teal-light)" strokeWidth="2" />
@@ -194,7 +194,7 @@ const HybridSchematic = () => (
     <polygon points="380,166 389,170 380,174" fill="var(--cuxton-teal-light)" />
 
     {/* Tier 2: Dedicated Cloud Elastic Enclave */}
-    <rect x="384" y="30" width="136" height="290" rx="10" fill="#091525" stroke="var(--cuxton-teal)" strokeWidth="1.2" strokeDasharray="3 3" />
+    <rect x="384" y="30" width="136" height="290" rx="10" fill="#16222e" stroke="var(--cuxton-teal)" strokeWidth="1.2" strokeDasharray="3 3" />
     <rect x="397" y="46" width="110" height="30" rx="5" fill="rgba(27,107,138,0.2)" stroke="rgba(45,154,191,0.3)" />
     <text x="452" y="66" fill="var(--cuxton-teal-light)" fontSize="9.5" fontWeight="750" textAnchor="middle">Tier 2: Dedicated Cloud</text>
     <text x="397" y="108" fill="#ffffff" fontSize="10" fontWeight="700">Elastic Scale Tasks</text>
@@ -328,7 +328,7 @@ export const deploymentModels: DeploymentModel[] = [
     n: "01",
     name: "On-Premise Bare-Metal",
     tag: "Physical Air-Gap",
-    controlRating: "Absolute Sovereignty",
+    controlRating: "Full control",
     targetProfile: "National Defense, Central Banks, Intelligence, Sovereign Wealth & Critical Infrastructure",
     summary:
       "AI infrastructure runs entirely inside your physical datacenter on client-owned appliances. Prompts, retrieval documents, and weights never cross your facility's network boundary.",
@@ -375,16 +375,16 @@ export const deploymentModels: DeploymentModel[] = [
     id: "isolated-tenancy",
     n: "03",
     name: "Isolated Tenancy",
-    tag: "Sovereign Region",
+    tag: "Region",
     controlRating: "Region-Gated Tenancy",
-    targetProfile: "Regulated Regional Enterprises, Public Sector Entities & Sovereign Cloud Adopters",
+    targetProfile: "Regulated Regional Enterprises, Public Sector Entities & Cloud Adopters",
     summary:
-      "Hardened, network-isolated compartments operating within approved geopolitical cloud regions, backed by dedicated IAM roles, sovereign residency guarantees, and continuous egress monitoring.",
+      "Hardened, network-isolated compartments operating within approved geopolitical cloud regions, backed by dedicated IAM roles, residency guarantees, and continuous egress monitoring.",
     telemetry: {
       dataEgress: "Strict Allowlist Only",
       hardware: "Dedicated Instance Enclave",
       isolation: "Compartment-Level IAM",
-      compliance: "EU GDPR / Sovereign Mandates",
+      compliance: "EU GDPR / Mandates",
     },
     advantages: [
       "Guaranteed geopolitical data residency matching strict regional statutory compliance rules",
@@ -501,7 +501,7 @@ const MATRIX_CATEGORIES: MatrixCategory[] = [
         values: {
           "on-premise": {
             primary: "0% External Egress",
-            detail: "Physical air-gap · No outbound network route",
+            detail: "Physical air-gap, No outbound network route",
             badgeType: "amber",
           },
           "private-cloud": {
@@ -511,7 +511,7 @@ const MATRIX_CATEGORIES: MatrixCategory[] = [
           },
           "isolated-tenancy": {
             primary: "Strict Allowlist",
-            detail: "Pre-approved sovereign endpoints only",
+            detail: "Pre-approved endpoints only",
             badgeType: "teal",
           },
           hybrid: {
@@ -564,7 +564,7 @@ const MATRIX_CATEGORIES: MatrixCategory[] = [
             badgeType: "teal",
           },
           "isolated-tenancy": {
-            primary: "Sovereign Compartment",
+            primary: "Compartment",
             detail: "Geopolitically region-gated IAM perimeter",
             badgeType: "teal",
           },
@@ -600,7 +600,7 @@ const MATRIX_CATEGORIES: MatrixCategory[] = [
           },
           "isolated-tenancy": {
             primary: "3–5 Days",
-            detail: "Rapid launch in sovereign cloud regions",
+            detail: "Rapid launch in cloud regions",
             badgeType: "amber",
           },
           hybrid: {
@@ -715,7 +715,7 @@ const MATRIX_CATEGORIES: MatrixCategory[] = [
             badgeType: "teal",
           },
           "isolated-tenancy": {
-            primary: "Sovereign Public Sector",
+            primary: "Public Sector",
             detail: "Regional statutory & GDPR mandates",
             badgeType: "teal",
           },
@@ -751,14 +751,11 @@ export default function DeploymentModels() {
       <div className="section py-16 lg:py-24 max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 text-left ">
         {/* Section Header */}
         <div className={styles.header}>
-          <div className={styles.eyebrow}>
-            <span className="section-label">Interactive Architecture Console</span>
-          </div>
           <h2 id="deployment-heading" className={styles.title}>
             Choose the Infrastructure Boundary Your Organisation Can Approve.
           </h2>
           <p className={styles.subtitle}>
-            Enterprise AI cannot rely on public black-box endpoints. Explore the 4 sovereign deployment postures engineered
+            Enterprise AI cannot rely on public black-box endpoints. Explore the 4 deployment postures engineered
             around your data sensitivity, network boundaries, and statutory regulatory requirements.
           </p>
         </div>
@@ -915,11 +912,7 @@ export default function DeploymentModels() {
               {/* Action Buttons */}
               {/* <div className={styles.briefingFooter}>
                 <Link href={`/contact?deployment=${currentModel.id}`} className={styles.primaryAction}>
-                  <span>Assess {currentModel.name} Feasibility</span>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
+                  <span>Assess {currentModel.name} Feasibility</span></Link>
                 <Link href="/solutions#private-ai" className={styles.secondaryAction}>
                   <span>Explore Solutions</span>
                 </Link>
@@ -932,16 +925,12 @@ export default function DeploymentModels() {
         <div className={styles.matrixContainer}>
           <div className={styles.matrixHeader}>
             <div>
-              <h3 className={styles.matrixTitle}>Sovereign Architecture &amp; Governance Matrix</h3>
+              <h3 className={styles.matrixTitle}>Architecture &amp; Governance Matrix</h3>
               <p className={styles.matrixSub}>
-                Comprehensive dimensional evaluation across perimeter defense, hardware velocity, and statutory approvals.
+                How the options compare on perimeter defence, hardware velocity, and statutory approvals.
               </p>
             </div>
-            <span className={styles.matrixHint}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-              Click any column to spotlight that architecture
+            <span className={styles.matrixHint}>Click any column to spotlight that architecture
             </span>
           </div>
 
@@ -967,91 +956,7 @@ export default function DeploymentModels() {
             ))}
           </div>
 
-          <div className={styles.tableWrapper}>
-            <table className={styles.matrixTable}>
-              <thead>
-                <tr>
-                  <th className={styles.metricHeaderCell} style={{ width: "24%" }}>
-                    Architectural Dimension
-                  </th>
-                  {deploymentModels.map((m) => {
-                    const isSelected = m.id === activeId;
-                    return (
-                      <th
-                        key={m.id}
-                        className={isSelected ? styles.activeColHeader : ""}
-                        onClick={() => setActiveId(m.id)}
-                        style={{ width: "19%" }}
-                      >
-                        <button type="button" className={styles.colHeaderBtn} aria-pressed={isSelected}>
-                          <span className={styles.colHeaderTop}>
-                            <span className={styles.colHeaderIcon}>{ModelIcons[m.id]}</span>
-                            <span className={styles.colHeaderName}>{m.name}</span>
-                          </span>
-                          {isSelected && <span className={styles.activePill}>Active</span>}
-                        </button>
-                      </th>
-                    );
-                  })}
-                </tr>
-              </thead>
-              <tbody>
-                {visibleCategories.map((category) => (
-                  <React.Fragment key={category.id}>
-                    {/* Dimension Category Separator Row */}
-                    <tr className={styles.categoryRow}>
-                      <td colSpan={5} className={styles.categoryHeaderCell}>
-                        <div className={styles.categoryHeaderInner}>
-                          <span className={styles.categoryTag}>{category.tag}</span>
-                          <span className={styles.categoryName}>{category.title}</span>
-                        </div>
-                      </td>
-                    </tr>
 
-                    {/* Category Metric Rows */}
-                    {category.rows.map((row) => (
-                      <tr key={row.feature}>
-                        <td className={styles.rowFeatureLabel}>
-                          <span className={styles.rowFeatureIcon}>{row.icon}</span>
-                          <div className={styles.metricTextGroup}>
-                            <span className={styles.metricTitle}>{row.feature}</span>
-                            <span className={styles.metricSubtitle}>{row.subtitle}</span>
-                          </div>
-                        </td>
-                        {deploymentModels.map((m) => {
-                          const isSelected = m.id === activeId;
-                          const cell = row.values[m.id as keyof typeof row.values];
-                          if (!cell) return <td key={m.id}>-</td>;
-
-                          const pillClass =
-                            cell.badgeType === "amber"
-                              ? styles.pillAmber
-                              : cell.badgeType === "teal"
-                              ? styles.pillTeal
-                              : styles.pillNeutral;
-
-                          return (
-                            <td
-                              key={m.id}
-                              className={`${styles.dataCell} ${isSelected ? styles.activeCell : ""}`}
-                              onClick={() => setActiveId(m.id)}
-                            >
-                              <div className={styles.cellContent}>
-                                <span className={`${styles.valuePill} ${pillClass}`}>
-                                  {cell.primary}
-                                </span>
-                                <p className={styles.valueDetail}>{cell.detail}</p>
-                              </div>
-                            </td>
-                          );
-                        })}
-                      </tr>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </section>

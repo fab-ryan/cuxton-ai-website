@@ -1,0 +1,306 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Rich text editor — toolbar + ProseMirror surface
+   ═══════════════════════════════════════════════════════════════════ */
+
+.wrap {
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: rgba(var(--foreground-rgb), 0.02);
+  overflow: hidden;
+}
+
+.wrap:focus-within {
+  border-color: var(--cuxton-teal-mid);
+}
+
+.wrapDragging {
+  border-color: var(--cuxton-amber);
+  background: rgba(245, 166, 35, 0.06);
+}
+
+/* ─── Toolbar ─── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-wrap: wrap;
+  padding: 0.45rem 0.55rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(var(--bg-surface-rgb), 0.7);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 0.45rem;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: none;
+  color: rgba(var(--foreground-rgb), 0.6);
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.14s ease,
+    color 0.14s ease,
+    border-color 0.14s ease;
+}
+
+.tool:hover:not(:disabled) {
+  background: rgba(var(--foreground-rgb), 0.06);
+  color: var(--foreground);
+}
+
+.tool:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.toolActive {
+  background: rgba(27, 107, 138, 0.16);
+  border-color: rgba(27, 107, 138, 0.32);
+  color: var(--cuxton-teal-text);
+}
+
+.divider {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+  margin: 0 0.25rem;
+  flex-shrink: 0;
+}
+
+.spacer {
+  margin-left: auto;
+}
+
+.busy {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--cuxton-amber-text);
+  padding: 0 0.5rem;
+  white-space: nowrap;
+}
+
+/* ─── Editing surface ───
+   ProseMirror renders its own DOM inside this container, so these rules
+   reach through the CSS-module boundary with :global. They intentionally
+   mirror components/insights/insights.module.css .prose, so the editor
+   looks like the published article. */
+.surface {
+  max-height: 620px;
+  overflow-y: auto;
+}
+
+.surface :global(.ProseMirror) {
+  padding: 1.35rem 1.5rem;
+  min-height: 340px;
+  outline: none;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(var(--foreground-rgb), 0.82);
+}
+
+.surface :global(.ProseMirror p) {
+  margin: 0 0 1.1rem;
+}
+
+.surface :global(.ProseMirror h2) {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--foreground);
+  margin: 2rem 0 0.85rem;
+}
+
+.surface :global(.ProseMirror h3) {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 1.5rem 0 0.65rem;
+}
+
+.surface :global(.ProseMirror > *:first-child) {
+  margin-top: 0;
+}
+
+.surface :global(.ProseMirror ul),
+.surface :global(.ProseMirror ol) {
+  margin: 0 0 1.1rem;
+  padding-left: 1.4rem;
+}
+
+.surface :global(.ProseMirror li) {
+  margin-bottom: 0.4rem;
+}
+
+.surface :global(.ProseMirror li p) {
+  margin: 0;
+}
+
+.surface :global(.ProseMirror blockquote) {
+  margin: 0 0 1.1rem;
+  padding: 0.15rem 0 0.15rem 1.1rem;
+  border-left: 3px solid var(--cuxton-teal-mid);
+  color: var(--foreground);
+  font-style: italic;
+}
+
+.surface :global(.ProseMirror code) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.86em;
+  background: rgba(var(--foreground-rgb), 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: 0;
+}
+
+.surface :global(.ProseMirror pre) {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 0.9rem 1.1rem;
+  margin: 0 0 1.1rem;
+  overflow-x: auto;
+}
+
+.surface :global(.ProseMirror pre code) {
+  background: none;
+  padding: 0;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.surface :global(.ProseMirror hr) {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.75rem 0;
+}
+
+.surface :global(.ProseMirror a) {
+  color: var(--cuxton-teal-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.surface :global(.ProseMirror img) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0;
+  border: 1px solid var(--border);
+  display: block;
+  margin: 1.5rem 0;
+}
+
+.surface :global(.ProseMirror img.ProseMirror-selectednode) {
+  outline: 2px solid var(--cuxton-amber);
+  outline-offset: 2px;
+}
+
+/* Placeholder for an empty document */
+.surface :global(.ProseMirror p.is-editor-empty:first-child::before) {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: rgba(var(--foreground-rgb), 0.3);
+}
+
+/* ─── Footer ─── */
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.71rem;
+  color: rgba(var(--foreground-rgb), 0.38);
+  flex-wrap: wrap;
+}
+
+/* ─── Cover uploader ─── */
+.dropzone {
+  border: 1px dashed var(--border);
+  border-radius: 0;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(var(--foreground-rgb), 0.02);
+  transition:
+    border-color 0.16s ease,
+    background 0.16s ease;
+  display: block;
+  width: 100%;
+}
+
+.dropzone:hover,
+.dropzoneActive {
+  border-color: var(--cuxton-teal-mid);
+  background: rgba(27, 107, 138, 0.07);
+}
+
+.dropzoneLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.3rem;
+}
+
+.dropzoneHint {
+  font-size: 0.7rem;
+  color: rgba(var(--foreground-rgb), 0.38);
+  line-height: 1.5;
+}
+
+.preview {
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.previewImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 190px;
+  object-fit: cover;
+  background: var(--bg-elevated);
+}
+
+.previewBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg-surface);
+}
+
+.previewName {
+  font-size: 0.7rem;
+  color: rgba(var(--foreground-rgb), 0.45);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.srOnlyInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

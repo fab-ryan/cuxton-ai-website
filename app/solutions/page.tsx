@@ -20,7 +20,7 @@ export default function SolutionsPage() {
         eyebrow="Solutions Catalog"
         title="The right AI for the"
         titleHighlight="right problem."
-        description="From identifying where AI can help to building, deploying and enabling it — Cuxton delivers AI that is relevant, controlled and connected to your organisation's actual operations."
+        description="From identifying where AI can help to building, deploying and enabling it  Cuxton delivers AI that is relevant, controlled and connected to your organisation's actual operations."
         primaryCta={{
           label: "Book an AI Discovery Session",
           href: "/contact",
@@ -34,7 +34,7 @@ export default function SolutionsPage() {
         ]}
         stats={[
           { value: "0%", label: "Public Model Training" },
-          { value: "100%", label: "Client IP Sovereignty" },
+          { value: "100%", label: "Client IP ownership" },
           { value: "VPC", label: "Isolated Compute Ready" },
         ]}
       />

@@ -4,10 +4,8 @@ import Reveal from "../Reveal"
 
 export const FourLayersSection = () => {
     return (<section className={`section-py ${s.section}`} id="architecture">
-        <div className={s.bgGrid} aria-hidden="true" />
         <div className="container max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 mt-8">
             <Reveal className={s.header}>
-                <div className="section-label">Architecture</div>
                 <h2 className="section-heading" style={{ marginBottom: "1rem" }}>
                     Four layers. One controlled environment.
                 </h2>
@@ -33,7 +31,6 @@ export const FourLayersSection = () => {
                             <div className={`card-enterprise ${s.card}`}>
                                 <span className={s.cornerTl} aria-hidden="true" />
                                 <span className={s.cornerBr} aria-hidden="true" />
-                                <span className={s.tag}>LAYER 0{i + 1}</span>
                                 <h3 className={s.title}>{l.label}</h3>
                                 <p className={s.body}>{l.desc}</p>
                             </div>
@@ -58,7 +55,7 @@ export const FourLayersSection = () => {
                         </span>
                     </div>
                     <div className={`card-enterprise ${s.capstoneCard}`}>
-                        <span className={s.tag}>OUTCOME</span>
+                        
                         <h3 className={s.title}>One controlled environment</h3>
                         <p className={s.body}>
                             Every layer operates inside the same governance boundary  access, audit

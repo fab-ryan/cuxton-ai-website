@@ -64,10 +64,8 @@ export default function PageHero({
       : styles.headingHighlight;
 
   return (
-    <section className={`${styles.heroSection} scanlines`} aria-labelledby="page-hero-heading">
-      {/* Solid overlay & hex grid (zero linear gradients) */}
-      <div className={styles.heroOverlay} aria-hidden="true" />
-      <div className="absolute inset-0 hex-grid pointer-events-none" aria-hidden="true" />
+    <section className={`${styles.heroSection}`} aria-labelledby="page-hero-heading">
+      <div className={styles.heroOverlay}/>
 
       <div className={styles.container}>
         {/* Breadcrumb Navigation */}
@@ -130,11 +128,7 @@ export default function PageHero({
               <div className={styles.actionsRow}>
                 {primaryCta && (
                   <Link href={primaryCta.href} className={styles.primaryBtn}>
-                    <span>{primaryCta.label}</span>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                    <span>{primaryCta.label}</span></Link>
                 )}
 
                 {secondaryCta && (
@@ -156,7 +150,7 @@ export default function PageHero({
               ) : stats && stats.length > 0 ? (
                 <div className={styles.statsCard}>
                   <div className={styles.cardHeader}>
-                    <p className={styles.cardTitle}>Sovereign Architecture</p>
+                    <p className={styles.cardTitle}>Architecture</p>
                     <div className={styles.statusIndicator}>
                       <span className={styles.statusIndicatorDot} aria-hidden="true" />
                       <span>Verified Active</span>

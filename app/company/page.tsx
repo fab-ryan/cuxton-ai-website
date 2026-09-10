@@ -56,7 +56,7 @@ const disciplines = [
   },
   {
     code: "CUX-INT",
-    title: "Sovereign Systems Integration",
+    title: "Systems Integration",
     desc: "We embed validated foundation models, private RAG pipelines, and agent runtimes into your approved enterprise architecture and ERP systems.",
   },
   {
@@ -79,7 +79,7 @@ const disciplines = [
 const globalNodes = [
   {
     city: "London",
-    role: "Global Headquarters & Sovereign Enclave Lab",
+    role: "Global Headquarters & Private Enclave Lab",
     desc: "Primary executive advisory, UK enterprise compliance engineering, and institutional discovery briefing center.",
   },
   {
@@ -95,7 +95,7 @@ const globalNodes = [
   {
     city: "New York",
     role: "Capital Markets & Regulated Systems",
-    desc: "North American enterprise integration practice supporting FINRA, SEC, and HIPAA-regulated sovereign deployments.",
+    desc: "North American enterprise integration practice supporting FINRA, SEC, and HIPAA-regulated deployments.",
   },
 ];
 
@@ -108,7 +108,7 @@ export default function CompanyPage() {
         eyebrow="About Cuxton AI"
         title="Enterprise AI consultancy built for institutions that"
         titleHighlight="need control."
-        description="Cuxton AI exists to help organisations with complex, sensitive or regulated operations discover where AI creates real value — and then build, integrate and deploy it safely, responsibly and with lasting effect."
+        description="Cuxton AI exists to help organisations with complex, sensitive or regulated operations discover where AI creates real value  and then build, integrate and deploy it safely, responsibly and with lasting effect."
         primaryCta={{
           label: "Book a Discovery Session",
           href: "/contact",
@@ -118,7 +118,7 @@ export default function CompanyPage() {
           href: "/how-we-work",
         }}
         tags={[
-          "Sovereign Architecture",
+          "Architecture",
           "Independent Advisory",
           "Institutional Privacy",
           "Human-in-the-Loop",
@@ -127,14 +127,12 @@ export default function CompanyPage() {
 
       {/* --- Section 1: Institutional Mandate & Core Disciplines ----------- */}
       <section className={styles.mandateSection}>
-        <div className={`${styles.bgGrid} ${styles.bgGridPlain}`} aria-hidden="true" />
 
         <div className={`${styles.container} ${styles.sectionContent}`}>
           <div className={styles.mandateGrid}>
             {/* Left Pane: Enterprise Mandate & Mission */}
             <div>
               <div className={styles.mandateHeader}>
-                <div className="section-label">Institutional Mandate</div>
                 <h2 className={styles.heading}>
                   Engineered for organizations where{" "}
                   <span className={styles.headingHighlight}>failure is not an option.</span>
@@ -152,8 +150,9 @@ export default function CompanyPage() {
                   <span>Mission Statement</span>
                 </div>
                 <p className={styles.missionStatement}>
-                  To empower institutions to deploy high-value, deterministic artificial intelligence—maintaining
-                  uncompromising data sovereignty, rigorous governance, and verifiable operational return on investment.
+                  To help institutions run AI they can actually account for —
+                  where the data stays put, the decisions are governed, and the
+                  return is something you can measure.
                 </p>
 
                 <div className={styles.missionDivider} />
@@ -163,7 +162,7 @@ export default function CompanyPage() {
                   {[
                     "Regulated Financial Services, Insurers & Asset Managers",
                     "Healthcare Systems, Clinical Networks & Life Sciences",
-                    "Government Ministries, Sovereign Authorities & Defense",
+                    "Government Ministries, Authorities & Defense",
                     "Telecommunications Carriers & Critical Infrastructure",
                   ].map((archetype) => (
                     <li key={archetype} className={styles.clientArchetypeItem}>
@@ -201,12 +200,12 @@ export default function CompanyPage() {
       </section>
 
       {/* --- Section 2: Visual Facility Showcase & Telemetry --------------- */}
-      <section className={styles.visualSection}>
+      {/* <section className={styles.visualSection}>
         <div className={styles.container}>
           <div className={styles.visualFrame}>
             <Image
               src="/company_mandate_visual.jpg"
-              alt="Cuxton AI Executive Sovereign Advisory and Briefing Chamber"
+              alt="Cuxton AI Executive Advisory and Briefing Chamber"
               fill
               priority
               sizes="100vw"
@@ -216,7 +215,7 @@ export default function CompanyPage() {
 
             <div className={styles.visualBadgeOverlay}>
               <span className={styles.visualBadgeDot} aria-hidden="true" />
-              <span>CUXTON ADVISORY &amp; MISSION LAB · LONDON</span>
+              <span>CUXTON ADVISORY &amp; MISSION LAB, LONDON</span>
             </div>
 
             <div className={styles.visualTelemetryBar}>
@@ -239,18 +238,17 @@ export default function CompanyPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* --- Section 3: Interactive 7-Principle Doctrine Matrix ------------ */}
       <CompanyPrinciplesMatrix />
 
-      {/* --- Section 4: Sovereign Global Infrastructure Footprint ---------- */}
+      {/* --- Section 4: Global Infrastructure Footprint ---------- */}
       <section className={styles.footprintSection}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <div className="section-label">Sovereign Reach</div>
             <h2 className={styles.heading}>
-              Distributed sovereign{" "}
+              A distributed{" "}
               <span className={styles.headingHighlight}>deployment footprint.</span>
             </h2>
             <p className={styles.lead}>
@@ -332,11 +330,7 @@ export default function CompanyPage() {
 
           <div className={styles.closingActions}>
             <Link href="/contact" className="btn-primary" style={{ height: "3.25rem", padding: "0 2rem" }}>
-              <span>Schedule Executive Consultation</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
+              <span>Schedule Executive Consultation</span></Link>
             <Link href="/how-we-work" className="btn-secondary" style={{ height: "3.25rem", padding: "0 1.75rem" }}>
               <span>Explore How We Work</span>
             </Link>
@@ -357,7 +351,7 @@ export default function CompanyPage() {
             </div>
             <div className={styles.trustBadge}>
               <CheckIcon />
-              <span>GDPR Sovereign Boundary</span>
+              <span>GDPR Boundary</span>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ import ModelSelection from "@/components/technology/ModelSelection";
 import GovernanceFramework from "@/components/technology/GovernanceFramework";
 
 export const metadata: Metadata = {
-  title: "Technology — Private AI Architecture and Controlled Deployment",
+  title: "Technology - Private AI Architecture and Controlled Deployment",
   description:
     "Cuxton AI designs AI architecture around data sensitivity, deployment constraints and governance requirements. Private cloud, on-premise and isolated tenancy deployment options.",
 };

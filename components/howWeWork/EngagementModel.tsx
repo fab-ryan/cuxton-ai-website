@@ -65,7 +65,7 @@ const PHASES: PhaseData[] = [
     roman: "IV",
     code: "PHASE 04",
     name: "Operational Scale",
-    objective: "Empower cross-functional teams through certified training, transfer admin custody, and monitor continuously.",
+    objective: "Train your teams, hand over admin custody, and monitor continuously.",
     stepIndices: [6, 7],
   },
 ];
@@ -221,7 +221,7 @@ const STEPS: StepData[] = [
       process: { label: "Diagnostic Engine", text: "Tenant Integration, Pen-Testing & CI/CD Pipeline" },
       output: { label: "Target Deliverable", text: "Production Release in Dedicated Client Tenant" },
     },
-    desc: "The validated solution is hardened to enterprise standards, seamlessly integrated with core business systems, and deployed inside your dedicated tenant—whether cloud or on-premise. Engineering delivery includes automated integration tests, zero-downtime failover configurations, and comprehensive audit telemetry.",
+    desc: "The validated solution is hardened to enterprise standards, integrated with core business systems, and deployed inside your dedicated tenant—whether cloud or on-premise. Engineering delivery includes automated integration tests, zero-downtime failover configurations, and comprehensive audit telemetry.",
     stakeholders: [
       "DevOps & Enterprise SRE Teams",
       "Production Data Engineers",
@@ -395,13 +395,10 @@ export default function EngagementModel() {
 
   return (
     <section className={styles.section} id="engagement-model">
-      {/* Background blueprint grid (Strictly zero linear gradient) */}
-      <div className={styles.bgGrid} aria-hidden="true" />
 
       <div className="container relative z-10 max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 text-left">
         {/* Section Header */}
         <div className={styles.header}>
-          <div className="section-label">Accountable Engagement Model</div>
           <h2 className={styles.heading}>
             Eight disciplined milestones.{" "}
             <span className={styles.headingHighlight}>Zero unverified claims.</span>
@@ -419,7 +416,7 @@ export default function EngagementModel() {
               MILESTONE {activeStep.n} / 08
             </span>
             <span className={styles.mobileStepName}>
-              {activeStep.name} · {activeStep.cadence}
+              {activeStep.name}, {activeStep.cadence}
             </span>
           </div>
 
@@ -509,7 +506,7 @@ export default function EngagementModel() {
                         <span className={styles.nodeName}>{step.name}</span>
                         {isActive && (
                           <span className={styles.nodeCadence}>
-                            {step.phaseRoman} · {step.cadence}
+                            {step.phaseRoman}, {step.cadence}
                           </span>
                         )}
                       </div>
@@ -556,7 +553,7 @@ export default function EngagementModel() {
                       <div className={styles.cardMetaGroup}>
                         <span className={styles.stepNumBadge}>MILESTONE {step.n}</span>
                         <span className={styles.phaseTag}>
-                          {step.phaseRoman} · {step.phaseName}
+                          {step.phaseRoman}, {step.phaseName}
                         </span>
                       </div>
                       <h3 className={styles.cardTitle}>{step.name}</h3>
@@ -581,7 +578,7 @@ export default function EngagementModel() {
                           <polyline points="2 17 12 22 22 17" />
                           <polyline points="2 12 12 17 22 12" />
                         </svg>
-                        Technical Schematic · Milestone {step.n}
+                        Technical Schematic, Milestone {step.n}
                       </span>
                       <span className={styles.schematicStatus}>
                         <span className={styles.schematicStatusDot} aria-hidden="true" />

@@ -6,7 +6,7 @@
 .section {
   position: relative;
   overflow: hidden;
-  background-color: #060d14;
+  background-color: #101b26;
   isolation: isolate;
 }
 
@@ -30,7 +30,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(6, 13, 20, 0.82);
+  background-color: rgba(16, 27, 38, 0.82);
   z-index: 1;
 }
 
@@ -51,9 +51,7 @@
   align-items: center;
   gap: 0.6rem;
   font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--cuxton-amber);
   margin-bottom: 0.85rem;
 }
@@ -63,13 +61,12 @@
   height: 7px;
   border-radius: 50%;
   background-color: var(--cuxton-amber);
-  box-shadow: 0 0 10px var(--cuxton-amber);
   flex-shrink: 0;
 }
 
 .heading {
   font-size: clamp(2rem, 3.4vw, 2.75rem);
-  font-weight: 850;
+  font-weight: 600;
   color: var(--foreground);
   line-height: 1.18;
   letter-spacing: -0.025em;
@@ -118,29 +115,30 @@
 }
 
 .tenetCard {
-  background-color: rgba(9, 21, 37, 0.85);
+  background-color: rgba(22, 34, 46, 0.85);
   border: 1px solid rgba(27, 107, 138, 0.28);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 1.4rem;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
   position: relative;
   text-align: left;
 }
 
 .tenetCard:hover {
-  background-color: rgba(13, 31, 50, 0.95);
+  background-color: rgba(28, 42, 55, 0.95);
   border-color: rgba(45, 154, 191, 0.5);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
 .tenetCardActive {
-  background-color: rgba(13, 31, 50, 0.98);
+  background-color: rgba(28, 42, 55, 0.98);
   border-color: var(--cuxton-amber);
-  box-shadow: 0 0 20px rgba(245, 166, 35, 0.22);
 }
 
 .tenetTop {
@@ -153,7 +151,7 @@
 .tenetIconBox {
   width: 38px;
   height: 38px;
-  border-radius: 10px;
+  border-radius: 0;
   background-color: rgba(27, 107, 138, 0.2);
   border: 1px solid rgba(45, 154, 191, 0.35);
   display: flex;
@@ -161,7 +159,9 @@
   justify-content: center;
   color: var(--cuxton-teal-light);
   flex-shrink: 0;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .tenetCardActive .tenetIconBox {
@@ -171,16 +171,15 @@
 }
 
 .tenetIndex {
-  font-family: var(--font-mono), monospace;
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.45);
   letter-spacing: 0.08em;
 }
 
 .tenetTitle {
   font-size: 0.98rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--foreground);
   line-height: 1.3;
   margin: 0 0 0.45rem;
@@ -205,9 +204,7 @@
 .tenetBadge {
   font-size: 0.65rem;
   font-weight: 750;
-  font-family: var(--font-mono), monospace;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: var(--cuxton-teal-light);
 }
 
@@ -220,19 +217,17 @@
   height: 6px;
   border-radius: 50%;
   background-color: var(--cuxton-amber);
-  box-shadow: 0 0 8px var(--cuxton-amber);
 }
 
 /* ─── Right Column: Verification & Audit Console Card ─────────────── */
 
 .inspectorCard {
-  background-color: rgba(9, 21, 37, 0.92);
+  background-color: rgba(22, 34, 46, 0.92);
   border: 1px solid rgba(27, 107, 138, 0.35);
-  border-radius: 18px;
+  border-radius: 0;
   padding: 1.85rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
   position: sticky;
   top: 90px;
 }
@@ -262,9 +257,7 @@
 
 .inspectorTitleText {
   font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--foreground);
 }
 
@@ -273,10 +266,9 @@
   align-items: center;
   gap: 0.45rem;
   font-size: 0.68rem;
-  font-family: var(--font-mono), monospace;
-  font-weight: 800;
+  font-weight: 600;
   padding: 0.25rem 0.65rem;
-  border-radius: 6px;
+  border-radius: 0;
   background-color: rgba(27, 107, 138, 0.22);
   border: 1px solid rgba(45, 154, 191, 0.4);
   color: var(--cuxton-teal-light);
@@ -287,30 +279,27 @@
   height: 6px;
   border-radius: 50%;
   background-color: var(--cuxton-teal-light);
-  box-shadow: 0 0 8px var(--cuxton-teal-light);
 }
 
 /* Active Focus Tenet Callout */
 .focusBox {
-  background-color: rgba(6, 13, 20, 0.7);
+  background-color: rgba(16, 27, 38, 0.7);
   border: 1px solid rgba(27, 107, 138, 0.28);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
 .focusLabel {
   font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--cuxton-amber);
   margin-bottom: 0.35rem;
 }
 
 .focusTitle {
   font-size: 1.15rem;
-  font-weight: 850;
+  font-weight: 600;
   color: var(--foreground);
   margin: 0 0 0.5rem;
   line-height: 1.3;
@@ -326,9 +315,7 @@
 /* Three Core Inspection Boundaries */
 .boundariesHeader {
   font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.45);
   margin-bottom: 0.85rem;
 }
@@ -341,9 +328,9 @@
 }
 
 .boundaryItem {
-  background-color: rgba(6, 13, 20, 0.5);
+  background-color: rgba(16, 27, 38, 0.5);
   border: 1px solid rgba(27, 107, 138, 0.2);
-  border-radius: 10px;
+  border-radius: 0;
   padding: 0.9rem 1rem;
   display: flex;
   align-items: flex-start;
@@ -381,17 +368,15 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0.85rem 1rem;
-  background-color: rgba(6, 13, 20, 0.6);
+  background-color: rgba(16, 27, 38, 0.6);
   border: 1px solid rgba(27, 107, 138, 0.2);
-  border-radius: 10px;
+  border-radius: 0;
   margin-bottom: 1.5rem;
 }
 
 .frameworksLabel {
   font-size: 0.66rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.45);
   margin-right: 0.25rem;
 }
@@ -399,9 +384,8 @@
 .frameworkBadge {
   font-size: 0.68rem;
   font-weight: 750;
-  font-family: var(--font-mono), monospace;
   padding: 0.2rem 0.55rem;
-  border-radius: 6px;
+  border-radius: 0;
   background-color: rgba(27, 107, 138, 0.15);
   border: 1px solid rgba(45, 154, 191, 0.3);
   color: var(--cuxton-teal-light);
@@ -417,19 +401,20 @@
   padding: 0 1.5rem;
   background-color: var(--cuxton-teal);
   border: 1px solid var(--cuxton-teal-light);
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 0.84rem;
   font-weight: 750;
   color: #ffffff;
   text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
   width: 100%;
 }
 
 .actionBtn:hover {
   background-color: var(--cuxton-teal-mid);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(27, 107, 138, 0.35);
 }
 
 /* ─── Light Mode Overrides (NO linear gradient) ───────────────────── */
@@ -451,13 +436,11 @@
   .tenetCard {
     background-color: #ffffff;
     border-color: rgba(27, 107, 138, 0.22);
-    box-shadow: 0 4px 14px rgba(12, 34, 51, 0.04);
   }
 
   .tenetCard:hover {
     background-color: #f7fafc;
     border-color: var(--cuxton-teal);
-    box-shadow: 0 8px 24px rgba(12, 34, 51, 0.08);
   }
 
   .tenetCardActive {
@@ -480,7 +463,6 @@
   .inspectorCard {
     background-color: #ffffff;
     border-color: rgba(27, 107, 138, 0.22);
-    box-shadow: 0 12px 32px rgba(12, 34, 51, 0.07);
   }
 
   .inspectorTitleText {
@@ -517,4 +499,11 @@
     background-color: #f7fafc;
     border-color: rgba(27, 107, 138, 0.16);
   }
+}
+
+/* Headlines carry emphasis through scale and position, not hue. These accent
+   classes remain so existing markup keeps working, but they no longer tint a
+   fragment of a heading a different colour from the rest of it. */
+.headingAccent {
+  color: inherit;
 }

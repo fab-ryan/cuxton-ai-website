@@ -14,7 +14,6 @@ export const AiAgentsSection = () => {
 
   return (
     <section className={s.section} id="agents">
-      {/* ─── SOLID ARCHITECTURAL BACKDROP & SEAMLESS SECTION BLENDS ─── */}
       <div className={s.bgOverlay} />
       <div className={s.edgeTransitionTop} aria-hidden="true" />
       <div className={s.edgeTransitionBottom} aria-hidden="true" />
@@ -22,7 +21,6 @@ export const AiAgentsSection = () => {
       <div className={`container max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 text-left ${s.themeWrap}`}>
         {/* ─── SECTION HEADER ────────────────────────────────────────── */}
         <Reveal className={`${s.header} text-left`}>
-          <div className="section-label">Autonomous Workflows &amp; AI Agents</div>
           <h2 className={s.heading}>
             AI that executes.<br />
             <span className={s.headingAccent}>Within defined guardrails.</span>
@@ -78,9 +76,8 @@ export const AiAgentsSection = () => {
                       <span className={s.stepSummary}>{st.summary}</span>
                     </div>
                     <span
-                      className={`${s.stepStatusChip} ${
-                        st.status === "COMPLETE" ? s.statusComplete : s.statusReview
-                      }`}
+                      className={`${s.stepStatusChip} ${st.status === "COMPLETE" ? s.statusComplete : s.statusReview
+                        }`}
                     >
                       {st.status === "COMPLETE" ? "VERIFIED" : "HUMAN GATE"}
                     </span>
@@ -102,7 +99,6 @@ export const AiAgentsSection = () => {
                 <span className={s.terminalFileName}>
                   agent_orchestrator://step_0{activeStep + 1}.log
                 </span>
-                <span className={s.consoleBadge}>RBAC VERIFIED</span>
               </div>
 
               <div className={s.inspectorBody}>
@@ -157,11 +153,7 @@ export const AiAgentsSection = () => {
         {/* ─── ACTIONS FOOTER ────────────────────────────────────────── */}
         <Reveal delay={200} className={s.ctaRow}>
           <Link href="/solutions#agents" className="btn-primary">
-            Learn About AI Agents
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </Link>
+            Learn About AI Agents</Link>
           <Link href="/contact" className={`btn-secondary ${s.ctaSecondary}`}>
             Schedule an Agent Discovery Session
           </Link>
