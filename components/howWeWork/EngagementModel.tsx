@@ -196,7 +196,7 @@ const STEPS: StepData[] = [
     desc: "We construct a functional proof of concept in a secure sandbox utilizing sanitized or synthetic datasets. Controlled trials with representative operators stress-test real-world performance, measure hallucination boundaries, calibrate inference latency, and validate usability assumptions prior to capital-intensive production engineering.",
     stakeholders: [
       "Target End-Users & Workflow Operators",
-      "Cuxton AI Engineering Leads",
+      "CuxtonAI Engineering Leads",
       "Data Science & QA Reviewers",
       "Business Unit Product Owner",
     ],
@@ -226,7 +226,7 @@ const STEPS: StepData[] = [
       "DevOps & Enterprise SRE Teams",
       "Production Data Engineers",
       "Infosec Audit Committee",
-      "Cuxton AI Deployment Leads",
+      "CuxtonAI Deployment Leads",
     ],
     outputs: [
       "Production deployment within client tenant",
@@ -254,7 +254,7 @@ const STEPS: StepData[] = [
       "Operational End-Users & Supervisors",
       "Internal System Administrators & Tier-1 Support",
       "Executive Leadership",
-      "Cuxton AI Enablement Specialists",
+      "CuxtonAI Enablement Specialists",
     ],
     outputs: [
       "Role-tailored interactive training sessions & video guides",
@@ -281,7 +281,7 @@ const STEPS: StepData[] = [
     stakeholders: [
       "Executive Steering Sponsor",
       "Internal AI Operations & Support Team",
-      "Cuxton AI Principal Advisory",
+      "CuxtonAI Principal Advisory",
       "Compliance & Audit Stewards",
     ],
     outputs: [

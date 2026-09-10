@@ -118,10 +118,10 @@
 }
 
 .badgeDot {
-  width: 4px;
+  /* width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: rgba(var(--foreground-rgb), 0.35);
+  background-color: rgba(var(--foreground-rgb), 0.35); */
 }
 
 .badgeTag {
@@ -174,7 +174,7 @@
 }
 
 .primaryHeroBtn:hover {
-  background-color: #f7b33d;
+  background-color: var(--cuxton-amber-light);
   transform: translateY(-2px);
 }
 
@@ -317,10 +317,10 @@
 }
 
 .cardBadgeDot {
-  width: 5px;
+  /* width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: var(--cuxton-teal-light);
+  background-color: var(--cuxton-teal-light); */
 }
 
 .cardBadgeTag {
@@ -415,7 +415,7 @@
 }
 
 .cardPrimaryBtn:hover {
-  background-color: #38bdf8;
+  background-color: color-mix(in srgb, var(--cuxton-teal-light) 85%, white);
   transform: translateY(-2px);
 }
 
@@ -513,7 +513,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #10b981;
+  background-color: var(--cuxton-teal-light);
 }
 
 /* Use cases list below image */
@@ -548,7 +548,6 @@
 .useCaseBullet {
   width: 6px;
   height: 6px;
-  border-radius: 50%;
   background-color: var(--cuxton-teal-light);
   flex-shrink: 0;
   margin-top: 0.4rem;

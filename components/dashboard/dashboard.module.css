@@ -364,9 +364,9 @@
 }
 
 .badgeDone {
-  background: rgba(34, 160, 120, 0.14);
-  border-color: rgba(34, 160, 120, 0.32);
-  color: #1f9a72;
+  background: rgba(var(--status-ok-rgb), 0.14);
+  border-color: rgba(var(--status-ok-rgb), 0.32);
+  color: var(--status-ok);
 }
 
 .badgeMuted {
@@ -376,9 +376,9 @@
 }
 
 .badgeFail {
-  background: rgba(200, 60, 60, 0.14);
-  border-color: rgba(200, 60, 60, 0.3);
-  color: #d15757;
+  background: rgba(var(--status-error-rgb), 0.14);
+  border-color: rgba(var(--status-error-rgb), 0.3);
+  color: var(--status-error);
 }
 
 /* ─── Toolbar ─── */
@@ -622,15 +622,15 @@
 }
 
 .noticeError {
-  background: rgba(200, 60, 60, 0.09);
-  border-color: rgba(200, 60, 60, 0.28);
-  color: #d15757;
+  background: rgba(var(--status-error-rgb), 0.09);
+  border-color: rgba(var(--status-error-rgb), 0.28);
+  color: var(--status-error);
 }
 
 .noticeOk {
-  background: rgba(34, 160, 120, 0.09);
-  border-color: rgba(34, 160, 120, 0.28);
-  color: #1f9a72;
+  background: rgba(var(--status-ok-rgb), 0.09);
+  border-color: rgba(var(--status-ok-rgb), 0.28);
+  color: var(--status-ok);
 }
 
 .noticeInfo {
@@ -670,7 +670,7 @@
 }
 
 .danger {
-  color: #d15757;
+  color: var(--status-error);
 }
 
 /* ─── Centred states (loading / gate) ─── */

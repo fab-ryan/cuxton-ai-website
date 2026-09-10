@@ -93,7 +93,7 @@ export default function LoginForm() {
                 marginBottom: "0.6rem",
               }}
             >
-              Cuxton AI Console
+              CuxtonAI Console
             </p>
             <h1
               style={{

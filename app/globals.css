@@ -49,12 +49,20 @@
   --border-subtle: rgba(120, 160, 185, 0.12);
   --border-amber: rgba(245, 166, 35, 0.4);
 
+  /* Status — the only green and the only red on the site. They mean
+     pass / fail and nothing else; never use them as decoration. */
+  --status-ok: #10b981;
+  --status-error: #f87171;
+
   /* RGB triplets — let translucent fills track the theme, since
      rgba() can't reference a hex custom property directly. */
   --foreground-rgb: 230, 236, 242;
   --background-rgb: 16, 27, 38;
   --bg-surface-rgb: 22, 34, 46;
   --bg-elevated-rgb: 28, 42, 55;
+  --cuxton-teal-mid-rgb: 47, 136, 168;
+  --status-ok-rgb: 16, 185, 129;
+  --status-error-rgb: 248, 113, 113;
 
   /* Inline-SVG schematic palette. Shared by the technology /
      how-we-work diagrams so they follow the theme. */
@@ -70,7 +78,6 @@
   --sch-chip: #1e2f3d;
   --sch-amber-text: #f0ad3e;
   --sch-amber-bg: #2e2411;
-  --sch-green-bg: #14251d;
   --sch-red-bg: #2a1719;
 }
 
@@ -98,6 +105,11 @@
     --cuxton-amber-text: #8a5c12;
     --cuxton-teal-text: #1b6b8a;
 
+    --status-ok: #15803d;
+    --status-error: #dc2626;
+    --status-ok-rgb: 21, 128, 61;
+    --status-error-rgb: 220, 38, 38;
+
     --sch-panel: #ffffff;
     --sch-panel-2: #e9eff4;
     --sch-deep: #f4f6f8;
@@ -110,7 +122,6 @@
     --sch-chip: #dde6ee;
     --sch-amber-text: #8a5c12;
     --sch-amber-bg: #f7efdf;
-    --sch-green-bg: #e6f2ec;
     --sch-red-bg: #f7e9e9;
   }
 
@@ -151,6 +162,11 @@
 
     --cuxton-amber-text: #f0ad3e;
     --cuxton-teal-text: #6fb8d1;
+
+    --status-ok: #10b981;
+    --status-error: #f87171;
+    --status-ok-rgb: 16, 185, 129;
+    --status-error-rgb: 248, 113, 113;
 
     color: var(--foreground);
   }

@@ -7,9 +7,9 @@ import LeadershipCouncil from "@/components/company/LeadershipCouncil";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Company — About Cuxton AI",
+  title: "Company — About CuxtonAI",
   description:
-    "Cuxton AI is an enterprise AI consultancy helping institutions discover, integrate and deploy secure AI systems, agents and workflow automation.",
+    "CuxtonAI is an enterprise AI consultancy helping institutions discover, integrate and deploy secure AI systems, agents and workflow automation.",
 };
 
 const CheckIcon = () => (
@@ -105,10 +105,10 @@ export default function CompanyPage() {
       {/* --- Hero Section (PRESERVED AS REQUESTED) ------------------------- */}
       <PageHero
         breadcrumbs={[{ label: "Company" }]}
-        eyebrow="About Cuxton AI"
+        eyebrow="About CuxtonAI"
         title="Enterprise AI consultancy built for institutions that"
         titleHighlight="need control."
-        description="Cuxton AI exists to help organisations with complex, sensitive or regulated operations discover where AI creates real value  and then build, integrate and deploy it safely, responsibly and with lasting effect."
+        description="CuxtonAI exists to help organisations with complex, sensitive or regulated operations discover where AI creates real value  and then build, integrate and deploy it safely, responsibly and with lasting effect."
         primaryCta={{
           label: "Book a Discovery Session",
           href: "/contact",
@@ -138,7 +138,7 @@ export default function CompanyPage() {
                   <span className={styles.headingHighlight}>failure is not an option.</span>
                 </h2>
                 <p className={styles.mandateBody}>
-                  Cuxton AI is an independent enterprise consultancy. We exist solely to solve high-stakes
+                  CuxtonAI is an independent enterprise consultancy. We exist solely to solve high-stakes
                   computational and operational challenges for institutions where data leakage, regulatory non-compliance,
                   or model hallucinations carry catastrophic business consequences.
                 </p>
@@ -205,7 +205,7 @@ export default function CompanyPage() {
           <div className={styles.visualFrame}>
             <Image
               src="/company_mandate_visual.jpg"
-              alt="Cuxton AI Executive Advisory and Briefing Chamber"
+              alt="CuxtonAI Executive Advisory and Briefing Chamber"
               fill
               priority
               sizes="100vw"
@@ -252,7 +252,7 @@ export default function CompanyPage() {
               <span className={styles.headingHighlight}>deployment footprint.</span>
             </h2>
             <p className={styles.lead}>
-              Cuxton AI architects single-tenant infrastructure deployed across primary European and North American
+              CuxtonAI architects single-tenant infrastructure deployed across primary European and North American
               regulatory zones, maintaining localized compute boundaries and full jurisdictional compliance.
             </p>
           </div>
@@ -279,7 +279,7 @@ export default function CompanyPage() {
                 <h4 className={styles.pillarTitle}>Customer-Held Keys (BYOK)</h4>
                 <p className={styles.pillarDesc}>
                   Data at rest and in transit is encrypted using client-managed hardware security modules.
-                  Cuxton AI holds zero decryption keys.
+                  CuxtonAI holds zero decryption keys.
                 </p>
               </div>
             </div>
@@ -324,7 +324,7 @@ export default function CompanyPage() {
             Ready to deploy enterprise AI on your terms?
           </h2>
           <p className="section-sub" style={{ margin: "0 auto 2rem" }}>
-            Every Cuxton AI partnership begins with an executive discovery session. We review your workflows,
+            Every CuxtonAI partnership begins with an executive discovery session. We review your workflows,
             scrutinize data viability, and outline private architecture options before any build is commissioned.
           </p>
 

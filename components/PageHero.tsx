@@ -125,7 +125,7 @@ export default function PageHero({
             )}
 
             {(primaryCta || secondaryCta) && (
-              <div className={styles.actionsRow}>
+              <div className={`${styles.actionsRow} *:sm:flex-row *:sm:gap-4 mb-4`}>
                 {primaryCta && (
                   <Link href={primaryCta.href} className={styles.primaryBtn}>
                     <span>{primaryCta.label}</span></Link>

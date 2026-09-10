@@ -131,14 +131,14 @@
 
 .emailInput:focus {
   border-color: var(--cuxton-teal-light);
-  box-shadow: 0 0 0 3px rgba(45, 154, 191, 0.2);
+  box-shadow: 0 0 0 3px rgba(var(--cuxton-teal-mid-rgb), 0.2);
 }
 
 .briefingSubmit {
   height: 2.75rem;
   padding: 0 1.25rem;
   background: var(--cuxton-teal);
-  border: 1px solid rgba(45, 154, 191, 0.4);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.4);
   border-radius: 0;
   color: #ffffff;
   font-size: 0.85rem;
@@ -162,8 +162,8 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 0.85rem;
-  background: rgba(45, 154, 191, 0.15);
-  border: 1px solid rgba(45, 154, 191, 0.35);
+  background: rgba(var(--cuxton-teal-mid-rgb), 0.15);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.35);
   border-radius: 0;
   font-size: 0.82rem;
   color: var(--cuxton-teal-light);
@@ -274,7 +274,6 @@
 .colHeaderDot {
   width: 4px;
   height: 4px;
-  border-radius: 50%;
   background: var(--cuxton-amber);
 }
 
@@ -406,7 +405,6 @@
   padding: 0 0.85rem;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(27, 107, 138, 0.25);
-  border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 500;
   color: rgba(238, 242, 247, 0.7);

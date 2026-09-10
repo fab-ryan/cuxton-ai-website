@@ -34,7 +34,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(16, 27, 38, 0.82);
+  background-color: rgba(16, 27, 38, 0.97);
   z-index: 0;
 }
 
@@ -113,7 +113,7 @@
 
 .navPillBtn:hover {
   background-color: rgba(27, 107, 138, 0.16);
-  border-color: rgba(45, 154, 191, 0.4);
+  border-color: rgba(var(--cuxton-teal-mid-rgb), 0.4);
   color: var(--foreground);
 }
 
@@ -307,10 +307,10 @@
 }
 
 .statusDot {
-  width: 6px;
-  height: 6px;
+  /* width: 6px;
+  height: 6px; */
   border-radius: 50%;
-  background-color: var(--cuxton-teal-light);
+  /* background-color: var(--cuxton-teal-light); */
 }
 
 .tenetMetricBadge {
@@ -409,7 +409,7 @@
 
 .gridCard:hover {
   background-color: rgba(28, 42, 55, 0.88);
-  border-color: rgba(45, 154, 191, 0.45);
+  border-color: rgba(var(--cuxton-teal-mid-rgb), 0.45);
   transform: translateY(-2px);
 }
 

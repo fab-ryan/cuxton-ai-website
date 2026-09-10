@@ -26,7 +26,9 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(16, 27, 38, 0.95);
+  background-color: rgba(16, 27, 38, 0.97);
+  backdrop-filter: blur(5px) saturate(150%);
+  -webkit-backdrop-filter: blur(5px) saturate(150%);
   z-index: 0;
 }
 
@@ -35,7 +37,7 @@
 .themeWrap {
   --wp-canvas-bg: rgba(16, 27, 38, 0.75);
   --wp-card-bg: rgba(4, 25, 40, 0.72);
-  --wp-card-border: rgba(45, 154, 191, 0.28);
+  --wp-card-border: rgba(var(--cuxton-teal-mid-rgb), 0.28);
   --wp-card-border-hover: rgba(245, 166, 35, 0.55);
   --wp-text-primary: #ffffff;
   --wp-text-secondary: #cce3ed;
@@ -43,7 +45,7 @@
   --wp-diagram-bg: rgba(2, 18, 30, 0.84);
   --wp-shadow:
     0 16px 40px -10px rgba(0, 18, 30, 0.75),
-    0 0 35px -10px rgba(45, 154, 191, 0.25);
+    0 0 35px -10px rgba(var(--cuxton-teal-mid-rgb), 0.25);
   position: relative;
 }
 

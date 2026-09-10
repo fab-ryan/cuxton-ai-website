@@ -35,7 +35,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(16, 27, 38, 0.88);
+  background-color: #101b26f0;
   z-index: 1;
 }
 
@@ -124,7 +124,6 @@
   padding: 0.35rem 0.85rem;
   background-color: rgba(27, 107, 138, 0.18);
   border: 1px solid rgba(27, 107, 138, 0.38);
-  border-radius: 999px;
   font-size: 0.72rem;
 }
 
@@ -134,10 +133,10 @@
 }
 
 .badgeDot {
-  width: 4px;
+  /* width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: rgba(var(--foreground-rgb), 0.35);
+  background-color: rgba(var(--foreground-rgb), 0.35); */
 }
 
 .badgeTag {
@@ -229,7 +228,7 @@
 }
 
 .primaryCta:hover {
-  background-color: #f7b33d;
+  background-color: var(--cuxton-amber-light);
   transform: translateY(-2px);
 }
 
@@ -305,7 +304,6 @@
   padding: 0.3rem 0.65rem;
   background-color: rgba(16, 27, 38, 0.85);
   border: 1px solid rgba(27, 107, 138, 0.5);
-  border-radius: 999px;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -313,8 +311,6 @@
 }
 
 .imageBadgeDot {
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
   background-color: var(--cuxton-teal-light);
 }
@@ -338,10 +334,10 @@
 }
 
 .statusDot {
-  width: 6px;
+  /* width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #10b981;
+  background-color: var(--status-ok); */
 }
 
 .cardCode {
@@ -507,7 +503,6 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.75rem;
-  border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.65);
@@ -533,7 +528,7 @@
 .sectionPillDot {
   width: 5px;
   height: 5px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-color: currentColor;
 }
 
@@ -578,7 +573,6 @@
 .sectionHeadingDot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
   background-color: var(--cuxton-amber);
 }
 
@@ -620,7 +614,6 @@
 .challengeDot {
   width: 6px;
   height: 6px;
-  border-radius: 50%;
   background-color: var(--cuxton-amber);
   flex-shrink: 0;
   margin-top: 0.45rem;
@@ -692,7 +685,6 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   background-color: rgba(27, 107, 138, 0.2);
   border: 1px solid var(--cuxton-teal-light);
   color: var(--cuxton-teal-light);

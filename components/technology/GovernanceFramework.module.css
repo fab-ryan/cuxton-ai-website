@@ -57,8 +57,6 @@
 }
 
 .eyebrowDot {
-  width: 7px;
-  height: 7px;
   border-radius: 50%;
   background-color: var(--cuxton-amber);
   flex-shrink: 0;
@@ -132,7 +130,7 @@
 
 .tenetCard:hover {
   background-color: rgba(28, 42, 55, 0.95);
-  border-color: rgba(45, 154, 191, 0.5);
+  border-color: rgba(var(--cuxton-teal-mid-rgb), 0.5);
   transform: translateY(-2px);
 }
 
@@ -153,7 +151,7 @@
   height: 38px;
   border-radius: 0;
   background-color: rgba(27, 107, 138, 0.2);
-  border: 1px solid rgba(45, 154, 191, 0.35);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,8 +211,6 @@
 }
 
 .activeIndicatorDot {
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
   background-color: var(--cuxton-amber);
 }
@@ -270,13 +266,11 @@
   padding: 0.25rem 0.65rem;
   border-radius: 0;
   background-color: rgba(27, 107, 138, 0.22);
-  border: 1px solid rgba(45, 154, 191, 0.4);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.4);
   color: var(--cuxton-teal-light);
 }
 
 .statusLiveDot {
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
   background-color: var(--cuxton-teal-light);
 }
@@ -387,7 +381,7 @@
   padding: 0.2rem 0.55rem;
   border-radius: 0;
   background-color: rgba(27, 107, 138, 0.15);
-  border: 1px solid rgba(45, 154, 191, 0.3);
+  border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.3);
   color: var(--cuxton-teal-light);
 }
 

@@ -10,7 +10,7 @@ import GovernanceFramework from "@/components/technology/GovernanceFramework";
 export const metadata: Metadata = {
   title: "Technology - Private AI Architecture and Controlled Deployment",
   description:
-    "Cuxton AI designs AI architecture around data sensitivity, deployment constraints and governance requirements. Private cloud, on-premise and isolated tenancy deployment options.",
+    "CuxtonAI designs AI architecture around data sensitivity, deployment constraints and governance requirements. Private cloud, on-premise and isolated tenancy deployment options.",
 };
 
 export default function TechnologyPage() {
@@ -22,7 +22,7 @@ export default function TechnologyPage() {
         eyebrow="Technology"
         title="Private AI architecture designed around"
         titleHighlight="your environment."
-        description="Cuxton AI builds AI architecture that begins with where data is allowed to be — not where it is most convenient to process it. Deployment model, model choice and integration design are determined by your organisation's data sensitivity, regulatory context and technical constraints."
+        description="CuxtonAI builds AI architecture that begins with where data is allowed to be not where it is most convenient to process it. Deployment model, model choice and integration design are determined by your organisation's data sensitivity, regulatory context and technical constraints."
         primaryCta={{
           label: "Request an Architecture Assessment",
           href: "/contact",

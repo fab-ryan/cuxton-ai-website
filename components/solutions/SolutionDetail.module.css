@@ -135,10 +135,10 @@
 }
 
 .badgeDot {
-  width: 5px;
+  /* width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: var(--cuxton-amber);
+  background-color: var(--cuxton-amber); */
 }
 
 .badgeTag {
@@ -298,10 +298,10 @@
 }
 
 .statusDot {
-  width: 7px;
+  /* width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #10b981;
+  background: var(--status-ok); */
 }
 
 .cardCode {
@@ -513,7 +513,7 @@
 .sectionPillDot {
   width: 4px;
   height: 4px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background: currentColor;
   opacity: 0.5;
   transition:
@@ -574,7 +574,6 @@
 .sectionHeadingDot {
   width: 6px;
   height: 6px;
-  border-radius: 50%;
   background: var(--cuxton-amber);
   flex-shrink: 0;
 }
@@ -630,7 +629,6 @@
 .challengeDot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
   background: var(--cuxton-amber);
   margin-top: 0.4rem;
   flex-shrink: 0;

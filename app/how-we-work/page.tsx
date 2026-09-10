@@ -5,9 +5,9 @@ import EngagementModel from "@/components/howWeWork/EngagementModel";
 import OperatingPrinciples from "@/components/howWeWork/OperatingPrinciples";
 
 export const metadata: Metadata = {
-  title: "How We Work — Cuxton AI Engagement Model",
+  title: "How We Work — CuxtonAI Engagement Model",
   description:
-    "Cuxton AI's 8-step engagement model: from AI opportunity discovery through to operational deployment, training and long-term support.",
+    "CuxtonAI's 8-step engagement model: from AI opportunity discovery through to operational deployment, training and long-term support.",
 };
 
 export default function HowWeWorkPage() {
@@ -19,7 +19,7 @@ export default function HowWeWorkPage() {
         eyebrow="Engagement Model"
         title="Start with the problem."
         titleHighlight="Scale what works."
-        description="Cuxton AI follows a structured, 8-step engagement model designed to evaluate the right use case, engineer it securely and enable your organisation to operate it with absolute confidence."
+        description="CuxtonAI follows a structured, 8-step engagement model designed to evaluate the right use case, engineer it securely and enable your organisation to operate it with absolute confidence."
         primaryCta={{
           label: "Start with a Discovery Session",
           href: "/contact",

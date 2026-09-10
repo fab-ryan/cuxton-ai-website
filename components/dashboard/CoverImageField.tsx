@@ -74,7 +74,7 @@ export default function CoverImageField({
                 type="button"
                 className={s.tool}
                 onClick={clear}
-                style={{ fontSize: "0.7rem", color: "#d15757" }}
+                style={{ fontSize: "0.7rem", color: "var(--status-error)" }}
               >
                 Remove
               </button>
@@ -95,7 +95,7 @@ export default function CoverImageField({
         />
 
         {error && (
-          <p className={s.dropzoneHint} style={{ color: "#d15757", marginTop: "0.5rem" }}>
+          <p className={s.dropzoneHint} style={{ color: "var(--status-error)", marginTop: "0.5rem" }}>
             {error}
           </p>
         )}
@@ -150,7 +150,7 @@ export default function CoverImageField({
       />
 
       {error && (
-        <p className={s.dropzoneHint} style={{ color: "#d15757", marginTop: "0.5rem" }}>
+        <p className={s.dropzoneHint} style={{ color: "var(--status-error)", marginTop: "0.5rem" }}>
           {error}
         </p>
       )}

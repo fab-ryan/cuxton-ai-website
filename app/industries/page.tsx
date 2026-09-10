@@ -6,9 +6,9 @@ import styles from "@/components/industries/IndustriesIndex.module.css";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Industries & Sector Practices — Cuxton AI",
+  title: "Industries & Sector Practices — CuxtonAI",
   description:
-    "Cuxton AI builds verifiable AI systems for financial services, healthcare, national defense, academic research, telecommunications, and legal advisory.",
+    "CuxtonAI builds verifiable AI systems for financial services, healthcare, national defense, academic research, telecommunications, and legal advisory.",
 };
 
 export default function IndustriesPage() {
@@ -20,7 +20,7 @@ export default function IndustriesPage() {
         eyebrow="Industries"
         title="Built for data-rich and"
         titleHighlight="high-trust environments."
-        description="Cuxton AI works with institutions where data sensitivity, regulatory requirements and operational complexity make standard AI approaches inadequate."
+        description="CuxtonAI works with institutions where data sensitivity, regulatory requirements and operational complexity make standard AI approaches inadequate."
         primaryCta={{
           label: "Discuss Your Sector",
           href: "/contact",
@@ -189,7 +189,7 @@ export default function IndustriesPage() {
         <div className={styles.bottomCtaInner}>
           <h2 className={styles.ctaHeading}>Operating in a specialized or regulated domain?</h2>
           <p className={styles.ctaSub}>
-            Cuxton AI works with institutions where standard AI models fail compliance or security boundaries.
+            CuxtonAI works with institutions where standard AI models fail compliance or security boundaries.
             Speak with our sector engineering practice to assess feasibility and architecture options.
           </p>
           <div className={styles.ctaBtnGroup}>

@@ -20,7 +20,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${solution.name} — Cuxton AI`,
+    title: `${solution.name} — CuxtonAI`,
     description: solution.body,
   };
 }

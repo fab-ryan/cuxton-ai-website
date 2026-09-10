@@ -106,7 +106,7 @@ export function AssessSchematic() {
         <polygon points="100,45 135,67 135,103 100,123 65,103 65,67" fill="none" stroke="rgba(27,107,138,0.18)" strokeWidth="1" />
 
         {/* Empirical Assessment Result Shape */}
-        <polygon points="100,28 152,58 145,110 100,138 48,110 52,60" fill="rgba(45,154,191,0.15)" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
+        <polygon points="100,28 152,58 145,110 100,138 48,110 52,60" fill="rgba(var(--cuxton-teal-mid-rgb), 0.15)" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
 
         {/* Labels at vertices */}
         <text x="100" y="14" fill="var(--sch-text-2)" fontSize="8.5" fontWeight="700" textAnchor="middle" fontFamily="sans-serif">Data Quality (94%)</text>
@@ -319,19 +319,19 @@ export function PrototypeSchematic() {
         <rect x="14" y="44" width="125" height="80" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
         <text x="24" y="62" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">Inference Latency</text>
         <text x="24" y="86" fill="var(--cuxton-teal-light)" fontSize="20" fontWeight="600" fontFamily="monospace">142 ms</text>
-        <text x="24" y="106" fill="#10b981" fontSize="9" fontWeight="700" fontFamily="monospace">TARGET &lt; 250ms OK</text>
+        <text x="24" y="106" fill="var(--status-ok)" fontSize="9" fontWeight="700" fontFamily="monospace">TARGET &lt; 250ms OK</text>
 
         {/* Metric Card 2 */}
         <rect x="150" y="44" width="130" height="80" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
         <text x="160" y="62" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">Deterministic Accuracy</text>
         <text x="160" y="86" fill="var(--cuxton-amber)" fontSize="20" fontWeight="600" fontFamily="monospace">99.2%</text>
-        <text x="160" y="106" fill="#10b981" fontSize="9" fontWeight="700" fontFamily="monospace">GATE PASSED</text>
+        <text x="160" y="106" fill="var(--status-ok)" fontSize="9" fontWeight="700" fontFamily="monospace">GATE PASSED</text>
 
         {/* Metric Card 3 */}
         <rect x="290" y="44" width="135" height="80" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
         <text x="300" y="62" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">Hallucination Bound</text>
         <text x="300" y="86" fill="var(--cuxton-teal-light)" fontSize="20" fontWeight="600" fontFamily="monospace">&lt; 0.05%</text>
-        <text x="300" y="106" fill="#10b981" fontSize="9" fontWeight="700" fontFamily="monospace">VERIFIED SECURE</text>
+        <text x="300" y="106" fill="var(--status-ok)" fontSize="9" fontWeight="700" fontFamily="monospace">VERIFIED SECURE</text>
       </g>
 
       {/* User Trial Results (Right) */}
@@ -372,7 +372,7 @@ export function DeploySchematic() {
           <text x="10" y="18" fill="var(--cuxton-teal-light)" fontSize="8" fontWeight="600" fontFamily="monospace">API GATEWAY</text>
           <text x="10" y="36" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Hardened Edge</text>
           <text x="10" y="54" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="sans-serif">Rate Limited / mTLS</text>
-          <text x="10" y="70" fill="#10b981" fontSize="8.5" fontWeight="700" fontFamily="monospace">ACTIVE 24/7</text>
+          <text x="10" y="70" fill="var(--status-ok)" fontSize="8.5" fontWeight="700" fontFamily="monospace">ACTIVE 24/7</text>
         </g>
 
         <path d="M152 83 H 178" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
@@ -383,7 +383,7 @@ export function DeploySchematic() {
           <text x="10" y="18" fill="var(--cuxton-teal-light)" fontSize="8" fontWeight="600" fontFamily="monospace">CONTAINER CLUSTER</text>
           <text x="10" y="36" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Multi-Zone Pods</text>
           <text x="10" y="54" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="sans-serif">Zero-Downtime Failover</text>
-          <text x="10" y="70" fill="#10b981" fontSize="8.5" fontWeight="700" fontFamily="monospace">HEALTHY (3 REPLICAS)</text>
+          <text x="10" y="70" fill="var(--status-ok)" fontSize="8.5" fontWeight="700" fontFamily="monospace">HEALTHY (3 REPLICAS)</text>
         </g>
 
         <path d="M324 83 H 350" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
@@ -487,7 +487,7 @@ export function OperateSchematic() {
           <text x="20" y="44" fill="var(--sch-text)" fontSize="16" fontWeight="600" fontFamily="monospace">99.98%</text>
 
           <text x="160" y="24" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="monospace">DATA DRIFT VARIANCE</text>
-          <text x="160" y="44" fill="#10b981" fontSize="16" fontWeight="600" fontFamily="monospace">0.02% (NOMINAL)</text>
+          <text x="160" y="44" fill="var(--status-ok)" fontSize="16" fontWeight="600" fontFamily="monospace">0.02% (NOMINAL)</text>
 
           <text x="310" y="24" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="monospace">AUTOMATED RETRAIN</text>
           <text x="310" y="44" fill="var(--cuxton-amber)" fontSize="16" fontWeight="600" fontFamily="monospace">ACTIVE BOUND</text>

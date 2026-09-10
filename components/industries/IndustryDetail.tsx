@@ -43,6 +43,7 @@ export default function IndustryDetail({ industry }: { industry: Industry }) {
   return (
     <article className={styles.page}>
       <header className={styles.header}>
+        <div className={styles.heroOverlay} aria-hidden="true" />
 
         <div className={`${styles.headerInner} section-container`}>
           {/* Breadcrumbs */}

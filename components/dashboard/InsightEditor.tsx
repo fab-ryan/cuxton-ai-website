@@ -333,7 +333,7 @@ export default function InsightEditor({ insightId }: { insightId: string | null 
               )}
 
               {validationError && (
-                <p className={s.hint} style={{ color: "#d15757" }}>
+                <p className={s.hint} style={{ color: "var(--status-error)" }}>
                   {validationError}
                 </p>
               )}

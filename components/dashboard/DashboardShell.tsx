@@ -183,7 +183,7 @@ export default function DashboardShell({ children }: { children: React.ReactNode
         <Link href="/" className={s.brand}>
           <span className={s.brandMark}>CX</span>
           <span className={s.brandText}>
-            <span className={s.brandName}>Cuxton AI</span>
+            <span className={s.brandName}>CuxtonAI</span>
             <span className={s.brandSub}>Console</span>
           </span>
         </Link>

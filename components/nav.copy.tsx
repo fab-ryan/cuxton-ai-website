@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import s from "./nav.module.css";
 
 /* ═══════════════════════════════════════════════════════════════
-   COMMAND-CENTRE NAVBAR — Cuxton AI
+   COMMAND-CENTRE NAVBAR — CuxtonAI
 
    • Full-width and transparent over the hero, then detaches into a
      framed glass console panel with bracket corner ticks on scroll
@@ -20,7 +20,7 @@ import s from "./nav.module.css";
    ═══════════════════════════════════════════════════════════════ */
 
 /* ─── Logo — art-directed by system colour scheme ─── */
-const LOGO_ALT = "Cuxton AI — home";
+const LOGO_ALT = "CuxtonAI — home";
 
 /* ─── Icon wrapper — keeps every menu glyph on the same grid ─── */
 function I({ children }: { children: React.ReactNode }) {
