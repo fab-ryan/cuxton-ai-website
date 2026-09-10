@@ -1,109 +1,158 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────
-   CUXTON AI — Brand Tokens (sourced from full_color.png)
-   Primary:  Deep Petrol Teal  #1B6B8A  (lettermark C + A)
-   Accent:   Warm Amber        #F5A623  (data-node swoosh)
+   CUXTON AI — Brand Tokens
+
+   Palette is sourced from the logo (full_color.png):
+     Teal   #1B6B8A  — lettermark
+     Amber  #F5A623  — data node
+
+   Two rules govern how they are used:
+     1. Teal is STRUCTURE  — rules, borders, diagram lines.
+     2. Amber is STATE     — the trust boundary, and warnings.
+        It is never a glow, a gradient stop, or decoration.
+
+   The ground is a matte slate-navy, deliberately lifted off
+   near-black so surfaces read as paper under low light rather
+   than as a backlit screen.
    ───────────────────────────────────────────────────────── */
 :root {
   /* Backgrounds */
-  --background: #060d14;
-  --bg-surface: #091525;
-  --bg-elevated: #0d1f32;
-  --foreground: #e8edf5;
+  --background: #101b26;
+  --bg-surface: #16222e;
+  --bg-elevated: #1c2a37;
+  --foreground: #e6ecf2;
 
-  /* Brand — Teal (from logo lettermark) */
-  --cuxton-teal: #1b6b8a; /* exact logo primary */
-  --cuxton-teal-mid: #2080a0; /* lighter for hover / borders */
-  --cuxton-teal-light: #2d9abf; /* bright interactive */
-  --cuxton-teal-dim: #0f3d50; /* dark teal for backgrounds */
+  /* Brand — Teal (structure) */
+  --cuxton-teal: #1b6b8a;
+  --cuxton-teal-mid: #2f88a8;
+  --cuxton-teal-light: #58aac6;
+  --cuxton-teal-dim: #1a3d4d;
 
-  /* Brand — Amber (from logo data node) */
-  --cuxton-amber: #f5a623; /* exact logo accent */
-  --cuxton-amber-light: #f8bc4b; /* hover / soft accent */
-  --cuxton-amber-dim: #7a5210; /* dark amber for backgrounds */
+  /* Brand — Amber (state: boundary + warning only) */
+  --cuxton-amber: #f5a623;
+  --cuxton-amber-light: #f8bc4b;
+  --cuxton-amber-dim: #6b4a12;
 
-  /* Accent-as-text. The brand amber and the bright teal only carry enough
-     contrast on a dark ground, so these two flip in the light block while
-     the raw brand values stay fixed for borders, fills and dots on photos.
-     Using a token means no component needs a light-mode `color` override. */
-  --cuxton-amber-text: #f5a623;
-  --cuxton-teal-text: #2d9abf;
+  /* Accent-as-text. The raw brand values only carry enough contrast
+     on the dark ground, so these two flip in the light block while the
+     brand values stay fixed for borders and fills. */
+  --cuxton-amber-text: #f0ad3e;
+  --cuxton-teal-text: #6fb8d1;
 
   /* Semantic aliases for backwards compat */
   --cuxton-orange: var(--cuxton-amber);
   --cuxton-orange-light: var(--cuxton-amber-light);
 
-  /* Borders & surfaces */
-  --border: rgba(27, 107, 138, 0.18);
-  --border-subtle: rgba(var(--foreground-rgb), 0.05);
-  --border-amber: rgba(245, 166, 35, 0.2);
+  /* Borders — hairlines, one weight */
+  --border: rgba(120, 160, 185, 0.2);
+  --border-subtle: rgba(120, 160, 185, 0.12);
+  --border-amber: rgba(245, 166, 35, 0.4);
 
-  /* RGB triplets — let translucent fills/text (rgba(var(--x-rgb), alpha))
-     track the theme even though they can't reference a hex custom property directly. */
-  --foreground-rgb: 232, 237, 245;
-  --background-rgb: 6, 13, 20;
-  --bg-surface-rgb: 9, 21, 37;
-  --bg-elevated-rgb: 13, 31, 50;
+  /* RGB triplets — let translucent fills track the theme, since
+     rgba() can't reference a hex custom property directly. */
+  --foreground-rgb: 230, 236, 242;
+  --background-rgb: 16, 27, 38;
+  --bg-surface-rgb: 22, 34, 46;
+  --bg-elevated-rgb: 28, 42, 55;
 
-  /* Inline-SVG schematic palette. Shared by the technology / how-we-work
-     diagrams so they follow the theme instead of staying dark-on-light. */
-  --sch-panel: #091525;
-  --sch-panel-2: #0d293d;
-  --sch-deep: #060d14;
-  --sch-deepest: #040a10;
-  --sch-line: #14314f;
+  /* Inline-SVG schematic palette. Shared by the technology /
+     how-we-work diagrams so they follow the theme. */
+  --sch-panel: #16222e;
+  --sch-panel-2: #1c2a37;
+  --sch-deep: #101b26;
+  --sch-deepest: #0c141d;
+  --sch-line: #2b4356;
   --sch-text: #ffffff;
-  --sch-text-2: #e2e8f0;
-  --sch-text-dim: #94a3b8;
-  --sch-text-faint: #64748b;
-  --sch-chip: #0c2233;
-  /* Amber as *text* inside a schematic. The brand amber only carries
-     enough contrast on a dark panel; the light block darkens it. */
-  --sch-amber-text: #f5a623;
-  --sch-amber-bg: #2b1f0c;
-  --sch-green-bg: #061d15;
-  --sch-red-bg: #1f1113;
+  --sch-text-2: #dde5ec;
+  --sch-text-dim: #9aabb8;
+  --sch-text-faint: #6d8090;
+  --sch-chip: #1e2f3d;
+  --sch-amber-text: #f0ad3e;
+  --sch-amber-bg: #2e2411;
+  --sch-green-bg: #14251d;
+  --sch-red-bg: #2a1719;
 }
 
 /* ─────────────────────────────────────────────────────────
-   LIGHT MODE — follows the system/browser preference only,
-   no manual toggle. Brand teal/amber accents are kept as-is
-   (they read fine on both light and dark); only the neutral
-   background/text/glass tokens flip.
+   LIGHT MODE — follows the system preference only.
+   Only the neutral ground/text/border tokens flip; the brand
+   teal and amber stay fixed.
    ───────────────────────────────────────────────────────── */
 @media (prefers-color-scheme: light) {
   :root {
-    --background: #f4f7fa;
+    --background: #f4f6f8;
     --bg-surface: #ffffff;
-    --bg-elevated: #eaf1f7;
+    --bg-elevated: #eef2f6;
     --foreground: #0c2233;
 
     --foreground-rgb: 12, 34, 51;
-    --background-rgb: 244, 247, 250;
+    --background-rgb: 244, 246, 248;
     --bg-surface-rgb: 255, 255, 255;
-    --bg-elevated-rgb: 234, 241, 247;
+    --bg-elevated-rgb: 238, 242, 246;
 
-    --border: rgba(27, 107, 138, 0.28);
-    --border-amber: rgba(245, 166, 35, 0.32);
+    --border: rgba(12, 34, 51, 0.16);
+    --border-subtle: rgba(12, 34, 51, 0.09);
+    --border-amber: rgba(180, 118, 16, 0.45);
 
-    --cuxton-amber-text: #7a5210;
+    --cuxton-amber-text: #8a5c12;
     --cuxton-teal-text: #1b6b8a;
 
     --sch-panel: #ffffff;
-    --sch-panel-2: #e3edf5;
-    --sch-deep: #f4f7fa;
-    --sch-deepest: #eaf1f7;
-    --sch-line: #c9d8e4;
+    --sch-panel-2: #e9eff4;
+    --sch-deep: #f4f6f8;
+    --sch-deepest: #eef2f6;
+    --sch-line: #cbd7e1;
     --sch-text: #0c2233;
     --sch-text-2: #24384a;
     --sch-text-dim: #5b7186;
     --sch-text-faint: #7c8ea0;
-    --sch-chip: #dbe6f0;
+    --sch-chip: #dde6ee;
     --sch-amber-text: #8a5c12;
-    --sch-amber-bg: #fdf1dc;
-    --sch-green-bg: #e4f6ef;
-    --sch-red-bg: #fdeaea;
+    --sch-amber-bg: #f7efdf;
+    --sch-green-bg: #e6f2ec;
+    --sch-red-bg: #f7e9e9;
+  }
+
+  /* ─── Surfaces that stay dark in both themes ─────────────
+     The home hero is a photograph under a solid dark wash, and
+     the nav floats transparently over it, so that whole region
+     is dark whichever theme is in force. The shared primitives
+     used inside it — .btn-primary, .tag-teal, the hamburger —
+     colour themselves from --foreground / --background /
+     --border, which flip here and leave dark ink on the dark
+     hero: an invisible primary CTA and unreadable tags.
+
+     Rather than give each primitive a light-mode variant,
+     `.on-dark` re-asserts the dark palette for its subtree.
+     Values mirror the :root block at the top of this file; in
+     dark mode they are already in force, which is why this
+     only has to exist inside the light-mode query.
+
+     It deliberately sets no background — the hero keeps its
+     photograph and the nav stays transparent. `color` is set
+     because descendants inherit body's already-computed value,
+     which redefining the custom property alone cannot undo.
+     ──────────────────────────────────────────────────────── */
+  .on-dark {
+    --background: #101b26;
+    --bg-surface: #16222e;
+    --bg-elevated: #1c2a37;
+    --foreground: #e6ecf2;
+
+    --foreground-rgb: 230, 236, 242;
+    --background-rgb: 16, 27, 38;
+    --bg-surface-rgb: 22, 34, 46;
+    --bg-elevated-rgb: 28, 42, 55;
+
+    --border: rgba(120, 160, 185, 0.2);
+    --border-subtle: rgba(120, 160, 185, 0.12);
+    --border-amber: rgba(245, 166, 35, 0.4);
+
+    --cuxton-amber-text: #f0ad3e;
+    --cuxton-teal-text: #6fb8d1;
+
+    color: var(--foreground);
   }
 }
 
@@ -161,14 +210,12 @@ body {
   left: 0.75rem;
   z-index: 1000;
   padding: 0.75rem 1.25rem;
-  border-radius: 10px;
-  background: var(--cuxton-amber);
-  color: #060d14;
+  background: var(--foreground);
+  color: var(--background);
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
   transform: translateY(-150%);
-  transition: transform 0.2s ease;
 }
 
 .skip-link:focus {
@@ -181,9 +228,8 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--cuxton-amber);
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline: 1px solid var(--cuxton-amber);
+  /* outline-offset: 1px; */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -197,484 +243,48 @@ select:focus-visible,
   }
 }
 
-/* ─── Animated deep space gradient ─── */
-@keyframes cosmicShift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  25% {
-    background-position: 50% 0%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  75% {
-    background-position: 50% 100%;
-  }
-}
+/* ══════════════════════════════════════════════════
+   MOTION
 
-.bg-cosmic {
-  background: linear-gradient(
-    135deg,
-    #060a12 0%,
-    #0a1628 15%,
-    #0d1f3c 30%,
-    #132a43 45%,
-    #0d1f3c 60%,
-    #0a1628 80%,
-    #060a12 100%
-  );
-  background-size: 400% 400%;
-  background-attachment: fixed;
-  animation: cosmicShift 20s ease infinite;
-}
+   Nothing animates on load or on scroll. Motion happens only
+   in response to a real user action — hovering an interactive
+   control, opening a menu, switching a tab. There are no
+   ambient loops, no entrance animations, no parallax.
 
-/* ─── Floating particles ─── */
-@keyframes floatParticle {
-  0% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.6;
-  }
-  90% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(-100vh) translateX(40px);
-    opacity: 0;
-  }
-}
+   The legacy entrance-animation utilities below are kept as
+   inert no-ops so that markup still referencing them renders
+   its content immediately. Content must never start hidden —
+   the previous implementation left ~30 sections invisible if
+   the client bundle failed to run.
+   ══════════════════════════════════════════════════ */
 
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: floatParticle linear infinite;
-}
-
-/* ─── Logo breathe glow ─── */
-@keyframes logoBreathe {
-  0%,
-  100% {
-    filter: drop-shadow(0 0 30px rgba(27, 107, 138, 0.45))
-      drop-shadow(0 0 80px rgba(245, 166, 35, 0.14));
-    transform: scale(1);
-  }
-  50% {
-    filter: drop-shadow(0 0 55px rgba(27, 107, 138, 0.7))
-      drop-shadow(0 0 120px rgba(245, 166, 35, 0.32));
-    transform: scale(1.02);
-  }
-}
-
-.logo-breathe {
-  animation: logoBreathe 5s ease-in-out infinite;
-}
-
-/* ─── Brand gradient utility ─── */
-.brand-gradient {
-  background: linear-gradient(
-    135deg,
-    var(--cuxton-teal) 0%,
-    var(--cuxton-teal-mid) 50%,
-    var(--cuxton-amber) 100%
-  );
-}
-
-.text-gradient-brand {
-  background: linear-gradient(
-    135deg,
-    var(--cuxton-teal-light) 0%,
-    var(--cuxton-teal-mid) 40%,
-    var(--cuxton-amber) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ─── Concentric rings ─── */
-@keyframes spinSlow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spinReverse {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes ringPulse {
-  0%,
-  100% {
-    opacity: 0.12;
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    opacity: 0.25;
-    transform: rotate(180deg) scale(1.04);
-  }
-}
-
-.ring-spin {
-  animation: spinSlow 25s linear infinite;
-}
-.ring-reverse {
-  animation: spinReverse 35s linear infinite;
-}
-.ring-pulse {
-  animation: ringPulse 8s ease-in-out infinite;
-}
-
-/* ─── Neural network connector lines ─── */
-@keyframes neuralFlow {
-  0% {
-    stroke-dashoffset: 200;
-    opacity: 0;
-  }
-  30% {
-    opacity: 0.5;
-  }
-  70% {
-    opacity: 0.5;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    opacity: 0;
-  }
-}
-
-.neural-line {
-  stroke-dasharray: 200;
-  animation: neuralFlow 4s ease-in-out infinite;
-}
-
-/* ─── Glowing neural nodes ─── */
-@keyframes nodePulse {
-  0%,
-  100% {
-    box-shadow: 0 0 6px rgba(245, 166, 35, 0.5);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow:
-      0 0 18px rgba(245, 166, 35, 0.9),
-      0 0 40px rgba(245, 166, 35, 0.3);
-    transform: scale(1.4);
-  }
-}
-
-.neural-node {
-  animation: nodePulse 3s ease-in-out infinite;
-}
-
-/* ─── Glass card ─── */
-.glass-card {
-  background: rgba(var(--foreground-rgb), 0.025);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(var(--foreground-rgb), 0.05);
-  border-radius: 24px;
-}
-
-/* ─── Badge shimmer ─── */
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
-.badge-shimmer {
-  background: linear-gradient(
-    90deg,
-    rgba(245, 166, 35, 0.12) 0%,
-    rgba(245, 166, 35, 0.35) 50%,
-    rgba(245, 166, 35, 0.12) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 3s ease-in-out infinite;
-}
-
-/* ─── Gradient texts ─── */
-.text-gradient-hero {
-  background: linear-gradient(135deg, #ffffff 0%, #8dc9e0 40%, #f5a623 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-sub {
-  background: linear-gradient(90deg, #1b6b8a, #2d9abf, #f5a623);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ─── Hover glow button ─── */
-.btn-glow {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s ease;
-}
-.btn-glow::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, #1b6b8a, #2d9abf, #f5a623);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.btn-glow:hover::before {
+.anim-fade-up,
+.anim-fade-scale,
+.anim-fade,
+.reveal,
+.reveal-io,
+.reveal-io--visible {
   opacity: 1;
-}
-.btn-glow:hover {
-  box-shadow:
-    0 0 30px rgba(27, 107, 138, 0.45),
-    0 0 60px rgba(245, 166, 35, 0.18);
-  transform: translateY(-1px);
+  transform: none;
+  animation: none;
 }
 
-/* ─── Fade in animations ─── */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.anim-fade-up {
-  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-}
-
-.anim-fade-scale {
-  animation: fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-}
-
-.anim-fade {
-  animation: fadeIn 1.2s ease forwards;
-  opacity: 0;
-}
-
-/* stagger delays */
-.d1 {
-  animation-delay: 0.1s;
-}
-.d2 {
-  animation-delay: 0.25s;
-}
-.d3 {
-  animation-delay: 0.4s;
-}
-.d4 {
-  animation-delay: 0.55s;
-}
-.d5 {
-  animation-delay: 0.7s;
-}
-.d6 {
-  animation-delay: 0.85s;
-}
-.d7 {
-  animation-delay: 1s;
-}
-.d8 {
-  animation-delay: 1.15s;
-}
+.d1,
+.d2,
+.d3,
+.d4,
+.d5,
+.d6,
+.d7,
+.d8,
 .d9 {
-  animation-delay: 1.3s;
-}
-
-/* ─── Progress bar ─── */
-@keyframes progressGlow {
-  0%,
-  100% {
-    box-shadow: 0 0 8px rgba(245, 166, 35, 0.4);
-  }
-  50% {
-    box-shadow:
-      0 0 20px rgba(245, 166, 35, 0.7),
-      0 0 40px rgba(27, 107, 138, 0.35);
-  }
-}
-
-.progress-glow {
-  animation: progressGlow 2.5s ease-in-out infinite;
-}
-
-/* ─── Scan lines ─── */
-.scanlines::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(27, 107, 138, 0.012) 2px,
-    rgba(27, 107, 138, 0.012) 4px
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ─── Hexagonal grid overlay ─── */
-@keyframes hexFade {
-  0%,
-  100% {
-    opacity: 0.015;
-  }
-  50% {
-    opacity: 0.04;
-  }
-}
-
-.hex-grid {
-  background-image:
-    linear-gradient(
-      30deg,
-      rgba(27, 107, 138, 0.04) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      rgba(27, 107, 138, 0.04) 87.5%,
-      rgba(27, 107, 138, 0.04)
-    ),
-    linear-gradient(
-      150deg,
-      rgba(27, 107, 138, 0.04) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      rgba(27, 107, 138, 0.04) 87.5%,
-      rgba(27, 107, 138, 0.04)
-    ),
-    linear-gradient(
-      30deg,
-      rgba(27, 107, 138, 0.04) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      rgba(27, 107, 138, 0.04) 87.5%,
-      rgba(27, 107, 138, 0.04)
-    ),
-    linear-gradient(
-      150deg,
-      rgba(27, 107, 138, 0.04) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      rgba(27, 107, 138, 0.04) 87.5%,
-      rgba(27, 107, 138, 0.04)
-    ),
-    linear-gradient(
-      60deg,
-      rgba(245, 166, 35, 0.025) 25%,
-      transparent 25.5%,
-      transparent 75%,
-      rgba(245, 166, 35, 0.025) 75%,
-      rgba(245, 166, 35, 0.025)
-    ),
-    linear-gradient(
-      60deg,
-      rgba(245, 166, 35, 0.025) 25%,
-      transparent 25.5%,
-      transparent 75%,
-      rgba(245, 166, 35, 0.025) 75%,
-      rgba(245, 166, 35, 0.025)
-    );
-  background-size: 80px 140px;
-  background-position:
-    0 0,
-    0 0,
-    40px 70px,
-    40px 70px,
-    0 0,
-    40px 70px;
-  animation: hexFade 6s ease-in-out infinite;
-}
-
-/* ─── Cursor blink ─── */
-@keyframes cursorBlink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-.cursor-blink {
-  animation: cursorBlink 1s step-end infinite;
-}
-
-/* ─── Countdown digit container ─── */
-.countdown-cell {
-  background: linear-gradient(
-    180deg,
-    rgba(27, 107, 138, 0.1) 0%,
-    rgba(var(--background-rgb), 0.65) 100%
-  );
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(27, 107, 138, 0.18);
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-}
-
-.countdown-cell::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: rgba(27, 107, 138, 0.12);
+  animation-delay: 0s;
 }
 
 /* ══════════════════════════════════════════════════
-   ENTERPRISE LAYOUT UTILITIES
+   LAYOUT
    ══════════════════════════════════════════════════ */
 
-/* Section container */
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -693,150 +303,122 @@ select:focus-visible,
   }
 }
 
-/* Section spacing */
 .section-py {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 @media (min-width: 1024px) {
   .section-py {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
-/* Eyebrow / section label */
+/* ══════════════════════════════════════════════════
+   TYPE
+
+   Emphasis comes from scale and position, not from hue.
+   No gradient-clipped text, no tracked-out capitals, no
+   single accent-coloured word inside a headline.
+   ══════════════════════════════════════════════════ */
+
+/* Retained so existing markup keeps a sane rhythm, but reduced
+   to a quiet sentence-case line rather than an all-caps eyebrow.
+   Prefer deleting the element outright where the heading below
+   it already says the same thing. */
 .section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cuxton-amber);
-  margin-bottom: 1.25rem;
-}
-
-.section-label::before {
-  content: "";
   display: block;
-  width: 20px;
-  height: 1.5px;
-  background: var(--cuxton-amber);
-  opacity: 0.7;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(var(--foreground-rgb), 0.55);
+  margin-bottom: 0.5rem;
 }
 
-/* Section heading */
 .section-heading {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 800;
-  line-height: 1.15;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--foreground);
 }
 
 .section-sub {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: rgba(var(--foreground-rgb), 0.5);
-  max-width: 560px;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(var(--foreground-rgb), 0.68);
+  max-width: 62ch;
 }
 
-/* Horizontal rule / section divider */
 .section-divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(27, 107, 138, 0.25) 30%,
-    rgba(245, 166, 35, 0.15) 70%,
-    transparent
-  );
+  background: var(--border);
 }
 
 /* ══════════════════════════════════════════════════
-   CARDS
+   SURFACES
+
+   Two radii, chosen by meaning:
+     0      — records and boundaries (documents have corners)
+     999px  — status pills only
+   No drop shadows. Structure is carried by hairlines.
    ══════════════════════════════════════════════════ */
 
 .card-enterprise {
-  background: rgba(var(--bg-surface-rgb), 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(27, 107, 138, 0.14);
-  border-radius: 20px;
-  transition:
-    border-color 0.3s ease,
-    background 0.3s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  transition: border-color 0.15s ease;
 }
 
-.card-enterprise:hover {
-  border-color: rgba(27, 107, 138, 0.35);
-  background: rgba(var(--bg-elevated-rgb), 0.85);
-  transform: translateY(-3px);
-  box-shadow:
-    0 12px 40px rgba(6, 13, 20, 0.5),
-    0 0 0 1px rgba(27, 107, 138, 0.15);
+/* Lift only on things that actually navigate. */
+a.card-enterprise:hover,
+button.card-enterprise:hover {
+  border-color: var(--cuxton-teal-mid);
 }
 
 .card-amber-accent:hover {
-  border-color: rgba(245, 166, 35, 0.25);
-  box-shadow:
-    0 12px 40px rgba(6, 13, 20, 0.5),
-    0 0 0 1px rgba(245, 166, 35, 0.12);
+  border-color: var(--border-amber);
 }
 
-/* Icon container for cards */
 .card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(27, 107, 138, 0.12);
-  border: 1px solid rgba(27, 107, 138, 0.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--cuxton-teal-text);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition:
-    background 0.3s ease,
-    border-color 0.3s ease;
 }
 
-.card-enterprise:hover .card-icon {
-  background: rgba(27, 107, 138, 0.22);
-  border-color: rgba(27, 107, 138, 0.4);
+.glass-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 0;
 }
 
 /* ══════════════════════════════════════════════════
-   NAV — Legacy global nav classes. The primary nav
-   now uses CSS Modules (nav.module.css) for all
-   styling. These global classes are retained as
-   fallbacks for any other component that references
-   them (e.g. footer mega-menu style reuse).
+   NAV — legacy global classes, retained as fallbacks for
+   components that still reference them. The primary nav is
+   styled in nav.module.css.
    ══════════════════════════════════════════════════ */
 
 .nav-blur {
-  background: rgba(var(--background-rgb), 0.82);
-  backdrop-filter: blur(24px) saturate(1.6);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
-  border-bottom: 1px solid rgba(27, 107, 138, 0.12);
-  box-shadow: 0 1px 24px rgba(6, 13, 20, 0.3);
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
 }
 
 .mega-menu {
-  background: rgba(var(--bg-surface-rgb), 0.97);
-  backdrop-filter: blur(40px) saturate(1.8);
-  -webkit-backdrop-filter: blur(40px) saturate(1.8);
-  border: 1px solid rgba(27, 107, 138, 0.14);
-  border-radius: 20px;
-  box-shadow:
-    0 24px 80px rgba(6, 13, 20, 0.7),
-    0 0 0 1px rgba(27, 107, 138, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 0;
 }
 
 .mega-menu-item {
@@ -844,17 +426,14 @@ select:focus-visible,
   align-items: flex-start;
   gap: 0.75rem;
   padding: 0.75rem;
-  border-radius: 12px;
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+  border-radius: 0;
+  transition: background 0.15s ease;
   cursor: pointer;
   text-decoration: none;
 }
 
 .mega-menu-item:hover {
-  background: rgba(27, 107, 138, 0.1);
-  transform: translateX(2px);
+  background: var(--bg-elevated);
 }
 
 /* ══════════════════════════════════════════════════
@@ -865,61 +444,69 @@ select:focus-visible,
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  height: 3rem;
+  height: 2.875rem;
   padding: 0 1.5rem;
-  border-radius: 12px;
-  background: var(--cuxton-amber);
-  color: #060d14;
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  border-radius: 0;
+  background: var(--foreground);
+  color: var(--background);
+  font-size: 0.9375rem;
+  font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  border: 1px solid var(--foreground);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .btn-primary:hover {
-  background: var(--cuxton-amber-light);
-  box-shadow: 0 0 28px rgba(245, 166, 35, 0.4);
-  transform: translateY(-1px);
+  background: transparent;
+  color: var(--foreground);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  height: 3rem;
+  height: 2.875rem;
   padding: 0 1.5rem;
-  border-radius: 12px;
+  border-radius: 0;
   background: transparent;
   color: var(--foreground);
-  font-size: 0.875rem;
-  font-weight: 600;
-  border: 1px solid rgba(27, 107, 138, 0.3);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: border-color 0.15s ease;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .btn-secondary:hover {
-  border-color: rgba(27, 107, 138, 0.6);
-  background: rgba(27, 107, 138, 0.08);
-  transform: translateY(-1px);
+  border-color: var(--foreground);
 }
 
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: rgba(var(--foreground-rgb), 0.6);
-  text-decoration: none;
-  transition: color 0.2s ease;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--cuxton-teal-text);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+  transition: color 0.15s ease;
 }
 
 .btn-ghost:hover {
   color: var(--foreground);
+}
+
+/* Legacy hook — the glow effect it used to carry is gone. */
+.btn-glow {
+  position: relative;
 }
 
 /* ══════════════════════════════════════════════════
@@ -928,39 +515,36 @@ select:focus-visible,
 
 .form-field {
   width: 100%;
-  height: 3rem;
-  padding: 0 1rem;
-  background: rgba(var(--bg-surface-rgb), 0.8);
-  border: 1px solid rgba(27, 107, 138, 0.2);
-  border-radius: 10px;
+  height: 2.875rem;
+  padding: 0 0.875rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 0;
   color: var(--foreground);
-  font-size: 0.9rem;
+  font-size: 0.9375rem;
   font-family: inherit;
   outline: none;
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease;
+  transition: border-color 0.15s ease;
 }
 
-.form-field:focus {
-  border-color: rgba(27, 107, 138, 0.55);
-  background: rgba(var(--bg-elevated-rgb), 0.9);
-}
+/* .form-field:focus {
+  border-color: var(--cuxton-teal-mid);
+} */
 
 .form-field::placeholder {
-  color: rgba(var(--foreground-rgb), 0.3);
+  color: rgba(var(--foreground-rgb), 0.4);
 }
 
 .form-textarea {
   height: auto;
   min-height: 7rem;
-  padding: 0.875rem 1rem;
+  padding: 0.75rem 0.875rem;
   resize: vertical;
 }
 
 .form-select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%232d9abf' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%232f88a8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   padding-right: 2.5rem;
@@ -969,15 +553,14 @@ select:focus-visible,
 
 .form-label {
   display: block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: rgba(var(--foreground-rgb), 0.6);
-  margin-bottom: 0.4rem;
-  letter-spacing: 0.02em;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 0.375rem;
 }
 
 /* ══════════════════════════════════════════════════
-   TAG / PILL
+   TAGS — the one place a pill radius is allowed
    ══════════════════════════════════════════════════ */
 
 .tag-teal {
@@ -985,13 +568,11 @@ select:focus-visible,
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  background: rgba(27, 107, 138, 0.1);
-  border: 1px solid rgba(27, 107, 138, 0.2);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--cuxton-teal-light);
-  letter-spacing: 0.01em;
+  background: transparent;
+  border: 1px solid var(--border);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(var(--foreground-rgb), 0.75);
 }
 
 .tag-amber {
@@ -1000,16 +581,15 @@ select:focus-visible,
   gap: 0.375rem;
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
-  background: rgba(245, 166, 35, 0.08);
-  border: 1px solid rgba(245, 166, 35, 0.18);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--cuxton-amber);
-  letter-spacing: 0.01em;
+  background: transparent;
+  border: 1px solid var(--border-amber);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--cuxton-amber-text);
 }
 
 /* ══════════════════════════════════════════════════
-   STEP / TIMELINE
+   DIAGRAMS / TIMELINE
    ══════════════════════════════════════════════════ */
 
 .step-connector {
@@ -1018,158 +598,50 @@ select:focus-visible,
   top: 44px;
   bottom: -1.5rem;
   width: 1px;
-  background: linear-gradient(
-    180deg,
-    rgba(27, 107, 138, 0.35) 0%,
-    rgba(27, 107, 138, 0.05) 100%
-  );
+  background: var(--border);
 }
 
-/* ══════════════════════════════════════════════════
-   SCROLL REVEAL (intersection observer via CSS)
-   ══════════════════════════════════════════════════ */
-
-@keyframes revealUp {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.reveal {
-  opacity: 0;
-  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Scroll-triggered reveal (driven by the Reveal client component,
-   via IntersectionObserver) — a transition rather than a keyframe
-   animation, so it only plays once and settles instead of looping. */
-.reveal-io {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-io--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Architecture diagram node */
 .arch-node {
-  background: rgba(var(--bg-surface-rgb), 0.9);
-  border: 1px solid rgba(27, 107, 138, 0.25);
-  border-radius: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 0;
   padding: 0.875rem 1.25rem;
   text-align: center;
   position: relative;
 }
 
+/* The boundary itself — the only decorative use of amber. */
 .arch-node-amber {
-  border-color: rgba(245, 166, 35, 0.3);
-  background: rgba(245, 166, 35, 0.04);
-}
-
-/* Subtle top border accent on cards */
-.card-top-accent {
-  position: relative;
-  overflow: hidden;
-}
-
-.card-top-accent::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--cuxton-teal-mid),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card-top-accent:hover::before {
-  opacity: 1;
-}
-
-/* Amber top border variant */
-.card-top-amber::before {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--cuxton-amber),
-    transparent
-  );
+  border-color: var(--border-amber);
+  background: transparent;
 }
 
 /* ══════════════════════════════════════════════════
-   LIGHT MODE — class overrides
-   Kept last in the cascade (after their base rules,
-   same specificity) so they actually win when matched.
-   The :root token overrides live near the top of this
-   file instead — custom properties resolve at used-value
-   time, so their position doesn't affect the cascade.
+   FOOTER
    ══════════════════════════════════════════════════ */
-@media (prefers-color-scheme: light) {
-  /* The hero gradient text starts at white — invisible on a light
-     background — so swap the anchor for a dark brand teal instead.
-     Longhand `background-image` (not the `background` shorthand) so
-     this doesn't reset `background-clip: text` back to border-box. */
-  .text-gradient-hero {
-    background-image: linear-gradient(
-      135deg,
-      #0d3548 0%,
-      #1b6b8a 40%,
-      #f5a623 100%
-    );
-  }
-
-  /* Same "deep space" motion, recast as a soft daylight sky.
-     Longhand `background-image` so the shorthand doesn't reset
-     `background-attachment: fixed` from the base rule. */
-  .bg-cosmic {
-    background-image: linear-gradient(
-      135deg,
-      #eef4f9 0%,
-      #e4edf5 15%,
-      #d8e7f0 30%,
-      #cfe1ec 45%,
-      #d8e7f0 60%,
-      #e4edf5 80%,
-      #eef4f9 100%
-    );
-  }
-}
 
 .footer-link {
-  font-size: 0.85rem;
-  color: rgba(var(--foreground-rgb), 0.48);
+  font-size: 0.9375rem;
+  color: rgba(var(--foreground-rgb), 0.65);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.15s ease;
   display: block;
 }
 .footer-link:hover {
-  color: rgba(var(--foreground-rgb), 0.9);
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
 }
 .footer-legal-link {
-  font-size: 0.78rem;
-  color: rgba(var(--foreground-rgb), 0.3);
+  font-size: 0.875rem;
+  color: rgba(var(--foreground-rgb), 0.5);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.15s ease;
 }
 .footer-legal-link:hover {
-  color: rgba(var(--foreground-rgb), 0.6);
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
 }
 .footer-grid {
   display: grid;

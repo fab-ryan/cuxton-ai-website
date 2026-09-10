@@ -62,7 +62,7 @@ export default function InsightsIndex({ initial }: { initial: Insight[] }) {
         <Link
           key={insight.id}
           href={insightHref(insight.slug, prerendered)}
-          className={`card-enterprise card-top-accent ${s.card}`}
+          className={`card-enterprise ${s.card}`}
         >
           <span className={`tag-teal ${s.cardTag}`}>{insight.tag}</span>
           <h2 className={s.cardTitle}>{insight.title}</h2>
@@ -70,9 +70,9 @@ export default function InsightsIndex({ initial }: { initial: Insight[] }) {
           <div className={s.cardFoot}>
             <span>
               {formatDate(insight.published_at)}
-              {insight.read_minutes ? ` · ${insight.read_minutes} min read` : ""}
+              {insight.read_minutes ? `, ${insight.read_minutes} min read` : ""}
             </span>
-            <span className={s.cardCta}>Read →</span>
+            <span className={s.cardCta}>Read</span>
           </div>
         </Link>
       ))}

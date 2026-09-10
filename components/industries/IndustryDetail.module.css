@@ -16,11 +16,8 @@
   margin-top: -68px;
   padding-top: calc(5rem + 68px);
   padding-bottom: 5rem;
-  background-color: #060d14;
-  background-image: 
-    radial-gradient(circle at 85% 25%, rgba(27, 107, 138, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 15% 75%, rgba(245, 166, 35, 0.08) 0%, transparent 45%),
-    url("/solution-hero.png");
+  background-color: #101b26;
+  background-image: url("/solution-hero.png");
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
@@ -38,7 +35,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(6, 13, 20, 0.88);
+  background-color: rgba(16, 27, 38, 0.88);
   z-index: 1;
 }
 
@@ -50,7 +47,6 @@
   top: 15%;
   background-color: rgba(27, 107, 138, 0.16);
   border-radius: 50%;
-  filter: blur(80px);
   pointer-events: none;
   z-index: 1;
 }
@@ -130,8 +126,6 @@
   border: 1px solid rgba(27, 107, 138, 0.38);
   border-radius: 999px;
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .badgeIndex {
@@ -155,7 +149,7 @@
 
 .title {
   font-size: clamp(2rem, 3.8vw, 2.85rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.12;
   letter-spacing: -0.025em;
   color: var(--foreground);
@@ -166,7 +160,6 @@
   font-size: 0.82rem;
   color: rgba(var(--foreground-rgb), 0.48);
   letter-spacing: 0.04em;
-  text-transform: uppercase;
   font-weight: 600;
   margin-top: -0.5rem;
 }
@@ -205,7 +198,7 @@
   color: rgba(var(--foreground-rgb), 0.85);
   background-color: rgba(13, 27, 42, 0.75);
   border: 1px solid rgba(27, 107, 138, 0.35);
-  border-radius: 6px;
+  border-radius: 0;
   letter-spacing: 0.02em;
 }
 
@@ -225,12 +218,14 @@
   height: 3rem;
   padding: 0 1.75rem;
   background-color: var(--cuxton-amber);
-  color: #060d14;
+  color: #101b26;
   font-weight: 700;
   font-size: 0.875rem;
-  border-radius: 6px;
+  border-radius: 0;
   text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .primaryCta:hover {
@@ -249,9 +244,11 @@
   font-weight: 600;
   font-size: 0.875rem;
   border: 1px solid rgba(27, 107, 138, 0.4);
-  border-radius: 6px;
+  border-radius: 0;
   text-decoration: none;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .secondaryCta:hover {
@@ -269,9 +266,8 @@
   position: relative;
   background-color: #09131d;
   border: 1px solid rgba(27, 107, 138, 0.35);
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
 .imageWrapper {
@@ -295,7 +291,7 @@
 .imageWash {
   position: absolute;
   inset: 0;
-  background-color: rgba(6, 13, 20, 0.35);
+  background-color: rgba(16, 27, 38, 0.35);
   pointer-events: none;
 }
 
@@ -307,14 +303,13 @@
   align-items: center;
   gap: 0.45rem;
   padding: 0.3rem 0.65rem;
-  background-color: rgba(6, 13, 20, 0.85);
+  background-color: rgba(16, 27, 38, 0.85);
   border: 1px solid rgba(27, 107, 138, 0.5);
   border-radius: 999px;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--cuxton-teal-light);
-  backdrop-filter: blur(8px);
 }
 
 .imageBadgeDot {
@@ -351,7 +346,6 @@
 
 .cardCode {
   font-size: 0.72rem;
-  font-family: monospace;
   color: rgba(var(--foreground-rgb), 0.55);
 }
 
@@ -389,7 +383,7 @@
 .telemetryItem {
   background-color: rgba(13, 27, 42, 0.6);
   border: 1px solid rgba(27, 107, 138, 0.22);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 0.75rem;
   display: flex;
   flex-direction: column;
@@ -404,7 +398,6 @@
 
 .telemetryLabel {
   font-size: 0.68rem;
-  text-transform: uppercase;
   letter-spacing: 0.06em;
   color: rgba(var(--foreground-rgb), 0.45);
 }
@@ -414,7 +407,7 @@
 .deliverablesBox {
   background-color: rgba(13, 27, 42, 0.4);
   border: 1px solid rgba(27, 107, 138, 0.2);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 1rem;
   margin-bottom: 1.25rem;
 }
@@ -425,7 +418,6 @@
   align-items: center;
   font-size: 0.72rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--cuxton-teal-light);
   margin-bottom: 0.75rem;
@@ -476,7 +468,7 @@
   position: sticky;
   top: 68px;
   z-index: 40;
-  background-color: #060d14;
+  background-color: #101b26;
   border-bottom: 1px solid rgba(27, 107, 138, 0.22);
 }
 
@@ -500,8 +492,6 @@
 .sectionNavLabel {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: rgba(var(--foreground-rgb), 0.45);
   white-space: nowrap;
 }
@@ -535,7 +525,7 @@
 }
 
 .sectionPillActive {
-  color: #060d14;
+  color: #101b26;
   background-color: var(--cuxton-teal-light);
   border-color: var(--cuxton-teal-light);
 }
@@ -562,8 +552,6 @@
 .eyebrow {
   font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: var(--cuxton-amber);
   margin-bottom: 0.65rem;
 }
@@ -581,7 +569,7 @@
   align-items: center;
   gap: 0.65rem;
   font-size: 1.55rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--foreground);
   margin-bottom: 1.75rem;
   letter-spacing: -0.015em;
@@ -622,7 +610,7 @@
   gap: 0.65rem;
   background-color: rgba(13, 27, 42, 0.45);
   border: 1px solid rgba(27, 107, 138, 0.2);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0.95rem 1rem;
   font-size: 0.85rem;
   line-height: 1.5;
@@ -667,7 +655,7 @@
   gap: 0.75rem;
   background-color: rgba(13, 27, 42, 0.4);
   border: 1px solid rgba(27, 107, 138, 0.18);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 1rem 1.15rem;
   font-size: 0.875rem;
   line-height: 1.55;
@@ -710,7 +698,6 @@
   color: var(--cuxton-teal-light);
   font-size: 0.82rem;
   font-weight: 700;
-  font-family: monospace;
 }
 
 .timelineLine {
@@ -758,7 +745,7 @@
   gap: 0.75rem;
   background-color: rgba(13, 27, 42, 0.4);
   border: 1px solid rgba(27, 107, 138, 0.2);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 1.15rem;
   font-size: 0.875rem;
   line-height: 1.55;
@@ -780,7 +767,7 @@
   padding: 0.65rem 1.15rem;
   background-color: rgba(13, 27, 42, 0.65);
   border: 1px solid rgba(27, 107, 138, 0.3);
-  border-radius: 8px;
+  border-radius: 0;
   color: var(--cuxton-teal-light);
   font-weight: 600;
   font-size: 0.85rem;
@@ -798,7 +785,7 @@
 /* --- Closing Section ----------------------------------------------- */
 
 .closing {
-  background-color: #060d14;
+  background-color: #101b26;
   border-top: 1px solid rgba(27, 107, 138, 0.25);
   padding: 5rem 0;
 }
@@ -812,7 +799,7 @@
 
 .closingHeading {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 800;
+  font-weight: 600;
   color: var(--foreground);
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
@@ -870,7 +857,6 @@
   .blueprintCard {
     background-color: #ffffff;
     border-color: rgba(27, 107, 138, 0.2);
-    box-shadow: 0 10px 30px rgba(12, 34, 51, 0.07);
   }
 
   .cardHeader {
@@ -884,7 +870,7 @@
 
   /* Sits on the photograph, so it stays a dark scrim — just lighter. */
   .imageWash {
-    background-color: rgba(6, 13, 20, 0.18);
+    background-color: rgba(16, 27, 38, 0.18);
   }
 
   .telemetryItem,

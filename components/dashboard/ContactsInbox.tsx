@@ -180,7 +180,7 @@ export default function ContactsInbox() {
                     </span>
                   </div>
                   <div className={s.listMeta}>
-                    {row.organisation || row.email} · {formatDateTime(row.created_at)}
+                    {row.organisation || row.email}, {formatDateTime(row.created_at)}
                   </div>
                   <p className={s.listSnippet}>{row.message}</p>
                 </button>
@@ -431,7 +431,7 @@ function ContactDetail({
                   <div className={s.threadBody}>{reply.body}</div>
                   <p className={s.hint}>
                     {formatDateTime(reply.created_at)}
-                    {reply.email_error ? ` · ${reply.email_error}` : ""}
+                    {reply.email_error ? `, ${reply.email_error}` : ""}
                   </p>
                 </div>
               ))}

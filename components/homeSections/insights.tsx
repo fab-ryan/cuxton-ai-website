@@ -19,7 +19,6 @@ export const InsightsSection = async () => {
       <div className="section-container">
         <div className={styles.insights__header}>
           <div>
-            <div className="section-label">Insights</div>
             <h2 className="section-heading">
               Practical thinking on
               <br />

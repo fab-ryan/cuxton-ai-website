@@ -118,7 +118,7 @@ export default function DashboardShell({ children }: { children: React.ReactNode
   if (!configured) {
     return (
       <Centre>
-        <h1 style={{ fontSize: "1.1rem", fontWeight: 800, marginBottom: "0.75rem" }}>
+        <h1 style={{ fontSize: "1.1rem", fontWeight: 600, marginBottom: "0.75rem" }}>
           Supabase is not configured
         </h1>
         <p style={{ fontSize: "0.84rem", lineHeight: 1.7, color: "rgba(var(--foreground-rgb),0.5)" }}>
@@ -155,7 +155,7 @@ export default function DashboardShell({ children }: { children: React.ReactNode
   if (!isAdmin) {
     return (
       <Centre>
-        <h1 style={{ fontSize: "1.1rem", fontWeight: 800, marginBottom: "0.75rem" }}>
+        <h1 style={{ fontSize: "1.1rem", fontWeight: 600, marginBottom: "0.75rem" }}>
           This account has no dashboard access
         </h1>
         <p

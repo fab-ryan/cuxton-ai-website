@@ -74,7 +74,7 @@ export default function InsightArticle({
       <h1
         style={{
           fontSize: "clamp(1.65rem, 4vw, 2.4rem)",
-          fontWeight: 800,
+          fontWeight: 600,
           letterSpacing: "-0.025em",
           lineHeight: 1.2,
           color: "var(--foreground)",
@@ -86,7 +86,7 @@ export default function InsightArticle({
 
       <div className={s.articleMeta}>
         <span>{formatDate(insight.published_at)}</span>
-        {insight.read_minutes ? <span>· {insight.read_minutes} min read</span> : null}
+        {insight.read_minutes ? <span>, {insight.read_minutes} min read</span> : null}
       </div>
 
       {insight.cover_image && (

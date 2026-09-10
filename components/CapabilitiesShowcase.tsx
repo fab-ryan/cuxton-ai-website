@@ -73,7 +73,7 @@ const capabilities = [
     index: "05",
     name: "Enterprise integration",
     tagline: "Into the systems already in service.",
-    desc: "Seamless bi-directional integration into existing systems of record, enterprise identity providers, data lakes, and line-of-business applications without disruptive legacy overhauls or platform lock-in.",
+    desc: "Two-way integration with the systems of record you already run, enterprise identity providers, data lakes, and line-of-business applications without disruptive legacy overhauls or platform lock-in.",
     tags: ["Systems of Record (ERP/CRM)", "Active Directory / Okta SSO", "Postgres & Snowflake Connectors", "Event-Driven Bus"],
     ctaLink: "/technology",
     ctaText: "Explore Integration Architecture",
@@ -439,7 +439,7 @@ function EnterpriseIntegrationIllustration() {
 function GovernanceIllustration() {
   return (
     <svg className={styles.svgContainer} viewBox="0 0 560 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Outer Sovereignty Vault */}
+      {/* Outer boundary */}
       <rect x="30" y="20" width="500" height="260" rx="14" fill="var(--showcase-canvas-bg)" stroke="#F5A623" strokeWidth="1.5" />
       
       {/* Vault Header Bar */}
@@ -448,7 +448,7 @@ function GovernanceIllustration() {
       <text x="62" y="43" fill="var(--showcase-text-primary)" fontSize="10" fontFamily="monospace" fontWeight="700">SOVEREIGN AI ASSET VAULT // 100% CLIENT PROPERTY</text>
       <text x="410" y="43" fill="#2D9ABF" fontSize="9" fontFamily="monospace">RETENTION: ON-PREM</text>
 
-      {/* 3 Pillars of AI Sovereignty */}
+      {/* 3 control pillars */}
       {/* Pillar 1: Model Checkpoints */}
       <g transform="translate(55, 78)">
         <rect x="0" y="0" width="135" height="135" rx="8" fill="var(--showcase-card-inner)" stroke="#2D9ABF" strokeWidth="1.2" />
@@ -508,7 +508,6 @@ export default function CapabilitiesShowcase() {
     <div className={`${styles.showcaseWrap}`}>
       <div className={styles.header}>
         <div className={styles.headerHeading}>
-          <div className="section-label">Our Capabilities</div>
           <h2 className={styles.heading}>
             What a Cuxton<br />deployment includes
           </h2>
@@ -516,11 +515,9 @@ export default function CapabilitiesShowcase() {
         <div className={styles.headerAside}>
           <p className={styles.headerAsideText}>
             Six core enterprise capability areas. Engagements typically commence with two or three foundational blocks
-            and scale seamlessly across departments.
+            and extend it to other teams later.
           </p>
           <div className={styles.headerCounter}>
-            <span>CAPABILITY</span>
-            <span>{active.index}</span>
             <span>/</span>
             <span>{String(total).padStart(2, "0")}</span>
           </div>
@@ -544,7 +541,6 @@ export default function CapabilitiesShowcase() {
                 onClick={() => setActiveIndex(i)}
                 onMouseEnter={() => setActiveIndex(i)}
               >
-                <span className={styles.tabIndex}>{c.index}</span>
                 <span className={styles.tabIcon}>{c.icon}</span>
                 <span className={styles.tabBody}>
                   <span className={styles.tabLabel}>{c.name}</span>
@@ -580,9 +576,9 @@ export default function CapabilitiesShowcase() {
           <div className={styles.panelTopBar}>
             <div className={styles.panelStatus}>
               <span className={styles.pulseDot} />
-              <span>LIVE ARCHITECTURE DIAGRAM // {active.id.toUpperCase()}</span>
+              <span>{active.name}</span>
             </div>
-            <div>ENTERPRISE SPECIFICATION</div>
+            
           </div>
 
           {/* Bespoke Architectural SVG Illustration */}
@@ -595,7 +591,7 @@ export default function CapabilitiesShowcase() {
             <div className={styles.footerText}>
               <h3 className={styles.footerTitle}>
                 <span>{active.name}</span>
-                <span className={styles.footerBadge}>SYSTEM LAYER {active.index}</span>
+                
               </h3>
               <p className={styles.footerDesc}>{active.desc}</p>
             </div>

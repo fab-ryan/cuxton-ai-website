@@ -116,7 +116,7 @@ export default function InsightsList() {
                 No insights yet.
                 <br />
                 <Link href="/dashboard/insights/new" style={{ color: "var(--cuxton-teal-text)" }}>
-                  Write the first one →
+                  Write the first one
                 </Link>
               </>
             ) : (

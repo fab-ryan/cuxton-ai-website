@@ -4,7 +4,7 @@
 
 .wrap {
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 0;
   background: rgba(var(--foreground-rgb), 0.02);
   overflow: hidden;
 }
@@ -41,13 +41,16 @@
   height: 30px;
   padding: 0 0.45rem;
   border: 1px solid transparent;
-  border-radius: 7px;
+  border-radius: 0;
   background: none;
   color: rgba(var(--foreground-rgb), 0.6);
   font-size: 0.76rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+  transition:
+    background 0.14s ease,
+    color 0.14s ease,
+    border-color 0.14s ease;
 }
 
 .tool:hover:not(:disabled) {
@@ -111,7 +114,7 @@
 
 .surface :global(.ProseMirror h2) {
   font-size: 1.3rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.015em;
   color: var(--foreground);
   margin: 2rem 0 0.85rem;
@@ -155,13 +158,13 @@
   font-size: 0.86em;
   background: rgba(var(--foreground-rgb), 0.08);
   padding: 0.1em 0.35em;
-  border-radius: 5px;
+  border-radius: 0;
 }
 
 .surface :global(.ProseMirror pre) {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 0;
   padding: 0.9rem 1.1rem;
   margin: 0 0 1.1rem;
   overflow-x: auto;
@@ -189,7 +192,7 @@
 .surface :global(.ProseMirror img) {
   max-width: 100%;
   height: auto;
-  border-radius: 12px;
+  border-radius: 0;
   border: 1px solid var(--border);
   display: block;
   margin: 1.5rem 0;
@@ -225,12 +228,14 @@
 /* ─── Cover uploader ─── */
 .dropzone {
   border: 1px dashed var(--border);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 1.5rem 1.25rem;
   text-align: center;
   cursor: pointer;
   background: rgba(var(--foreground-rgb), 0.02);
-  transition: border-color 0.16s ease, background 0.16s ease;
+  transition:
+    border-color 0.16s ease,
+    background 0.16s ease;
   display: block;
   width: 100%;
 }
@@ -256,7 +261,7 @@
 
 .preview {
   position: relative;
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
   border: 1px solid var(--border);
 }

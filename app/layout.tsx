@@ -8,7 +8,7 @@ import { ScrollTop } from "@/components/scrollTop";
 const inter = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "600"],
   display: "swap",
 });
 

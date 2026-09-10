@@ -1,44 +1,20 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-
 type RevealProps = {
   children: React.ReactNode;
   className?: string;
+  /** Accepted for backwards compatibility; no longer used. */
   delay?: number;
   as?: "div" | "li";
 };
 
-/* Fades/slides an element in once it scrolls into view. Client-only
-   wrapper so the surrounding page can stay a server component. */
-export default function Reveal({ children, className = "", delay = 0, as = "div" }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+/* Previously faded and slid each section in on scroll. That put a
+   fade-and-slide-up on every section of the site — the same motion
+   thirty-two times — and gated the content behind an IntersectionObserver,
+   so a failed client bundle left most of the page invisible.
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
+   The site now spends its whole motion budget on one moment (the trust
+   perimeter drawing itself once, in globals.css). This renders its children
+   directly and keeps the prop signature so call sites don't have to change. */
+export default function Reveal({ children, className = "", as = "div" }: RevealProps) {
   const Tag = as;
-  return (
-    <Tag
-      ref={ref as never}
-      className={`reveal-io ${visible ? "reveal-io--visible" : ""} ${className}`}
-      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
-    >
-      {children}
-    </Tag>
-  );
+  return <Tag className={className}>{children}</Tag>;
 }

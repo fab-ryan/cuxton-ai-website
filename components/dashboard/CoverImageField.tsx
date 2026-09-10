@@ -133,7 +133,7 @@ export default function CoverImageField({
         <div className={s.dropzoneHint}>
           Click or drop an image here
           <br />
-          JPEG, PNG, WebP, GIF or AVIF · up to {describeSize(MAX_BYTES)}
+          JPEG, PNG, WebP, GIF or AVIF, up to {describeSize(MAX_BYTES)}
         </div>
       </div>
 

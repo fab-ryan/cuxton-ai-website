@@ -164,12 +164,12 @@ export default function ContactPage() {
               <div style={{
                 background: "rgba(27,107,138,0.06)",
                 border: "1px solid rgba(27,107,138,0.15)",
-                borderRadius: 16, padding: "1.25rem",
+                 padding: "1.25rem",
               }}>
                 <p style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.4)", lineHeight: 1.65 }}>
                   <span style={{ color: "var(--cuxton-teal-light)", fontWeight: 700 }}>Privacy: </span>
                   Do not submit confidential client data, patient-identifiable information or sensitive
-                  internal data through this public form. Describe your situation at a high level — we
+                  internal data through this public form. Describe your situation at a high level we
                   can discuss details under a formal confidentiality arrangement if appropriate.
                 </p>
               </div>
@@ -188,7 +188,7 @@ export default function ContactPage() {
               {status === "sent" ? (
                 <div className="card-enterprise" style={{ padding: "3rem", textAlign: "center" }}>
                   <div style={{
-                    width: 56, height: 56, borderRadius: 16,
+                    width: 56, height: 56,
                     background: "rgba(27,107,138,0.15)",
                     border: "1px solid rgba(27,107,138,0.3)",
                     display: "flex", alignItems: "center", justifyContent: "center",
@@ -199,7 +199,7 @@ export default function ContactPage() {
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
-                  <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "var(--foreground)", marginBottom: "0.75rem" }}>
+                  <h2 style={{ fontSize: "1.375rem", fontWeight: 600, color: "var(--foreground)", marginBottom: "0.75rem" }}>
                     Submission received.
                   </h2>
                   <p style={{ fontSize: "0.9rem", color: "rgba(var(--foreground-rgb),0.5)", lineHeight: 1.7, marginBottom: "2rem" }}>
@@ -319,7 +319,7 @@ export default function ContactPage() {
                             onClick={() => toggleTopic(topic)}
                             style={{
                               display: "flex", alignItems: "center", gap: "0.5rem",
-                              padding: "0.5rem 0.75rem", borderRadius: 10, cursor: "pointer",
+                              padding: "0.5rem 0.75rem",  cursor: "pointer",
                               background: selected ? "rgba(27,107,138,0.15)" : "rgba(var(--bg-surface-rgb),0.6)",
                               border: `1px solid ${selected ? "rgba(27,107,138,0.4)" : "rgba(27,107,138,0.14)"}`,
                               color: selected ? "var(--cuxton-teal-light)" : "rgba(var(--foreground-rgb),0.45)",
@@ -328,14 +328,14 @@ export default function ContactPage() {
                             }}
                           >
                             <div style={{
-                              width: 14, height: 14, borderRadius: 4, flexShrink: 0,
+                              width: 14, height: 14, flexShrink: 0,
                               border: `1.5px solid ${selected ? "var(--cuxton-teal-light)" : "rgba(27,107,138,0.35)"}`,
                               background: selected ? "var(--cuxton-teal-light)" : "transparent",
                               display: "flex", alignItems: "center", justifyContent: "center",
                             }}>
                               {selected && (
                                 <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
-                                  <path d="M2 6l3 3 5-5" stroke="#060d14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                  <path d="M2 6l3 3 5-5" stroke="#101b26" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                               )}
                             </div>
@@ -366,7 +366,6 @@ export default function ContactPage() {
                         marginBottom: "1rem", padding: "0.75rem 1rem",
                         background: "rgba(248,113,113,0.06)",
                         border: "1px solid rgba(248,113,113,0.15)",
-                        borderRadius: 10,
                       }}>
                         {errorMessage ?? "Something went wrong. Please try again."} If the problem
                         persists, email us directly at{" "}
@@ -391,12 +390,6 @@ export default function ContactPage() {
                         }}
                       >
                         {status === "sending" ? "Sending…" : "Submit enquiry"}
-                        {status !== "sending" && (
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                          </svg>
-                        )}
                       </button>
                     </div>
                   </div>

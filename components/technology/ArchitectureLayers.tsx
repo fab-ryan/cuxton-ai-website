@@ -52,11 +52,6 @@ const CheckShieldIcon = () => (
   </svg>
 );
 
-const ArrowRightIcon = () => (
-  <svg {...iconProps} width={14} height={14} strokeWidth={2.25}>
-    <path d="M5 12h14M12 5l7 7-7 7" />
-  </svg>
-);
 
 const ExchangeIcon = () => (
   <svg {...iconProps} width={13} height={13} strokeWidth={2}>
@@ -91,9 +86,9 @@ export const architectureLayers = [
     n: "03",
     plane: "execution",
     icon: <ComputeIcon />,
-    tagline: "Air-Gapped & Sovereign",
+    tagline: "Air-gapped",
     controlTier: "Hardware-Level Boundary",
-    title: "Sovereign AI Compute Tier",
+    title: "Private AI Compute Tier",
     desc: "Executes approved open-weight models, customized architectures, or private API endpoints within isolated compute enclaves. Cuxton configures compute location based on your latency, regulatory residency, and data sensitivity requirements.",
     components: ["Dedicated GPU Clusters", "Hardware Air-Gapping", "Model Routing Gateway", "Real-Time Guardrail Filters"],
     iface: "Guardrailed inference & tool calls",
@@ -152,9 +147,6 @@ export default function ArchitectureLayers() {
       <div className={`section py-16 max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 text-left ${styles.content}`}>
         {/* Section Header */}
         <div className={styles.header}>
-          <div className={styles.eyebrow}>
-            <span className="section-label">Layered Control Plane</span>
-          </div>
           <h2 id="architecture-heading" className={styles.heading}>
             A layered architecture that maintains control at every level.
           </h2>
@@ -253,7 +245,6 @@ export default function ArchitectureLayers() {
         <div className={styles.footer}>
           <Link href="/contact?topic=architecture" className={styles.overviewCta}>
             <span>Discuss Your Architecture</span>
-            <ArrowRightIcon />
           </Link>
         </div>
       </div>

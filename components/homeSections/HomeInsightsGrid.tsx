@@ -74,7 +74,7 @@ export default function HomeInsightsGrid({
           <h3 className={styles.insights__cardTitle}>{insight.title}</h3>
           <div className={styles.insights__cardFooter}>
             {formatDate(insight.published_at)}
-            {insight.read_minutes ? ` · ${insight.read_minutes} min read` : ""}
+            {insight.read_minutes ? `, ${insight.read_minutes} min read` : ""}
           </div>
         </Link>
       ))}

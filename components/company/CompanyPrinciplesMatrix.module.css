@@ -8,8 +8,7 @@
   overflow: hidden;
   isolation: isolate;
   padding: 5.5rem 0 6.5rem;
-  background-color: #060d14;
-  
+  background-color: #101b26;
 }
 
 /* --- Section background layers --------------------------------------
@@ -33,7 +32,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(6, 13, 20, 0.86);
+  background-color: rgba(16, 27, 38, 0.86);
   z-index: 0;
 }
 
@@ -73,7 +72,7 @@
 
 .heading {
   font-size: clamp(2rem, 3.5vw, 2.75rem);
-  font-weight: 850;
+  font-weight: 600;
   line-height: 1.16;
   letter-spacing: -0.025em;
   color: var(--foreground);
@@ -114,7 +113,7 @@
   padding: 0.6rem 1rem;
   background-color: rgba(var(--bg-elevated-rgb), 0.65);
   border: 1px solid rgba(27, 107, 138, 0.25);
-  border-radius: 10px;
+  border-radius: 0;
   font-size: 0.8rem;
   font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.7);
@@ -136,7 +135,6 @@
 }
 
 .tabNum {
-  font-family: monospace;
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--cuxton-amber-text);
@@ -151,11 +149,8 @@
 .stageCard {
   background-color: rgba(var(--bg-surface-rgb), 0.78);
   border: 1px solid rgba(27, 107, 138, 0.28);
-  border-radius: 18px;
+  border-radius: 0;
   overflow: hidden;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 16px 40px rgba(6, 13, 20, 0.4);
 }
 
 .stageGrid {
@@ -198,8 +193,6 @@
   gap: 0.5rem;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: var(--cuxton-amber-text);
 }
 
@@ -211,14 +204,13 @@
 }
 
 .tenetCode {
-  font-family: monospace;
   font-size: 0.72rem;
   color: rgba(var(--foreground-rgb), 0.45);
 }
 
 .principleTitle {
   font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.2;
   color: var(--foreground);
   margin: 0 0 0.5rem 0;
@@ -244,7 +236,7 @@
 .commitmentsBox {
   background-color: rgba(var(--bg-elevated-rgb), 0.6);
   border: 1px solid rgba(27, 107, 138, 0.22);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 1.25rem 1.5rem;
   margin-bottom: 2rem;
 }
@@ -252,8 +244,6 @@
 .commitmentsTitle {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: var(--cuxton-amber-text);
   margin-bottom: 0.85rem;
 }
@@ -293,7 +283,6 @@
   font-size: 0.78rem;
   font-weight: 700;
   color: rgba(var(--foreground-rgb), 0.5);
-  font-family: monospace;
 }
 
 .pagerControls {
@@ -308,7 +297,7 @@
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: 10px;
+  border-radius: 0;
   background-color: rgba(var(--bg-elevated-rgb), 0.65);
   border: 1px solid rgba(27, 107, 138, 0.3);
   color: var(--foreground);
@@ -370,7 +359,6 @@
 
 .schematicCode {
   font-size: 0.72rem;
-  font-family: monospace;
   color: rgba(var(--foreground-rgb), 0.45);
 }
 
@@ -382,7 +370,7 @@
   min-height: 240px;
   background-color: rgba(var(--bg-elevated-rgb), 0.5);
   border: 1px solid rgba(27, 107, 138, 0.22);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -423,11 +411,9 @@
   }
 
   .stageCard {
-    box-shadow: 0 14px 36px rgba(12, 34, 51, 0.08);
   }
 
   .tabBtn {
-    box-shadow: 0 4px 12px rgba(12, 34, 51, 0.04);
   }
 
   .tabBtn:hover {
@@ -444,4 +430,11 @@
     background-color: rgba(27, 107, 138, 0.1);
     border-color: rgba(27, 107, 138, 0.3);
   }
+}
+
+/* Headlines carry emphasis through scale and position, not hue. These accent
+   classes remain so existing markup keeps working, but they no longer tint a
+   fragment of a heading a different colour from the rest of it. */
+.headingHighlight {
+  color: inherit;
 }

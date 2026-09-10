@@ -3,8 +3,7 @@
    Features bespoke 3D infrastructure backdrop with seamless transitions
    ═══════════════════════════════════════════════════════════════════ */
 
-.section
-{
+.section {
   position: relative;
   overflow: hidden;
   padding: 7rem 0;
@@ -17,19 +16,17 @@
 }
 
 /* Solid architectural backdrop tint for high legibility without gradient clutter */
-.bgOverlay
-{
+.bgOverlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: rgba(6, 13, 20, 0.85);
+  background-color: rgba(16, 27, 38, 0.95);
   z-index: 0;
 }
 
 /* Subtle edge blend transitions into adjacent page sections */
 .edgeTransitionTop,
-.edgeTransitionBottom
-{
+.edgeTransitionBottom {
   position: absolute;
   left: 0;
   right: 0;
@@ -38,12 +35,9 @@
   z-index: 1;
 }
 
-
-
 /* ─── Scoped Theme Variables ────────────────────────────────────── */
 
-.themeWrap
-{
+.themeWrap {
   --agent-card-bg: rgba(4, 22, 36, 0.76);
   --agent-card-border: rgba(45, 154, 191, 0.28);
   --agent-card-border-hover: rgba(45, 154, 191, 0.6);
@@ -59,8 +53,7 @@
 
 /* ─── HEADER ────────────────────────────────────────────────────── */
 
-.header
-{
+.header {
   text-align: left;
   margin: 0 auto 3.5rem;
   display: flex;
@@ -68,10 +61,9 @@
   align-items: left;
 }
 
-.heading
-{
+.heading {
   font-size: clamp(2.2rem, 4.2vw, 3.4rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: var(--agent-text-primary);
@@ -79,13 +71,11 @@
   margin-bottom: 1.25rem;
 }
 
-.headingAccent
-{
+.headingAccent {
   color: var(--cuxton-amber);
 }
 
-.subHeading
-{
+.subHeading {
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--agent-text-secondary);
@@ -93,8 +83,7 @@
 
 /* ─── SCENARIO SELECTOR TABS ────────────────────────────────────── */
 
-.tabsContainer
-{
+.tabsContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,13 +92,12 @@
   margin-bottom: 2.5rem;
 }
 
-.scenarioTab
-{
+.scenarioTab {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   padding: 0.65rem 1.25rem;
-  border-radius: 10px;
+  border-radius: 0;
   background: rgba(6, 22, 36, 0.7);
   border: 1px solid var(--agent-card-border);
   color: var(--agent-text-secondary);
@@ -118,27 +106,21 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   transition: all 0.2s ease;
 }
 
-.scenarioTab:hover
-{
+.scenarioTab:hover {
   border-color: var(--agent-card-border-hover);
   color: var(--agent-text-primary);
 }
 
-.scenarioTabActive
-{
+.scenarioTabActive {
   background: rgba(27, 107, 138, 0.35);
   border-color: var(--cuxton-amber);
   color: #ffffff;
-  box-shadow: 0 0 20px -5px rgba(245, 166, 35, 0.35);
 }
 
-.tabIcon
-{
+.tabIcon {
   width: 18px;
   height: 18px;
   display: flex;
@@ -147,46 +129,38 @@
   color: var(--cuxton-teal-light);
 }
 
-.scenarioTabActive .tabIcon
-{
+.scenarioTabActive .tabIcon {
   color: var(--cuxton-amber);
 }
 
 /* ─── MAIN ORCHESTRATION CONSOLE (2-COLUMN) ─────────────────────── */
 
-.consoleGrid
-{
+.consoleGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
   margin-bottom: 3.5rem;
 }
 
-@media (min-width: 1024px)
-{
-  .consoleGrid
-  {
+@media (min-width: 1024px) {
+  .consoleGrid {
     grid-template-columns: 1.15fr 1fr;
   }
 }
 
 /* Left Column: Pipeline Steps Card */
-.pipelineCard
-{
+.pipelineCard {
   position: relative;
   background: var(--agent-card-bg);
   border: 1px solid var(--agent-card-border);
-  border-radius: 18px;
+  border-radius: 0;
   padding: 1.75rem;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.consoleHeader
-{
+.consoleHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -195,52 +169,41 @@
   border-bottom: 1px solid rgba(45, 154, 191, 0.2);
 }
 
-.consoleTitleGroup
-{
+.consoleTitleGroup {
   display: flex;
   align-items: center;
   gap: 0.6rem;
 }
 
-.consolePulseDot
-{
+.consolePulseDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #34d399;
-  box-shadow: 0 0 10px #34d399;
-  animation: consolePulse 2s infinite;
 }
 
-@keyframes consolePulse
-{
-
+@keyframes consolePulse {
   0%,
-  100%
-  {
+  100% {
     opacity: 1;
     transform: scale(1);
   }
 
-  50%
-  {
+  50% {
     opacity: 0.4;
     transform: scale(0.85);
   }
 }
 
-.consoleTitle
-{
+.consoleTitle {
   font-family: var(--font-geist-mono, monospace);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--cuxton-teal-light);
 }
 
-.consoleBadge
-{
+.consoleBadge {
   font-family: var(--font-geist-mono, monospace);
   font-size: 0.68rem;
   font-weight: 700;
@@ -248,24 +211,22 @@
   background: rgba(245, 166, 35, 0.12);
   border: 1px solid rgba(245, 166, 35, 0.3);
   padding: 0.2rem 0.55rem;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 /* Pipeline Steps List */
-.stepList
-{
+.stepList {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.stepButton
-{
+.stepButton {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 0.85rem 1rem;
-  border-radius: 12px;
+  border-radius: 0;
   background: rgba(6, 16, 28, 0.5);
   border: 1px solid rgba(45, 154, 191, 0.18);
   cursor: pointer;
@@ -274,28 +235,24 @@
   width: 100%;
 }
 
-.stepButton:hover
-{
+.stepButton:hover {
   background: rgba(27, 107, 138, 0.18);
   border-color: rgba(45, 154, 191, 0.45);
 }
 
-.stepButtonActive
-{
+.stepButtonActive {
   background: rgba(27, 107, 138, 0.28);
   border-color: var(--cuxton-amber);
-  box-shadow: 0 4px 18px -4px rgba(245, 166, 35, 0.25);
 }
 
-.stepIndex
-{
+.stepIndex {
   font-family: var(--font-geist-mono, monospace);
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--cuxton-teal-light);
   width: 26px;
   height: 26px;
-  border-radius: 6px;
+  border-radius: 0;
   background: rgba(27, 107, 138, 0.2);
   display: flex;
   align-items: center;
@@ -303,75 +260,64 @@
   flex-shrink: 0;
 }
 
-.stepButtonActive .stepIndex
-{
+.stepButtonActive .stepIndex {
   background: rgba(245, 166, 35, 0.2);
   color: var(--cuxton-amber);
 }
 
-.stepTextGroup
-{
+.stepTextGroup {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.stepLabel
-{
+.stepLabel {
   font-size: 0.92rem;
   font-weight: 700;
   color: var(--agent-text-primary);
 }
 
-.stepSummary
-{
+.stepSummary {
   font-size: 0.78rem;
   color: var(--agent-text-muted);
   margin-top: 0.15rem;
 }
 
-.stepStatusChip
-{
+.stepStatusChip {
   font-family: var(--font-geist-mono, monospace);
   font-size: 0.65rem;
   font-weight: 700;
   padding: 0.2rem 0.5rem;
-  border-radius: 4px;
+  border-radius: 0;
   flex-shrink: 0;
 }
 
-.statusComplete
-{
+.statusComplete {
   background: rgba(52, 211, 153, 0.12);
   color: #34d399;
   border: 1px solid rgba(52, 211, 153, 0.3);
 }
 
-.statusReview
-{
+.statusReview {
   background: rgba(245, 166, 35, 0.15);
   color: var(--cuxton-amber);
   border: 1px solid rgba(245, 166, 35, 0.4);
 }
 
 /* Right Column: Execution Inspector Terminal */
-.inspectorCard
-{
+.inspectorCard {
   position: relative;
   background: var(--agent-terminal-bg);
   border: 1px solid var(--agent-card-border);
-  border-radius: 18px;
+  border-radius: 0;
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   overflow: hidden;
 }
 
-.inspectorCard::before
-{
+.inspectorCard::before {
   content: "";
   position: absolute;
   top: 0;
@@ -382,8 +328,7 @@
   opacity: 0.8;
 }
 
-.terminalTopBar
-{
+.terminalTopBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -392,74 +337,64 @@
   margin-bottom: 1.25rem;
 }
 
-.terminalDots
-{
+.terminalDots {
   display: flex;
   gap: 6px;
 }
 
-.terminalDot
-{
+.terminalDot {
   width: 9px;
   height: 9px;
   border-radius: 50%;
   background: rgba(204, 227, 237, 0.2);
 }
 
-.terminalFileName
-{
+.terminalFileName {
   font-family: var(--font-geist-mono, monospace);
   font-size: 0.72rem;
   color: var(--cuxton-teal-light);
   font-weight: 700;
 }
 
-.inspectorBody
-{
+.inspectorBody {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   flex-grow: 1;
 }
 
-.inspectorRow
-{
+.inspectorRow {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
-.inspectorFieldLabel
-{
+.inspectorFieldLabel {
   font-family: var(--font-geist-mono, monospace);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--agent-text-muted);
-  text-transform: uppercase;
 }
 
-.inspectorFieldValue
-{
+.inspectorFieldValue {
   font-size: 0.92rem;
   color: var(--agent-text-primary);
   line-height: 1.5;
 }
 
-.codeBlock
-{
+.codeBlock {
   font-family: var(--font-geist-mono, monospace);
   font-size: 0.78rem;
-  background: rgba(6, 13, 20, 0.85);
+  background: rgba(16, 27, 38, 0.85);
   border: 1px solid rgba(45, 154, 191, 0.25);
   padding: 0.75rem 1rem;
-  border-radius: 8px;
+  border-radius: 0;
   color: #8dc9e0;
   overflow-x: auto;
 }
 
-.inspectorTelemetryGrid
-{
+.inspectorTelemetryGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
@@ -468,72 +403,63 @@
   margin-top: 1rem;
 }
 
-.telemetryBox
-{
+.telemetryBox {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
 }
 
-.telemetryLabel
-{
+.telemetryLabel {
   font-family: var(--font-geist-mono, monospace);
   font-size: 0.62rem;
   font-weight: 700;
   color: var(--agent-text-muted);
 }
 
-.telemetryValue
-{
+.telemetryValue {
   font-family: var(--font-geist-mono, monospace);
   font-size: 0.85rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--cuxton-amber);
 }
 
 /* ─── GOVERNANCE TRIAD BENTO CARDS ──────────────────────────────── */
 
-.governanceGrid
-{
+.governanceGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
   margin-bottom: 3.5rem;
 }
 
-@media (min-width: 768px)
-{
-  .governanceGrid
-  {
+@media (min-width: 768px) {
+  .governanceGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.govCard
-{
+.govCard {
   position: relative;
   background: var(--agent-card-bg);
   border: 1px solid var(--agent-card-border);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 1.6rem;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.govCard:hover
-{
+.govCard:hover {
   transform: translateY(-3px);
   border-color: var(--agent-card-border-hover);
 }
 
-.govIcon
-{
+.govIcon {
   width: 40px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 0;
   background: rgba(27, 107, 138, 0.18);
   border: 1px solid rgba(45, 154, 191, 0.35);
   color: var(--cuxton-teal-light);
@@ -543,16 +469,14 @@
   margin-bottom: 1rem;
 }
 
-.govTitle
-{
+.govTitle {
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--agent-text-primary);
   margin-bottom: 0.45rem;
 }
 
-.govDesc
-{
+.govDesc {
   font-size: 0.85rem;
   line-height: 1.6;
   color: var(--agent-text-secondary);
@@ -560,8 +484,7 @@
 
 /* ─── ACTIONS FOOTER ────────────────────────────────────────────── */
 
-.ctaRow
-{
+.ctaRow {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -569,18 +492,22 @@
   gap: 1.25rem;
 }
 
-.ctaSecondary
-{
+.ctaSecondary {
   background: rgba(255, 255, 255, 0.08) !important;
   border: 1px solid rgba(255, 255, 255, 0.28) !important;
   color: #ffffff !important;
-  backdrop-filter: blur(10px);
 }
 
-.ctaSecondary:hover
-{
+.ctaSecondary:hover {
   background: rgba(255, 255, 255, 0.16) !important;
   border-color: rgba(255, 255, 255, 0.45) !important;
   color: #ffffff !important;
   transform: translateY(-1px);
+}
+
+/* Headlines carry emphasis through scale and position, not hue. These accent
+   classes remain so existing markup keeps working, but they no longer tint a
+   fragment of a heading a different colour from the rest of it. */
+.headingAccent {
+  color: inherit;
 }

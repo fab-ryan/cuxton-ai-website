@@ -176,9 +176,6 @@ export default function GovernanceFramework() {
       <div className="section py-16 lg:py-24 max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 text-left">
         {/* Section Header */}
         <header className={styles.header}>
-          <div className={styles.eyebrow}>
-            <span className="section-label">Institutional AI Governance</span>
-          </div>
           <h2 id="governance-heading" className={styles.heading}>
             Governance principles <br />
             <span className={styles.headingAccent}>engineered into every deployment.</span>
@@ -205,7 +202,6 @@ export default function GovernanceFramework() {
                 >
                   <div className={styles.tenetTop}>
                     <div className={styles.tenetIconBox}>{tenet.icon}</div>
-                    <span className={styles.tenetIndex}>{tenet.index}</span>
                   </div>
                   <h3 className={styles.tenetTitle}>{tenet.title}</h3>
                   <p className={styles.tenetDesc}>{tenet.summary}</p>
@@ -275,10 +271,10 @@ export default function GovernanceFramework() {
             {/* Framework Alignment Badges (Zero Emojis, Zero Hyphens) */}
             <div className={styles.frameworksRow}>
               <span className={styles.frameworksLabel}>Frameworks:</span>
-              <span className={styles.frameworkBadge}>SOC 2 TYPE II</span>
+              <span className={styles.frameworkBadge}>SOC 2 Type II</span>
               <span className={styles.frameworkBadge}>ISO 27001</span>
-              <span className={styles.frameworkBadge}>EU AI ACT</span>
-              <span className={styles.frameworkBadge}>HIPAA COMPLIANT</span>
+              <span className={styles.frameworkBadge}>EU AI Act</span>
+              <span className={styles.frameworkBadge}>HIPAA</span>
             </div>
 
             {/* Action CTA */}

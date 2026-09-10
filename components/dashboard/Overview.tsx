@@ -109,7 +109,7 @@ export default function Overview() {
           <div className={s.panelHead}>
             <span className={s.panelTitle}>Latest enquiries</span>
             <Link href="/dashboard/contacts" className={s.linkBtn} style={{ textDecoration: "none" }}>
-              Open inbox →
+              Open inbox
             </Link>
           </div>
           {contacts.length === 0 ? (
@@ -132,7 +132,7 @@ export default function Overview() {
                     <span className={s.listMeta}>{CONTACT_STATUS_LABEL[contact.status]}</span>
                   </div>
                   <div className={s.listMeta}>
-                    {contact.organisation || contact.email} · {formatDateTime(contact.created_at)}
+                    {contact.organisation || contact.email}, {formatDateTime(contact.created_at)}
                   </div>
                 </Link>
               ))}
@@ -149,14 +149,14 @@ export default function Overview() {
               className={s.linkBtn}
               style={{ textDecoration: "none" }}
             >
-              New insight →
+              New insight
             </Link>
           </div>
           {insights.length === 0 ? (
             <div className={s.empty}>
               No insights yet.{" "}
               <Link href="/dashboard/insights/new" style={{ color: "var(--cuxton-teal-text)" }}>
-                Write the first one →
+                Write the first one
               </Link>
             </div>
           ) : (
@@ -179,7 +179,7 @@ export default function Overview() {
                     </span>
                   </div>
                   <div className={s.listMeta}>
-                    {insight.tag} · updated {formatDate(insight.updated_at)}
+                    {insight.tag}, updated {formatDate(insight.updated_at)}
                   </div>
                 </Link>
               ))}

@@ -98,7 +98,7 @@ export default function LoginForm() {
             <h1
               style={{
                 fontSize: "1.5rem",
-                fontWeight: 800,
+                fontWeight: 600,
                 color: "var(--foreground)",
                 letterSpacing: "-0.02em",
                 marginBottom: "0.5rem",

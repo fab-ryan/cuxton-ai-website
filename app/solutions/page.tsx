@@ -34,7 +34,7 @@ export default function SolutionsPage() {
         ]}
         stats={[
           { value: "0%", label: "Public Model Training" },
-          { value: "100%", label: "Client IP Sovereignty" },
+          { value: "100%", label: "Client IP ownership" },
           { value: "VPC", label: "Isolated Compute Ready" },
         ]}
       />

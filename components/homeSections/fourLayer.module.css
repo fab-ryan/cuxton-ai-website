@@ -72,9 +72,7 @@
   margin-left: -4px;
   border-radius: 50%;
   background: var(--cuxton-amber);
-  box-shadow: 0 0 14px 4px rgba(245, 166, 35, 0.65);
   opacity: 0;
-  animation: flowDown 3.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
 .spineFlowDelay
@@ -174,10 +172,8 @@
 .tag
 {
   display: inline-block;
-  font-family: var(--font-geist-mono, monospace);
   font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
   color: rgba(var(--foreground-rgb), 0.4);
   margin-bottom: 0.6rem;
 }
@@ -211,11 +207,8 @@
   align-items: center;
   justify-content: center;
   background: rgba(var(--bg-surface-rgb), 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   transition:
-    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.3s ease;
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .row:hover .node
@@ -237,7 +230,6 @@
   border-radius: 50%;
   border: 1px solid currentColor;
   opacity: 0.35;
-  animation: nodeRingPulse 2.6s ease-in-out infinite;
 }
 
 @keyframes nodeRingPulse
@@ -261,64 +253,40 @@
 {
   border: 1.5px solid rgba(245, 166, 35, 0.4);
   color: var(--cuxton-amber);
-  box-shadow:
-    0 0 0 1px rgba(245, 166, 35, 0.12),
-    0 8px 24px rgba(245, 166, 35, 0.15);
 }
 
 .nodeColor2
 {
   border: 1.5px solid rgba(59, 130, 246, 0.4);
   color: #4f97f7;
-  box-shadow:
-    0 0 0 1px rgba(59, 130, 246, 0.12),
-    0 8px 24px rgba(59, 130, 246, 0.15);
 }
 
 .nodeColor3
 {
   border: 1.5px solid rgba(139, 92, 246, 0.4);
   color: #a78bfa;
-  box-shadow:
-    0 0 0 1px rgba(139, 92, 246, 0.12),
-    0 8px 24px rgba(139, 92, 246, 0.15);
 }
 
 .nodeColor4
 {
   border: 1.5px solid rgba(27, 107, 138, 0.45);
   color: var(--cuxton-teal-light);
-  box-shadow:
-    0 0 0 1px rgba(27, 107, 138, 0.14),
-    0 8px 24px rgba(27, 107, 138, 0.18);
 }
 
 .row:hover .nodeColor1
 {
-  box-shadow:
-    0 0 0 1px rgba(245, 166, 35, 0.25),
-    0 0 32px rgba(245, 166, 35, 0.35);
 }
 
 .row:hover .nodeColor2
 {
-  box-shadow:
-    0 0 0 1px rgba(59, 130, 246, 0.25),
-    0 0 32px rgba(59, 130, 246, 0.35);
 }
 
 .row:hover .nodeColor3
 {
-  box-shadow:
-    0 0 0 1px rgba(139, 92, 246, 0.25),
-    0 0 32px rgba(139, 92, 246, 0.35);
 }
 
 .row:hover .nodeColor4
 {
-  box-shadow:
-    0 0 0 1px rgba(27, 107, 138, 0.3),
-    0 0 32px rgba(27, 107, 138, 0.4);
 }
 
 /* Capstone — the flow's terminus: all four layers resolve into
@@ -350,9 +318,6 @@
   justify-content: center;
   background: rgba(var(--bg-surface-rgb), 0.94);
   color: var(--cuxton-amber);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(6, 13, 20, 0.35);
 }
 
 .capstoneNode::before
@@ -363,7 +328,6 @@
   border-radius: 50%;
   z-index: -1;
   background-color: var(--cuxton-tael-light);
-  animation: spinSlow 8s linear infinite;
 }
 
 .capstoneCard

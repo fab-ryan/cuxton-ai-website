@@ -172,16 +172,11 @@ export const ProblemSection = () => {
 
   return (
       <section className={`section-py  overflow-hidden ${s.problem}`} id="problem">
-          {/* Base Blueprint Rectangles Grid */}
-          <div className={s.gridPattern} />
           {/* Ambient Radial Glows */}
-          {/* <div className={s.glowTeal} /> */}
-          <div className={s.glowAmber} />
           <div className="w-full max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8">
         {/* ─── HEADER ─────────────────────────────────────────── */}
         <div className={s.header}>
-          <div className="section-label">The Problem</div>
-          <h2 className={`section-heading ${s.headline} anim-fade-up d1`}>
+          <h2 className={`section-heading ${s.headline}`}>
             Generic AI wasn&apos;t built for how your organisation actually works.
           </h2>
           <p className={`section-sub ${s.subhead}`}>
@@ -220,7 +215,6 @@ export const ProblemSection = () => {
               onClick={() => setModalOpen(true)}
               aria-label={`View larger: ${current.image.alt}`}
             >
-              <div className={s.visualGlow} aria-hidden="true" />
               {painPoints.map((point, i) => (
                 <div
                   key={point.image.src}

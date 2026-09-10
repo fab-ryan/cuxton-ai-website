@@ -4,7 +4,7 @@
    Follows the shared section language used by /technology, /how-we-work,
    /solutions and /industries:
      · left-aligned headers with the global `.section-label` eyebrow
-     · heading clamp(2rem, 3.5vw, 2.75rem) @ 850, teal `headingHighlight`
+     · heading clamp(2rem, 3.5vw, 2.75rem) @ 600, teal `headingHighlight`
      · lead paragraph at 1.05rem / rgba(fg, 0.72), max-width ~840px
      · cards on rgba(var(--bg-surface-rgb), α) + blur, 16px radius
      · section rhythm of 5.5rem top / 6.5rem bottom
@@ -46,7 +46,7 @@
 
 .heading {
   font-size: clamp(2rem, 3.5vw, 2.75rem);
-  font-weight: 850;
+  font-weight: 600;
   line-height: 1.16;
   letter-spacing: -0.025em;
   color: var(--foreground);
@@ -131,11 +131,8 @@
 .missionCard {
   background-color: rgba(var(--bg-surface-rgb), 0.78);
   border: 1px solid rgba(27, 107, 138, 0.28);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 2rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 12px 34px rgba(6, 13, 20, 0.32);
 }
 
 .missionTag {
@@ -143,9 +140,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--cuxton-amber-text);
   margin-bottom: 0.85rem;
 }
@@ -174,9 +169,7 @@
 
 .clientArchetypesTitle {
   font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--cuxton-teal-text);
   margin-bottom: 1rem;
 }
@@ -209,7 +202,7 @@
 
 .disciplinesHeading {
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.015em;
   color: var(--foreground);
   margin: 0 0 0.4rem;
@@ -231,10 +224,8 @@
 .disciplineCard {
   background-color: rgba(var(--bg-surface-rgb), 0.72);
   border: 1px solid rgba(27, 107, 138, 0.24);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 1.25rem 1.4rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   transition:
     border-color 0.22s ease,
     background-color 0.22s ease,
@@ -256,7 +247,6 @@
 }
 
 .disciplineCode {
-  font-family: var(--font-mono), monospace;
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--cuxton-amber-text);
@@ -287,11 +277,10 @@
   position: relative;
   width: 100%;
   height: 440px;
-  border-radius: 18px;
+  border-radius: 0;
   overflow: hidden;
   /* border: 1px solid rgba(27, 107, 138, 0.28); */
-  box-shadow: 0 20px 50px rgba(6, 13, 20, 0.45);
-  background-color: #060d14;
+  background-color: #101b26;
 }
 
 @media (min-width: 768px) {
@@ -308,7 +297,7 @@
 .visualWash {
   position: absolute;
   inset: 0;
-  background-color: rgba(6, 13, 20, 0.35);
+  background-color: rgba(16, 27, 38, 0.35);
   pointer-events: none;
 }
 
@@ -320,14 +309,12 @@
   align-items: center;
   gap: 0.55rem;
   padding: 0.45rem 0.95rem;
-  background-color: rgba(6, 13, 20, 0.85);
+  background-color: rgba(16, 27, 38, 0.85);
   border: 1px solid rgba(27, 107, 138, 0.5);
   border-radius: 999px;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
   color: var(--cuxton-teal-light);
-  backdrop-filter: blur(8px);
 }
 
 .visualBadgeDot {
@@ -342,13 +329,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(6, 13, 20, 0.92);
+  background-color: rgba(16, 27, 38, 0.92);
   border-top: 1px solid rgba(27, 107, 138, 0.3);
   padding: 1.25rem 2rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  backdrop-filter: blur(10px);
 }
 
 @media (min-width: 768px) {
@@ -375,7 +361,6 @@
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: rgba(255, 255, 255, 0.55);
 }
 
@@ -408,13 +393,11 @@
 .nodeCard {
   background-color: rgba(var(--bg-surface-rgb), 0.78);
   border: 1px solid rgba(27, 107, 138, 0.28);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   transition:
     transform 0.22s ease,
     border-color 0.22s ease,
@@ -435,7 +418,7 @@
 
 .nodeCity {
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--foreground);
 }
@@ -449,10 +432,9 @@
 
 .nodeRole {
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--cuxton-amber-text);
   /* Two lines reserved so every card's description starts level. */
   min-height: 2.02rem;
@@ -481,7 +463,7 @@
 .pillarCard {
   background-color: rgba(var(--bg-elevated-rgb), 0.55);
   border: 1px solid rgba(27, 107, 138, 0.22);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 1.5rem;
   display: flex;
   align-items: flex-start;
@@ -492,7 +474,7 @@
 .pillarIconWrap {
   width: 42px;
   height: 42px;
-  border-radius: 12px;
+  border-radius: 0;
   background-color: rgba(27, 107, 138, 0.16);
   border: 1px solid rgba(27, 107, 138, 0.3);
   display: flex;
@@ -556,7 +538,6 @@
   font-weight: 600;
   color: rgba(var(--foreground-rgb), 0.55);
   letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -573,11 +554,9 @@
 
   .missionCard,
   .nodeCard {
-    box-shadow: 0 10px 28px rgba(12, 34, 51, 0.07);
   }
 
   .disciplineCard {
-    box-shadow: 0 6px 18px rgba(12, 34, 51, 0.05);
   }
 
   .disciplineCard:hover,
@@ -586,6 +565,12 @@
   }
 
   .visualFrame {
-    box-shadow: 0 20px 50px rgba(12, 34, 51, 0.14);
   }
+}
+
+/* Headlines carry emphasis through scale and position, not hue. These accent
+   classes remain so existing markup keeps working, but they no longer tint a
+   fragment of a heading a different colour from the rest of it. */
+.headingHighlight {
+  color: inherit;
 }

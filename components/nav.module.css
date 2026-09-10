@@ -1,31 +1,22 @@
 /* ═══════════════════════════════════════════════════════════════════
-   NAV — Command-centre navigation (CSS Module)
-
+   NAV — Premium enterprise navigation styles (CSS Module)
+   
    Structured as:
-   1. Header shell, glass frame & corner ticks
-   2. Brand cluster & status readout
-   3. Desktop nav links (mono, bracketed active state)
-   4. Mega-menu panels & item cards
-   5. CTA
-   6. Scroll progress rail
-   7. Animated hamburger
-   8. Mobile full-screen menu
-   9. Keyframes & reduced motion
-
-   Height contract: the unscrolled bar is 68px. `app/page.module.css`
-   and `components/PageHero.module.css` both pull their hero up by that
-   exact amount, so .nav's unscrolled height and .spacer must stay 68px.
+   1. Header bar & glass effect (floating island on scroll)
+   2. Desktop nav links & active indicators
+   3. Mega-menu dropdowns & animations
+   4. Animated hamburger
+   5. Mobile full-screen menu
+   6. CTA button glow
+   7. Keyframe animations
    ═══════════════════════════════════════════════════════════════════ */
 
-/* ─── 1. HEADER SHELL ──────────────────────────────────────────── */
 
+/* ─── 1. HEADER BAR ────────────────────────────────────────────── */
+
+/* Outer wrapper — stays fixed full-width, provides the float offset */
 .header
 {
-  /* Written from JS on scroll — drives the progress rail without a re-render */
-  --nav-progress: 0;
-  /* Where the mega panel hangs; shifts as the bar changes height */
-  --mega-top: 76px;
-
   position: fixed;
   top: 0;
   left: 0;
@@ -36,101 +27,44 @@
   animation: navEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Scrolled — the bar detaches into a framed console panel */
+/* When scrolled, pull down slightly and add side padding so the
+   inner bar floats as a centred rounded island */
 .header--scrolled
 {
-  top: 12px;
+  top: 14px;
   padding: 0 clamp(0.75rem, 2vw, 2rem);
-  --mega-top: 84px;
 }
 
+/* Inner bar — starts transparent full-width, gains glass + radius on scroll */
 .headerInner
 {
   position: relative;
+  transition: background 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.45s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1), margin 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid transparent;
   border-radius: 0;
-  transition: background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              border-radius 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   max-width: 100%;
-  margin: 0 auto;
 }
 
+/* Scrolled state — frosted glass capsule, centred and fully rounded */
 .header--scrolled .headerInner
 {
-  max-width: 1248px;
-  background: rgba(var(--bg-surface-rgb), 0.78);
-  backdrop-filter: blur(26px) saturate(1.7);
-  -webkit-backdrop-filter: blur(26px) saturate(1.7);
-  border-color: rgba(27, 107, 138, 0.22);
-  border-radius: 16px;
-  box-shadow:
-    0 18px 50px -18px rgba(6, 13, 20, 0.55),
-    0 0 0 1px rgba(27, 107, 138, 0.08),
-    0 0 40px -22px rgba(45, 154, 191, 0.5);
-}
-
-/* An open dropdown makes the bar fully opaque so the panel reads as one unit */
-.header--menuOpen .headerInner
-{
-  background: rgba(var(--bg-surface-rgb), 0.94);
-  backdrop-filter: blur(32px) saturate(1.8);
-  -webkit-backdrop-filter: blur(32px) saturate(1.8);
-  border-color: rgba(27, 107, 138, 0.24);
-}
-
-/* Corner ticks — the bracket framing used across the site's technical panels */
-.tick
-{
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  color: var(--cuxton-teal-light);
-}
-
-.header--scrolled .tick,
-.header--menuOpen .tick
-{
-  opacity: 0.55;
-}
-
-.tickTl { top: 6px;    left: 6px;  border-top: 1.5px solid currentColor;    border-left: 1.5px solid currentColor; }
-.tickTr { top: 6px;    right: 6px; border-top: 1.5px solid currentColor;    border-right: 1.5px solid currentColor; }
-.tickBl { bottom: 6px; left: 6px;  border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }
-.tickBr { bottom: 6px; right: 6px; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }
-
-/* Inner rail — matches the site content grid so the logo lines up with
-   page copy when the bar is full-width */
-.navInner
-{
+  background: rgba(var(--background-rgb), 0.72);
+  border-color: rgba(27, 107, 138, 0.18);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
-  transition: padding 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px) saturate(1.2);
 }
 
-@media (min-width: 768px)
+.header--scrolled .headerInner:hover
 {
-  .navInner { padding: 0 2.5rem; }
+  border-color: rgba(27, 107, 138, 0.3);
 }
 
-@media (min-width: 1024px)
+/* When a dropdown is open, keep the glass opaque */
+.header--menuOpen .headerInner
 {
-  .navInner { padding: 0 3rem; }
-}
-
-/* Inside the floating panel the grid tightens up */
-.header--scrolled .navInner
-{
-  max-width: 100%;
-  padding: 0 1.25rem;
+  background: rgba(var(--background-rgb), 0.92);
+  border-color: rgba(27, 107, 138, 0.18);
 }
 
 .nav
@@ -139,8 +73,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding: 0 1.25rem;
   transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
 }
 
 .header--scrolled .nav
@@ -149,30 +85,15 @@
 }
 
 
-/* ─── 2. BRAND CLUSTER & STATUS READOUT ────────────────────────── */
+/* ─── LOGO ─────────────────────────────────────────────────────── */
 
-.brand
-{
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-shrink: 0;
-}
-
-/* The logo files are 3508×2480 export artboards whose actual lockup covers
-   only the middle 27% × 39% — dropped in as-is it renders tiny inside a
-   band of transparent padding. These percentages crop the box to the mark
-   itself; they are the measured bounds (x 1153, y 761, 947 × 974) expressed
-   relative to the wrapper, so the crop holds at any wrapper size. */
 .logo
 {
   position: relative;
-  display: block;
-  width: 37px;
-  height: 38px;
-  overflow: hidden;
-  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
   transition: opacity 0.2s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
 }
 
 .logo:hover
@@ -182,76 +103,28 @@
 
 .header--scrolled .logo
 {
-  transform: scale(0.92);
+  transform: scale(0.9);
 }
 
-.logo img
+.logo::after
 {
+  content: "";
   position: absolute;
-  left: -121.8%;
-  top: -78.1%;
-  width: 370.4%;
-  height: 254.6%;
-  max-width: none;
+  inset: -4px -8px;
+  border-radius: 0;
+  background: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
-/* Art-directed wordmark. The colour logo is legible on a light page, the
-   white one on a dark page — but the homepage hero is a fixed dark photo
-   regardless of theme, so the white mark is forced back on over it. */
-.logoOnLight
+.logo:hover::after
 {
-  display: none;
-}
-
-@media (prefers-color-scheme: light)
-{
-  .logoOnLight { display: block; }
-  .logoOnDark  { display: none; }
-
-  .header--onHero .logoOnLight { display: none; }
-  .header--onHero .logoOnDark  { display: block; }
-}
-
-.brandDivider
-{
-  width: 1px;
-  height: 22px;
-  background: rgba(var(--foreground-rgb), 0.14);
-  flex-shrink: 0;
-}
-
-.status
-{
-  display: none;
-  align-items: center;
-  gap: 0.45rem;
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(var(--foreground-rgb), 0.5);
-  white-space: nowrap;
-}
-
-@media (min-width: 1400px)
-{
-  .status { display: inline-flex; }
-}
-
-.statusDot
-{
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--cuxton-teal-light);
-  box-shadow: 0 0 8px var(--cuxton-teal-light);
-  animation: statusPulse 2.4s ease-in-out infinite;
-  flex-shrink: 0;
+  opacity: 1;
 }
 
 
-/* ─── 3. DESKTOP NAV LINKS ─────────────────────────────────────── */
+/* ─── 2. DESKTOP NAV LINKS ─────────────────────────────────────── */
 
 .desktopLinks
 {
@@ -262,9 +135,12 @@
   justify-content: center;
 }
 
-@media (min-width: 1080px)
+@media (min-width: 1024px)
 {
-  .desktopLinks { display: flex; }
+  .desktopLinks
+  {
+    display: flex;
+  }
 }
 
 .navLink
@@ -272,39 +148,25 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 0.65rem;
-  border-radius: 8px;
+  gap: 0.3rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 0;
   background: transparent;
   border: none;
   cursor: pointer;
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: rgba(var(--foreground-rgb), 0.62);
+  color: rgba(var(--foreground-rgb), 0.68);
+  font-size: 0.875rem;
+  font-weight: 500;
   text-decoration: none;
-  white-space: nowrap;
+  letter-spacing: 0.01em;
   transition: color 0.25s ease, background 0.25s ease;
-}
-
-@media (min-width: 1280px)
-{
-  .navLink { padding: 0.5rem 0.85rem; letter-spacing: 0.13em; }
-  .navUnderline { left: 0.85rem; right: 0.85rem; }
+  white-space: nowrap;
 }
 
 .navLink:hover
 {
   color: var(--foreground);
-  background: rgba(27, 107, 138, 0.09);
-}
-
-.navLink--open
-{
-  color: var(--foreground);
-  background: rgba(27, 107, 138, 0.12);
+  background: rgba(27, 107, 138, 0.08);
 }
 
 .navLink--active
@@ -312,306 +174,187 @@
   color: var(--foreground);
 }
 
-/* Bracket framing on the active route — [ TECHNOLOGY ] */
-.navLink--active::before,
+/* Active indicator — thin amber underline with glow */
 .navLink--active::after
 {
   content: "";
   position: absolute;
-  top: 50%;
-  width: 4px;
-  height: 14px;
-  transform: translateY(-50%);
-  border-color: var(--cuxton-amber);
-  opacity: 0.9;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 2px;
+  border-radius: 0;
+  background: var(--cuxton-amber);
 }
 
-.navLink--active::before
+/* Hover indicator — subtle underline that grows */
+.navLink:not(.navLink--active)::after
 {
-  left: 0.15rem;
-  border-left: 1.5px solid;
-  border-top: 1.5px solid;
-  border-bottom: 1.5px solid;
-  border-radius: 2px 0 0 2px;
-}
-
-.navLink--active::after
-{
-  right: 0.15rem;
-  border-right: 1.5px solid;
-  border-top: 1.5px solid;
-  border-bottom: 1.5px solid;
-  border-radius: 0 2px 2px 0;
-}
-
-/* Hover underline — draws in from the left */
-.navUnderline
-{
+  content: "";
   position: absolute;
-  left: 0.65rem;
-  right: 0.65rem;
-  bottom: 0.25rem;
-  height: 1.5px;
-  border-radius: 1px;
-  background: var(--cuxton-teal-light);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  border-radius: 0;
+  background: rgba(27, 107, 138, 0.4);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navLink:hover .navUnderline,
-.navLink--open .navUnderline
+.navLink:not(.navLink--active):hover::after
 {
-  transform: scaleX(1);
+  width: 14px;
+  left: calc(50% - 7px);
 }
 
-.navLink--active .navUnderline
+/* Dropdown trigger open state */
+.navLink--open
 {
-  display: none;
+  color: var(--foreground);
+  background: rgba(27, 107, 138, 0.1);
 }
 
-/* Chevron */
+/* Transparent-over-hero state (home route, unscrolled, no dropdown) —
+   the hero photo behind the bar is always dark, so links stay light
+   regardless of light/dark mode instead of following --foreground. */
+.header--onHero .navLink
+{
+  color: rgba(238, 242, 247, 0.75);
+}
+
+.header--onHero .navLink:hover
+{
+  color: #eef2f7;
+  background: rgba(238, 242, 247, 0.1);
+}
+
+.header--onHero .navLink--active,
+.header--onHero .navLink--open
+{
+  color: #eef2f7;
+}
+
+/* Chevron icon */
 .chevron
 {
   display: inline-flex;
-  opacity: 0.7;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
-}
-
-.navLink:hover .chevron
-{
-  opacity: 1;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .chevron--open
 {
   transform: rotate(180deg);
-  opacity: 1;
 }
 
-/* Over the homepage hero photo (always dark, whatever the theme) the bar
-   contents stay light instead of following --foreground. */
-.header--onHero .navLink     { color: rgba(238, 242, 247, 0.72); }
-.header--onHero .navLink:hover,
-.header--onHero .navLink--active,
-.header--onHero .navLink--open { color: #eef2f7; }
-.header--onHero .navLink:hover { background: rgba(238, 242, 247, 0.1); }
-.header--onHero .status        { color: rgba(238, 242, 247, 0.6); }
-.header--onHero .brandDivider  { background: rgba(238, 242, 247, 0.22); }
-.header--onHero .hamburger     { color: #eef2f7; border-color: rgba(238, 242, 247, 0.24); background: rgba(238, 242, 247, 0.08); }
-.header--onHero .progressTrack { background: rgba(238, 242, 247, 0.12); }
 
-
-/* ─── 4. MEGA-MENU ─────────────────────────────────────────────── */
+/* ─── 3. MEGA-MENU DROPDOWNS ──────────────────────────────────── */
 
 .megaWrap
 {
   position: fixed;
-  top: var(--mega-top);
+  top: 78px;
   left: 0;
   right: 0;
-  padding: 0 1.5rem 1.5rem;
+  padding: 0.5rem clamp(1rem, 3vw, 3rem) 1.5rem;
   animation: megaEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   z-index: 99;
 }
 
-@media (min-width: 768px)
-{
-  .megaWrap { padding: 0 2.5rem 1.5rem; }
-}
-
-@media (min-width: 1024px)
-{
-  .megaWrap { padding: 0 3rem 1.5rem; }
-}
-
-.header--scrolled .megaWrap
-{
-  padding: 0 clamp(2rem, 2vw + 1.25rem, 3.25rem) 1.5rem;
-}
-
 .megaPanel
 {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem;
   background: rgba(var(--bg-surface-rgb), 0.97);
-  backdrop-filter: blur(40px) saturate(1.8);
-  -webkit-backdrop-filter: blur(40px) saturate(1.8);
-  border: 1px solid rgba(27, 107, 138, 0.2);
-  border-radius: 16px;
-  box-shadow:
-    0 28px 80px -24px rgba(6, 13, 20, 0.7),
-    0 0 0 1px rgba(27, 107, 138, 0.06);
+  border: 1px solid rgba(27, 107, 138, 0.14);
+  border-radius: 0;
+  padding: 1.75rem;
+  position: relative;
   overflow: hidden;
   background-clip: padding-box;
+  backdrop-filter: blur(12px) saturate(1.2);
 }
 
-.header--scrolled .megaPanel
-{
-  max-width: 1248px;
-}
-
-/* Blueprint mesh behind the panel contents */
+/* Subtle ambient glow on the mega-menu */
 .megaPanel::before
 {
   content: "";
   position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(27, 107, 138, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(27, 107, 138, 0.07) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 70% 80% at 30% 0%, black, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 30% 0%, black, transparent 75%);
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 80%;
+  background: none;
   pointer-events: none;
-}
-
-.megaPanel .tick
-{
-  opacity: 0.45;
-  color: var(--cuxton-teal-light);
-}
-
-.megaHead
-{
-  position: relative;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 0.85rem;
-  margin-bottom: 1.15rem;
-  border-bottom: 1px solid rgba(27, 107, 138, 0.16);
 }
 
 .megaLabel
 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cuxton-amber-text);
+  color: var(--cuxton-amber);
+  margin-bottom: 1rem;
+  opacity: 0.85;
 }
 
-.megaLabel::before
-{
-  content: "";
-  width: 18px;
-  height: 1.5px;
-  background: var(--cuxton-amber);
-  opacity: 0.8;
-}
-
-.megaMeta
-{
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(var(--foreground-rgb), 0.38);
-  white-space: nowrap;
-}
-
-/* Solutions: item grid + featured console card */
+/* Solutions: two-column layout — items grid + featured sidebar */
 .megaSolutions
 {
-  position: relative;
   display: grid;
-  grid-template-columns: 1fr 272px;
-  gap: 1.5rem;
+  grid-template-columns: 1fr 280px;
+  gap: 1.75rem;
 }
 
 .megaGrid
 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.35rem;
+  gap: 0.25rem;
 }
 
-/* ── Item card ── */
+.megaGrid--industries
+{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Individual mega-menu item */
 .megaItem
 {
-  position: relative;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: start;
-  gap: 0.7rem;
-  padding: 0.7rem 0.75rem;
-  border: 1px solid transparent;
-  border-radius: 11px;
-  text-decoration: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  position: relative;
 }
 
 .megaItem:hover
 {
-  background: rgba(27, 107, 138, 0.09);
-  border-color: rgba(27, 107, 138, 0.24);
-  transform: translateY(-1px);
+  background: rgba(27, 107, 138, 0.1);
+  transform: translateX(2px);
 }
 
-.megaItemIcon
+.megaItemDot
 {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: rgba(27, 107, 138, 0.14);
-  border: 1px solid rgba(27, 107, 138, 0.26);
-  color: var(--cuxton-teal-light);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cuxton-teal-mid);
   flex-shrink: 0;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  margin-top: 5px;
+  transition: background 0.2s ease;
 }
 
-.megaItem:hover .megaItemIcon
+.megaItem:hover .megaItemDot
 {
-  background: rgba(245, 166, 35, 0.16);
-  border-color: rgba(245, 166, 35, 0.42);
-  color: var(--cuxton-amber);
-}
-
-.megaItemText
-{
-  display: block;
-  min-width: 0;
-}
-
-.megaItemTop
-{
-  display: flex;
-  align-items: baseline;
-  gap: 0.45rem;
-}
-
-.megaItemIndex
-{
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: rgba(var(--foreground-rgb), 0.32);
-  transition: color 0.2s ease;
-  flex-shrink: 0;
-}
-
-.megaItem:hover .megaItemIndex
-{
-  color: var(--cuxton-amber-text);
+  background: var(--cuxton-amber);
 }
 
 .megaItemTitle
 {
-  display: block;
-  font-size: 0.83rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--foreground);
   line-height: 1.3;
@@ -619,63 +362,42 @@
 
 .megaItemDesc
 {
-  display: block;
-  font-size: 0.73rem;
-  color: rgba(var(--foreground-rgb), 0.52);
+  font-size: 0.75rem;
+  color: rgba(var(--foreground-rgb), 0.55);
   margin-top: 0.2rem;
-  line-height: 1.45;
+  line-height: 1.4;
   transition: color 0.2s ease;
 }
 
 .megaItem:hover .megaItemDesc
 {
-  color: rgba(var(--foreground-rgb), 0.72);
+  color: rgba(var(--foreground-rgb), 0.75);
 }
 
-/* ── Featured console card ── */
+/* Featured CTA sidebar in Solutions mega-menu */
 .megaFeatured
 {
-  position: relative;
+  background: rgba(27, 107, 138, 0.06);
+  border: 1px solid rgba(27, 107, 138, 0.12);
+  border-radius: 0;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.25rem;
-  border-radius: 14px;
-  background: rgba(27, 107, 138, 0.08);
-  border: 1px solid rgba(27, 107, 138, 0.2);
-  overflow: hidden;
-}
-
-.megaFeatured::before
-{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1.5px;
-  background: linear-gradient(90deg, var(--cuxton-teal-mid), var(--cuxton-amber));
-  opacity: 0.75;
 }
 
 .megaFeaturedLabel
 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--cuxton-teal-text);
-  margin-bottom: 0.5rem;
+  color: var(--cuxton-teal-light);
+  margin-bottom: 0.25rem;
 }
 
 .megaFeaturedTitle
 {
-  font-size: 0.97rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--foreground);
   line-height: 1.35;
@@ -683,215 +405,67 @@
 
 .megaFeaturedBody
 {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: rgba(var(--foreground-rgb), 0.55);
   line-height: 1.55;
-  margin-top: 0.4rem;
 }
 
-/* ── Industries footer row ── */
+/* Mega footer (bottom bar inside mega) */
 .megaFooter
 {
-  position: relative;
-  margin-top: 1.15rem;
-  padding-top: 1.15rem;
-  border-top: 1px solid rgba(27, 107, 138, 0.16);
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(27, 107, 138, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
 }
 
 .megaFooterText
 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(var(--foreground-rgb), 0.45);
-}
-
-.megaFooterLink
-{
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.5rem 0.9rem;
-  border-radius: 9px;
-  border: 1px solid rgba(27, 107, 138, 0.3);
-  background: transparent;
-  color: var(--foreground);
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.megaFooterLink:hover
-{
-  background: rgba(27, 107, 138, 0.12);
-  border-color: rgba(27, 107, 138, 0.55);
+  font-size: 0.8rem;
+  color: rgba(var(--foreground-rgb), 0.5);
 }
 
 
-/* ─── 5. CTA ───────────────────────────────────────────────────── */
-
-.desktopCtas
-{
-  display: none;
-  align-items: center;
-  gap: 0.75rem;
-  flex-shrink: 0;
-}
-
-@media (min-width: 1080px)
-{
-  .desktopCtas { display: flex; }
-}
-
-.navCta
-{
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  height: 2.5rem;
-  padding: 0 0.95rem;
-  border-radius: 10px;
-  background: var(--cuxton-amber);
-  color: #0b1a24;
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-.navCta::before
-{
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 12px;
-  background: var(--cuxton-amber);
-  opacity: 0;
-  filter: blur(12px);
-  animation: ctaPulse 3s ease-in-out infinite;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.navCta:hover
-{
-  background: var(--cuxton-amber-light);
-  box-shadow: 0 0 26px -6px rgba(245, 166, 35, 0.55);
-  transform: translateY(-1px);
-}
-
-.navCtaArrow
-{
-  display: inline-flex;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.navCta:hover .navCtaArrow
-{
-  transform: translateX(3px);
-}
-
-.navCta--block
-{
-  display: flex;
-  width: 100%;
-  height: 3rem;
-  justify-content: center;
-  font-size: 0.72rem;
-}
-
-
-/* ─── 6. SCROLL PROGRESS RAIL ──────────────────────────────────── */
-
-.progressTrack
-{
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  overflow: hidden;
-  background: rgba(var(--foreground-rgb), 0.07);
-  pointer-events: none;
-}
-
-.header--scrolled .progressTrack
-{
-  left: 14px;
-  right: 14px;
-  bottom: 1px;
-  border-radius: 2px;
-}
-
-.progressBar
-{
-  display: block;
-  height: 100%;
-  width: 100%;
-  transform: scaleX(var(--nav-progress));
-  transform-origin: left center;
-  background: linear-gradient(90deg,
-    var(--cuxton-teal-mid) 0%,
-    var(--cuxton-teal-light) 45%,
-    var(--cuxton-amber) 100%);
-  box-shadow: 0 0 10px rgba(45, 154, 191, 0.5);
-}
-
-
-/* ─── 7. ANIMATED HAMBURGER ────────────────────────────────────── */
+/* ─── 4. ANIMATED HAMBURGER ───────────────────────────────────── */
 
 .hamburger
 {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 0;
   background: rgba(27, 107, 138, 0.08);
-  border: 1px solid rgba(27, 107, 138, 0.2);
-  color: var(--foreground);
+  border: 1px solid rgba(27, 107, 138, 0.16);
   cursor: pointer;
+  color: inherit;
   flex-shrink: 0;
   transition: background 0.25s ease, border-color 0.25s ease;
 }
 
-@media (min-width: 1080px)
+@media (min-width: 1024px)
 {
-  .hamburger { display: none; }
+  .hamburger
+  {
+    display: none;
+  }
 }
 
 .hamburger:hover
 {
-  background: rgba(27, 107, 138, 0.16);
-  border-color: rgba(27, 107, 138, 0.36);
+  background: rgba(27, 107, 138, 0.15);
+  border-color: rgba(27, 107, 138, 0.3);
 }
 
+/* Three-line → X morph using CSS transforms */
 .hamburgerBars
 {
   position: relative;
-  width: 18px;
-  height: 12px;
+  width: 20px;
+  height: 14px;
 }
 
 .hamburgerBar
@@ -899,24 +473,84 @@
   position: absolute;
   left: 0;
   width: 100%;
-  height: 1.5px;
-  border-radius: 1px;
+  height: 2px;
+  border-radius: 0;
   background: currentColor;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.25s ease,
               width 0.25s ease;
 }
 
-.hamburgerBar:nth-child(1) { top: 0; }
-.hamburgerBar:nth-child(2) { top: 5px; width: 70%; }
-.hamburgerBar:nth-child(3) { top: 10px; }
+.hamburgerBar:nth-child(1)
+{
+  top: 0;
+}
 
-.hamburger--open .hamburgerBar:nth-child(1) { transform: translateY(5px) rotate(45deg); }
-.hamburger--open .hamburgerBar:nth-child(2) { opacity: 0; width: 0; }
-.hamburger--open .hamburgerBar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+.hamburgerBar:nth-child(2)
+{
+  top: 6px;
+}
+
+.hamburgerBar:nth-child(3)
+{
+  top: 12px;
+}
+
+/* Open state — morph to X */
+.hamburger--open .hamburgerBar:nth-child(1)
+{
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger--open .hamburgerBar:nth-child(2)
+{
+  opacity: 0;
+  width: 0;
+}
+
+.hamburger--open .hamburgerBar:nth-child(3)
+{
+  transform: translateY(-6px) rotate(-45deg);
+}
 
 
-/* ─── 8. MOBILE FULL-SCREEN MENU ───────────────────────────────── */
+/* ─── DESKTOP CTAS ────────────────────────────────────────────── */
+
+.desktopCtas
+{
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 1024px)
+{
+  .desktopCtas
+  {
+    display: flex;
+  }
+}
+
+/* CTA pulse glow animation */
+.ctaGlow
+{
+  position: relative;
+}
+
+.ctaGlow::before
+{
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 0;
+  background: var(--cuxton-amber);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* ─── 5. MOBILE FULL-SCREEN MENU ──────────────────────────────── */
 
 .mobileOverlay
 {
@@ -924,15 +558,13 @@
   inset: 0;
   z-index: 90;
   background: rgba(var(--background-rgb), 0.98);
-  backdrop-filter: blur(32px) saturate(1.5);
-  -webkit-backdrop-filter: blur(32px) saturate(1.5);
   transform: translateX(100%);
-  opacity: 0;
-  overflow-y: auto;
-  padding-top: 76px;
-  padding-bottom: 2.5rem;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  overflow-y: auto;
+  padding-top: 80px;
+  padding-bottom: 40px;
 }
 
 .mobileOverlay--open
@@ -943,37 +575,105 @@
 
 .mobileNav
 {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.25rem 1.5rem 0;
+  padding-top: 1.5rem;
 }
 
-/* Console readout at the top of the sheet */
-.mobileMeta
+/* Mobile accordion trigger */
+.mobileAccordion
+{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.1);
+  cursor: pointer;
+  color: var(--foreground);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+
+.mobileAccordion:hover
+{
+  color: var(--cuxton-teal-light);
+}
+
+/* Mobile accordion panel with smooth height transition */
+.mobilePanel
+{
+  overflow: hidden;
+  animation: accordionOpen 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mobilePanelInner
+{
+  padding: 0.5rem 0;
+}
+
+/* Mobile sub-link */
+.mobileSubLink
+{
+  display: block;
+  padding: 0.7rem 0.75rem;
+  font-size: 0.9rem;
+  color: rgba(var(--foreground-rgb), 0.6);
+  text-decoration: none;
+  border-radius: 0;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.mobileSubLink:hover
+{
+  color: var(--foreground);
+  background: rgba(27, 107, 138, 0.06);
+  transform: translateX(4px);
+}
+
+/* Mobile flat link */
+.mobileLink
 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 0.9rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(27, 107, 138, 0.18);
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(var(--foreground-rgb), 0.4);
+  padding: 1rem 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--foreground);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(27, 107, 138, 0.1);
+  transition: color 0.2s ease;
 }
 
-.mobileMetaStatus
+.mobileLink:hover
 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--cuxton-teal-text);
+  color: var(--cuxton-teal-light);
 }
 
+.mobileLink--active
+{
+  color: var(--cuxton-amber);
+}
+
+/* Mobile link arrow indicator */
+.mobileLinkArrow
+{
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  color: var(--cuxton-teal-mid);
+}
+
+.mobileLink:hover .mobileLinkArrow
+{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered entrance for mobile items */
 .mobileItem
 {
   opacity: 0;
@@ -985,205 +685,105 @@
   animation: staggerIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* :nth-child starts at 2 — .mobileMeta is the first child of .mobileNav */
-.mobileOverlay--open .mobileItem:nth-child(2) { animation-delay: 0.05s; }
-.mobileOverlay--open .mobileItem:nth-child(3) { animation-delay: 0.1s; }
-.mobileOverlay--open .mobileItem:nth-child(4) { animation-delay: 0.15s; }
-.mobileOverlay--open .mobileItem:nth-child(5) { animation-delay: 0.2s; }
-.mobileOverlay--open .mobileItem:nth-child(6) { animation-delay: 0.25s; }
-.mobileOverlay--open .mobileItem:nth-child(7) { animation-delay: 0.3s; }
+.mobileOverlay--open .mobileItem:nth-child(1) { animation-delay: 0.05s; }
+.mobileOverlay--open .mobileItem:nth-child(2) { animation-delay: 0.1s; }
+.mobileOverlay--open .mobileItem:nth-child(3) { animation-delay: 0.15s; }
+.mobileOverlay--open .mobileItem:nth-child(4) { animation-delay: 0.2s; }
+.mobileOverlay--open .mobileItem:nth-child(5) { animation-delay: 0.25s; }
+.mobileOverlay--open .mobileItem:nth-child(6) { animation-delay: 0.3s; }
+.mobileOverlay--open .mobileItem:nth-child(7) { animation-delay: 0.35s; }
 
-/* Shared row: index + label + trailing affordance */
-.mobileRow
-{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  padding: 1.05rem 0;
-  background: none;
-  border: none;
-  border-bottom: 1px solid rgba(27, 107, 138, 0.12);
-  color: var(--foreground);
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  text-align: left;
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.mobileRow:hover
-{
-  color: var(--cuxton-teal-text);
-}
-
-.mobileIndex
-{
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: rgba(var(--foreground-rgb), 0.3);
-  flex-shrink: 0;
-}
-
-.mobileRowLabel
-{
-  flex: 1;
-  min-width: 0;
-}
-
-.mobileRow--active
-{
-  color: var(--cuxton-amber-text);
-}
-
-.mobileRow--active .mobileIndex
-{
-  color: var(--cuxton-amber-text);
-}
-
-.mobileTrail
-{
-  display: inline-flex;
-  color: var(--cuxton-teal-mid);
-  opacity: 0.55;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.mobileRow:hover .mobileTrail
-{
-  opacity: 1;
-  transform: translateX(2px);
-}
-
-.mobilePanel
-{
-  overflow: hidden;
-  animation: accordionOpen 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.mobilePanelInner
-{
-  display: grid;
-  gap: 0.15rem;
-  padding: 0.6rem 0 0.9rem;
-}
-
-.mobileSubLink
-{
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.6rem 0.7rem;
-  border-radius: 9px;
-  border: 1px solid transparent;
-  font-size: 0.87rem;
-  color: rgba(var(--foreground-rgb), 0.62);
-  text-decoration: none;
-  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.mobileSubLink:hover
-{
-  color: var(--foreground);
-  background: rgba(27, 107, 138, 0.09);
-  border-color: rgba(27, 107, 138, 0.22);
-  transform: translateX(3px);
-}
-
-.mobileSubIcon
-{
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 7px;
-  background: rgba(27, 107, 138, 0.14);
-  border: 1px solid rgba(27, 107, 138, 0.24);
-  color: var(--cuxton-teal-light);
-  flex-shrink: 0;
-}
-
+/* Mobile CTA */
 .mobileCta
 {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   opacity: 0;
   transform: translateY(12px);
 }
 
 .mobileOverlay--open .mobileCta
 {
-  animation: staggerIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.36s forwards;
+  animation: staggerIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
 }
 
-.mobileFoot
-{
-  margin-top: 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(var(--foreground-rgb), 0.35);
-}
-
-
-/* ─── NAV SPACER ───────────────────────────────────────────────── */
-
+/* Nav spacer */
 .spacer
 {
   height: 68px;
 }
 
 
-/* ─── 9. KEYFRAMES ─────────────────────────────────────────────── */
+/* ─── 7. KEYFRAME ANIMATIONS ──────────────────────────────────── */
 
 @keyframes navEnter
 {
-  from { opacity: 0; transform: translateY(-16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from
+  {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to
+  {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes megaEnter
 {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from
+  {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to
+  {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes staggerIn
 {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from
+  {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to
+  {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes accordionOpen
 {
-  from { max-height: 0; opacity: 0; }
-  to   { max-height: 620px; opacity: 1; }
+  from
+  {
+    max-height: 0;
+    opacity: 0;
+  }
+  to
+  {
+    max-height: 500px;
+    opacity: 1;
+  }
 }
 
 @keyframes ctaPulse
 {
-  0%, 100% { opacity: 0; }
-  50%      { opacity: 0.28; }
+  0%, 100%
+  {
+    opacity: 0;
+  }
+  50%
+  {
+    opacity: 0.3;
+  }
 }
 
-@keyframes statusPulse
-{
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: 0.45; transform: scale(0.82); }
-}
-
-
-/* ─── REDUCED MOTION ───────────────────────────────────────────── */
+/* ─── REDUCED MOTION ──────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce)
 {
@@ -1198,19 +798,23 @@
     transform: none !important;
   }
 
-  .statusDot,
-  .navCta::before
-  {
-    animation: none !important;
-  }
-
-  .hamburgerBar,
-  .chevron,
-  .logo,
-  .navUnderline,
-  .navCtaArrow,
-  .mobileTrail
+  .hamburgerBar
   {
     transition: none !important;
+  }
+
+  .chevron
+  {
+    transition: none !important;
+  }
+
+  .logo
+  {
+    transition: none !important;
+  }
+
+  .ctaGlow::before
+  {
+    animation: none !important;
   }
 }

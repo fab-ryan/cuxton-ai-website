@@ -82,7 +82,7 @@ const CLASSES: ModelClass[] = [
       "A zero-retention agreement is in place and the data classification allows it",
       "Traffic can run over private peering rather than the public internet",
     ],
-    runsOn: "Private peering — Bedrock, Azure PrivateLink",
+    runsOn: "Private peering  Bedrock, Azure PrivateLink",
     typical: "Claude, GPT, Gemini",
     tradeoff: "You inherit someone else's roadmap, pricing and deprecation schedule.",
   },
@@ -98,7 +98,7 @@ const CLASSES: ModelClass[] = [
     ],
     runsOn: "Single-tenant inference cluster",
     typical: "LoRA adapters over an open-weight base",
-    tradeoff: "Narrow by design — it needs retraining when the domain moves.",
+    tradeoff: "Narrow by design  it needs retraining when the domain moves.",
   },
   {
     id: "ensemble",
@@ -110,7 +110,7 @@ const CLASSES: ModelClass[] = [
       "High-consequence output should be checked by a second model before it ships",
       "Cost should track difficulty rather than a flat frontier rate",
     ],
-    runsOn: "Mixed — routed across the three above",
+    runsOn: "Mixed routed across the three above",
     typical: "Classifier, then generator, then reviewer",
     tradeoff: "More moving parts: routing rules and evaluation become their own workload.",
   },
@@ -177,7 +177,6 @@ export default function ModelSelection() {
       <div className="container py-16 lg:py-24 max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 text-left ">
         {/* Header */}
         <header className={styles.header}>
-          <p className="section-label">Model selection</p>
           <h2 id="model-selection-heading" className={styles.heading}>
             We don&apos;t have a preferred vendor.
             <br />
@@ -317,7 +316,7 @@ export default function ModelSelection() {
           <Link href="/contact?topic=model-selection" className={styles.closingLink}>
             Talk through your constraints
           </Link>{" "}
-          and we&apos;ll tell you which ones apply — including where you don&apos;t need us.
+          and we&apos;ll tell you which ones apply including where you don&apos;t need us.
         </p>
       </div>
     </section>

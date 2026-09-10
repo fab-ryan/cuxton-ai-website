@@ -277,7 +277,7 @@ export default function RichTextEditor({ initialDoc, onChange, placeholder }: Pr
 
       <div className={s.foot}>
         <span>
-          {words.toLocaleString()} {words === 1 ? "word" : "words"} · about{" "}
+          {words.toLocaleString()} {words === 1 ? "word" : "words"}, about{" "}
           {Math.max(1, Math.ceil(words / 200))} min read
         </span>
         <span>

@@ -6,39 +6,21 @@ import s from "./whyPrivate.module.css";
 
 export const WhyPrivateSection = () => {
   return (
-    <section className={`${s.privateSection} scanlines`} id="private-ai">
-      {/* ─── SOLID ARCHITECTURAL OVERLAY & HEX-GRID TEXTURE ──────────── */}
+    <section className={`${s.privateSection}`} id="private-ai">
       <div className={s.heroOverlay} />
-      <div className="absolute inset-0 hex-grid pointer-events-none" />
-
       <div className={s.themeWrap}>
-        {/* ─── VECTOR TECHNICAL CANVAS: BLUEPRINT MESH & SECURITY PERIMETER RINGS ─── */}
-        <div className={s.bgCanvas} aria-hidden="true">
-          <div className={s.gridPattern} />
-
-          {/* Concentric Security Perimeter Rings */}
-          <div className={s.perimeterRings}>
-            <div className={s.ring1} />
-            <div className={s.ring2} />
-            <div className={s.ring3} />
-          </div>
-
-
-        </div>
-
         <div className="container max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8">
           <div className={s.grid}>
             {/* ─── LEFT COLUMN: STRATEGY & KEY GUARANTEES ─────────────── */}
             <Reveal className={s.leftCol}>
-              <div className="section-label">Private AI &amp; Data Sovereignty</div>
               <h2 className={s.heading}>
-                Control where<br />
-                <span className={s.headingAccent}>it matters.</span>
+                Draw the line first. Build inside it.
               </h2>
               <p className={s.bodyText}>
-                For institutions handling sensitive financial, healthcare, or proprietary records, AI architecture must
-                begin with where data is legally and physically allowed to exist. Cuxton builds around that boundary
-                giving clients uncompromising control over data residency, permissions, model behavior, and compliance.
+                If you hold financial, clinical or otherwise regulated records, the
+                first question isn&apos;t which model to use. It&apos;s where that data is
+                allowed to live. We start by drawing that line with you, and build
+                the system inside it.
               </p>
 
               {/* 3 Core Security Tenets */}
@@ -71,9 +53,8 @@ export const WhyPrivateSection = () => {
                 <div className={s.boundaryHeader}>
                   <div className={s.boundaryTitle}>
                     <span className={s.pulseDot} />
-                    <span>ORGANISATION TRUST PERIMETER</span>
+                    <span>Inside your perimeter</span>
                   </div>
-                  <span className={s.boundaryBadge}>AES-GCM-256</span>
                 </div>
 
                 {/* 3 Ingress Pods */}
@@ -129,7 +110,7 @@ export const WhyPrivateSection = () => {
                 </div>
               </div>
 
-              {/* 6 Sovereignty Pillars Bento Grid */}
+              {/* 6 Control Pillars Bento Grid */}
               <div className={s.pillarGrid}>
                 {privateAIPillars.map((p) => (
                   <div key={p.label} className={s.pillarCard}>
@@ -138,7 +119,6 @@ export const WhyPrivateSection = () => {
 
                     <div className={s.pillarHeader}>
                       <div className={s.pillarIcon}>{p.icon}</div>
-                      <span className={s.pillarIndex}>{p.index}</span>
                     </div>
 
                     <h4 className={s.pillarTitle}>{p.label}</h4>
@@ -230,7 +210,6 @@ const boundaryInputs = [
 
 const privateAIPillars = [
   {
-    index: "01",
     label: "Data Sovereignty",
     desc: "Maintain absolute ownership over where data resides, vector memory indexes, and zero-retention storage policies.",
     icon: (
@@ -240,7 +219,6 @@ const privateAIPillars = [
     ),
   },
   {
-    index: "02",
     label: "Permission-Aware (RBAC)",
     desc: "Semantic retrieval that strictly enforces existing active directory, identity tiers, and departmental boundaries.",
     icon: (
@@ -251,8 +229,7 @@ const privateAIPillars = [
     ),
   },
   {
-    index: "03",
-    label: "Comprehensive Auditability",
+    label: "Auditability",
     desc: "Immutable logs, prompt histories, and telemetry for governance and compliance reporting across regulated sectors.",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -262,7 +239,6 @@ const privateAIPillars = [
     ),
   },
   {
-    index: "04",
     label: "Deployment Flexibility",
     desc: "Air-gapped on-premise hardware clusters, private VPC clouds, or isolated single tenancy shaped to your physical constraints.",
     icon: (
@@ -275,9 +251,8 @@ const privateAIPillars = [
     ),
   },
   {
-    index: "05",
     label: "Model Independence",
-    desc: "Select, fine-tune, or switch frontier open-weight models without commercial platform lock-in or licensing hostage.",
+    desc: "Use a commercial model, or fine-tune an open-weight one on your own hardware. You can change your mind later without a rebuild.",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="16 3 21 3 21 8" />
@@ -289,7 +264,6 @@ const privateAIPillars = [
     ),
   },
   {
-    index: "06",
     label: "Human Oversight Gates",
     desc: "People remain in full control of consequential actions, high-value decisions, and automated escalation workflows.",
     icon: (

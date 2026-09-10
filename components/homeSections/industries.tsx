@@ -16,7 +16,6 @@ export const IndustriesSection = () => {
         {/* ─── SECTION HEADER ────────────────────────────────────────── */}
         <Reveal className={s.header}>
           <div className={s.headerCopy}>
-            <div className="section-label">Specialised Industry Environments</div>
             <h2 className={s.heading}>
               Built for environments<br />
               <span className={s.headingAccent}>where data cannot move.</span>
@@ -33,7 +32,7 @@ export const IndustriesSection = () => {
           <Reveal className={s.flagshipCard}>
             <div className={s.cardHeader}>
               <div className={s.cardHeaderTitleGroup}>
-                <span className={s.cardSub}>Banks · Insurers · Asset Managers · Market Infrastructure</span>
+                <span className={s.cardSub}>Banks, Insurers, Asset Managers, Market Infrastructure</span>
                 <h3 className={s.cardTitle}>Financial Services</h3>
               </div>
               <div className={s.cardIconBadge}>
@@ -48,7 +47,7 @@ export const IndustriesSection = () => {
             <div className={s.mediaFrame}>
               <span className={s.cornerTl} aria-hidden="true" />
               <span className={s.cornerBr} aria-hidden="true" />
-              
+
               <div className={s.telemetryChipLeft}>
                 <span className={s.pulseDot} />
                 <span>ZONE: AIR-GAPPED VPC</span>
@@ -60,7 +59,7 @@ export const IndustriesSection = () => {
               <Image
                 src="/industries/finance_enterprise_ai.jpg"
                 alt="Financial Intelligence and Compliance AI Console"
-                width={800}
+                width={600}
                 height={450}
                 className={s.mediaImg}
                 priority
@@ -119,11 +118,7 @@ export const IndustriesSection = () => {
 
               <div className={s.cardFooter}>
                 <Link href="/industries#finance" className={s.actionLink}>
-                  <span>Explore Financial Services Architecture</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
+                  <span>Explore Financial Services Architecture</span></Link>
               </div>
             </div>
           </Reveal>
@@ -132,7 +127,7 @@ export const IndustriesSection = () => {
           <Reveal delay={120} className={s.flagshipCard}>
             <div className={s.cardHeader}>
               <div className={s.cardHeaderTitleGroup}>
-                <span className={s.cardSub}>Hospitals · Clinics · Research Institutes · MedTech</span>
+                <span className={s.cardSub}>Hospitals, Clinics, Research Institutes, MedTech</span>
                 <h3 className={s.cardTitle}>Healthcare &amp; Life Sciences</h3>
               </div>
               <div className={s.cardIconBadge}>
@@ -146,19 +141,18 @@ export const IndustriesSection = () => {
             <div className={s.mediaFrame}>
               <span className={s.cornerTl} aria-hidden="true" />
               <span className={s.cornerBr} aria-hidden="true" />
-              
+
               <div className={s.telemetryChipLeft}>
                 <span className={s.pulseDot} />
                 <span>DATA: ON-PREM ENCLAVE</span>
               </div>
               <div className={s.telemetryChipRight}>
-                <span>ZERO PII RETENTION VERIFIED</span>
               </div>
 
               <Image
                 src="/industries/healthcare_clinical_ai.jpg"
                 alt="Healthcare Clinical Intelligence and HIPAA Data Enclave"
-                width={800}
+                width={600}
                 height={450}
                 className={s.mediaImg}
                 priority
@@ -217,11 +211,7 @@ export const IndustriesSection = () => {
 
               <div className={s.cardFooter}>
                 <Link href="/industries#healthcare" className={s.actionLink}>
-                  <span>Explore Healthcare Architecture</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
+                  <span>Explore Healthcare Architecture</span></Link>
               </div>
             </div>
           </Reveal>
@@ -250,11 +240,7 @@ export const IndustriesSection = () => {
         {/* ─── SECTION FOOTER ────────────────────────────────────────── */}
         <div className={s.footerRow}>
           <Link href="/industries" className="btn-secondary">
-            Explore All Industry Deployments
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </Link>
+            Explore All Industry Deployments</Link>
         </div>
       </div>
     </section>
@@ -297,18 +283,18 @@ const healthUseCases = [
   },
   {
     title: "Biomedical Literature & Research RAG",
-    desc: "Empower research teams with direct semantic queries into medical literature, clinical trials, and genomic datasets with citation provenance."
+    desc: "Let research teams search medical literature directly, clinical trials, and genomic datasets with citation provenance."
   }
 ];
 
 const secondarySectors = [
   {
     name: "Government & Defense",
-    standard: "FedRAMP · ISO 27001",
-    desc: "Sovereign institutional knowledge systems, automated citizen service-request workflows, and air-gapped assistant architectures.",
+    standard: "FedRAMP, ISO 27001",
+    desc: "institutional knowledge systems, automated citizen service-request workflows, and air-gapped assistant architectures.",
     href: "/industries#government",
     metricLabel: "Deployment Model",
-    metricVal: "Air-Gapped Sovereign Cluster",
+    metricVal: "Air-Gapped Cluster",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z" />
@@ -318,7 +304,7 @@ const secondarySectors = [
   },
   {
     name: "Legal & Professional Services",
-    standard: "SOC 2 · Bar Ethics",
+    standard: "SOC 2, Bar Ethics",
     desc: "Evidence retrieval, contract clause comparison, internal work-product indexing, and cryptographically verifiable attribution trails.",
     href: "/industries#legal",
     metricLabel: "Attribution Guarantee",
@@ -335,7 +321,7 @@ const secondarySectors = [
   },
   {
     name: "Telecommunications",
-    standard: "Telecom Act · GDPR",
+    standard: "Telecom Act, GDPR",
     desc: "High-throughput customer-service agents, operational telemetry triage, network anomaly discovery, and strict tenant separation.",
     href: "/industries#telecom",
     metricLabel: "Response Latency",
@@ -351,7 +337,7 @@ const secondarySectors = [
   },
   {
     name: "Higher Education & Research",
-    standard: "FERPA · IP Sovereign",
+    standard: "FERPA",
     desc: "Faculty research synthesis, institutional knowledge assistants, and student success support protected against model retraining.",
     href: "/industries#education",
     metricLabel: "Data Privacy",
