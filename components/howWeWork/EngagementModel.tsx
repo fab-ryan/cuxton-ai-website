@@ -585,7 +585,12 @@ export default function EngagementModel() {
                         SPECIFICATION ACTIVE
                       </span>
                     </div>
-                    <MilestoneSchematic stepNumber={step.n} />
+                    <div className={styles.schematicViewport}>
+                      <MilestoneSchematic stepNumber={step.n} />
+                    </div>
+                    <p className={styles.schematicHint} aria-hidden="true">
+                      Swipe sideways to see the full schematic →
+                    </p>
                   </div>
 
                   {/* Visual Workflow Pipeline Diagram (Input -> Diagnostic -> Target Deliverable) */}
