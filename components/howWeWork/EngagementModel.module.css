@@ -168,9 +168,12 @@
 
 /* ─── Dual-Column Sticky Scroll Architecture ──────────────────────── */
 
+/* minmax(0, 1fr), not 1fr: a bare 1fr track grows to its widest child's
+   min-content, so the schematic's mobile min-width would blow the column
+   out past the viewport instead of scrolling inside its own frame. */
 .scrollLayout {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2.5rem;
 }
 
@@ -579,8 +582,10 @@
 
 .schematicHeader {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 0.4rem 1rem;
   margin-bottom: 0.85rem;
   padding-bottom: 0.55rem;
   border-bottom: 1px solid rgba(27, 107, 138, 0.18);
@@ -608,6 +613,39 @@
   width: 6px;
   height: 6px;
   background-color: var(--cuxton-amber);
+}
+
+/* The schematics are drawn on a fixed 740x180 canvas. Scaled down to a
+   phone's width they shrink to ~30% and the labels become unreadable, so
+   below 768px they keep a legible width and pan sideways instead. */
+.schematicHint {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .schematicContainer {
+    padding: 0.85rem;
+  }
+
+  .schematicViewport {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(27, 107, 138, 0.55) transparent;
+  }
+
+  .schematicViewport > svg {
+    min-width: 720px;
+  }
+
+  .schematicHint {
+    display: block;
+    margin: 0.35rem 0 0;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: rgba(var(--foreground-rgb), 0.6);
+  }
 }
 
 /* ─── VISUAL WORKFLOW PIPELINE DIAGRAM (NO linear gradient) ────────── */

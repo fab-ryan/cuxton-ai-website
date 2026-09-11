@@ -11,43 +11,44 @@
    7. Keyframe animations
    ═══════════════════════════════════════════════════════════════════ */
 
-
 /* ─── 1. HEADER BAR ────────────────────────────────────────────── */
 
 /* Outer wrapper — stays fixed full-width, provides the float offset */
-.header
-{
+.header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  transition: padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              top 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   animation: navEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* When scrolled, pull down slightly and add side padding so the
    inner bar floats as a centred rounded island */
-.header--scrolled
-{
+.header--scrolled {
   top: 14px;
   padding: 0 clamp(0.75rem, 2vw, 2rem);
 }
 
 /* Inner bar — starts transparent full-width, gains glass + radius on scroll */
-.headerInner
-{
+.headerInner {
   position: relative;
-  transition: background 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.45s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1), margin 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid transparent;
   border-radius: 0;
   max-width: 100%;
 }
 
 /* Scrolled state — frosted glass capsule, centred and fully rounded */
-.header--scrolled .headerInner
-{
+.header--scrolled .headerInner {
   background: rgba(var(--background-rgb), 0.72);
   border-color: rgba(27, 107, 138, 0.18);
   max-width: 1200px;
@@ -55,20 +56,17 @@
   backdrop-filter: blur(12px) saturate(1.2);
 }
 
-.header--scrolled .headerInner:hover
-{
+.header--scrolled .headerInner:hover {
   border-color: rgba(27, 107, 138, 0.3);
 }
 
 /* When a dropdown is open, keep the glass opaque */
-.header--menuOpen .headerInner
-{
+.header--menuOpen .headerInner {
   background: rgba(var(--background-rgb), 0.92);
   border-color: rgba(27, 107, 138, 0.18);
 }
 
-.nav
-{
+.nav {
   height: 68px;
   display: flex;
   align-items: center;
@@ -79,35 +77,33 @@
   background: transparent;
 }
 
-.header--scrolled .nav
-{
+.header--scrolled .nav {
   height: 60px;
 }
 
-
 /* ─── LOGO ─────────────────────────────────────────────────────── */
 
-.logo
-{
+.logo {
   position: relative;
   display: inline-flex;
   align-items: center;
-  transition: opacity 0.2s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.2s ease,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
+  width: 60px;
+  height: 34px;
 }
 
-.logo:hover
-{
+.logo:hover {
   opacity: 0.85;
 }
 
-.header--scrolled .logo
-{
+.header--scrolled .logo {
   transform: scale(0.9);
 }
 
-.logo::after
-{
+.logo::after {
   content: "";
   position: absolute;
   inset: -4px -8px;
@@ -118,16 +114,13 @@
   pointer-events: none;
 }
 
-.logo:hover::after
-{
+.logo:hover::after {
   opacity: 1;
 }
 
-
 /* ─── 2. DESKTOP NAV LINKS ─────────────────────────────────────── */
 
-.desktopLinks
-{
+.desktopLinks {
   display: none;
   align-items: center;
   gap: 0.125rem;
@@ -135,16 +128,13 @@
   justify-content: center;
 }
 
-@media (min-width: 1024px)
-{
-  .desktopLinks
-  {
+@media (min-width: 1024px) {
+  .desktopLinks {
     display: flex;
   }
 }
 
-.navLink
-{
+.navLink {
   position: relative;
   display: flex;
   align-items: center;
@@ -159,24 +149,23 @@
   font-weight: 500;
   text-decoration: none;
   letter-spacing: 0.01em;
-  transition: color 0.25s ease, background 0.25s ease;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
   white-space: nowrap;
 }
 
-.navLink:hover
-{
+.navLink:hover {
   color: var(--foreground);
   background: rgba(27, 107, 138, 0.08);
 }
 
-.navLink--active
-{
+.navLink--active {
   color: var(--foreground);
 }
 
 /* Active indicator — thin amber underline with glow */
-.navLink--active::after
-{
+.navLink--active::after {
   content: "";
   position: absolute;
   bottom: 2px;
@@ -189,8 +178,7 @@
 }
 
 /* Hover indicator — subtle underline that grows */
-.navLink:not(.navLink--active)::after
-{
+.navLink:not(.navLink--active)::after {
   content: "";
   position: absolute;
   bottom: 2px;
@@ -199,18 +187,18 @@
   height: 2px;
   border-radius: 0;
   background: rgba(27, 107, 138, 0.4);
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navLink:not(.navLink--active):hover::after
-{
+.navLink:not(.navLink--active):hover::after {
   width: 14px;
   left: calc(50% - 7px);
 }
 
 /* Dropdown trigger open state */
-.navLink--open
-{
+.navLink--open {
   color: var(--foreground);
   background: rgba(27, 107, 138, 0.1);
 }
@@ -218,40 +206,33 @@
 /* Transparent-over-hero state (home route, unscrolled, no dropdown) —
    the hero photo behind the bar is always dark, so links stay light
    regardless of light/dark mode instead of following --foreground. */
-.header--onHero .navLink
-{
+.header--onHero .navLink {
   color: rgba(238, 242, 247, 0.75);
 }
 
-.header--onHero .navLink:hover
-{
+.header--onHero .navLink:hover {
   color: #eef2f7;
   background: rgba(238, 242, 247, 0.1);
 }
 
 .header--onHero .navLink--active,
-.header--onHero .navLink--open
-{
+.header--onHero .navLink--open {
   color: #eef2f7;
 }
 
 /* Chevron icon */
-.chevron
-{
+.chevron {
   display: inline-flex;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.chevron--open
-{
+.chevron--open {
   transform: rotate(180deg);
 }
 
-
 /* ─── 3. MEGA-MENU DROPDOWNS ──────────────────────────────────── */
 
-.megaWrap
-{
+.megaWrap {
   position: fixed;
   top: 78px;
   left: 0;
@@ -261,8 +242,7 @@
   z-index: 99;
 }
 
-.megaPanel
-{
+.megaPanel {
   background: rgba(var(--bg-surface-rgb), 0.97);
   border: 1px solid rgba(27, 107, 138, 0.14);
   border-radius: 0;
@@ -274,8 +254,7 @@
 }
 
 /* Subtle ambient glow on the mega-menu */
-.megaPanel::before
-{
+.megaPanel::before {
   content: "";
   position: absolute;
   top: -40%;
@@ -287,8 +266,7 @@
   pointer-events: none;
 }
 
-.megaLabel
-{
+.megaLabel {
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--cuxton-amber);
@@ -297,28 +275,24 @@
 }
 
 /* Solutions: two-column layout — items grid + featured sidebar */
-.megaSolutions
-{
+.megaSolutions {
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 1.75rem;
 }
 
-.megaGrid
-{
+.megaGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.25rem;
 }
 
-.megaGrid--industries
-{
+.megaGrid--industries {
   grid-template-columns: repeat(3, 1fr);
 }
 
 /* Individual mega-menu item */
-.megaItem
-{
+.megaItem {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
@@ -326,18 +300,18 @@
   border-radius: 0;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
   position: relative;
 }
 
-.megaItem:hover
-{
+.megaItem:hover {
   background: rgba(27, 107, 138, 0.1);
   transform: translateX(2px);
 }
 
-.megaItemDot
-{
+.megaItemDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -347,21 +321,18 @@
   transition: background 0.2s ease;
 }
 
-.megaItem:hover .megaItemDot
-{
+.megaItem:hover .megaItemDot {
   background: var(--cuxton-amber);
 }
 
-.megaItemTitle
-{
+.megaItemTitle {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--foreground);
   line-height: 1.3;
 }
 
-.megaItemDesc
-{
+.megaItemDesc {
   font-size: 0.75rem;
   color: rgba(var(--foreground-rgb), 0.55);
   margin-top: 0.2rem;
@@ -369,14 +340,12 @@
   transition: color 0.2s ease;
 }
 
-.megaItem:hover .megaItemDesc
-{
+.megaItem:hover .megaItemDesc {
   color: rgba(var(--foreground-rgb), 0.75);
 }
 
 /* Featured CTA sidebar in Solutions mega-menu */
-.megaFeatured
-{
+.megaFeatured {
   background: rgba(27, 107, 138, 0.06);
   border: 1px solid rgba(27, 107, 138, 0.12);
   border-radius: 0;
@@ -387,32 +356,28 @@
   gap: 1rem;
 }
 
-.megaFeaturedLabel
-{
+.megaFeaturedLabel {
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--cuxton-teal-light);
   margin-bottom: 0.25rem;
 }
 
-.megaFeaturedTitle
-{
+.megaFeaturedTitle {
   font-size: 1rem;
   font-weight: 700;
   color: var(--foreground);
   line-height: 1.35;
 }
 
-.megaFeaturedBody
-{
+.megaFeaturedBody {
   font-size: 0.8rem;
   color: rgba(var(--foreground-rgb), 0.55);
   line-height: 1.55;
 }
 
 /* Mega footer (bottom bar inside mega) */
-.megaFooter
-{
+.megaFooter {
   margin-top: 1.25rem;
   padding-top: 1.25rem;
   border-top: 1px solid rgba(27, 107, 138, 0.1);
@@ -421,17 +386,14 @@
   justify-content: space-between;
 }
 
-.megaFooterText
-{
+.megaFooterText {
   font-size: 0.8rem;
   color: rgba(var(--foreground-rgb), 0.5);
 }
 
-
 /* ─── 4. ANIMATED HAMBURGER ───────────────────────────────────── */
 
-.hamburger
-{
+.hamburger {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -443,102 +405,88 @@
   cursor: pointer;
   color: inherit;
   flex-shrink: 0;
-  transition: background 0.25s ease, border-color 0.25s ease;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
-@media (min-width: 1024px)
-{
-  .hamburger
-  {
+@media (min-width: 1024px) {
+  .hamburger {
     display: none;
   }
 }
 
-.hamburger:hover
-{
+.hamburger:hover {
   background: rgba(27, 107, 138, 0.15);
   border-color: rgba(27, 107, 138, 0.3);
 }
 
 /* Three-line → X morph using CSS transforms */
-.hamburgerBars
-{
+.hamburgerBars {
   position: relative;
   width: 20px;
   height: 14px;
 }
 
-.hamburgerBar
-{
+.hamburgerBar {
   position: absolute;
   left: 0;
   width: 100%;
   height: 2px;
   border-radius: 0;
   background: currentColor;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.25s ease,
-              width 0.25s ease;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.25s ease,
+    width 0.25s ease;
 }
 
-.hamburgerBar:nth-child(1)
-{
+.hamburgerBar:nth-child(1) {
   top: 0;
 }
 
-.hamburgerBar:nth-child(2)
-{
+.hamburgerBar:nth-child(2) {
   top: 6px;
 }
 
-.hamburgerBar:nth-child(3)
-{
+.hamburgerBar:nth-child(3) {
   top: 12px;
 }
 
 /* Open state — morph to X */
-.hamburger--open .hamburgerBar:nth-child(1)
-{
+.hamburger--open .hamburgerBar:nth-child(1) {
   transform: translateY(6px) rotate(45deg);
 }
 
-.hamburger--open .hamburgerBar:nth-child(2)
-{
+.hamburger--open .hamburgerBar:nth-child(2) {
   opacity: 0;
   width: 0;
 }
 
-.hamburger--open .hamburgerBar:nth-child(3)
-{
+.hamburger--open .hamburgerBar:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);
 }
 
-
 /* ─── DESKTOP CTAS ────────────────────────────────────────────── */
 
-.desktopCtas
-{
+.desktopCtas {
   display: none;
   align-items: center;
   gap: 0.75rem;
 }
 
-@media (min-width: 1024px)
-{
-  .desktopCtas
-  {
+@media (min-width: 1024px) {
+  .desktopCtas {
     display: flex;
   }
 }
 
 /* CTA pulse glow animation */
-.ctaGlow
-{
+.ctaGlow {
   position: relative;
 }
 
-.ctaGlow::before
-{
+.ctaGlow::before {
   content: "";
   position: absolute;
   inset: -2px;
@@ -549,38 +497,34 @@
   z-index: -1;
 }
 
-
 /* ─── 5. MOBILE FULL-SCREEN MENU ──────────────────────────────── */
 
-.mobileOverlay
-{
+.mobileOverlay {
   position: fixed;
   inset: 0;
   z-index: 90;
   background: rgba(var(--background-rgb), 0.98);
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
   overflow-y: auto;
   padding-top: 80px;
   padding-bottom: 40px;
 }
 
-.mobileOverlay--open
-{
+.mobileOverlay--open {
   transform: translateX(0);
   opacity: 1;
 }
 
-.mobileNav
-{
+.mobileNav {
   padding-top: 1.5rem;
 }
 
 /* Mobile accordion trigger */
-.mobileAccordion
-{
+.mobileAccordion {
   width: 100%;
   display: flex;
   align-items: center;
@@ -597,45 +541,42 @@
   transition: color 0.2s ease;
 }
 
-.mobileAccordion:hover
-{
+.mobileAccordion:hover {
   color: var(--cuxton-teal-light);
 }
 
 /* Mobile accordion panel with smooth height transition */
-.mobilePanel
-{
+.mobilePanel {
   overflow: hidden;
   animation: accordionOpen 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.mobilePanelInner
-{
+.mobilePanelInner {
   padding: 0.5rem 0;
 }
 
 /* Mobile sub-link */
-.mobileSubLink
-{
+.mobileSubLink {
   display: block;
   padding: 0.7rem 0.75rem;
   font-size: 0.9rem;
   color: rgba(var(--foreground-rgb), 0.6);
   text-decoration: none;
   border-radius: 0;
-  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
-.mobileSubLink:hover
-{
+.mobileSubLink:hover {
   color: var(--foreground);
   background: rgba(27, 107, 138, 0.06);
   transform: translateX(4px);
 }
 
 /* Mobile flat link */
-.mobileLink
-{
+.mobileLink {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -648,173 +589,159 @@
   transition: color 0.2s ease;
 }
 
-.mobileLink:hover
-{
+.mobileLink:hover {
   color: var(--cuxton-teal-light);
 }
 
-.mobileLink--active
-{
+.mobileLink--active {
   color: var(--cuxton-amber);
 }
 
 /* Mobile link arrow indicator */
-.mobileLinkArrow
-{
+.mobileLinkArrow {
   opacity: 0;
   transform: translateX(-4px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
   color: var(--cuxton-teal-mid);
 }
 
-.mobileLink:hover .mobileLinkArrow
-{
+.mobileLink:hover .mobileLinkArrow {
   opacity: 1;
   transform: translateX(0);
 }
 
 /* Staggered entrance for mobile items */
-.mobileItem
-{
+.mobileItem {
   opacity: 0;
   transform: translateY(12px);
 }
 
-.mobileOverlay--open .mobileItem
-{
+.mobileOverlay--open .mobileItem {
   animation: staggerIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.mobileOverlay--open .mobileItem:nth-child(1) { animation-delay: 0.05s; }
-.mobileOverlay--open .mobileItem:nth-child(2) { animation-delay: 0.1s; }
-.mobileOverlay--open .mobileItem:nth-child(3) { animation-delay: 0.15s; }
-.mobileOverlay--open .mobileItem:nth-child(4) { animation-delay: 0.2s; }
-.mobileOverlay--open .mobileItem:nth-child(5) { animation-delay: 0.25s; }
-.mobileOverlay--open .mobileItem:nth-child(6) { animation-delay: 0.3s; }
-.mobileOverlay--open .mobileItem:nth-child(7) { animation-delay: 0.35s; }
+.mobileOverlay--open .mobileItem:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.mobileOverlay--open .mobileItem:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.mobileOverlay--open .mobileItem:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.mobileOverlay--open .mobileItem:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.mobileOverlay--open .mobileItem:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.mobileOverlay--open .mobileItem:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.mobileOverlay--open .mobileItem:nth-child(7) {
+  animation-delay: 0.35s;
+}
 
 /* Mobile CTA */
-.mobileCta
-{
+.mobileCta {
   margin-top: 2.5rem;
   opacity: 0;
   transform: translateY(12px);
 }
 
-.mobileOverlay--open .mobileCta
-{
+.mobileOverlay--open .mobileCta {
   animation: staggerIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
 }
 
 /* Nav spacer */
-.spacer
-{
+.spacer {
   height: 68px;
 }
 
-
 /* ─── 7. KEYFRAME ANIMATIONS ──────────────────────────────────── */
 
-@keyframes navEnter
-{
-  from
-  {
+@keyframes navEnter {
+  from {
     opacity: 0;
     transform: translateY(-16px);
   }
-  to
-  {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes megaEnter
-{
-  from
-  {
+@keyframes megaEnter {
+  from {
     opacity: 0;
     transform: translateY(8px);
   }
-  to
-  {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes staggerIn
-{
-  from
-  {
+@keyframes staggerIn {
+  from {
     opacity: 0;
     transform: translateY(12px);
   }
-  to
-  {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes accordionOpen
-{
-  from
-  {
+@keyframes accordionOpen {
+  from {
     max-height: 0;
     opacity: 0;
   }
-  to
-  {
+  to {
     max-height: 500px;
     opacity: 1;
   }
 }
 
-@keyframes ctaPulse
-{
-  0%, 100%
-  {
+@keyframes ctaPulse {
+  0%,
+  100% {
     opacity: 0;
   }
-  50%
-  {
+  50% {
     opacity: 0.3;
   }
 }
 
 /* ─── REDUCED MOTION ──────────────────────────────────────────── */
 
-@media (prefers-reduced-motion: reduce)
-{
+@media (prefers-reduced-motion: reduce) {
   .header,
   .megaWrap,
   .mobileItem,
   .mobileCta,
-  .mobilePanel
-  {
+  .mobilePanel {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
 
-  .hamburgerBar
-  {
+  .hamburgerBar {
     transition: none !important;
   }
 
-  .chevron
-  {
+  .chevron {
     transition: none !important;
   }
 
-  .logo
-  {
+  .logo {
     transition: none !important;
   }
 
-  .ctaGlow::before
-  {
+  .ctaGlow::before {
     animation: none !important;
   }
 }

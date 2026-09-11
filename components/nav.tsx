@@ -223,7 +223,7 @@ export default function Nav() {
                 className={s.logo}
                 onClick={() => { setOpenMenu(null); setMobileOpen(false); }}
               >
-                <picture>
+                <picture className=" *:object-contain">
                   {/* Art-directed by theme everywhere except over the
                       hero, where the ground is dark in both themes and
                       only the white lettermark is readable. */}
@@ -293,7 +293,7 @@ export default function Nav() {
                 </button>
 
                 {/* Flat links */}
-                {flatLinks  && flatLinks.map(({ label, href }) => (
+                {flatLinks && flatLinks.map(({ label, href }) => (
                   <Link
                     key={label}
                     href={href}
