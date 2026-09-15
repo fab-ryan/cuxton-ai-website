@@ -296,6 +296,14 @@
   background: white;
 }
 
+@media (prefers-color-scheme: dark) {
+  .statusComplete {
+    background: rgba(27, 107, 138, 0.25);
+    color: var(--cuxton-teal-light);
+    border: 1px solid rgba(var(--cuxton-teal-mid-rgb), 0.4);
+  }
+}
+
 .statusReview {
   background: rgba(245, 166, 35, 0.15);
   color: var(--cuxton-amber);
