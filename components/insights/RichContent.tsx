@@ -1,8 +1,10 @@
 import { Fragment } from "react";
 import {
   attrString,
+  safeHighlightColor,
   safeHref,
   safeImageSrc,
+  safeTextAlign,
   type RichDoc,
   type RichNode,
 } from "@/lib/richtext";
@@ -29,19 +31,24 @@ function renderNodes(nodes: RichNode[] | undefined) {
 
 function renderNode(node: RichNode, index: number): React.ReactNode {
   switch (node.type) {
-    case "paragraph":
+    case "paragraph": {
       // Tiptap emits an empty paragraph for a blank line; skip rather than
       // render a stray gap.
-      return node.content?.length ? <p>{renderNodes(node.content)}</p> : null;
+      if (!node.content?.length) return null;
+      const textAlign = safeTextAlign(node.attrs?.textAlign);
+      return <p style={textAlign ? { textAlign } : undefined}>{renderNodes(node.content)}</p>;
+    }
 
     case "heading": {
       const level = node.attrs?.level;
+      const textAlign = safeTextAlign(node.attrs?.textAlign);
+      const style = textAlign ? { textAlign } : undefined;
       // The editor is configured for h2/h3 only. Anything else, including a
       // pasted h1, is levelled down so the article keeps one document title.
       return level === 3 ? (
-        <h3>{renderNodes(node.content)}</h3>
+        <h3 style={style}>{renderNodes(node.content)}</h3>
       ) : (
-        <h2>{renderNodes(node.content)}</h2>
+        <h2 style={style}>{renderNodes(node.content)}</h2>
       );
     }
 
@@ -59,6 +66,17 @@ function renderNode(node: RichNode, index: number): React.ReactNode {
 
     case "listItem":
       return <li>{renderNodes(node.content)}</li>;
+
+    case "taskList":
+      return <ul className={s.taskList}>{renderNodes(node.content)}</ul>;
+
+    case "taskItem":
+      return (
+        <li className={s.taskItem}>
+          <input type="checkbox" checked={node.attrs?.checked === true} disabled readOnly />
+          <span>{renderNodes(node.content)}</span>
+        </li>
+      );
 
     case "blockquote":
       return <blockquote>{renderNodes(node.content)}</blockquote>;
@@ -125,6 +143,19 @@ function renderText(node: RichNode, index: number): React.ReactNode {
       case "code":
         element = <code>{element}</code>;
         break;
+      case "subscript":
+        element = <sub>{element}</sub>;
+        break;
+      case "superscript":
+        element = <sup>{element}</sup>;
+        break;
+      case "highlight": {
+        const color = safeHighlightColor(mark.attrs?.color);
+        element = (
+          <mark className={color === "teal" ? s.markTeal : s.markAmber}>{element}</mark>
+        );
+        break;
+      }
       case "link": {
         const href = safeHref(mark.attrs?.href);
         // A rejected href leaves the text in place, unlinked, rather than

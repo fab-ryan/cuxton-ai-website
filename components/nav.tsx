@@ -23,8 +23,8 @@ import s from "./nav.module.css";
 
 /* ─── Logo — art-directed by system color scheme ─── */
 const logoCommon = { alt: "CuxtonAI — home", width: 140, height: 34 };
-const { props: logoLightProps } = getImageProps({ ...logoCommon, src: "/full_color.png" });
-const { props: logoDarkProps } = getImageProps({ ...logoCommon, src: "/full_color-white.png" });
+const { props: logoLightProps } = getImageProps({ ...logoCommon, src: "/logo/CUXTONAI_Logo_2.png" });
+const { props: logoDarkProps } = getImageProps({ ...logoCommon, src: "/logo/CUXTONAI_Logo_1.png" });
 
 /* ─── Nav data ─── */
 const solutions = [

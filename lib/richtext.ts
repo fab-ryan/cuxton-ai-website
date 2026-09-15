@@ -65,6 +65,7 @@ export function docToPlainText(doc: RichDoc | null): string {
     "heading",
     "blockquote",
     "listItem",
+    "taskItem",
     "codeBlock",
     "horizontalRule",
   ]);
@@ -135,4 +136,27 @@ export function safeImageSrc(value: unknown): string | null {
 export function attrString(attrs: RichNode["attrs"], key: string): string {
   const value = attrs?.[key];
   return typeof value === "string" ? value : "";
+}
+
+const TEXT_ALIGNMENTS = new Set(["left", "center", "right"]);
+
+/** A paragraph/heading alignment we are willing to emit, or null for the default. */
+export function safeTextAlign(value: unknown): "left" | "center" | "right" | null {
+  return typeof value === "string" && TEXT_ALIGNMENTS.has(value)
+    ? (value as "left" | "center" | "right")
+    : null;
+}
+
+const HIGHLIGHT_COLORS = new Set(["amber", "teal"]);
+
+/**
+ * A highlight color we are willing to emit, or null to render the mark
+ * unstyled. Kept to the brand palette rather than trusting the raw string
+ * Tiptap's Highlight mark can carry, since that column is also writable by
+ * anything holding an admin session.
+ */
+export function safeHighlightColor(value: unknown): "amber" | "teal" | null {
+  return typeof value === "string" && HIGHLIGHT_COLORS.has(value)
+    ? (value as "amber" | "teal")
+    : null;
 }

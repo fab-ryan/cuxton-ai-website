@@ -89,6 +89,127 @@
   white-space: nowrap;
 }
 
+.highlightIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.25em;
+  background: rgba(245, 166, 35, 0.45);
+  color: rgba(var(--foreground-rgb), 0.85);
+}
+
+/* ─── Toolbar popovers (link / highlight / image details) ─── */
+.toolGroup {
+  position: relative;
+  display: inline-flex;
+}
+
+.panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 230px;
+  padding: 0.65rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.panelLabel {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(var(--foreground-rgb), 0.45);
+}
+
+.panelInput {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-elevated);
+  color: var(--foreground);
+  font-size: 0.82rem;
+  padding: 0.4rem 0.55rem;
+}
+
+.panelInput:focus {
+  outline: none;
+  border-color: var(--cuxton-teal-mid);
+}
+
+.panelActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  margin-top: 0.15rem;
+}
+
+.panelBtn {
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: none;
+  color: rgba(var(--foreground-rgb), 0.7);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+}
+
+.panelBtn:hover {
+  color: var(--foreground);
+  border-color: rgba(var(--foreground-rgb), 0.3);
+}
+
+.panelBtnPrimary {
+  background: var(--cuxton-teal-mid);
+  border-color: var(--cuxton-teal-mid);
+  color: #fff;
+}
+
+.panelBtnPrimary:hover {
+  background: var(--cuxton-teal);
+  color: #fff;
+}
+
+.panelBtnDanger {
+  color: var(--status-error);
+}
+
+.swatches {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.swatch {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  padding: 0;
+}
+
+.swatch:hover {
+  border-color: rgba(var(--foreground-rgb), 0.4);
+}
+
+.swatchActive {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
+.swatchAmber {
+  background: rgba(245, 166, 35, 0.55);
+}
+
+.swatchTeal {
+  background: rgba(27, 107, 138, 0.5);
+}
+
 /* ─── Editing surface ───
    ProseMirror renders its own DOM inside this container, so these rules
    reach through the CSS-module boundary with :global. They intentionally
@@ -189,6 +310,59 @@
   text-underline-offset: 2px;
 }
 
+.surface :global(.ProseMirror mark) {
+  border-radius: 0;
+  padding: 0.05em 0.15em;
+  color: inherit;
+}
+
+.surface :global(.ProseMirror mark[data-color="amber"]) {
+  background: rgba(245, 166, 35, 0.32);
+}
+
+.surface :global(.ProseMirror mark[data-color="teal"]) {
+  background: rgba(27, 107, 138, 0.28);
+}
+
+.surface :global(.ProseMirror ul[data-type="taskList"]) {
+  list-style: none;
+  padding-left: 0.1rem;
+  margin: 0 0 1.1rem;
+}
+
+.surface :global(.ProseMirror ul[data-type="taskList"] li) {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin-bottom: 0.4rem;
+}
+
+.surface :global(.ProseMirror ul[data-type="taskList"] li > label) {
+  display: flex;
+  align-items: center;
+  padding-top: 0.35em;
+  user-select: none;
+}
+
+.surface :global(.ProseMirror ul[data-type="taskList"] li > div) {
+  flex: 1;
+  min-width: 0;
+}
+
+.surface :global(.ProseMirror ul[data-type="taskList"] li > div p) {
+  margin: 0;
+}
+
+.surface :global(.ProseMirror ul[data-type="taskList"] li input[type="checkbox"]) {
+  accent-color: var(--cuxton-teal-mid);
+  cursor: pointer;
+}
+
+.surface :global(.ProseMirror ul[data-type="taskList"] li[data-checked="true"] > div) {
+  color: rgba(var(--foreground-rgb), 0.45);
+  text-decoration: line-through;
+}
+
 .surface :global(.ProseMirror img) {
   max-width: 100%;
   height: auto;
@@ -244,6 +418,11 @@
 .dropzoneActive {
   border-color: var(--cuxton-teal-mid);
   background: rgba(27, 107, 138, 0.07);
+}
+
+.mediaFieldDragging {
+  outline: 2px dashed var(--cuxton-teal-mid);
+  outline-offset: 4px;
 }
 
 .dropzoneLabel {
@@ -303,4 +482,175 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ─── Cover photo candidates (pick-before-upload) ─── */
+.pickerHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.pickerLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(var(--foreground-rgb), 0.55);
+}
+
+.candidateGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.candidateCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: rgba(var(--foreground-rgb), 0.02);
+  overflow: hidden;
+}
+
+.candidateThumbWrap {
+  position: relative;
+}
+
+.candidateThumb {
+  display: block;
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  background: var(--bg-elevated);
+}
+
+.candidateDiscard {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-surface);
+  color: rgba(var(--foreground-rgb), 0.6);
+  font-size: 0.7rem;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+}
+
+.candidateDiscard:hover:not(:disabled) {
+  color: var(--status-error);
+  border-color: var(--status-error);
+}
+
+.candidateDiscard:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.coverBadge {
+  position: absolute;
+  bottom: 0.35rem;
+  left: 0.35rem;
+  background: var(--cuxton-amber);
+  color: #1a1005;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+}
+
+.candidateBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.5rem 0.6rem 0.6rem;
+}
+
+.candidateName {
+  font-size: 0.68rem;
+  color: rgba(var(--foreground-rgb), 0.45);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.candidateUseBtn {
+  border: 1px solid var(--cuxton-teal-mid);
+  border-radius: 0;
+  background: var(--cuxton-teal-mid);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.4rem 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.candidateUseBtn:hover:not(:disabled) {
+  background: var(--cuxton-teal);
+}
+
+.candidateUseBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.candidateSecondaryBtn {
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: none;
+  color: rgba(var(--foreground-rgb), 0.65);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.candidateSecondaryBtn:hover:not(:disabled) {
+  color: var(--foreground);
+  border-color: rgba(var(--foreground-rgb), 0.35);
+}
+
+.candidateSecondaryBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.candidateError {
+  font-size: 0.62rem;
+  color: var(--status-error);
+  line-height: 1.4;
+}
+
+.addTile {
+  border: 1px dashed var(--border);
+  border-radius: 0;
+  background: rgba(var(--foreground-rgb), 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  color: rgba(var(--foreground-rgb), 0.4);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.addTile:hover:not(:disabled) {
+  border-color: var(--cuxton-teal-mid);
+  color: var(--cuxton-teal-text);
+}
+
+.addTile:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

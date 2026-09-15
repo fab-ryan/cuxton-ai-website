@@ -28,6 +28,8 @@ export type Insight = {
   /** The rich-text document itself, in Tiptap's JSON shape. See lib/richtext.ts. */
   body_json: unknown;
   cover_image: string | null;
+  /** Extra images shown in a gallery strip on the article, alongside the cover. */
+  gallery: string[];
   read_minutes: number | null;
   status: InsightStatus;
   published_at: string | null;
