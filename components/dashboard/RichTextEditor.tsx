@@ -1,10 +1,15 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import type { Content } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
+import TiptapHighlight from "@tiptap/extension-highlight";
+import Subscript from "@tiptap/extension-subscript";
+import Superscript from "@tiptap/extension-superscript";
+import TextAlign from "@tiptap/extension-text-align";
+import { TaskItem, TaskList } from "@tiptap/extension-list";
 import { ACCEPT_ATTR, uploadImage, validateImage } from "@/lib/supabase/storage";
 import { docToPlainText, type RichDoc } from "@/lib/richtext";
 import s from "./editor.module.css";
@@ -20,6 +25,33 @@ import s from "./editor.module.css";
    dropped or pasted, and only their public URL enters the document.
    ═══════════════════════════════════════════════════════════════════ */
 
+type HighlightColor = "amber" | "teal";
+type Align = "left" | "center" | "right";
+type PanelId = "link" | "highlight" | "image";
+
+/**
+ * The stock Highlight mark writes its color straight into an inline
+ * `style="background-color: …"` attribute. Ours only ever carries the two
+ * brand keywords below — never a real CSS color — so that would render
+ * nothing. This swaps it for a `data-color` attribute instead, which the
+ * stylesheet keys off, matching how RichContent renders the same mark on
+ * the public site.
+ */
+const Highlight = TiptapHighlight.extend({
+  addAttributes() {
+    return {
+      color: {
+        default: null,
+        parseHTML: (element: HTMLElement) => element.getAttribute("data-color"),
+        renderHTML: (attributes: { color?: string | null }) => {
+          if (!attributes.color) return {};
+          return { "data-color": attributes.color };
+        },
+      },
+    };
+  },
+});
+
 type Props = {
   /** Initial document. The editor owns its state after mount. */
   initialDoc: RichDoc;
@@ -29,9 +61,15 @@ type Props = {
 
 export default function RichTextEditor({ initialDoc, onChange, placeholder }: Props) {
   const fileInput = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const [uploading, setUploading] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [openPanel, setOpenPanel] = useState<PanelId | null>(null);
+  const [linkValue, setLinkValue] = useState("");
+  const [imageAltValue, setImageAltValue] = useState("");
+  const [imageCaptionValue, setImageCaptionValue] = useState("");
 
   const editor = useEditor({
     // Required under `output: "export"`: the editor must not render during
@@ -55,6 +93,15 @@ export default function RichTextEditor({ initialDoc, onChange, placeholder }: Pr
         allowBase64: false, // uploads only, so the column never holds a blob
         HTMLAttributes: { loading: "lazy" },
       }),
+      Highlight.configure({ multicolor: true }),
+      Subscript,
+      Superscript,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+        alignments: ["left", "center", "right"],
+      }),
+      TaskList,
+      TaskItem.configure({ nested: true }),
     ],
     // RichDoc allows a null `attrs` because that is what a hand-edited
     // jsonb row can contain; Tiptap's own JSONContent does not. The
@@ -131,40 +178,121 @@ export default function RichTextEditor({ initialDoc, onChange, placeholder }: Pr
     selector: ({ editor: instance }) => ({
       bold: instance?.isActive("bold") ?? false,
       italic: instance?.isActive("italic") ?? false,
+      underline: instance?.isActive("underline") ?? false,
       strike: instance?.isActive("strike") ?? false,
       code: instance?.isActive("code") ?? false,
+      subscript: instance?.isActive("subscript") ?? false,
+      superscript: instance?.isActive("superscript") ?? false,
+      highlightColor:
+        (instance?.getAttributes("highlight").color as HighlightColor | undefined) ?? null,
       h2: instance?.isActive("heading", { level: 2 }) ?? false,
       h3: instance?.isActive("heading", { level: 3 }) ?? false,
+      align: instance?.isActive({ textAlign: "center" })
+        ? "center"
+        : instance?.isActive({ textAlign: "right" })
+          ? "right"
+          : "left",
       bulletList: instance?.isActive("bulletList") ?? false,
       orderedList: instance?.isActive("orderedList") ?? false,
+      taskList: instance?.isActive("taskList") ?? false,
       blockquote: instance?.isActive("blockquote") ?? false,
       codeBlock: instance?.isActive("codeBlock") ?? false,
       link: instance?.isActive("link") ?? false,
+      image: instance?.isActive("image") ?? false,
       canUndo: instance?.can().undo() ?? false,
       canRedo: instance?.can().redo() ?? false,
       words: instance ? countWords(instance.getText()) : 0,
+      characters: instance ? instance.getText().length : 0,
     }),
   });
 
-  function toggleLink() {
+  /* Close whichever panel is open on an outside click or Escape. */
+  useEffect(() => {
+    if (!openPanel) return;
+
+    function onPointerDown(event: MouseEvent) {
+      if (panelRef.current && !panelRef.current.contains(event.target as Node)) {
+        setOpenPanel(null);
+      }
+    }
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpenPanel(null);
+    }
+
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [openPanel]);
+
+  function togglePanel(panel: PanelId) {
+    setOpenPanel((current) => (current === panel ? null : panel));
+  }
+
+  function openLinkPanel() {
     if (!editor) return;
+    setLinkValue((editor.getAttributes("link").href as string) || "");
+    togglePanel("link");
+  }
 
-    if (editor.isActive("link")) {
+  function applyLink() {
+    if (!editor) return;
+    const href = linkValue.trim();
+    if (href) {
+      editor.chain().focus().extendMarkRange("link").setLink({ href }).run();
+    } else {
       editor.chain().focus().unsetLink().run();
-      return;
     }
+    setOpenPanel(null);
+  }
 
-    const previous = (editor.getAttributes("link").href as string) ?? "";
-    const input = window.prompt("Link URL", previous || "https://");
-    if (input === null) return;
+  function removeLink() {
+    editor?.chain().focus().unsetLink().run();
+    setOpenPanel(null);
+  }
 
-    const href = input.trim();
-    if (!href) {
-      editor.chain().focus().unsetLink().run();
-      return;
+  function openImagePanel() {
+    if (!editor) return;
+    setImageAltValue((editor.getAttributes("image").alt as string) || "");
+    setImageCaptionValue((editor.getAttributes("image").title as string) || "");
+    togglePanel("image");
+  }
+
+  function applyImageDetails() {
+    editor
+      ?.chain()
+      .focus()
+      .updateAttributes("image", {
+        alt: imageAltValue.trim(),
+        title: imageCaptionValue.trim(),
+      })
+      .run();
+    setOpenPanel(null);
+  }
+
+  function setHighlightColor(color: HighlightColor) {
+    if (!editor) return;
+    if (active?.highlightColor === color) {
+      editor.chain().focus().unsetHighlight().run();
+    } else {
+      editor.chain().focus().setHighlight({ color }).run();
     }
+    setOpenPanel(null);
+  }
 
-    editor.chain().focus().extendMarkRange("link").setLink({ href }).run();
+  function clearHighlight() {
+    editor?.chain().focus().unsetHighlight().run();
+    setOpenPanel(null);
+  }
+
+  function setAlign(value: Align) {
+    editor?.chain().focus().setTextAlign(value).run();
+  }
+
+  function clearFormatting() {
+    editor?.chain().focus().unsetAllMarks().run();
   }
 
   if (!editor) {
@@ -176,6 +304,7 @@ export default function RichTextEditor({ initialDoc, onChange, placeholder }: Pr
   }
 
   const words = active?.words ?? 0;
+  const characters = active?.characters ?? 0;
 
   return (
     <div
@@ -199,12 +328,57 @@ export default function RichTextEditor({ initialDoc, onChange, placeholder }: Pr
         <Tool label="Italic" hint="Italic (⌘I)" on={active?.italic} onClick={() => editor.chain().focus().toggleItalic().run()}>
           <em>I</em>
         </Tool>
+        <Tool label="Underline" hint="Underline (⌘U)" on={active?.underline} onClick={() => editor.chain().focus().toggleUnderline().run()}>
+          <span style={{ textDecoration: "underline" }}>U</span>
+        </Tool>
         <Tool label="Strikethrough" on={active?.strike} onClick={() => editor.chain().focus().toggleStrike().run()}>
           <s>S</s>
         </Tool>
         <Tool label="Inline code" on={active?.code} onClick={() => editor.chain().focus().toggleCode().run()}>
           {"</>"}
         </Tool>
+        <Tool label="Subscript" on={active?.subscript} onClick={() => editor.chain().focus().toggleSubscript().run()}>
+          X₂
+        </Tool>
+        <Tool label="Superscript" on={active?.superscript} onClick={() => editor.chain().focus().toggleSuperscript().run()}>
+          X²
+        </Tool>
+
+        <span className={s.divider} />
+
+        <div className={s.toolGroup}>
+          <Tool label="Highlight" on={Boolean(active?.highlightColor)} onClick={() => togglePanel("highlight")}>
+            <span className={s.highlightIcon}>H</span>
+          </Tool>
+          {openPanel === "highlight" && (
+            <div className={s.panel} ref={panelRef}>
+              <span className={s.panelLabel}>Highlight color</span>
+              <div className={s.swatches}>
+                <button
+                  type="button"
+                  className={`${s.swatch} ${s.swatchAmber} ${active?.highlightColor === "amber" ? s.swatchActive : ""}`}
+                  aria-label="Amber highlight"
+                  aria-pressed={active?.highlightColor === "amber"}
+                  onClick={() => setHighlightColor("amber")}
+                />
+                <button
+                  type="button"
+                  className={`${s.swatch} ${s.swatchTeal} ${active?.highlightColor === "teal" ? s.swatchActive : ""}`}
+                  aria-label="Teal highlight"
+                  aria-pressed={active?.highlightColor === "teal"}
+                  onClick={() => setHighlightColor("teal")}
+                />
+              </div>
+              {active?.highlightColor && (
+                <div className={s.panelActions}>
+                  <button type="button" className={`${s.panelBtn} ${s.panelBtnDanger}`} onClick={clearHighlight}>
+                    Remove
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
 
         <span className={s.divider} />
 
@@ -217,11 +391,26 @@ export default function RichTextEditor({ initialDoc, onChange, placeholder }: Pr
 
         <span className={s.divider} />
 
+        <Tool label="Align left" on={active?.align === "left"} onClick={() => setAlign("left")}>
+          L
+        </Tool>
+        <Tool label="Align center" on={active?.align === "center"} onClick={() => setAlign("center")}>
+          C
+        </Tool>
+        <Tool label="Align right" on={active?.align === "right"} onClick={() => setAlign("right")}>
+          R
+        </Tool>
+
+        <span className={s.divider} />
+
         <Tool label="Bulleted list" on={active?.bulletList} onClick={() => editor.chain().focus().toggleBulletList().run()}>
           •—
         </Tool>
         <Tool label="Numbered list" on={active?.orderedList} onClick={() => editor.chain().focus().toggleOrderedList().run()}>
           1.
+        </Tool>
+        <Tool label="Checklist" on={active?.taskList} onClick={() => editor.chain().focus().toggleTaskList().run()}>
+          ☑
         </Tool>
         <Tool label="Quote" on={active?.blockquote} onClick={() => editor.chain().focus().toggleBlockquote().run()}>
           &ldquo;
@@ -235,11 +424,87 @@ export default function RichTextEditor({ initialDoc, onChange, placeholder }: Pr
 
         <span className={s.divider} />
 
-        <Tool label={active?.link ? "Remove link" : "Add link"} on={active?.link} onClick={toggleLink}>
-          🔗
-        </Tool>
+        <div className={s.toolGroup}>
+          <Tool label={active?.link ? "Edit link" : "Add link"} on={active?.link} onClick={openLinkPanel}>
+            🔗
+          </Tool>
+          {openPanel === "link" && (
+            <div className={s.panel} ref={panelRef}>
+              <span className={s.panelLabel}>Link URL</span>
+              <input
+                type="text"
+                className={s.panelInput}
+                value={linkValue}
+                autoFocus
+                placeholder="https://"
+                onChange={(e) => setLinkValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    applyLink();
+                  }
+                }}
+              />
+              <div className={s.panelActions}>
+                {active?.link && (
+                  <button type="button" className={`${s.panelBtn} ${s.panelBtnDanger}`} onClick={removeLink}>
+                    Remove
+                  </button>
+                )}
+                <button type="button" className={`${s.panelBtn} ${s.panelBtnPrimary}`} onClick={applyLink}>
+                  Apply
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
         <Tool label="Insert image" onClick={() => fileInput.current?.click()}>
           🖼
+        </Tool>
+
+        <div className={s.toolGroup}>
+          <Tool label="Image details" disabled={!active?.image} onClick={openImagePanel}>
+            ℹ︎
+          </Tool>
+          {openPanel === "image" && (
+            <div className={s.panel} ref={panelRef}>
+              <span className={s.panelLabel}>Alt text</span>
+              <input
+                type="text"
+                className={s.panelInput}
+                value={imageAltValue}
+                autoFocus
+                placeholder="Describes the image for screen readers"
+                onChange={(e) => setImageAltValue(e.target.value)}
+              />
+              <span className={s.panelLabel}>Caption</span>
+              <input
+                type="text"
+                className={s.panelInput}
+                value={imageCaptionValue}
+                placeholder="Optional, shown under the image"
+                onChange={(e) => setImageCaptionValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    applyImageDetails();
+                  }
+                }}
+              />
+              <div className={s.panelActions}>
+                <button type="button" className={`${s.panelBtn} ${s.panelBtnPrimary}`} onClick={applyImageDetails}>
+                  Apply
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <span className={s.divider} />
+
+        <Tool label="Clear formatting" onClick={clearFormatting}>
+          🧹
         </Tool>
 
         <span className={s.divider} />
@@ -277,7 +542,8 @@ export default function RichTextEditor({ initialDoc, onChange, placeholder }: Pr
 
       <div className={s.foot}>
         <span>
-          {words.toLocaleString()} {words === 1 ? "word" : "words"}, about{" "}
+          {words.toLocaleString()} {words === 1 ? "word" : "words"} ·{" "}
+          {characters.toLocaleString()} {characters === 1 ? "character" : "characters"}, about{" "}
           {Math.max(1, Math.ceil(words / 200))} min read
         </span>
         <span>

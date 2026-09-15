@@ -8,7 +8,7 @@ import { INSIGHT_TAGS, type Insight, type InsightStatus } from "@/lib/supabase/t
 import { deriveExcerpt, formatDateTime, readingMinutes, slugify } from "@/lib/insights";
 import { asRichDoc, EMPTY_DOC, isDocEmpty, type RichDoc } from "@/lib/richtext";
 import RichTextEditor from "./RichTextEditor";
-import CoverImageField from "./CoverImageField";
+import InsightMediaField from "./InsightMediaField";
 import { useSession } from "./SessionProvider";
 import s from "./dashboard.module.css";
 
@@ -31,6 +31,8 @@ type Draft = {
   /** The rich-text document the editor actually edits. */
   doc: RichDoc;
   cover_image: string;
+  /** Extra images shown in a gallery strip on the article, alongside the cover. */
+  gallery: string[];
   status: InsightStatus;
 };
 
@@ -42,6 +44,7 @@ const EMPTY: Draft = {
   body: "",
   doc: EMPTY_DOC,
   cover_image: "",
+  gallery: [],
   status: "draft",
 };
 
@@ -96,6 +99,7 @@ export default function InsightEditor({ insightId }: { insightId: string | null 
           // rather than opening blank.
           doc: asRichDoc(row.body_json) ?? plainTextToDoc(row.body),
           cover_image: row.cover_image ?? "",
+          gallery: row.gallery ?? [],
           status: row.status,
         });
         setSlugTouched(true);
@@ -141,6 +145,7 @@ export default function InsightEditor({ insightId }: { insightId: string | null 
       body: candidate.body,
       body_json: candidate.doc,
       cover_image: candidate.cover_image.trim() || null,
+      gallery: candidate.gallery,
       read_minutes: readingMinutes(candidate.body),
       status,
     };
@@ -387,10 +392,12 @@ export default function InsightEditor({ insightId }: { insightId: string | null 
               </div>
 
               <div>
-                <span className="form-label">Cover photo</span>
-                <CoverImageField
-                  value={draft.cover_image}
-                  onChange={(url) => set("cover_image", url)}
+                <span className="form-label">Cover photo &amp; gallery</span>
+                <InsightMediaField
+                  coverImage={draft.cover_image}
+                  gallery={draft.gallery}
+                  onCoverChange={(url) => set("cover_image", url)}
+                  onGalleryChange={(urls) => set("gallery", urls)}
                 />
               </div>
             </div>

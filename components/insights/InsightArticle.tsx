@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import type { Insight } from "@/lib/supabase/types";
 import { formatDate } from "@/lib/insights";
+import { safeImageSrc } from "@/lib/richtext";
 import InsightBody from "./InsightBody";
 import s from "./insights.module.css";
 
@@ -96,6 +97,8 @@ export default function InsightArticle({
 
       <InsightBody body={insight.body} bodyJson={insight.body_json} />
 
+      <InsightGallery cover={insight.cover_image} gallery={insight.gallery} />
+
       <div
         style={{
           marginTop: "3rem",
@@ -119,5 +122,30 @@ export default function InsightArticle({
         </Link>
       </div>
     </article>
+  );
+}
+
+/**
+ * A strip of extra images below the article body. `gallery` comes straight
+ * off the row, so each URL is re-checked here the same way an in-article
+ * image src is in RichContent — the column is admin-writable outside this
+ * editor too.
+ */
+function InsightGallery({ cover, gallery }: { cover: string | null; gallery: string[] }) {
+  const images = gallery
+    .map((url) => safeImageSrc(url))
+    .filter((url): url is string => Boolean(url) && url !== cover);
+
+  if (images.length === 0) return null;
+
+  return (
+    <div className={s.gallery}>
+      {images.map((url) => (
+        <a key={url} href={url} target="_blank" rel="noopener noreferrer" className={s.galleryItem}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={url} alt="" loading="lazy" />
+        </a>
+      ))}
+    </div>
   );
 }

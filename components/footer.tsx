@@ -14,7 +14,7 @@ import styles from "./footer.module.css";
    ═══════════════════════════════════════════════════════════════════ */
 
 const footerLogoCommon = { alt: "CuxtonAI — Enterprise AI", width: 148, height: 36 };
-const { props: footerLogoDarkProps } = getImageProps({ ...footerLogoCommon, src: "/full_color-white.png" });
+const { props: footerLogoDarkProps } = getImageProps({ ...footerLogoCommon, src: "/logo/CUXTONAI_Logo_1.png" });
 
 type LinkItem = {
   label: string;

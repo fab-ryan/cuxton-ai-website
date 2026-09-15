@@ -102,6 +102,12 @@ create table if not exists public.insights (
 -- this file upgrades an existing project rather than failing.
 alter table public.insights add column if not exists body_json jsonb;
 
+-- Extra images shown in a gallery strip on the published article, alongside
+-- (not instead of) the single cover_image. Same insight-media bucket, same
+-- admin-only write policy. Added separately so re-running this file
+-- upgrades an existing project rather than failing.
+alter table public.insights add column if not exists gallery text[] not null default '{}';
+
 create index if not exists insights_status_published_at_idx
   on public.insights (status, published_at desc);
 
