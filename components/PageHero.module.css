@@ -382,3 +382,13 @@
 .headingHighlightAmber {
   color: inherit;
 }
+
+@media (max-width: 640px) {
+  .tagsRow {
+    justify-content: center;
+  }
+  .primaryBtn {
+    margin: auto;
+    margin-bottom: 0.75rem;
+  }
+}

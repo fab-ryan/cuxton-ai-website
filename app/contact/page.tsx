@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import AIQuotes from "@/components/contact/AIQuotes";
+import CompanyContact from "@/components/contact/CompanyContact";
 import { getSupabase } from "@/lib/supabase/client";
 
 /* ── Form state ── */
@@ -122,7 +124,7 @@ export default function ContactPage() {
       />
 
       {/* Form + sidebar */}
-      <section className="section-py">
+      <section id="enquiry" className="section-py">
         <div className="section-container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "3.5rem", alignItems: "start" }}
             className="contact-outer">
@@ -142,7 +144,7 @@ export default function ContactPage() {
                 {[
                   ["Initial response within 2 business days", "We&apos;ll review your submission and suggest a time to connect."],
                   ["A focused 45–60 minute conversation", "We discuss your objectives, current environment, data constraints and candidate AI opportunities."],
-                  ["No pitch. No product demo.", "This session is for us to understand your situation — not to sell you a solution."],
+                  ["No pitch. No product demo.", "This session is for us to understand your situation not to sell you a solution."],
                   ["A clear next step", "If there&apos;s a good fit, we&apos;ll outline potential directions. If not, we&apos;ll say so."],
                 ].map(([title, desc]) => (
                   <div key={title} style={{ display: "flex", gap: "0.875rem", marginBottom: "1rem", alignItems: "flex-start" }}>
@@ -164,7 +166,7 @@ export default function ContactPage() {
               <div style={{
                 background: "rgba(27,107,138,0.06)",
                 border: "1px solid rgba(27,107,138,0.15)",
-                 padding: "1.25rem",
+                padding: "1.25rem",
               }}>
                 <p style={{ fontSize: "0.78rem", color: "rgba(var(--foreground-rgb),0.4)", lineHeight: 1.65 }}>
                   <span style={{ color: "var(--cuxton-teal-light)", fontWeight: 700 }}>Privacy: </span>
@@ -319,7 +321,7 @@ export default function ContactPage() {
                             onClick={() => toggleTopic(topic)}
                             style={{
                               display: "flex", alignItems: "center", gap: "0.5rem",
-                              padding: "0.5rem 0.75rem",  cursor: "pointer",
+                              padding: "0.5rem 0.75rem", cursor: "pointer",
                               background: selected ? "rgba(27,107,138,0.15)" : "rgba(var(--bg-surface-rgb),0.6)",
                               border: `1px solid ${selected ? "rgba(27,107,138,0.4)" : "rgba(27,107,138,0.14)"}`,
                               color: selected ? "var(--cuxton-teal-light)" : "rgba(var(--foreground-rgb),0.45)",
@@ -400,6 +402,11 @@ export default function ContactPage() {
         </div>
 
       </section>
+
+      {/* Office & map, telephone, email, social — from data/company.ts */}
+      <CompanyContact />
+
+      <AIQuotes />
     </div>
   );
 }

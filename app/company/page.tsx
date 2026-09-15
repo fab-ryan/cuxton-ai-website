@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+
 import PageHero from "@/components/PageHero";
 import CompanyPrinciplesMatrix from "@/components/company/CompanyPrinciplesMatrix";
 import LeadershipCouncil from "@/components/company/LeadershipCouncil";

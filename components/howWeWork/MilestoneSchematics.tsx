@@ -1,517 +1,370 @@
 "use client";
 
 import React from "react";
+import { sch, cx, Tag, Arrow, Bullets, Meter, CheckIcon } from "./SchematicKit";
 
 /* ═══════════════════════════════════════════════════════════════════
    CUXTON AI — BESPOKE MILESTONE TECHNICAL SCHEMATICS & TOPOLOGY RADAR
+   The milestone schematics are HTML so they reflow: stacked on a phone,
+   side by side once their frame is wide enough (see Schematic.module.css).
    Strict solid token architecture. STRICTLY ZERO linear gradients.
    STRICTLY ZERO emojis.
    ═══════════════════════════════════════════════════════════════════ */
 
-interface SchematicProps {
-  stepNumber: string;
-  stepName: string;
-}
-
 /* ─── 01. DISCOVER: Workflow & Friction Scanner ───────────────────── */
 export function DiscoverSchematic() {
   return (
-    <svg viewBox="0 0 740 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-      {/* Background Grid Pattern */}
-      <rect x="0" y="0" width="740" height="180" rx="10" fill="var(--sch-deepest)" stroke="rgba(27,107,138,0.22)" strokeWidth="1" />
-      <line x1="20" y1="90" x2="720" y2="90" stroke="rgba(27,107,138,0.12)" strokeDasharray="4 4" />
-      <line x1="230" y1="10" x2="230" y2="170" stroke="rgba(27,107,138,0.12)" strokeDasharray="4 4" />
-      <line x1="510" y1="10" x2="510" y2="170" stroke="rgba(27,107,138,0.12)" strokeDasharray="4 4" />
+    <div className={sch.canvas}>
+      <div className={cx(sch.flow, sch.flowMd)}>
+        <div className={sch.group}>
+          <Tag caption>INPUT CHANNELS</Tag>
+          <ul className={sch.list}>
+            <li className={sch.chip}><span className={cx(sch.dot, sch.dotAmber)} />Executive Strategic Intent</li>
+            <li className={sch.chip}><span className={sch.dot} />Operational Workflow Logs</li>
+            <li className={sch.chip}><span className={sch.dot} />Enterprise IT Systems Map</li>
+            <li className={sch.chip}><span className={cx(sch.dot, sch.dotAmber)} />Compliance &amp; Policy Boundary</li>
+          </ul>
+        </div>
 
-      {/* Input Channels (Left) */}
-      <g transform="translate(20, 20)">
-        <text x="0" y="0" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">INPUT CHANNELS</text>
+        <Arrow />
 
-        {/* Channel 1 */}
-        <rect x="0" y="12" width="180" height="26" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
-        <circle cx="14" cy="25" r="3" fill="var(--cuxton-amber)" />
-        <text x="26" y="29" fill="var(--sch-text-2)" fontSize="10.5" fontWeight="600" fontFamily="sans-serif">Executive Strategic Intent</text>
+        <div className={cx(sch.panel, sch.raised, sch.edgeTeal, sch.wide)}>
+          <div className={sch.head}><Tag tone="amber">FRICTION DIAGNOSTIC ENGINE</Tag></div>
+          <Meter label="Manual Bottleneck Isolation" value={88} />
+          <Meter label="Data Ingestion Readiness Score" value={94} tone="amber" />
+          <Tag tone="dim" className={sch.stamp}>STATUS: 14 FRICTION POINTS IDENTIFIED</Tag>
+        </div>
 
-        {/* Channel 2 */}
-        <rect x="0" y="44" width="180" height="26" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
-        <circle cx="14" cy="57" r="3" fill="var(--cuxton-teal-light)" />
-        <text x="26" y="61" fill="var(--sch-text-2)" fontSize="10.5" fontWeight="600" fontFamily="sans-serif">Operational Workflow Logs</text>
+        <Arrow tone="amber" dashed />
 
-        {/* Channel 3 */}
-        <rect x="0" y="76" width="180" height="26" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
-        <circle cx="14" cy="89" r="3" fill="var(--cuxton-teal-light)" />
-        <text x="26" y="93" fill="var(--sch-text-2)" fontSize="10.5" fontWeight="600" fontFamily="sans-serif">Enterprise IT Systems Map</text>
-
-        {/* Channel 4 */}
-        <rect x="0" y="108" width="180" height="26" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
-        <circle cx="14" cy="121" r="3" fill="var(--cuxton-amber)" />
-        <text x="26" y="125" fill="var(--sch-text-2)" fontSize="10.5" fontWeight="600" fontFamily="sans-serif">Compliance & Policy Boundary</text>
-      </g>
-
-      {/* Connecting Flow Lines to Center */}
-      <path d="M200 45 H 240 V 90 H 260" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" fill="none" strokeDasharray="3 3" />
-      <path d="M200 77 H 260" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" fill="none" />
-      <path d="M200 109 H 260" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" fill="none" />
-      <path d="M200 141 H 240 V 90 H 260" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" fill="none" strokeDasharray="3 3" />
-
-      {/* Central Diagnostic Filter (Center) */}
-      <g transform="translate(260, 30)">
-        <rect x="0" y="0" width="220" height="120" rx="10" fill="var(--sch-panel-2)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-        <rect x="0" y="0" width="220" height="24" rx="10" fill="var(--sch-line)" />
-        <text x="12" y="16" fill="var(--cuxton-amber)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">FRICTION DIAGNOSTIC ENGINE</text>
-
-        <text x="14" y="44" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Manual Bottleneck Isolation</text>
-        <rect x="14" y="52" width="192" height="6" rx="3" fill="var(--sch-deep)" />
-        <rect x="14" y="52" width="168" height="6" rx="3" fill="var(--cuxton-teal-light)" />
-
-        <text x="14" y="78" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Data Ingestion Readiness Score</text>
-        <rect x="14" y="86" width="192" height="6" rx="3" fill="var(--sch-deep)" />
-        <rect x="14" y="86" width="180" height="6" rx="3" fill="var(--cuxton-amber)" />
-
-        <text x="14" y="108" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="monospace">STATUS: 14 FRICTION POINTS IDENTIFIED</text>
-      </g>
-
-      {/* Connector from Center to Right */}
-      <path d="M480 90 H 530" stroke="var(--cuxton-amber)" strokeWidth="2" strokeDasharray="4 2" fill="none" />
-      <polygon points="534,90 526,85 526,95" fill="var(--cuxton-amber)" />
-
-      {/* Verified Deliverable Output (Right) */}
-      <g transform="translate(540, 26)">
-        <text x="0" y="0" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">VERIFIED ASSET</text>
-        <rect x="0" y="8" width="180" height="126" rx="8" fill="var(--sch-panel)" stroke="rgba(245,166,35,0.4)" strokeWidth="1.5" />
-        <text x="14" y="30" fill="var(--cuxton-amber)" fontSize="12" fontWeight="600" fontFamily="sans-serif">AI Opportunity Catalog</text>
-        <text x="14" y="48" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="sans-serif">Quantified Value Sizing</text>
-        <line x1="14" y1="58" x2="166" y2="58" stroke="rgba(27,107,138,0.3)" />
-
-        <text x="14" y="76" fill="var(--sch-text-2)" fontSize="10" fontWeight="600" fontFamily="sans-serif">• 12 Candidate Use Cases</text>
-        <text x="14" y="94" fill="var(--sch-text-2)" fontSize="10" fontWeight="600" fontFamily="sans-serif">• Baseline ROI Estimates</text>
-        <text x="14" y="112" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="700" fontFamily="monospace">READY FOR STAGE 02 GATE</text>
-      </g>
-    </svg>
+        <div className={sch.group}>
+          <Tag caption>VERIFIED ASSET</Tag>
+          <div className={cx(sch.panel, sch.edgeAmberSoft)}>
+            <p className={cx(sch.title, sch.amber)}>AI Opportunity Catalog</p>
+            <p className={sch.note}>Quantified Value Sizing</p>
+            <hr className={sch.rule} />
+            <Bullets strong items={["12 Candidate Use Cases", "Baseline ROI Estimates"]} />
+            <Tag>READY FOR STAGE 02 GATE</Tag>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
 /* ─── 02. ASSESS: 6-Pillar Feasibility Radar Matrix ────────────────── */
+const RADAR_SCORES = [
+  { label: "Data Quality", value: "94%" },
+  { label: "Compliance", value: "100%" },
+  { label: "Scalability", value: "92%" },
+  { label: "ROI Speed", value: "86%" },
+  { label: "Adoption", value: "88%" },
+  { label: "Tech Viable", value: "91%" },
+];
+
+const PILLARS = [
+  "Data Provenance",
+  "EU AI Act / GDPR",
+  "Latency & Compute",
+  "API Security Bounds",
+  "ROI Breakeven Target",
+  "Operational Readiness",
+];
+
 export function AssessSchematic() {
   return (
-    <svg viewBox="0 0 740 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-      <rect x="0" y="0" width="740" height="180" rx="10" fill="var(--sch-deepest)" stroke="rgba(27,107,138,0.22)" strokeWidth="1" />
+    <div className={sch.canvas}>
+      <div className={sch.assess}>
+        <div className={cx(sch.group, sch.assessRadar)}>
+          <Tag caption>FEASIBILITY RADAR</Tag>
+          <div className={sch.radar}>
+            {/* Shape only — the scores are in the legend beside it. Clockwise
+                from the top, in the same order as the legend. */}
+            <svg className={sch.radarShape} viewBox="0 0 120 120" fill="none" aria-hidden="true">
+              <polygon points="60,8 105,34 105,86 60,112 15,86 15,34" stroke="var(--sch-line)" />
+              <polygon points="60,32 84,46 84,74 60,88 36,74 36,46" stroke="var(--sch-line)" />
+              <path d="M60 8V112M105 34L15 86M105 86L15 34" stroke="var(--sch-line)" strokeDasharray="2 3" />
+              <polygon
+                points="60,11 105,34 101,84 60,105 20,83 19,36"
+                fill="rgba(var(--cuxton-teal-mid-rgb), 0.18)"
+                stroke="var(--cuxton-teal-light)"
+                strokeWidth="2"
+              />
+            </svg>
+            <ul className={sch.legend}>
+              {RADAR_SCORES.map((s) => (
+                <li key={s.label}>
+                  <span>{s.label}</span>
+                  <span>{s.value}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-      {/* Radar Matrix Graphic (Left) */}
-      <g transform="translate(30, 20)">
-        <text x="0" y="0" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">FEASIBILITY RADAR</text>
+        <div className={cx(sch.group, sch.assessPillars)}>
+          <Tag caption>SIX-PILLAR STRESS TESTING</Tag>
+          <ul className={sch.pillars}>
+            {PILLARS.map((name, i) => (
+              <li key={name} className={cx(sch.panel, sch.compact, sch.edgeTeal)}>
+                <div className={sch.check}>
+                  <div>
+                    <Tag tone="dim">PILLAR 0{i + 1}</Tag>
+                    <p className={sch.title}>{name}</p>
+                  </div>
+                  <CheckIcon />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        {/* Concentric Assessment Polygons */}
-        <polygon points="100,20 160,55 160,115 100,145 40,115 40,55" fill="none" stroke="rgba(27,107,138,0.25)" strokeWidth="1" />
-        <polygon points="100,45 135,67 135,103 100,123 65,103 65,67" fill="none" stroke="rgba(27,107,138,0.18)" strokeWidth="1" />
-
-        {/* Empirical Assessment Result Shape */}
-        <polygon points="100,28 152,58 145,110 100,138 48,110 52,60" fill="rgba(var(--cuxton-teal-mid-rgb), 0.15)" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
-
-        {/* Labels at vertices */}
-        <text x="100" y="14" fill="var(--sch-text-2)" fontSize="8.5" fontWeight="700" textAnchor="middle" fontFamily="sans-serif">Data Quality (94%)</text>
-        <text x="165" y="55" fill="var(--sch-text-2)" fontSize="8.5" fontWeight="700" fontFamily="sans-serif">Compliance (100%)</text>
-        <text x="165" y="120" fill="var(--sch-text-2)" fontSize="8.5" fontWeight="700" fontFamily="sans-serif">Scalability (92%)</text>
-        <text x="100" y="156" fill="var(--sch-text-2)" fontSize="8.5" fontWeight="700" textAnchor="middle" fontFamily="sans-serif">ROI Speed (86%)</text>
-        <text x="35" y="120" fill="var(--sch-text-2)" fontSize="8.5" fontWeight="700" textAnchor="end" fontFamily="sans-serif">Adoption (88%)</text>
-        <text x="35" y="55" fill="var(--sch-text-2)" fontSize="8.5" fontWeight="700" textAnchor="end" fontFamily="sans-serif">Tech Viable (91%)</text>
-      </g>
-
-      {/* Six Diagnostic Pillar Badges (Center) */}
-      <g transform="translate(290, 24)">
-        <text x="0" y="0" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">SIX-PILLAR STRESS TESTING</text>
-
-        {/* Row 1 */}
-        <rect x="0" y="10" width="130" height="30" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1" />
-        <text x="10" y="24" fill="var(--sch-text-dim)" fontSize="8" fontFamily="monospace">PILLAR 01</text>
-        <text x="10" y="35" fill="var(--sch-text)" fontSize="9.5" fontWeight="700" fontFamily="sans-serif">Data Provenance</text>
-        <rect x="104" y="18" width="16" height="14" rx="3" fill="var(--sch-chip)" />
-        <path d="M107 25 L111 29 L117 21" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" fill="none" />
-
-        <rect x="140" y="10" width="130" height="30" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1" />
-        <text x="150" y="24" fill="var(--sch-text-dim)" fontSize="8" fontFamily="monospace">PILLAR 02</text>
-        <text x="150" y="35" fill="var(--sch-text)" fontSize="9.5" fontWeight="700" fontFamily="sans-serif">EU AI Act / GDPR</text>
-        <rect x="244" y="18" width="16" height="14" rx="3" fill="var(--sch-chip)" />
-        <path d="M247 25 L251 29 L257 21" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" fill="none" />
-
-        {/* Row 2 */}
-        <rect x="0" y="48" width="130" height="30" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1" />
-        <text x="10" y="62" fill="var(--sch-text-dim)" fontSize="8" fontFamily="monospace">PILLAR 03</text>
-        <text x="10" y="73" fill="var(--sch-text)" fontSize="9.5" fontWeight="700" fontFamily="sans-serif">Latency & Compute</text>
-        <rect x="104" y="56" width="16" height="14" rx="3" fill="var(--sch-chip)" />
-        <path d="M107 63 L111 67 L117 59" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" fill="none" />
-
-        <rect x="140" y="48" width="130" height="30" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1" />
-        <text x="150" y="62" fill="var(--sch-text-dim)" fontSize="8" fontFamily="monospace">PILLAR 04</text>
-        <text x="150" y="73" fill="var(--sch-text)" fontSize="9.5" fontWeight="700" fontFamily="sans-serif">API Security Bounds</text>
-        <rect x="244" y="56" width="16" height="14" rx="3" fill="var(--sch-chip)" />
-        <path d="M247 63 L251 67 L257 59" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" fill="none" />
-
-        {/* Row 3 */}
-        <rect x="0" y="86" width="130" height="30" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1" />
-        <text x="10" y="100" fill="var(--sch-text-dim)" fontSize="8" fontFamily="monospace">PILLAR 05</text>
-        <text x="10" y="111" fill="var(--sch-text)" fontSize="9.5" fontWeight="700" fontFamily="sans-serif">ROI Breakeven Target</text>
-        <rect x="104" y="94" width="16" height="14" rx="3" fill="var(--sch-chip)" />
-        <path d="M107 101 L111 105 L117 97" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" fill="none" />
-
-        <rect x="140" y="86" width="130" height="30" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1" />
-        <text x="150" y="100" fill="var(--sch-text-dim)" fontSize="8" fontFamily="monospace">PILLAR 06</text>
-        <text x="150" y="111" fill="var(--sch-text)" fontSize="9.5" fontWeight="700" fontFamily="sans-serif">Operational Readiness</text>
-        <rect x="244" y="94" width="16" height="14" rx="3" fill="var(--sch-chip)" />
-        <path d="M247 101 L251 105 L257 97" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" fill="none" />
-      </g>
-
-      {/* Audit Clearance Summary (Right) */}
-      <g transform="translate(580, 24)">
-        <text x="0" y="0" fill="var(--cuxton-amber)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">RISK AUDIT CLEARANCE</text>
-        <rect x="0" y="10" width="140" height="126" rx="8" fill="var(--sch-panel)" stroke="rgba(245,166,35,0.4)" strokeWidth="1.5" />
-        <rect x="12" y="22" width="116" height="24" rx="4" fill="var(--sch-deep)" stroke="var(--cuxton-teal-light)" strokeWidth="1" />
-        <text x="70" y="38" fill="var(--cuxton-teal-light)" fontSize="9.5" fontWeight="600" textAnchor="middle" fontFamily="monospace">ZERO BLOCKERS</text>
-
-        <text x="14" y="66" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Feasibility Score</text>
-        <text x="14" y="86" fill="var(--cuxton-amber)" fontSize="18" fontWeight="600" fontFamily="monospace">92.4 / 100</text>
-        <text x="14" y="106" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">Confidence: High</text>
-        <text x="14" y="122" fill="var(--cuxton-teal-light)" fontSize="9" fontFamily="monospace">APPROVED FOR PRIORITISATION</text>
-      </g>
-    </svg>
+        <div className={cx(sch.group, sch.assessAudit)}>
+          <Tag tone="amber" caption>RISK AUDIT CLEARANCE</Tag>
+          <div className={cx(sch.panel, sch.edgeAmberSoft)}>
+            <Tag className={sch.badge}>ZERO BLOCKERS</Tag>
+            <p className={sch.title}>Feasibility Score</p>
+            <p className={cx(sch.figure, sch.amber)}>92.4 / 100</p>
+            <p className={sch.note}>Confidence: High</p>
+            <Tag>APPROVED FOR PRIORITISATION</Tag>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
 /* ─── 03. PRIORITISE: Value vs. Complexity Decision Quadrant ───────── */
+const QUADRANT_POINTS = [
+  { id: "#2", x: 22, y: 30 },
+  { id: "#4", x: 25, y: 73 },
+  { id: "#3", x: 70, y: 77 },
+];
+
 export function PrioritiseSchematic() {
   return (
-    <svg viewBox="0 0 740 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-      <rect x="0" y="0" width="740" height="180" rx="10" fill="var(--sch-deepest)" stroke="rgba(27,107,138,0.22)" strokeWidth="1" />
+    <div className={sch.canvas}>
+      <div className={cx(sch.stack, sch.splitMd)}>
+        <div className={sch.group}>
+          <Tag caption>VALUE VS. COMPLEXITY DECISION QUADRANT</Tag>
+          <div className={sch.quad}>
+            <Tag tone="dim" className={sch.quadAxisY}>BUSINESS VALUE ↑</Tag>
+            <div className={sch.quadPlot}>
+              <div className={sch.quadTarget}>
+                <Tag tone="amber">HIGH IMPACT / HIGH FEASIBILITY</Tag>
+              </div>
+              {QUADRANT_POINTS.map((p) => (
+                <span key={p.id} className={sch.quadPoint} style={{ left: `${p.x}%`, top: `${p.y}%` }}>
+                  {p.id}
+                </span>
+              ))}
+              <span className={cx(sch.quadPoint, sch.quadPilot)} style={{ left: "80%", top: "42%" }}>
+                #1
+              </span>
+            </div>
+            <Tag tone="dim" className={sch.quadAxisX}>IMPLEMENTATION FEASIBILITY &amp; VELOCITY →</Tag>
+            <ul className={sch.quadLegend}>
+              <li><b className={sch.amber}>#1</b> Pilot selection</li>
+              <li><b>#2</b> High complexity</li>
+              <li><b>#3</b> Low leverage</li>
+              <li><b>#4</b> Low ROI</li>
+            </ul>
+          </div>
+        </div>
 
-      {/* 2x2 Decision Matrix (Left/Center) */}
-      <g transform="translate(40, 20)">
-        <text x="0" y="0" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">VALUE VS. COMPLEXITY DECISION QUADRANT</text>
-
-        {/* Coordinate Axes */}
-        <line x1="40" y1="130" x2="360" y2="130" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-        <line x1="40" y1="130" x2="40" y2="20" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-        <polygon points="364,130 356,126 356,134" fill="var(--cuxton-teal-light)" />
-        <polygon points="40,16 36,24 44,24" fill="var(--cuxton-teal-light)" />
-
-        <text x="200" y="146" fill="var(--sch-text-dim)" fontSize="9" textAnchor="middle" fontFamily="sans-serif">IMPLEMENTATION FEASIBILITY & VELOCITY →</text>
-        <text x="18" y="75" fill="var(--sch-text-dim)" fontSize="9" textAnchor="middle" transform="rotate(-90 18,75)" fontFamily="sans-serif">BUSINESS VALUE ↑</text>
-
-        {/* Quadrant Divider */}
-        <line x1="200" y1="20" x2="200" y2="130" stroke="rgba(27,107,138,0.2)" strokeDasharray="4 4" />
-        <line x1="40" y1="75" x2="360" y2="75" stroke="rgba(27,107,138,0.2)" strokeDasharray="4 4" />
-
-        {/* Quadrant Highlight: TARGET PILOT ZONE (Top Right) */}
-        <rect x="201" y="21" width="158" height="53" fill="rgba(245,166,35,0.08)" />
-        <text x="280" y="34" fill="var(--cuxton-amber)" fontSize="8.5" fontWeight="600" textAnchor="middle" fontFamily="monospace">HIGH IMPACT / HIGH FEASIBILITY</text>
-
-        {/* Unselected Candidates (Muted dots) */}
-        <circle cx="120" cy="100" r="4" fill="var(--sch-text-dim)" />
-        <text x="130" y="103" fill="var(--sch-text-faint)" fontSize="8" fontFamily="sans-serif">Case #4 (Low ROI)</text>
-
-        <circle cx="110" cy="50" r="4" fill="var(--sch-text-dim)" />
-        <text x="120" y="53" fill="var(--sch-text-faint)" fontSize="8" fontFamily="sans-serif">Case #2 (High Complexity)</text>
-
-        <circle cx="270" cy="105" r="4" fill="var(--sch-text-dim)" />
-        <text x="280" y="108" fill="var(--sch-text-faint)" fontSize="8" fontFamily="sans-serif">Case #3 (Low Leverage)</text>
-
-        {/* SELECTED PILOT USE CASE #1 (Glowing Amber Target) */}
-        <circle cx="300" cy="48" r="8" fill="var(--cuxton-amber)" />
-        <circle cx="300" cy="48" r="14" stroke="var(--cuxton-amber)" strokeWidth="1.5" strokeDasharray="3 2" fill="none" />
-        <rect x="210" y="56" width="140" height="18" rx="4" fill="var(--sch-panel)" stroke="var(--cuxton-amber)" strokeWidth="1" />
-        <text x="280" y="69" fill="var(--sch-text)" fontSize="9" fontWeight="600" textAnchor="middle" fontFamily="sans-serif">PILOT SELECTION: USE CASE #1</text>
-      </g>
-
-      {/* Prioritization Decision Card (Right) */}
-      <g transform="translate(440, 24)">
-        <text x="0" y="0" fill="var(--cuxton-amber)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">PILOT PROJECT CHARTER</text>
-        <rect x="0" y="10" width="260" height="126" rx="8" fill="var(--sch-panel)" stroke="rgba(245,166,35,0.4)" strokeWidth="1.5" />
-
-        <text x="16" y="32" fill="var(--sch-text)" fontSize="12" fontWeight="600" fontFamily="sans-serif">Charter Scope Boundary</text>
-        <text x="16" y="50" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="sans-serif">Unanimous Steering Consensus</text>
-        <line x1="16" y1="58" x2="244" y2="58" stroke="rgba(27,107,138,0.3)" />
-
-        <text x="16" y="78" fill="var(--sch-text-2)" fontSize="10.5" fontWeight="600" fontFamily="sans-serif">Targeted Velocity: 6-Week Deployment</text>
-        <text x="16" y="96" fill="var(--sch-text-2)" fontSize="10.5" fontWeight="600" fontFamily="sans-serif">Commercial KPI: 65% Process Reduction</text>
-        <text x="16" y="116" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" fontFamily="monospace">STATUS: RESOURCE ALLOCATED</text>
-      </g>
-    </svg>
+        <div className={sch.group}>
+          <Tag tone="amber" caption>PILOT PROJECT CHARTER</Tag>
+          <div className={cx(sch.panel, sch.edgeAmberSoft)}>
+            <p className={sch.title}>Charter Scope Boundary</p>
+            <p className={sch.note}>Unanimous Steering Consensus</p>
+            <hr className={sch.rule} />
+            <Bullets strong items={["Targeted Velocity: 6-Week Deployment", "Commercial KPI: 65% Process Reduction"]} />
+            <Tag className={sch.stamp}>STATUS: RESOURCE ALLOCATED</Tag>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
 /* ─── 04. DESIGN: Zero-Trust Architecture Blueprint ────────────────── */
+const DESIGN_BLOCKS = [
+  { tag: "01 · INGESTION", title: "Automated Sanitizer", points: ["PII Masking Engine", "Prompt Injection Shield"], status: "INPUT HARDENED" },
+  { tag: "02 · PERMISSIONS", title: "Contextual RBAC", points: ["Session Claim Token", "Zero Data Retention"], status: "ACCESS ISOLATED" },
+  { tag: "03 · INFERENCE", title: "Target Model Enclave", points: ["Temperature Locked", "Secondary Guardrail Check"], status: "DETERMINISTIC BOUND", amber: true },
+  { tag: "04 · AUDIT VAULT", title: "Cryptographic Log", points: ["SHA-256 Attribution", "SIEM Integration"], status: "SOC2 COMPLIANT" },
+];
+
 export function DesignSchematic() {
   return (
-    <svg viewBox="0 0 740 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-      <rect x="0" y="0" width="740" height="180" rx="10" fill="var(--sch-deepest)" stroke="rgba(27,107,138,0.22)" strokeWidth="1" />
-
-      <g transform="translate(30, 20)">
-        <text x="0" y="0" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">ZERO-TRUST SYSTEM ARCHITECTURE SPECIFICATION</text>
-      </g>
-
-      {/* Architecture Blocks (4 Sequential Enclaves) */}
-      <g transform="translate(30, 42)">
-        {/* Block 1: Ingestion Sanitizer */}
-        <rect x="0" y="0" width="150" height="105" rx="8" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.2" />
-        <rect x="0" y="0" width="150" height="22" rx="8" fill="var(--sch-line)" />
-        <text x="10" y="15" fill="var(--cuxton-amber)" fontSize="9" fontWeight="600" fontFamily="monospace">01 · INGESTION</text>
-        <text x="10" y="42" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Automated Sanitizer</text>
-        <text x="10" y="60" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">• PII Masking Engine</text>
-        <text x="10" y="76" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">• Prompt Injection Shield</text>
-        <text x="10" y="92" fill="var(--cuxton-teal-light)" fontSize="8.5" fontWeight="700" fontFamily="monospace">INPUT HARDENED</text>
-
-        {/* Connector 1 */}
-        <path d="M150 52 H 176" stroke="var(--cuxton-teal-light)" strokeWidth="2" fill="none" />
-        <polygon points="180,52 174,48 174,56" fill="var(--cuxton-teal-light)" />
-
-        {/* Block 2: RBAC Boundary */}
-        <rect x="180" y="0" width="150" height="105" rx="8" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.2" />
-        <rect x="180" y="0" width="150" height="22" rx="8" fill="var(--sch-line)" />
-        <text x="190" y="15" fill="var(--cuxton-amber)" fontSize="9" fontWeight="600" fontFamily="monospace">02 · PERMISSIONS</text>
-        <text x="190" y="42" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Contextual RBAC</text>
-        <text x="190" y="60" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">• Session Claim Token</text>
-        <text x="190" y="76" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">• Zero Data Retention</text>
-        <text x="190" y="92" fill="var(--cuxton-teal-light)" fontSize="8.5" fontWeight="700" fontFamily="monospace">ACCESS ISOLATED</text>
-
-        {/* Connector 2 */}
-        <path d="M330 52 H 356" stroke="var(--cuxton-teal-light)" strokeWidth="2" fill="none" />
-        <polygon points="360,52 354,48 354,56" fill="var(--cuxton-teal-light)" />
-
-        {/* Block 3: Model Inference Enclave */}
-        <rect x="360" y="0" width="150" height="105" rx="8" fill="var(--sch-panel)" stroke="var(--cuxton-amber)" strokeWidth="1.4" />
-        <rect x="360" y="0" width="150" height="22" rx="8" fill="var(--sch-amber-bg)" />
-        <text x="370" y="15" fill="var(--cuxton-amber)" fontSize="9" fontWeight="600" fontFamily="monospace">03 · INFERENCE</text>
-        <text x="370" y="42" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Target Model Enclave</text>
-        <text x="370" y="60" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">• Temperature Locked</text>
-        <text x="370" y="76" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">• Secondary Guardrail Check</text>
-        <text x="370" y="92" fill="var(--cuxton-amber)" fontSize="8.5" fontWeight="700" fontFamily="monospace">DETERMINISTIC BOUND</text>
-
-        {/* Connector 3 */}
-        <path d="M510 52 H 536" stroke="var(--cuxton-teal-light)" strokeWidth="2" fill="none" />
-        <polygon points="540,52 534,48 534,56" fill="var(--cuxton-teal-light)" />
-
-        {/* Block 4: Immutable Audit Telemetry */}
-        <rect x="540" y="0" width="140" height="105" rx="8" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.2" />
-        <rect x="540" y="0" width="140" height="22" rx="8" fill="var(--sch-line)" />
-        <text x="550" y="15" fill="var(--cuxton-amber)" fontSize="9" fontWeight="600" fontFamily="monospace">04 · AUDIT VAULT</text>
-        <text x="550" y="42" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Cryptographic Log</text>
-        <text x="550" y="60" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">• SHA-256 Attribution</text>
-        <text x="550" y="76" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">• SIEM Integration</text>
-        <text x="550" y="92" fill="var(--cuxton-teal-light)" fontSize="8.5" fontWeight="700" fontFamily="monospace">SOC2 COMPLIANT</text>
-      </g>
-    </svg>
+    <div className={sch.canvas}>
+      <Tag caption>ZERO-TRUST SYSTEM ARCHITECTURE SPECIFICATION</Tag>
+      <div className={cx(sch.flow, sch.flowLg)}>
+        {DESIGN_BLOCKS.map((b, i) => (
+          <React.Fragment key={b.tag}>
+            {i > 0 && <Arrow />}
+            <div className={cx(sch.panel, b.amber ? sch.edgeAmber : sch.edgeTeal)}>
+              <div className={cx(sch.head, b.amber && sch.headAmber)}><Tag tone="amber">{b.tag}</Tag></div>
+              <p className={sch.title}>{b.title}</p>
+              <Bullets items={b.points} />
+              <Tag tone={b.amber ? "amber" : "teal"} className={sch.stamp}>{b.status}</Tag>
+            </div>
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
   );
 }
 
 /* ─── 05. PROTOTYPE: Controlled Sandbox Validation Lab ─────────────── */
+const SANDBOX_METRICS = [
+  { label: "Inference Latency", value: "142 ms", status: "TARGET < 250ms OK" },
+  { label: "Deterministic Accuracy", value: "99.2%", status: "GATE PASSED", amber: true },
+  { label: "Hallucination Bound", value: "< 0.05%", status: "VERIFIED SECURE" },
+];
+
 export function PrototypeSchematic() {
   return (
-    <svg viewBox="0 0 740 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-      <rect x="0" y="0" width="740" height="180" rx="10" fill="var(--sch-deepest)" stroke="rgba(27,107,138,0.22)" strokeWidth="1" />
+    <div className={sch.canvas}>
+      <div className={cx(sch.stack, sch.splitMd)}>
+        <div className={sch.group}>
+          <Tag caption>CONTROLLED AIR-GAPPED PROTOTYPE LAB</Tag>
+          <div className={cx(sch.panel, sch.deep, sch.edgeTeal, sch.edgeDashed)}>
+            <Tag tone="amber">AIR-GAPPED BENCHMARK SANDBOX</Tag>
+            <div className={cx(sch.stack, sch.trioSm)}>
+              {SANDBOX_METRICS.map((m) => (
+                <div key={m.label} className={cx(sch.panel, sch.compact)}>
+                  <p className={sch.note}>{m.label}</p>
+                  <p className={cx(sch.figure, m.amber && sch.amber)}>{m.value}</p>
+                  <Tag tone="ok">{m.status}</Tag>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
-      {/* Sandbox Enclave Perimeter */}
-      <g transform="translate(30, 20)">
-        <text x="0" y="0" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">CONTROLLED AIR-GAPPED PROTOTYPE LAB</text>
-
-        <rect x="0" y="12" width="440" height="126" rx="8" fill="var(--sch-deep)" stroke="var(--cuxton-teal-light)" strokeDasharray="4 3" strokeWidth="1.5" />
-        <text x="14" y="32" fill="var(--cuxton-amber)" fontSize="10" fontWeight="600" fontFamily="monospace">AIR-GAPPED BENCHMARK SANDBOX</text>
-
-        {/* Metric Card 1 */}
-        <rect x="14" y="44" width="125" height="80" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
-        <text x="24" y="62" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">Inference Latency</text>
-        <text x="24" y="86" fill="var(--cuxton-teal-light)" fontSize="20" fontWeight="600" fontFamily="monospace">142 ms</text>
-        <text x="24" y="106" fill="var(--status-ok)" fontSize="9" fontWeight="700" fontFamily="monospace">TARGET &lt; 250ms OK</text>
-
-        {/* Metric Card 2 */}
-        <rect x="150" y="44" width="130" height="80" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
-        <text x="160" y="62" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">Deterministic Accuracy</text>
-        <text x="160" y="86" fill="var(--cuxton-amber)" fontSize="20" fontWeight="600" fontFamily="monospace">99.2%</text>
-        <text x="160" y="106" fill="var(--status-ok)" fontSize="9" fontWeight="700" fontFamily="monospace">GATE PASSED</text>
-
-        {/* Metric Card 3 */}
-        <rect x="290" y="44" width="135" height="80" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
-        <text x="300" y="62" fill="var(--sch-text-dim)" fontSize="9" fontFamily="sans-serif">Hallucination Bound</text>
-        <text x="300" y="86" fill="var(--cuxton-teal-light)" fontSize="20" fontWeight="600" fontFamily="monospace">&lt; 0.05%</text>
-        <text x="300" y="106" fill="var(--status-ok)" fontSize="9" fontWeight="700" fontFamily="monospace">VERIFIED SECURE</text>
-      </g>
-
-      {/* User Trial Results (Right) */}
-      <g transform="translate(500, 24)">
-        <text x="0" y="0" fill="var(--cuxton-amber)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">USER TESTING RESULTS</text>
-        <rect x="0" y="10" width="200" height="126" rx="8" fill="var(--sch-panel)" stroke="rgba(245,166,35,0.4)" strokeWidth="1.5" />
-
-        <text x="14" y="32" fill="var(--sch-text)" fontSize="11.5" fontWeight="600" fontFamily="sans-serif">End-User Usability Score</text>
-        <text x="14" y="56" fill="var(--cuxton-teal-light)" fontSize="22" fontWeight="600" fontFamily="monospace">94.8%</text>
-        <line x1="14" y1="68" x2="186" y2="68" stroke="rgba(27,107,138,0.3)" />
-
-        <text x="14" y="86" fill="var(--sch-text-2)" fontSize="10" fontWeight="600" fontFamily="sans-serif">• 18 Pilot Testers Completed</text>
-        <text x="14" y="104" fill="var(--sch-text-2)" fontSize="10" fontWeight="600" fontFamily="sans-serif">• Production Gap Matrix Clear</text>
-        <text x="14" y="122" fill="var(--cuxton-amber)" fontSize="9.5" fontWeight="600" fontFamily="monospace">READY FOR PRODUCTION BUILD</text>
-      </g>
-    </svg>
+        <div className={sch.group}>
+          <Tag tone="amber" caption>USER TESTING RESULTS</Tag>
+          <div className={cx(sch.panel, sch.edgeAmberSoft)}>
+            <p className={sch.title}>End-User Usability Score</p>
+            <p className={sch.figure}>94.8%</p>
+            <hr className={sch.rule} />
+            <Bullets strong items={["18 Pilot Testers Completed", "Production Gap Matrix Clear"]} />
+            <Tag tone="amber">READY FOR PRODUCTION BUILD</Tag>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
 /* ─── 06. DEPLOY: Hardened Production Deployment Topology ─────────── */
+const DEPLOY_COMPONENTS = [
+  { tag: "API GATEWAY", title: "Hardened Edge", detail: "Rate Limited / mTLS", status: "ACTIVE 24/7", tone: "ok" as const },
+  { tag: "CONTAINER CLUSTER", title: "Multi-Zone Pods", detail: "Zero-Downtime Failover", status: "HEALTHY (3 REPLICAS)", tone: "ok" as const },
+  { tag: "INFRASTRUCTURE SEC", title: "Pen-Test Verified", detail: "Zero Critical Defects", status: "AUDIT CERTIFIED", tone: "amber" as const },
+  { tag: "RUNBOOKS & SRE", title: "Disaster Recovery", detail: "RTO < 5m / RPO < 1m", status: "OPS CLEARED", tone: "teal" as const },
+];
+
 export function DeploySchematic() {
   return (
-    <svg viewBox="0 0 740 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-      <rect x="0" y="0" width="740" height="180" rx="10" fill="var(--sch-deepest)" stroke="rgba(27,107,138,0.22)" strokeWidth="1" />
-
-      <g transform="translate(30, 20)">
-        <text x="0" y="0" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">DEDICATED CLIENT TENANT INFRASTRUCTURE</text>
-
-        {/* VPC Perimeter Border */}
-        <rect x="0" y="12" width="680" height="126" rx="8" fill="var(--sch-deep)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-        <rect x="0" y="12" width="180" height="20" rx="8" fill="var(--sch-line)" />
-        <text x="10" y="26" fill="var(--cuxton-amber)" fontSize="8.5" fontWeight="600" fontFamily="monospace">SECURE ENCLAVE BOUNDARY</text>
-
-        {/* Core Components inside Tenant */}
-        {/* Component 1 */}
-        <g transform="translate(18, 42)">
-          <rect x="0" y="0" width="130" height="82" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.4)" />
-          <text x="10" y="18" fill="var(--cuxton-teal-light)" fontSize="8" fontWeight="600" fontFamily="monospace">API GATEWAY</text>
-          <text x="10" y="36" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Hardened Edge</text>
-          <text x="10" y="54" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="sans-serif">Rate Limited / mTLS</text>
-          <text x="10" y="70" fill="var(--status-ok)" fontSize="8.5" fontWeight="700" fontFamily="monospace">ACTIVE 24/7</text>
-        </g>
-
-        <path d="M152 83 H 178" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-
-        {/* Component 2 */}
-        <g transform="translate(180, 42)">
-          <rect x="0" y="0" width="140" height="82" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.4)" />
-          <text x="10" y="18" fill="var(--cuxton-teal-light)" fontSize="8" fontWeight="600" fontFamily="monospace">CONTAINER CLUSTER</text>
-          <text x="10" y="36" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Multi-Zone Pods</text>
-          <text x="10" y="54" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="sans-serif">Zero-Downtime Failover</text>
-          <text x="10" y="70" fill="var(--status-ok)" fontSize="8.5" fontWeight="700" fontFamily="monospace">HEALTHY (3 REPLICAS)</text>
-        </g>
-
-        <path d="M324 83 H 350" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-
-        {/* Component 3 */}
-        <g transform="translate(352, 42)">
-          <rect x="0" y="0" width="140" height="82" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-amber)" strokeWidth="1.2" />
-          <text x="10" y="18" fill="var(--cuxton-amber)" fontSize="8" fontWeight="600" fontFamily="monospace">INFRASTRUCTURE SEC</text>
-          <text x="10" y="36" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Pen-Test Verified</text>
-          <text x="10" y="54" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="sans-serif">Zero Critical Defects</text>
-          <text x="10" y="70" fill="var(--cuxton-amber)" fontSize="8.5" fontWeight="700" fontFamily="monospace">AUDIT CERTIFIED</text>
-        </g>
-
-        <path d="M496 83 H 522" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-
-        {/* Component 4 */}
-        <g transform="translate(524, 42)">
-          <rect x="0" y="0" width="138" height="82" rx="6" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.4)" />
-          <text x="10" y="18" fill="var(--cuxton-teal-light)" fontSize="8" fontWeight="600" fontFamily="monospace">RUNBOOKS &amp; SRE</text>
-          <text x="10" y="36" fill="var(--sch-text)" fontSize="11" fontWeight="700" fontFamily="sans-serif">Disaster Recovery</text>
-          <text x="10" y="54" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="sans-serif">RTO &lt; 5m / RPO &lt; 1m</text>
-          <text x="10" y="70" fill="var(--cuxton-teal-light)" fontSize="8.5" fontWeight="700" fontFamily="monospace">OPS CLEARED</text>
-        </g>
-      </g>
-    </svg>
+    <div className={sch.canvas}>
+      <Tag caption>DEDICATED CLIENT TENANT INFRASTRUCTURE</Tag>
+      <div className={cx(sch.panel, sch.deep, sch.edgeTeal)}>
+        <div className={sch.tab}><Tag tone="amber">SECURE ENCLAVE BOUNDARY</Tag></div>
+        <div className={cx(sch.flow, sch.flowLg)}>
+          {DEPLOY_COMPONENTS.map((c, i) => (
+            <React.Fragment key={c.tag}>
+              {i > 0 && <Arrow />}
+              <div className={cx(sch.panel, sch.compact, c.tone === "amber" && sch.edgeAmber)}>
+                <Tag tone={c.tone === "amber" ? "amber" : "teal"}>{c.tag}</Tag>
+                <p className={sch.title}>{c.title}</p>
+                <p className={sch.note}>{c.detail}</p>
+                <Tag tone={c.tone}>{c.status}</Tag>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
 /* ─── 07. ENABLE: Workforce Certification & Custody Handover ──────── */
+const ENABLE_TRACKS = [
+  { tag: "TRACK 01 · OPERATORS", title: "Interactive Academy", points: ["Workflow Integration Labs", "Exception Handling Drills"], status: "100% OPERATORS CERTIFIED" },
+  { tag: "TRACK 02 · SYSTEM ADMINS", title: "Operational Custody", points: ["Incident Response Playbooks", "Independent Drill Execution"], status: "ADMIN DRILL PASSED", amber: true },
+  { tag: "TRACK 03 · LEADERSHIP", title: "Governance Protocol", points: ["Continuous Audit Dashboard", "Escalation Threshold Framework"], status: "GOVERNANCE CODIFIED" },
+];
+
 export function EnableSchematic() {
   return (
-    <svg viewBox="0 0 740 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-      <rect x="0" y="0" width="740" height="180" rx="10" fill="var(--sch-deepest)" stroke="rgba(27,107,138,0.22)" strokeWidth="1" />
-
-      <g transform="translate(30, 20)">
-        <text x="0" y="0" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">WORKFORCE ENABLEMENT &amp; CUSTODY MATRIX</text>
-
-        {/* Track 1: End-User Operators */}
-        <g transform="translate(0, 16)">
-          <rect x="0" y="0" width="210" height="120" rx="8" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.2" />
-          <rect x="0" y="0" width="210" height="22" rx="8" fill="var(--sch-line)" />
-          <text x="12" y="15" fill="var(--cuxton-amber)" fontSize="8.5" fontWeight="600" fontFamily="monospace">TRACK 01 · OPERATORS</text>
-
-          <text x="12" y="42" fill="var(--sch-text)" fontSize="11.5" fontWeight="700" fontFamily="sans-serif">Interactive Academy</text>
-          <text x="12" y="60" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="sans-serif">• Workflow Integration Labs</text>
-          <text x="12" y="78" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="sans-serif">• Exception Handling Drills</text>
-          <rect x="12" y="90" width="186" height="18" rx="4" fill="var(--sch-deep)" />
-          <text x="105" y="103" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="600" textAnchor="middle" fontFamily="monospace">100% OPERATORS CERTIFIED</text>
-        </g>
-
-        {/* Track 2: System Administrators */}
-        <g transform="translate(235, 16)">
-          <rect x="0" y="0" width="210" height="120" rx="8" fill="var(--sch-panel)" stroke="var(--cuxton-amber)" strokeWidth="1.2" />
-          <rect x="0" y="0" width="210" height="22" rx="8" fill="var(--sch-amber-bg)" />
-          <text x="12" y="15" fill="var(--cuxton-amber)" fontSize="8.5" fontWeight="600" fontFamily="monospace">TRACK 02 · SYSTEM ADMINS</text>
-
-          <text x="12" y="42" fill="var(--sch-text)" fontSize="11.5" fontWeight="700" fontFamily="sans-serif">Operational Custody</text>
-          <text x="12" y="60" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="sans-serif">• Incident Response Playbooks</text>
-          <text x="12" y="78" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="sans-serif">• Independent Drill Execution</text>
-          <rect x="12" y="90" width="186" height="18" rx="4" fill="var(--sch-deep)" />
-          <text x="105" y="103" fill="var(--cuxton-amber)" fontSize="9" fontWeight="600" textAnchor="middle" fontFamily="monospace">ADMIN DRILL PASSED</text>
-        </g>
-
-        {/* Track 3: Governance Council */}
-        <g transform="translate(470, 16)">
-          <rect x="0" y="0" width="210" height="120" rx="8" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.2" />
-          <rect x="0" y="0" width="210" height="22" rx="8" fill="var(--sch-line)" />
-          <text x="12" y="15" fill="var(--cuxton-amber)" fontSize="8.5" fontWeight="600" fontFamily="monospace">TRACK 03 · LEADERSHIP</text>
-
-          <text x="12" y="42" fill="var(--sch-text)" fontSize="11.5" fontWeight="700" fontFamily="sans-serif">Governance Protocol</text>
-          <text x="12" y="60" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="sans-serif">• Continuous Audit Dashboard</text>
-          <text x="12" y="78" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="sans-serif">• Escalation Threshold Framework</text>
-          <rect x="12" y="90" width="186" height="18" rx="4" fill="var(--sch-deep)" />
-          <text x="105" y="103" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="600" textAnchor="middle" fontFamily="monospace">GOVERNANCE CODIFIED</text>
-        </g>
-      </g>
-    </svg>
+    <div className={sch.canvas}>
+      <Tag caption>WORKFORCE ENABLEMENT &amp; CUSTODY MATRIX</Tag>
+      <div className={cx(sch.stack, sch.trioMd)}>
+        {ENABLE_TRACKS.map((t) => (
+          <div key={t.tag} className={cx(sch.panel, t.amber ? sch.edgeAmber : sch.edgeTeal)}>
+            <div className={cx(sch.head, t.amber && sch.headAmber)}><Tag tone="amber">{t.tag}</Tag></div>
+            <p className={sch.title}>{t.title}</p>
+            <Bullets items={t.points} />
+            <Tag tone={t.amber ? "amber" : "teal"} className={sch.stamp}>{t.status}</Tag>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
 /* ─── 08. OPERATE: Continuous Telemetry & Drift Observability ──────── */
 export function OperateSchematic() {
   return (
-    <svg viewBox="0 0 740 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-      <rect x="0" y="0" width="740" height="180" rx="10" fill="var(--sch-deepest)" stroke="rgba(27,107,138,0.22)" strokeWidth="1" />
+    <div className={sch.canvas}>
+      <Tag caption>CONTINUOUS OBSERVABILITY &amp; DRIFT TELEMETRY</Tag>
+      <div className={cx(sch.stack, sch.splitMd)}>
+        <div className={sch.panel}>
+          <div className={sch.stats}>
+            <div className={sch.stat}>
+              <Tag tone="dim">SYSTEM AVAILABILITY</Tag>
+              <p className={cx(sch.figure, sch.strong)}>99.98%</p>
+            </div>
+            <div className={sch.stat}>
+              <Tag tone="dim">DATA DRIFT VARIANCE</Tag>
+              <p className={cx(sch.figure, sch.ok)}>0.02%</p>
+              <Tag tone="ok">NOMINAL</Tag>
+            </div>
+            <div className={sch.stat}>
+              <Tag tone="dim">AUTOMATED RETRAIN</Tag>
+              <p className={cx(sch.figure, sch.amber)}>ACTIVE BOUND</p>
+            </div>
+          </div>
+          {/* Stretches to any width; the stroke stays 2px regardless. */}
+          <div className={sch.trace} aria-hidden="true">
+            <svg viewBox="0 0 360 40" preserveAspectRatio="none" fill="none">
+              <path
+                d="M0 20 Q 30 5, 60 20 T 120 20 T 180 22 T 240 18 T 300 20 T 360 19"
+                stroke="var(--cuxton-teal-light)"
+                strokeWidth="2"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+            <span className={sch.traceEnd} />
+          </div>
+          <Tag>24/7 SIEM DRIFT OBSERVABILITY ACTIVE</Tag>
+        </div>
 
-      <g transform="translate(30, 20)">
-        <text x="0" y="0" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">CONTINUOUS OBSERVABILITY &amp; DRIFT TELEMETRY</text>
-
-        {/* Telemetry Waveform Graph (Left) */}
-        <g transform="translate(0, 16)">
-          <rect x="0" y="0" width="410" height="120" rx="8" fill="var(--sch-panel)" stroke="rgba(27,107,138,0.3)" />
-          <line x1="15" y1="60" x2="395" y2="60" stroke="rgba(27,107,138,0.2)" strokeDasharray="3 3" />
-
-          {/* Stable Performance Wave (Zero linear gradient) */}
-          <path d="M20 60 Q 50 45, 80 60 T 140 60 T 200 62 T 260 58 T 320 60 T 380 59" stroke="var(--cuxton-teal-light)" strokeWidth="2" fill="none" />
-          <circle cx="380" cy="59" r="4" fill="var(--cuxton-teal-light)" />
-
-          {/* Metric Overlays */}
-          <text x="20" y="24" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="monospace">SYSTEM AVAILABILITY</text>
-          <text x="20" y="44" fill="var(--sch-text)" fontSize="16" fontWeight="600" fontFamily="monospace">99.98%</text>
-
-          <text x="160" y="24" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="monospace">DATA DRIFT VARIANCE</text>
-          <text x="160" y="44" fill="var(--status-ok)" fontSize="16" fontWeight="600" fontFamily="monospace">0.02% (NOMINAL)</text>
-
-          <text x="310" y="24" fill="var(--sch-text-dim)" fontSize="8.5" fontFamily="monospace">AUTOMATED RETRAIN</text>
-          <text x="310" y="44" fill="var(--cuxton-amber)" fontSize="16" fontWeight="600" fontFamily="monospace">ACTIVE BOUND</text>
-
-          <text x="20" y="105" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" fontFamily="monospace">24/7 SIEM DRIFT OBSERVABILITY ACTIVE</text>
-        </g>
-
-        {/* Long-Term Horizon Strategy (Right) */}
-        <g transform="translate(435, 16)">
-          <rect x="0" y="0" width="245" height="120" rx="8" fill="var(--sch-panel)" stroke="rgba(245,166,35,0.4)" strokeWidth="1.5" />
-          <text x="14" y="24" fill="var(--cuxton-amber)" fontSize="9" fontWeight="600" letterSpacing="0.1em" fontFamily="monospace">QUARTERLY EXPANSION HORIZON</text>
-
-          <text x="14" y="46" fill="var(--sch-text)" fontSize="12" fontWeight="600" fontFamily="sans-serif">Value Scale Roadmap</text>
-          <text x="14" y="66" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="sans-serif">• Quarterly Steering Review</text>
-          <text x="14" y="84" fill="var(--sch-text-dim)" fontSize="9.5" fontFamily="sans-serif">• Adjacent Workflow Mapping</text>
-          <rect x="14" y="94" width="217" height="16" rx="3" fill="var(--sch-deep)" />
-          <text x="122" y="106" fill="var(--cuxton-teal-light)" fontSize="8.5" fontWeight="600" textAnchor="middle" fontFamily="monospace">ENTERPRISE SCALE CERTIFIED</text>
-        </g>
-      </g>
-    </svg>
+        <div className={cx(sch.panel, sch.edgeAmberSoft)}>
+          <Tag tone="amber">QUARTERLY EXPANSION HORIZON</Tag>
+          <p className={sch.title}>Value Scale Roadmap</p>
+          <Bullets items={["Quarterly Steering Review", "Adjacent Workflow Mapping"]} />
+          <Tag className={sch.stamp}>ENTERPRISE SCALE CERTIFIED</Tag>
+        </div>
+      </div>
+    </div>
   );
 }
 
 /* ─── STICKY COMMAND DECK TOPOLOGY RADAR ───────────────────────────── */
+/* Desktop-only (the deck is hidden below 1024px), so it stays an SVG. */
 export function TopologyRadarDeck({ activeStepIndex }: { activeStepIndex: number }) {
   const steps = [
     { n: "01", name: "Discover", angle: -90 },

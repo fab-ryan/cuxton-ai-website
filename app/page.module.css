@@ -953,7 +953,7 @@
 
 .diagram__layerSub {
   font-size: 0.72rem;
-  color: rgba(232, 237, 245, 0.4);
+  color: rgba(232, 237, 245, 1);
   line-height: 1.4;
 }
 
@@ -967,6 +967,20 @@
   margin-top: 1.25rem;
   text-align: center;
   font-size: 0.68rem;
-  color: rgba(232, 237, 245, 0.25);
+  color: rgba(232, 237, 245, 0.8);
   letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+  .diagram__footer {
+    font-size: 0.65rem;
+  }
+  .hero__tags {
+    justify-content: center;
+  }
+  .hero__ctaPrimary,
+  .hero__ctaSecondary {
+    margin: auto;
+    margin-bottom: 0.75rem;
+  }
 }

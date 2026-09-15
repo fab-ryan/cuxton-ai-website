@@ -375,6 +375,55 @@
   margin-bottom: 1.5rem;
 }
 
+/* Each principle ships two drawings. The wide one is laid out on a 340-unit
+   row; squeezed into a phone-width stage it shrank its labels to ~5px, so
+   below 560px a stacked drawing with larger type takes its place. Height
+   follows the viewBox instead of a fixed 160px, which letterboxed it. */
+.graphicWide,
+.graphicTall {
+  width: 100%;
+}
+
+.graphicWide svg,
+.graphicTall svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.graphicWide {
+  max-width: 460px;
+}
+
+.graphicTall {
+  display: none;
+  max-width: 320px;
+}
+
+@media (max-width: 559px) {
+  .graphicWide {
+    display: none;
+  }
+
+  .graphicTall {
+    display: block;
+  }
+
+  /* Hand the drawing and the copy the width the desktop padding was eating. */
+  .narrativeCol {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .schematicCol {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .schematicVisualStage {
+    min-height: 0;
+    padding: 1rem 0.75rem;
+  }
+}
+
 .schematicFooter {
   display: flex;
   align-items: center;

@@ -100,7 +100,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
   margin-bottom: 0.5rem;
+}
+
+.mobileStepName {
+  text-align: right;
 }
 
 .mobileStepBadge {
@@ -518,8 +523,9 @@
 
 .cardMetaGroup {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.4rem 0.75rem;
   margin-bottom: 0.5rem;
 }
 
@@ -615,36 +621,28 @@
   background-color: var(--cuxton-amber);
 }
 
-/* The schematics are drawn on a fixed 740x180 canvas. Scaled down to a
-   phone's width they shrink to ~30% and the labels become unreadable, so
-   below 768px they keep a legible width and pan sideways instead. */
-.schematicHint {
-  display: none;
-}
+/* The schematics reflow on their own (Schematic.module.css), so on a
+   phone the job here is only to stop nested padding eating the width. */
+@media (max-width: 639px) {
+  .milestoneCard {
+    padding: 1.15rem;
+  }
 
-@media (max-width: 767px) {
   .schematicContainer {
-    padding: 0.85rem;
+    padding: 0.75rem;
   }
 
-  .schematicViewport {
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    padding-bottom: 0.5rem;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(27, 107, 138, 0.55) transparent;
+  .pipelineSection,
+  .specsBox {
+    padding: 1rem;
   }
 
-  .schematicViewport > svg {
-    min-width: 720px;
+  .advancementGateCard {
+    padding: 1rem 1.1rem;
   }
 
-  .schematicHint {
-    display: block;
-    margin: 0.35rem 0 0;
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: rgba(var(--foreground-rgb), 0.6);
+  .streamFooter {
+    padding: 1.35rem;
   }
 }
 
