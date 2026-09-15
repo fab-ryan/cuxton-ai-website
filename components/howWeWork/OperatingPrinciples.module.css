@@ -341,8 +341,10 @@
 
 .visualCardHeader {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 0.4rem 1rem;
   margin-bottom: 1rem;
   padding-bottom: 0.65rem;
   border-bottom: 1px solid rgba(27, 107, 138, 0.2);
@@ -365,6 +367,26 @@
 
 .visualGraphicBox {
   width: 100%;
+}
+
+/* The graphics reflow on their own (Schematic.module.css); on a phone
+   the nested stage + card padding just needs to give them the width. */
+@media (max-width: 639px) {
+  .section {
+    padding: 4.5rem 0 5.5rem;
+  }
+
+  .slideStage {
+    padding: 1.15rem;
+  }
+
+  .visualCard {
+    padding: 0.85rem;
+  }
+
+  .guaranteesBox {
+    padding: 1rem;
+  }
 }
 
 /* ─── ALL-PRINCIPLES QUICK-SELECTOR GRID (6 Cards) ────────────────── */

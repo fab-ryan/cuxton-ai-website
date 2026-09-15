@@ -313,6 +313,32 @@
   animation: svgFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* The portrait recomposition. Below 640px a phone has ~300px of usable
+   width, which scales the 560-wide diagram to half size and takes its
+   labels under 5px; the 340-wide one lands near 1:1 instead. */
+.svgMobile {
+  display: none;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  animation: svgFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 640px) {
+  .illustration {
+    min-height: 0;
+    padding: 1rem 0.5rem;
+  }
+
+  .svgContainer {
+    display: none;
+  }
+
+  .svgMobile {
+    display: block;
+  }
+}
+
 @keyframes svgFadeIn {
   from {
     opacity: 0;

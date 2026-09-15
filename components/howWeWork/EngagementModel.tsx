@@ -396,7 +396,9 @@ export default function EngagementModel() {
   return (
     <section className={styles.section} id="engagement-model">
 
-      <div className="container relative z-10 max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 text-left">
+      {/* Children only get their extra inset from sm up: on a phone the
+          doubled gutter left the milestone cards ~310px wide. */}
+      <div className="container relative z-10 max-w-7xl mx-auto px-6 sm:*:px-4 lg:px-8 text-left">
         {/* Section Header */}
         <div className={styles.header}>
           <h2 className={styles.heading}>
@@ -585,12 +587,7 @@ export default function EngagementModel() {
                         SPECIFICATION ACTIVE
                       </span>
                     </div>
-                    <div className={styles.schematicViewport}>
-                      <MilestoneSchematic stepNumber={step.n} />
-                    </div>
-                    <p className={styles.schematicHint} aria-hidden="true">
-                      Swipe sideways to see the full schematic →
-                    </p>
+                    <MilestoneSchematic stepNumber={step.n} />
                   </div>
 
                   {/* Visual Workflow Pipeline Diagram (Input -> Diagnostic -> Target Deliverable) */}

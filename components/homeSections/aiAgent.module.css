@@ -293,7 +293,7 @@
 }
 
 .statusComplete {
-  background: rgba(var(--status-ok-rgb), 0.12);
+  background: white;
 }
 
 .statusReview {

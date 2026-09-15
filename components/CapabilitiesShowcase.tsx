@@ -170,7 +170,6 @@ function PrivateAiIllustration() {
         <circle cx="180" cy="24" r="16" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.5" />
         {/* Lock Icon */}
         <path d="M176 24v-3a4 4 0 0 1 8 0v3m-10 0h12v7h-12z" stroke="#F5A623" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <text x="215" y="28" fill="var(--showcase-text-primary)" fontSize="5.5" fontWeight="600">ENCRYPTED HARDWARE ENCLAVE (HSM)</text>
       </g>
 
       {/* Layer 3: Model Weights Runtime Core (Top) */}
@@ -496,6 +495,332 @@ function GovernanceIllustration() {
 }
 
 /* ─────────────────────────────────────────────────────────────────
+   MOBILE ILLUSTRATIONS (≤640px)
+
+   The diagrams above are 560×300 and label things down to 8px. Scaled
+   into a phone's ~300px of usable width they render at roughly half
+   size, which puts that type under 5px — present, but unreadable.
+
+   These are portrait 340×420 recompositions of the same six ideas:
+   the same blocks stacked instead of spread, the incidental detail
+   dropped, and nothing smaller than 10px. They share one viewBox so
+   the panel doesn't change height as you switch tabs.
+   ───────────────────────────────────────────────────────────────── */
+
+function MobileIllustration({ id }: { id: string }) {
+  switch (id) {
+    case "private-ai":
+      return <PrivateAiMobile />;
+    case "knowledge-grounded":
+      return <KnowledgeGroundedMobile />;
+    case "workflow-automation":
+      return <WorkflowAutomationMobile />;
+    case "role-specific":
+      return <RoleSpecificMobile />;
+    case "enterprise-integration":
+      return <EnterpriseIntegrationMobile />;
+    case "governance":
+      return <GovernanceMobile />;
+    default:
+      return <PrivateAiMobile />;
+  }
+}
+
+/* 1. PRIVATE AI — hardened stack, bottom-up */
+function PrivateAiMobile() {
+  return (
+    <svg className={styles.svgMobile} viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="8" width="324" height="404" rx="12" stroke="var(--cuxton-teal)" strokeWidth="1.5" strokeDasharray="6 6" />
+
+      {/* Boundary badges */}
+      <rect x="22" y="24" width="154" height="28" rx="4" fill="var(--showcase-card-bg)" stroke="var(--showcase-card-border)" strokeWidth="1" />
+      <text x="33" y="43" fill="var(--cuxton-teal-text)" fontSize="11" fontFamily="monospace" fontWeight="700">ZONE: AIR-GAPPED</text>
+      <rect x="186" y="24" width="132" height="28" rx="4" fill="var(--showcase-card-bg)" stroke="rgba(245,166,35,0.4)" strokeWidth="1" />
+      <circle cx="200" cy="38" r="4" fill="var(--cuxton-amber)" />
+      <text x="212" y="43" fill="var(--cuxton-amber)" fontSize="11" fontFamily="monospace" fontWeight="700">ZERO EGRESS</text>
+
+      {/* Model weights */}
+      <g transform="translate(26, 86)">
+        <rect x="0" y="0" width="288" height="76" rx="10" fill="var(--showcase-card-bg)" stroke="var(--cuxton-amber)" strokeWidth="1.4" />
+        <circle cx="38" cy="38" r="18" fill="rgba(245,166,35,0.15)" stroke="var(--cuxton-amber)" strokeWidth="1.2" />
+        <rect x="30" y="30" width="16" height="16" rx="3" stroke="var(--cuxton-amber)" strokeWidth="1.4" />
+        <text x="70" y="34" fill="var(--showcase-text-primary)" fontSize="13" fontWeight="700">PRIVATE MODEL WEIGHTS</text>
+        <text x="70" y="55" fill="var(--showcase-text-muted)" fontSize="11" fontFamily="monospace">LLAMA 3 // MISTRAL</text>
+      </g>
+      <path d="M170 162V190" stroke="var(--cuxton-amber)" strokeWidth="2" className={styles.animFlow} />
+
+      {/* Cryptographic barrier */}
+      <g transform="translate(26, 190)">
+        <rect x="0" y="0" width="288" height="76" rx="10" fill="var(--showcase-card-inner)" stroke="var(--showcase-card-border)" strokeWidth="1.2" />
+        <circle cx="38" cy="38" r="18" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.4" />
+        <path d="M33 38v-3a5 5 0 0 1 10 0v3m-12 0h14v9h-14z" stroke="var(--cuxton-amber)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="70" y="34" fill="var(--showcase-text-primary)" fontSize="13" fontWeight="700">ENCRYPTED ENCLAVE</text>
+        <text x="70" y="55" fill="var(--cuxton-teal-text)" fontSize="11" fontFamily="monospace">HSM KEY ISOLATION</text>
+      </g>
+      <path d="M170 266V294" stroke="var(--cuxton-teal-mid)" strokeWidth="2" className={styles.animFlow} />
+
+      {/* Host hardware */}
+      <g transform="translate(26, 294)">
+        <rect x="0" y="0" width="288" height="76" rx="10" fill="var(--showcase-card-bg)" stroke="var(--showcase-card-border)" strokeWidth="1.2" />
+        <rect x="20" y="24" width="38" height="28" rx="4" fill="var(--showcase-card-inner)" stroke="rgba(var(--cuxton-teal-mid-rgb), 0.4)" />
+        <circle cx="31" cy="38" r="3.5" fill="var(--cuxton-teal-mid)" />
+        <circle cx="46" cy="38" r="3.5" fill="var(--cuxton-amber)" />
+        <text x="70" y="34" fill="var(--showcase-text-primary)" fontSize="13" fontWeight="700">ON-PREM CLUSTER</text>
+        <text x="70" y="55" fill="var(--showcase-text-muted)" fontSize="11" fontFamily="monospace">DEDICATED HARDWARE</text>
+      </g>
+
+      <text x="170" y="394" fill="var(--cuxton-amber)" fontSize="11" fontFamily="monospace" fontWeight="700" textAnchor="middle">NO THIRD-PARTY EGRESS</text>
+    </svg>
+  );
+}
+
+/* 2. KNOWLEDGE-GROUNDED — sources, mesh, cited answer */
+function KnowledgeGroundedMobile() {
+  return (
+    <svg className={styles.svgMobile} viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Enterprise sources */}
+      <g transform="translate(20, 14)">
+        <rect x="0" y="0" width="300" height="132" rx="10" fill="var(--showcase-card-bg)" stroke="var(--showcase-card-border)" strokeWidth="1" />
+        <text x="14" y="24" fill="var(--showcase-text-muted)" fontSize="11" fontFamily="monospace" fontWeight="700">ENTERPRISE DATA</text>
+        <g transform="translate(12, 34)">
+          <rect x="0" y="0" width="276" height="28" rx="6" fill="var(--showcase-card-inner)" stroke="var(--cuxton-teal-mid)" strokeWidth="1" />
+          <text x="12" y="19" fill="var(--showcase-text-primary)" fontSize="12" fontWeight="700">POLICY_v4.PDF</text>
+          <text x="264" y="19" fill="var(--cuxton-teal-text)" fontSize="10" fontFamily="monospace" textAnchor="end">CHUNK #184-B</text>
+        </g>
+        <g transform="translate(12, 68)">
+          <rect x="0" y="0" width="276" height="28" rx="6" fill="var(--showcase-card-inner)" stroke="var(--showcase-card-border)" strokeWidth="1" />
+          <text x="12" y="19" fill="var(--showcase-text-secondary)" fontSize="12" fontWeight="600">ERP_ACCOUNTS</text>
+          <text x="264" y="19" fill="var(--showcase-text-muted)" fontSize="10" fontFamily="monospace" textAnchor="end">SQL REVENUE</text>
+        </g>
+        <g transform="translate(12, 102)">
+          <rect x="0" y="0" width="276" height="28" rx="6" fill="var(--showcase-card-inner)" stroke="var(--showcase-card-border)" strokeWidth="1" />
+          <text x="12" y="19" fill="var(--showcase-text-secondary)" fontSize="12" fontWeight="600">CONFLUENCE</text>
+          <text x="264" y="19" fill="var(--showcase-text-muted)" fontSize="10" fontFamily="monospace" textAnchor="end">PROCEDURES</text>
+        </g>
+      </g>
+      <path d="M170 146V168" stroke="var(--cuxton-teal-mid)" strokeWidth="1.8" className={styles.animFlow} />
+
+      {/* Vector mesh */}
+      <g transform="translate(20, 168)">
+        <rect x="0" y="0" width="300" height="106" rx="10" fill="var(--showcase-canvas-bg)" stroke="var(--cuxton-teal)" strokeWidth="1.2" />
+        <text x="14" y="24" fill="var(--cuxton-teal-text)" fontSize="11" fontFamily="monospace" fontWeight="700">VECTOR EMBEDDING MESH</text>
+        <path d="M45 56L150 64M255 50L150 64M75 86L150 64M240 88L150 64" stroke="rgba(var(--cuxton-teal-mid-rgb), 0.35)" strokeWidth="1.2" strokeDasharray="3 3" />
+        <circle cx="45" cy="56" r="5" fill="var(--cuxton-teal-mid)" />
+        <circle cx="255" cy="50" r="4.5" fill="rgba(var(--cuxton-teal-mid-rgb), 0.5)" />
+        <circle cx="75" cy="86" r="4" fill="rgba(var(--cuxton-teal-mid-rgb), 0.5)" />
+        <circle cx="240" cy="88" r="4.5" fill="var(--cuxton-teal-mid)" />
+        <circle cx="150" cy="64" r="8" fill="var(--cuxton-amber)" className={styles.animHalo} />
+        <rect x="104" y="76" width="130" height="22" rx="4" fill="var(--showcase-card-bg)" stroke="var(--cuxton-amber)" strokeWidth="1" />
+        <text x="114" y="91" fill="var(--cuxton-amber)" fontSize="11" fontFamily="monospace" fontWeight="700">SIMILARITY: 0.94</text>
+      </g>
+      <path d="M170 274V296" stroke="var(--cuxton-amber)" strokeWidth="1.8" className={styles.animFlow} />
+
+      {/* Grounded answer */}
+      <g transform="translate(20, 296)">
+        <rect x="0" y="0" width="300" height="110" rx="10" fill="var(--showcase-card-bg)" stroke="var(--cuxton-amber)" strokeWidth="1.2" />
+        <text x="14" y="24" fill="var(--cuxton-amber)" fontSize="11" fontFamily="monospace" fontWeight="700">VERIFIED ANSWER</text>
+        <rect x="14" y="34" width="200" height="7" rx="2" fill="var(--showcase-text-primary)" opacity="0.8" />
+        <rect x="14" y="47" width="258" height="6" rx="2" fill="var(--showcase-text-secondary)" opacity="0.5" />
+        <rect x="14" y="59" width="220" height="6" rx="2" fill="var(--showcase-text-secondary)" opacity="0.5" />
+        <rect x="14" y="74" width="126" height="22" rx="4" fill="rgba(var(--cuxton-teal-mid-rgb), 0.18)" stroke="var(--cuxton-teal-mid)" strokeWidth="1" />
+        <text x="23" y="89" fill="var(--cuxton-teal-text)" fontSize="10" fontFamily="monospace" fontWeight="700">✓ 100% GROUNDED</text>
+        <rect x="150" y="74" width="136" height="22" rx="4" fill="var(--showcase-card-inner)" stroke="rgba(245,166,35,0.45)" strokeWidth="1" />
+        <text x="159" y="89" fill="var(--cuxton-amber)" fontSize="10" fontFamily="monospace" fontWeight="700">POLICY_v4.PDF p12</text>
+      </g>
+    </svg>
+  );
+}
+
+/* 3. WORKFLOW AUTOMATION — agent pipeline over an audit ledger */
+function WorkflowAutomationMobile() {
+  return (
+    <svg className={styles.svgMobile} viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(20, 14)">
+        <rect x="0" y="0" width="300" height="62" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.5" />
+        <circle cx="34" cy="31" r="16" fill="rgba(var(--cuxton-teal-mid-rgb), 0.15)" />
+        <path d="M27 31l5 5 9-10" stroke="var(--cuxton-teal-mid)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="64" y="27" fill="var(--showcase-text-primary)" fontSize="13" fontWeight="700">AGENT 01</text>
+        <text x="64" y="47" fill="var(--cuxton-teal-text)" fontSize="11" fontFamily="monospace">EVENT INGESTION</text>
+      </g>
+      <path d="M54 76V92" stroke="var(--cuxton-teal-mid)" strokeWidth="2" className={styles.animFlow} />
+
+      <g transform="translate(20, 92)">
+        <rect x="0" y="0" width="300" height="62" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.5" />
+        <circle cx="34" cy="31" r="16" fill="rgba(var(--cuxton-teal-mid-rgb), 0.15)" />
+        <path d="M26 31h16M34 23v16" stroke="var(--cuxton-teal-mid)" strokeWidth="2.2" strokeLinecap="round" />
+        <text x="64" y="27" fill="var(--showcase-text-primary)" fontSize="13" fontWeight="700">AGENT 02</text>
+        <text x="64" y="47" fill="var(--cuxton-teal-text)" fontSize="11" fontFamily="monospace">REASONING &amp; POLICY</text>
+      </g>
+      <path d="M54 154V170" stroke="var(--cuxton-teal-mid)" strokeWidth="2" className={styles.animFlow} />
+
+      <g transform="translate(20, 170)">
+        <rect x="0" y="0" width="300" height="62" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-amber)" strokeWidth="1.5" />
+        <circle cx="34" cy="31" r="16" fill="rgba(245,166,35,0.15)" />
+        <rect x="27" y="24" width="15" height="14" rx="2" stroke="var(--cuxton-amber)" strokeWidth="1.8" />
+        <text x="64" y="27" fill="var(--showcase-text-primary)" fontSize="13" fontWeight="700">TOOL BUS</text>
+        <text x="64" y="47" fill="var(--cuxton-amber)" fontSize="11" fontFamily="monospace">DETERMINISTIC API</text>
+      </g>
+      <path d="M54 232V248" stroke="var(--cuxton-amber)" strokeWidth="2" className={styles.animFlow} />
+
+      <g transform="translate(20, 248)">
+        <rect x="0" y="0" width="300" height="62" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.5" />
+        <circle cx="34" cy="31" r="16" fill="rgba(var(--cuxton-teal-mid-rgb), 0.15)" />
+        <path d="M28 27a6 6 0 1 1 12 0 6 6 0 0 1-12 0m-2 13a8 8 0 0 1 16 0" stroke="var(--cuxton-teal-mid)" strokeWidth="1.8" strokeLinecap="round" />
+        <text x="64" y="27" fill="var(--showcase-text-primary)" fontSize="13" fontWeight="700">HUMAN GATE</text>
+        <text x="64" y="47" fill="var(--cuxton-teal-text)" fontSize="11" fontFamily="monospace">APPROVAL REQUIRED</text>
+      </g>
+      <path d="M54 310V328" stroke="var(--cuxton-teal-mid)" strokeWidth="2" className={styles.animFlow} />
+
+      {/* Immutable ledger */}
+      <g transform="translate(20, 328)">
+        <rect x="0" y="0" width="300" height="78" rx="6" fill="var(--showcase-card-inner)" stroke="var(--showcase-card-border)" />
+        <text x="14" y="23" fill="var(--showcase-text-muted)" fontSize="10" fontFamily="monospace">IMMUTABLE LOG // SHA-256</text>
+        <text x="14" y="46" fill="var(--cuxton-teal-text)" fontSize="12" fontFamily="monospace" fontWeight="700">TX#8491: COMPLETED</text>
+        <text x="14" y="66" fill="var(--showcase-text-muted)" fontSize="10.5" fontFamily="monospace">DISPATCHED TO ERP • 284ms</text>
+        <circle cx="280" cy="19" r="4.5" fill="var(--cuxton-amber)" />
+      </g>
+    </svg>
+  );
+}
+
+/* 4. ROLE-SPECIFIC — one core, three scoped lenses */
+function RoleSpecificMobile() {
+  return (
+    <svg className={styles.svgMobile} viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Orchestrator core */}
+      <g transform="translate(90, 12)">
+        <rect x="0" y="0" width="160" height="74" rx="10" fill="var(--showcase-card-bg)" stroke="var(--cuxton-amber)" strokeWidth="1.5" />
+        <circle cx="80" cy="26" r="15" fill="rgba(245,166,35,0.15)" />
+        <path d="M73 26h14M80 19v14" stroke="var(--cuxton-amber)" strokeWidth="2" strokeLinecap="round" />
+        <text x="80" y="56" fill="var(--showcase-text-primary)" fontSize="13" fontWeight="700" textAnchor="middle">ROLE CORE</text>
+        <text x="80" y="69" fill="var(--cuxton-amber)" fontSize="10" fontFamily="monospace" textAnchor="middle">ORCHESTRATOR</text>
+      </g>
+
+      {/* Distribution spine */}
+      <path d="M170 86v14H36v256" stroke="var(--cuxton-teal-mid)" strokeWidth="1.4" className={styles.animFlow} />
+      <path d="M36 150h12M36 252h12M36 354h12" stroke="var(--cuxton-teal-mid)" strokeWidth="1.4" className={styles.animFlow} />
+
+      <g transform="translate(48, 104)">
+        <rect x="0" y="0" width="272" height="92" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.4" />
+        <rect x="10" y="10" width="252" height="24" rx="4" fill="var(--showcase-card-inner)" />
+        <text x="20" y="27" fill="var(--cuxton-teal-text)" fontSize="12" fontWeight="700">LEGAL COUNSEL</text>
+        <text x="12" y="53" fill="var(--showcase-text-secondary)" fontSize="11">• Regulatory redlining</text>
+        <text x="12" y="70" fill="var(--showcase-text-secondary)" fontSize="11">• Risk clause triage</text>
+        <text x="12" y="85" fill="var(--cuxton-amber)" fontSize="10" fontFamily="monospace">SCOPE: PRIVILEGED</text>
+      </g>
+
+      <g transform="translate(48, 206)">
+        <rect x="0" y="0" width="272" height="92" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.4" />
+        <rect x="10" y="10" width="252" height="24" rx="4" fill="var(--showcase-card-inner)" />
+        <text x="20" y="27" fill="var(--cuxton-teal-text)" fontSize="12" fontWeight="700">RISK &amp; UNDERWRITING</text>
+        <text x="12" y="53" fill="var(--showcase-text-secondary)" fontSize="11">• Portfolio stress-tests</text>
+        <text x="12" y="70" fill="var(--showcase-text-secondary)" fontSize="11">• Capital adequacy models</text>
+        <text x="12" y="85" fill="var(--cuxton-amber)" fontSize="10" fontFamily="monospace">SCOPE: INTERNAL_FIN</text>
+      </g>
+
+      <g transform="translate(48, 308)">
+        <rect x="0" y="0" width="272" height="92" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.4" />
+        <rect x="10" y="10" width="252" height="24" rx="4" fill="var(--showcase-card-inner)" />
+        <text x="20" y="27" fill="var(--cuxton-teal-text)" fontSize="12" fontWeight="700">OPERATIONS SPECIALIST</text>
+        <text x="12" y="53" fill="var(--showcase-text-secondary)" fontSize="11">• High-volume triage</text>
+        <text x="12" y="70" fill="var(--showcase-text-secondary)" fontSize="11">• Automated dispatch</text>
+        <text x="12" y="85" fill="var(--cuxton-amber)" fontSize="10" fontFamily="monospace">SCOPE: OPS_TIER_2</text>
+      </g>
+    </svg>
+  );
+}
+
+/* 5. ENTERPRISE INTEGRATION — hub between systems already in service */
+function EnterpriseIntegrationMobile() {
+  return (
+    <svg className={styles.svgMobile} viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(14, 14)">
+        <rect x="0" y="0" width="152" height="66" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.2" />
+        <text x="14" y="29" fill="var(--showcase-text-primary)" fontSize="12" fontWeight="700">SAP // ORACLE</text>
+        <text x="14" y="49" fill="var(--cuxton-teal-text)" fontSize="10" fontFamily="monospace">SYSTEM OF RECORD</text>
+      </g>
+      <g transform="translate(174, 14)">
+        <rect x="0" y="0" width="152" height="66" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.2" />
+        <text x="14" y="29" fill="var(--showcase-text-primary)" fontSize="12" fontWeight="700">SNOWFLAKE</text>
+        <text x="14" y="49" fill="var(--cuxton-teal-text)" fontSize="10" fontFamily="monospace">ENTERPRISE LAKE</text>
+      </g>
+      <path d="M90 80l50 68M250 80l-50 68" stroke="var(--cuxton-teal-mid)" strokeWidth="1.8" className={styles.animFlow} />
+
+      {/* Integration hub */}
+      <g transform="translate(85, 148)">
+        <rect x="0" y="0" width="170" height="96" rx="12" fill="var(--showcase-card-bg)" stroke="var(--cuxton-amber)" strokeWidth="1.8" />
+        <circle cx="85" cy="34" r="20" fill="rgba(245,166,35,0.15)" stroke="var(--cuxton-amber)" strokeWidth="1.2" />
+        <path d="M75 34h20M85 24v20" stroke="var(--cuxton-amber)" strokeWidth="2" strokeLinecap="round" />
+        <text x="85" y="73" fill="var(--showcase-text-primary)" fontSize="14" fontWeight="700" textAnchor="middle">CUXTON HUB</text>
+        <text x="85" y="88" fill="var(--cuxton-teal-text)" fontSize="11" fontFamily="monospace" textAnchor="middle">NEURAL API BUS</text>
+      </g>
+      <path d="M140 244l-50 44M200 244l50 44" stroke="var(--cuxton-teal-mid)" strokeWidth="1.8" className={styles.animFlow} />
+
+      <g transform="translate(14, 288)">
+        <rect x="0" y="0" width="152" height="66" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.2" />
+        <text x="14" y="29" fill="var(--showcase-text-primary)" fontSize="12" fontWeight="700">OKTA // AD SSO</text>
+        <text x="14" y="49" fill="var(--cuxton-teal-text)" fontSize="10" fontFamily="monospace">IDENTITY &amp; RBAC</text>
+      </g>
+      <g transform="translate(174, 288)">
+        <rect x="0" y="0" width="152" height="66" rx="8" fill="var(--showcase-card-bg)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.2" />
+        <text x="14" y="29" fill="var(--showcase-text-primary)" fontSize="12" fontWeight="700">REST &amp; WEBHOOKS</text>
+        <text x="14" y="49" fill="var(--cuxton-teal-text)" fontSize="10" fontFamily="monospace">LINE-OF-BUSINESS</text>
+      </g>
+
+      <text x="170" y="390" fill="var(--cuxton-amber)" fontSize="11" fontFamily="monospace" fontWeight="700" textAnchor="middle">TWO-WAY // NO LOCK-IN</text>
+    </svg>
+  );
+}
+
+/* 6. GOVERNANCE — the vault and what stays inside it */
+function GovernanceMobile() {
+  return (
+    <svg className={styles.svgMobile} viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="12" y="10" width="316" height="400" rx="12" fill="var(--showcase-canvas-bg)" stroke="var(--cuxton-amber)" strokeWidth="1.5" />
+
+      {/* Vault header */}
+      <rect x="12" y="10" width="316" height="46" rx="12" fill="var(--showcase-card-bg)" stroke="var(--showcase-card-border)" strokeWidth="1" />
+      <circle cx="32" cy="27" r="4.5" fill="var(--cuxton-amber)" />
+      <text x="46" y="27" fill="var(--showcase-text-primary)" fontSize="12" fontFamily="monospace" fontWeight="700">SOVEREIGN ASSET VAULT</text>
+      <text x="46" y="45" fill="var(--cuxton-teal-text)" fontSize="10" fontFamily="monospace">100% CLIENT PROPERTY // ON-PREM</text>
+
+      <g transform="translate(28, 66)">
+        <rect x="0" y="0" width="284" height="88" rx="8" fill="var(--showcase-card-inner)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.2" />
+        <rect x="12" y="10" width="260" height="24" rx="4" fill="var(--showcase-card-bg)" />
+        <text x="22" y="27" fill="var(--cuxton-teal-text)" fontSize="12" fontWeight="700">MODEL WEIGHTS</text>
+        <text x="14" y="53" fill="var(--showcase-text-secondary)" fontSize="10.5">• Full LoRA checkpoints • v2.4.1</text>
+        <text x="14" y="69" fill="var(--showcase-text-secondary)" fontSize="10.5">• SHA-256 validated</text>
+        <text x="14" y="83" fill="var(--cuxton-teal-text)" fontSize="10" fontFamily="monospace" fontWeight="700">EXPORTABLE ASSET</text>
+      </g>
+
+      <g transform="translate(28, 162)">
+        <rect x="0" y="0" width="284" height="88" rx="8" fill="var(--showcase-card-inner)" stroke="var(--cuxton-amber)" strokeWidth="1.2" />
+        <rect x="12" y="10" width="260" height="24" rx="4" fill="var(--showcase-card-bg)" />
+        <text x="22" y="27" fill="var(--cuxton-amber)" fontSize="12" fontWeight="700">INFERENCE LOGS</text>
+        <text x="14" y="53" fill="var(--showcase-text-secondary)" fontSize="10.5">• Tamper-evident ledger</text>
+        <text x="14" y="69" fill="var(--showcase-text-secondary)" fontSize="10.5">• Zero cloud mirroring</text>
+        <text x="14" y="83" fill="var(--cuxton-amber)" fontSize="10" fontFamily="monospace" fontWeight="700">LOCAL RETENTION</text>
+      </g>
+
+      <g transform="translate(28, 258)">
+        <rect x="0" y="0" width="284" height="88" rx="8" fill="var(--showcase-card-inner)" stroke="var(--cuxton-teal-mid)" strokeWidth="1.2" />
+        <rect x="12" y="10" width="260" height="24" rx="4" fill="var(--showcase-card-bg)" />
+        <text x="22" y="27" fill="var(--cuxton-teal-text)" fontSize="12" fontWeight="700">POLICY GUARDRAILS</text>
+        <text x="14" y="53" fill="var(--showcase-text-secondary)" fontSize="10.5">• PII scrubbing • Eval tests</text>
+        <text x="14" y="69" fill="var(--showcase-text-secondary)" fontSize="10.5">• Hallucination checks</text>
+        <text x="14" y="83" fill="var(--cuxton-teal-text)" fontSize="10" fontFamily="monospace" fontWeight="700">SAFETY ENFORCED</text>
+      </g>
+
+      <g transform="translate(28, 356)">
+        <rect x="0" y="0" width="284" height="44" rx="6" fill="var(--showcase-card-bg)" stroke="rgba(245,166,35,0.35)" />
+        <text x="14" y="19" fill="var(--showcase-text-primary)" fontSize="11" fontWeight="600">ZERO VENDOR LOCK-IN</text>
+        <text x="14" y="35" fill="var(--cuxton-amber)" fontSize="10.5" fontFamily="monospace" fontWeight="700">MODELS &amp; INDEXES PORTABLE</text>
+      </g>
+    </svg>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────
    MAIN COMPONENT
    ───────────────────────────────────────────────────────────────── */
 
@@ -581,9 +906,12 @@ export default function CapabilitiesShowcase() {
             
           </div>
 
-          {/* Bespoke Architectural SVG Illustration */}
+          {/* Bespoke Architectural SVG Illustration.
+              Both render; CSS shows exactly one, so whichever is
+              display:none also stays out of the accessibility tree. */}
           <div className={styles.illustration}>
             <Illustration id={active.id} />
+            <MobileIllustration id={active.id} />
           </div>
 
           {/* Footer Metadata & Stack Pills */}

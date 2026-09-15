@@ -144,7 +144,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: rgba(var(--foreground-rgb), 0.68);
+  color: rgba(var(--foreground-rgb), 1);
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
@@ -155,10 +155,6 @@
   white-space: nowrap;
 }
 
-.navLink:hover {
-  color: var(--foreground);
-  background: rgba(27, 107, 138, 0.08);
-}
 
 .navLink--active {
   color: var(--foreground);
@@ -186,7 +182,7 @@
   width: 0;
   height: 2px;
   border-radius: 0;
-  background: rgba(27, 107, 138, 0.4);
+  background: rgba(27, 107, 138, 0.1);
   transition:
     width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -243,7 +239,7 @@
 }
 
 .megaPanel {
-  background: rgba(var(--bg-surface-rgb), 0.97);
+  background: rgba(var(--bg-surface-rgb), 1);
   border: 1px solid rgba(27, 107, 138, 0.14);
   border-radius: 0;
   padding: 1.75rem;

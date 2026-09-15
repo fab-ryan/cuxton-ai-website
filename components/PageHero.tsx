@@ -65,7 +65,7 @@ export default function PageHero({
 
   return (
     <section className={`${styles.heroSection}`} aria-labelledby="page-hero-heading">
-      <div className={styles.heroOverlay}/>
+      <div className={styles.heroOverlay} />
 
       <div className={styles.container}>
         {/* Breadcrumb Navigation */}
@@ -115,7 +115,7 @@ export default function PageHero({
             )}
 
             {tags && tags.length > 0 && (
-              <div className={styles.tagsRow} aria-label="Capabilities">
+              <div className={`${styles.tagsRow} *:sm:flex-row *:sm:gap-4 *:sm:justify-center *:md:justify-center`} aria-label="Capabilities">
                 {tags.map((tag) => (
                   <span key={tag} className={styles.tagPill}>
                     {tag}

@@ -47,6 +47,8 @@ interface PrincipleData {
   commitments: string[];
   footerNote: string;
   renderGraphic: () => React.ReactNode;
+  /* The same diagram stacked vertically, shown below 560px. */
+  renderCompactGraphic: () => React.ReactNode;
 }
 
 const principlesData: PrincipleData[] = [
@@ -63,7 +65,7 @@ const principlesData: PrincipleData[] = [
     ],
     footerNote: "Every engagement begins with an objective discovery audit.",
     renderGraphic: () => (
-      <svg width="100%" height="160" viewBox="0 0 340 160" fill="none" aria-hidden="true">
+      <svg width="100%" viewBox="0 0 340 160" fill="none" aria-hidden="true">
         <rect x="15" y="55" width="85" height="50" rx="6" fill="var(--sch-panel)" stroke="rgba(27, 107, 138, 0.4)" strokeWidth="1.5" />
         <text x="57" y="78" fill="var(--sch-text)" fontSize="10" fontWeight="700" textAnchor="middle">Business</text>
         <text x="57" y="93" fill="var(--sch-amber-text)" fontSize="9" textAnchor="middle">Friction</text>
@@ -72,7 +74,7 @@ const principlesData: PrincipleData[] = [
         <polygon points="130,80 124,76 124,84" fill="var(--cuxton-teal-light)" />
         
         <rect x="135" y="45" width="95" height="70" rx="6" fill="var(--sch-deep)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-        <text x="182" y="70" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="700" textAnchor="middle">Necessity</text>
+        <text x="182" y="70" fill="var(--cuxton-teal-text)" fontSize="10" fontWeight="700" textAnchor="middle">Necessity</text>
         <text x="182" y="85" fill="var(--sch-text)" fontSize="10" fontWeight="700" textAnchor="middle">Filter</text>
         <text x="182" y="100" fill="var(--sch-text-faint)" fontSize="8" textAnchor="middle">ROI Verification</text>
 
@@ -82,6 +84,28 @@ const principlesData: PrincipleData[] = [
         <rect x="265" y="55" width="65" height="50" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-amber)" strokeWidth="1.5" />
         <text x="297" y="78" fill="var(--sch-text)" fontSize="10" fontWeight="700" textAnchor="middle">Targeted</text>
         <text x="297" y="93" fill="var(--sch-amber-text)" fontSize="9" textAnchor="middle">Solution</text>
+      </svg>
+    ),
+    renderCompactGraphic: () => (
+      <svg width="100%" viewBox="0 0 240 284" fill="none" aria-hidden="true">
+        <rect x="50" y="10" width="140" height="56" rx="6" fill="var(--sch-panel)" stroke="rgba(27, 107, 138, 0.4)" strokeWidth="1.5" />
+        <text x="120" y="34" fill="var(--sch-text)" fontSize="12" fontWeight="700" textAnchor="middle">Business</text>
+        <text x="120" y="52" fill="var(--sch-amber-text)" fontSize="11" textAnchor="middle">Friction</text>
+
+        <path d="M120 66v28" stroke="var(--cuxton-teal-light)" strokeWidth="2" strokeDasharray="3 3" />
+        <polygon points="120,100 115,93 125,93" fill="var(--cuxton-teal-light)" />
+
+        <rect x="35" y="102" width="170" height="80" rx="6" fill="var(--sch-deep)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
+        <text x="120" y="130" fill="var(--cuxton-teal-text)" fontSize="12" fontWeight="700" textAnchor="middle">Necessity</text>
+        <text x="120" y="148" fill="var(--sch-text)" fontSize="12" fontWeight="700" textAnchor="middle">Filter</text>
+        <text x="120" y="166" fill="var(--sch-text-faint)" fontSize="10" textAnchor="middle">ROI Verification</text>
+
+        <path d="M120 182v28" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
+        <polygon points="120,216 115,209 125,209" fill="var(--cuxton-teal-light)" />
+
+        <rect x="50" y="218" width="140" height="56" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-amber)" strokeWidth="1.5" />
+        <text x="120" y="242" fill="var(--sch-text)" fontSize="12" fontWeight="700" textAnchor="middle">Targeted</text>
+        <text x="120" y="260" fill="var(--sch-amber-text)" fontSize="11" textAnchor="middle">Solution</text>
       </svg>
     ),
   },
@@ -98,27 +122,51 @@ const principlesData: PrincipleData[] = [
     ],
     footerNote: "Institutional trust takes years to build and seconds to lose.",
     renderGraphic: () => (
-      <svg width="100%" height="160" viewBox="0 0 340 160" fill="none" aria-hidden="true">
+      <svg width="100%" viewBox="0 0 340 160" fill="none" aria-hidden="true">
         <rect x="20" y="30" width="300" height="100" rx="8" fill="var(--sch-deep)" stroke="rgba(27, 107, 138, 0.35)" strokeWidth="1.5" />
-        <text x="35" y="52" fill="var(--cuxton-teal-light)" fontSize="10" fontWeight="700">FEASIBILITY STRESS TEST</text>
+        <text x="35" y="52" fill="var(--cuxton-teal-text)" fontSize="10" fontWeight="700">FEASIBILITY STRESS TEST</text>
         
         {/* Metric 1 */}
         <text x="35" y="75" fill="var(--sch-text-dim)" fontSize="9">Data Readiness</text>
         <rect x="130" y="67" width="120" height="8" rx="4" fill="var(--sch-panel)" />
         <rect x="130" y="67" width="105" height="8" rx="4" fill="var(--cuxton-teal-light)" />
-        <text x="260" y="75" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700">88% PASS</text>
+        <text x="260" y="75" fill="var(--cuxton-teal-text)" fontSize="9" fontWeight="700">88% PASS</text>
 
         {/* Metric 2 */}
         <text x="35" y="95" fill="var(--sch-text-dim)" fontSize="9">Compliance Clearance</text>
         <rect x="130" y="87" width="120" height="8" rx="4" fill="var(--sch-panel)" />
         <rect x="130" y="87" width="120" height="8" rx="4" fill="var(--cuxton-teal-light)" />
-        <text x="260" y="95" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700">100% PASS</text>
+        <text x="260" y="95" fill="var(--cuxton-teal-text)" fontSize="9" fontWeight="700">100% PASS</text>
 
         {/* Metric 3 */}
         <text x="35" y="115" fill="var(--sch-text-dim)" fontSize="9">Projected ROI Delta</text>
         <rect x="130" y="107" width="120" height="8" rx="4" fill="var(--sch-panel)" />
         <rect x="130" y="107" width="95" height="8" rx="4" fill="var(--cuxton-amber)" />
         <text x="260" y="115" fill="var(--sch-amber-text)" fontSize="9" fontWeight="700">3.8x VERIFIED</text>
+      </svg>
+    ),
+    renderCompactGraphic: () => (
+      <svg width="100%" viewBox="0 0 240 216" fill="none" aria-hidden="true">
+        <rect x="4" y="4" width="232" height="208" rx="8" fill="var(--sch-deep)" stroke="rgba(27, 107, 138, 0.35)" strokeWidth="1.5" />
+        <text x="16" y="30" fill="var(--cuxton-teal-text)" fontSize="11" fontWeight="700">FEASIBILITY STRESS TEST</text>
+
+        {/* Metric 1 */}
+        <text x="16" y="64" fill="var(--sch-text-dim)" fontSize="10">Data Readiness</text>
+        <text x="224" y="64" fill="var(--cuxton-teal-text)" fontSize="10" fontWeight="700" textAnchor="end">88% PASS</text>
+        <rect x="16" y="72" width="208" height="9" rx="4.5" fill="var(--sch-panel)" />
+        <rect x="16" y="72" width="183" height="9" rx="4.5" fill="var(--cuxton-teal-light)" />
+
+        {/* Metric 2 */}
+        <text x="16" y="118" fill="var(--sch-text-dim)" fontSize="10">Compliance Clearance</text>
+        <text x="224" y="118" fill="var(--cuxton-teal-text)" fontSize="10" fontWeight="700" textAnchor="end">100% PASS</text>
+        <rect x="16" y="126" width="208" height="9" rx="4.5" fill="var(--sch-panel)" />
+        <rect x="16" y="126" width="208" height="9" rx="4.5" fill="var(--cuxton-teal-light)" />
+
+        {/* Metric 3 */}
+        <text x="16" y="172" fill="var(--sch-text-dim)" fontSize="10">Projected ROI Delta</text>
+        <text x="224" y="172" fill="var(--sch-amber-text)" fontSize="10" fontWeight="700" textAnchor="end">3.8x VERIFIED</text>
+        <rect x="16" y="180" width="208" height="9" rx="4.5" fill="var(--sch-panel)" />
+        <rect x="16" y="180" width="165" height="9" rx="4.5" fill="var(--cuxton-amber)" />
       </svg>
     ),
   },
@@ -135,10 +183,10 @@ const principlesData: PrincipleData[] = [
     ],
     footerNote: "Your data stays inside your perimeter. Period.",
     renderGraphic: () => (
-      <svg width="100%" height="160" viewBox="0 0 340 160" fill="none" aria-hidden="true">
+      <svg width="100%" viewBox="0 0 340 160" fill="none" aria-hidden="true">
         {/* Outer Perimeter */}
         <rect x="25" y="25" width="290" height="110" rx="10" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" strokeDasharray="4 3" />
-        <text x="40" y="45" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" letterSpacing="0.08em">SECURE SOVEREIGN PERIMETER</text>
+        <text x="40" y="45" fill="var(--cuxton-teal-text)" fontSize="9" fontWeight="700" letterSpacing="0.08em">SECURE SOVEREIGN PERIMETER</text>
 
         {/* Inner Enclave */}
         <rect x="55" y="55" width="105" height="60" rx="6" fill="var(--sch-deep)" stroke="rgba(27, 107, 138, 0.4)" strokeWidth="1.5" />
@@ -148,7 +196,7 @@ const principlesData: PrincipleData[] = [
         {/* Internal Inference Engine */}
         <rect x="180" y="55" width="115" height="60" rx="6" fill="var(--sch-deep)" stroke="var(--cuxton-amber)" strokeWidth="1.5" />
         <text x="237" y="78" fill="var(--sch-text)" fontSize="10" fontWeight="700" textAnchor="middle">Private Model</text>
-        <text x="237" y="93" fill="var(--cuxton-teal-light)" fontSize="9" textAnchor="middle">Air-Gapped Node</text>
+        <text x="237" y="93" fill="var(--cuxton-teal-text)" fontSize="9" textAnchor="middle">Air-Gapped Node</text>
 
         <path d="M160 85h20" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
         
@@ -157,6 +205,31 @@ const principlesData: PrincipleData[] = [
         <circle cx="312" cy="85" r="7" fill="var(--status-error)" />
         <line x1="308" y1="81" x2="316" y2="89" stroke="var(--sch-text)" strokeWidth="1.5" />
         <line x1="316" y1="81" x2="308" y2="89" stroke="var(--sch-text)" strokeWidth="1.5" />
+      </svg>
+    ),
+    renderCompactGraphic: () => (
+      <svg width="100%" viewBox="0 0 240 302" fill="none" aria-hidden="true">
+        {/* Outer Perimeter */}
+        <rect x="6" y="6" width="228" height="262" rx="10" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" strokeDasharray="4 3" />
+        <text x="120" y="28" fill="var(--cuxton-teal-text)" fontSize="10" fontWeight="700" letterSpacing="0.06em" textAnchor="middle">SECURE SOVEREIGN PERIMETER</text>
+
+        {/* Inner Enclave */}
+        <rect x="40" y="44" width="160" height="64" rx="6" fill="var(--sch-deep)" stroke="rgba(27, 107, 138, 0.4)" strokeWidth="1.5" />
+        <text x="120" y="72" fill="var(--sch-text)" fontSize="12" fontWeight="700" textAnchor="middle">Proprietary</text>
+        <text x="120" y="90" fill="var(--sch-amber-text)" fontSize="11" textAnchor="middle">Data Store</text>
+
+        <path d="M120 108v30" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
+
+        {/* Internal Inference Engine */}
+        <rect x="40" y="138" width="160" height="64" rx="6" fill="var(--sch-deep)" stroke="var(--cuxton-amber)" strokeWidth="1.5" />
+        <text x="120" y="166" fill="var(--sch-text)" fontSize="12" fontWeight="700" textAnchor="middle">Private Model</text>
+        <text x="120" y="184" fill="var(--cuxton-teal-text)" fontSize="11" textAnchor="middle">Air-Gapped Node</text>
+
+        {/* Blocked external connection, cut at the perimeter */}
+        <line x1="120" y1="202" x2="120" y2="298" stroke="var(--status-error)" strokeWidth="2" strokeDasharray="2 2" />
+        <circle cx="120" cy="268" r="8" fill="var(--status-error)" />
+        <line x1="115" y1="263" x2="125" y2="273" stroke="var(--sch-text)" strokeWidth="1.5" />
+        <line x1="125" y1="263" x2="115" y2="273" stroke="var(--sch-text)" strokeWidth="1.5" />
       </svg>
     ),
   },
@@ -173,7 +246,7 @@ const principlesData: PrincipleData[] = [
     ],
     footerNote: "Simplicity and determinism outperform brute-force scale.",
     renderGraphic: () => (
-      <svg width="100%" height="160" viewBox="0 0 340 160" fill="none" aria-hidden="true">
+      <svg width="100%" viewBox="0 0 340 160" fill="none" aria-hidden="true">
         {/* Matrix comparison */}
         <rect x="25" y="30" width="135" height="100" rx="8" fill="var(--sch-deep)" stroke="var(--status-error)" strokeWidth="1.5" strokeOpacity="0.6" />
         <text x="92" y="50" fill="var(--status-error)" fontSize="9" fontWeight="700" textAnchor="middle">MONOLITHIC LLM</text>
@@ -184,12 +257,31 @@ const principlesData: PrincipleData[] = [
         <text x="92" y="121" fill="var(--status-error)" fontSize="8" fontWeight="700" textAnchor="middle">REJECTED</text>
 
         <rect x="180" y="30" width="135" height="100" rx="8" fill="var(--sch-deep)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-        <text x="247" y="50" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" textAnchor="middle">TASK-OPTIMIZED SLM</text>
+        <text x="247" y="50" fill="var(--cuxton-teal-text)" fontSize="9" fontWeight="700" textAnchor="middle">TASK-OPTIMIZED SLM</text>
         <text x="247" y="70" fill="var(--sch-text)" fontSize="8" textAnchor="middle">Latency: &lt; 85ms</text>
         <text x="247" y="85" fill="var(--sch-text)" fontSize="8" textAnchor="middle">Cost: Zero API toll</text>
         <text x="247" y="100" fill="var(--sch-text)" fontSize="8" textAnchor="middle">Output: 100% Deterministic</text>
         <rect x="207" y="110" width="80" height="14" rx="3" fill="rgba(27, 107, 138, 0.35)" />
-        <text x="247" y="121" fill="var(--cuxton-teal-light)" fontSize="8" fontWeight="700" textAnchor="middle">APPROVED</text>
+        <text x="247" y="121" fill="var(--cuxton-teal-text)" fontSize="8" fontWeight="700" textAnchor="middle">APPROVED</text>
+      </svg>
+    ),
+    renderCompactGraphic: () => (
+      <svg width="100%" viewBox="0 0 240 298" fill="none" aria-hidden="true">
+        <rect x="6" y="6" width="228" height="136" rx="8" fill="var(--sch-deep)" stroke="var(--status-error)" strokeWidth="1.5" strokeOpacity="0.6" />
+        <text x="120" y="30" fill="var(--status-error)" fontSize="11" fontWeight="700" textAnchor="middle">MONOLITHIC LLM</text>
+        <text x="120" y="54" fill="var(--sch-text-dim)" fontSize="10.5" textAnchor="middle">High Latency: 2,400ms</text>
+        <text x="120" y="72" fill="var(--sch-text-dim)" fontSize="10.5" textAnchor="middle">Cost: $$$$ per token</text>
+        <text x="120" y="90" fill="var(--sch-text-dim)" fontSize="10.5" textAnchor="middle">Risk: Hallucinations</text>
+        <rect x="70" y="104" width="100" height="22" rx="3" fill="rgba(var(--status-error-rgb), 0.2)" />
+        <text x="120" y="119" fill="var(--status-error)" fontSize="10" fontWeight="700" textAnchor="middle">REJECTED</text>
+
+        <rect x="6" y="156" width="228" height="136" rx="8" fill="var(--sch-deep)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
+        <text x="120" y="180" fill="var(--cuxton-teal-text)" fontSize="11" fontWeight="700" textAnchor="middle">TASK-OPTIMIZED SLM</text>
+        <text x="120" y="204" fill="var(--sch-text)" fontSize="10.5" textAnchor="middle">Latency: &lt; 85ms</text>
+        <text x="120" y="222" fill="var(--sch-text)" fontSize="10.5" textAnchor="middle">Cost: Zero API toll</text>
+        <text x="120" y="240" fill="var(--sch-text)" fontSize="10.5" textAnchor="middle">Output: 100% Deterministic</text>
+        <rect x="70" y="254" width="100" height="22" rx="3" fill="rgba(27, 107, 138, 0.35)" />
+        <text x="120" y="269" fill="var(--cuxton-teal-text)" fontSize="10" fontWeight="700" textAnchor="middle">APPROVED</text>
       </svg>
     ),
   },
@@ -206,11 +298,11 @@ const principlesData: PrincipleData[] = [
     ],
     footerNote: "No black-box execution on mission-critical workflows.",
     renderGraphic: () => (
-      <svg width="100%" height="160" viewBox="0 0 340 160" fill="none" aria-hidden="true">
+      <svg width="100%" viewBox="0 0 340 160" fill="none" aria-hidden="true">
         {/* Model Stage */}
         <rect x="20" y="55" width="80" height="50" rx="6" fill="var(--sch-panel)" stroke="rgba(27, 107, 138, 0.4)" strokeWidth="1.5" />
         <text x="60" y="78" fill="var(--sch-text)" fontSize="10" fontWeight="700" textAnchor="middle">AI Agent</text>
-        <text x="60" y="93" fill="var(--cuxton-teal-light)" fontSize="9" textAnchor="middle">Drafts Action</text>
+        <text x="60" y="93" fill="var(--cuxton-teal-text)" fontSize="9" textAnchor="middle">Drafts Action</text>
 
         <path d="M100 80h25" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
 
@@ -226,7 +318,31 @@ const principlesData: PrincipleData[] = [
         {/* Execution */}
         <rect x="240" y="55" width="80" height="50" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
         <text x="280" y="78" fill="var(--sch-text)" fontSize="10" fontWeight="700" textAnchor="middle">Certified</text>
-        <text x="280" y="93" fill="var(--cuxton-teal-light)" fontSize="9" textAnchor="middle">Execution</text>
+        <text x="280" y="93" fill="var(--cuxton-teal-text)" fontSize="9" textAnchor="middle">Execution</text>
+      </svg>
+    ),
+    renderCompactGraphic: () => (
+      <svg width="100%" viewBox="0 0 240 276" fill="none" aria-hidden="true">
+        {/* Model Stage */}
+        <rect x="50" y="6" width="140" height="56" rx="6" fill="var(--sch-panel)" stroke="rgba(27, 107, 138, 0.4)" strokeWidth="1.5" />
+        <text x="120" y="30" fill="var(--sch-text)" fontSize="12" fontWeight="700" textAnchor="middle">AI Agent</text>
+        <text x="120" y="48" fill="var(--cuxton-teal-text)" fontSize="11" textAnchor="middle">Drafts Action</text>
+
+        <path d="M120 62v26" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
+
+        {/* Intercept Gate */}
+        <rect x="35" y="88" width="170" height="100" rx="6" fill="var(--sch-deep)" stroke="var(--cuxton-amber)" strokeWidth="2" />
+        <circle cx="120" cy="114" r="11" stroke="var(--cuxton-amber)" strokeWidth="1.5" />
+        <path d="M114 114h12M120 108v12" stroke="var(--cuxton-amber)" strokeWidth="1.5" />
+        <text x="120" y="150" fill="var(--sch-text)" fontSize="11" fontWeight="700" textAnchor="middle">MANDATORY</text>
+        <text x="120" y="168" fill="var(--sch-amber-text)" fontSize="11" fontWeight="700" textAnchor="middle">HUMAN SIGN-OFF</text>
+
+        <path d="M120 188v26" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
+
+        {/* Execution */}
+        <rect x="50" y="214" width="140" height="56" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
+        <text x="120" y="238" fill="var(--sch-text)" fontSize="12" fontWeight="700" textAnchor="middle">Certified</text>
+        <text x="120" y="256" fill="var(--cuxton-teal-text)" fontSize="11" textAnchor="middle">Execution</text>
       </svg>
     ),
   },
@@ -243,7 +359,7 @@ const principlesData: PrincipleData[] = [
     ],
     footerNote: "Ground truth originates from your approved corporate archives.",
     renderGraphic: () => (
-      <svg width="100%" height="160" viewBox="0 0 340 160" fill="none" aria-hidden="true">
+      <svg width="100%" viewBox="0 0 340 160" fill="none" aria-hidden="true">
         {/* Source corpus */}
         <rect x="25" y="45" width="85" height="70" rx="6" fill="var(--sch-panel)" stroke="rgba(27, 107, 138, 0.4)" strokeWidth="1.5" />
         <text x="67" y="72" fill="var(--sch-text)" fontSize="9" fontWeight="700" textAnchor="middle">Approved</text>
@@ -254,7 +370,7 @@ const principlesData: PrincipleData[] = [
 
         {/* Vector Enclave */}
         <rect x="135" y="45" width="85" height="70" rx="6" fill="var(--sch-deep)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-        <text x="177" y="72" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" textAnchor="middle">Vector Enclave</text>
+        <text x="177" y="72" fill="var(--cuxton-teal-text)" fontSize="9" fontWeight="700" textAnchor="middle">Vector Enclave</text>
         <text x="177" y="87" fill="var(--sch-text)" fontSize="8" textAnchor="middle">Semantic Index</text>
         <text x="177" y="100" fill="var(--sch-text-faint)" fontSize="8" textAnchor="middle">Cosine Match</text>
 
@@ -262,9 +378,34 @@ const principlesData: PrincipleData[] = [
 
         {/* Verifiable Output */}
         <rect x="245" y="45" width="80" height="70" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
-        <text x="285" y="72" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" textAnchor="middle">Output</text>
+        <text x="285" y="72" fill="var(--cuxton-teal-text)" fontSize="9" fontWeight="700" textAnchor="middle">Output</text>
         <text x="285" y="87" fill="var(--sch-text)" fontSize="8" textAnchor="middle">+ Source Citations</text>
         <text x="285" y="100" fill="var(--sch-amber-text)" fontSize="8" textAnchor="middle">Audit Ready</text>
+      </svg>
+    ),
+    renderCompactGraphic: () => (
+      <svg width="100%" viewBox="0 0 240 298" fill="none" aria-hidden="true">
+        {/* Source corpus */}
+        <rect x="40" y="6" width="160" height="78" rx="6" fill="var(--sch-panel)" stroke="rgba(27, 107, 138, 0.4)" strokeWidth="1.5" />
+        <text x="120" y="30" fill="var(--sch-text)" fontSize="12" fontWeight="700" textAnchor="middle">Approved</text>
+        <text x="120" y="48" fill="var(--sch-text)" fontSize="12" fontWeight="700" textAnchor="middle">Policies &amp; Deals</text>
+        <text x="120" y="68" fill="var(--sch-amber-text)" fontSize="10.5" textAnchor="middle">Verified Ground Truth</text>
+
+        <path d="M120 84v26" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
+
+        {/* Vector Enclave */}
+        <rect x="40" y="110" width="160" height="78" rx="6" fill="var(--sch-deep)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
+        <text x="120" y="134" fill="var(--cuxton-teal-text)" fontSize="12" fontWeight="700" textAnchor="middle">Vector Enclave</text>
+        <text x="120" y="152" fill="var(--sch-text)" fontSize="10.5" textAnchor="middle">Semantic Index</text>
+        <text x="120" y="170" fill="var(--sch-text-faint)" fontSize="10.5" textAnchor="middle">Cosine Match</text>
+
+        <path d="M120 188v26" stroke="var(--cuxton-teal-light)" strokeWidth="2" />
+
+        {/* Verifiable Output */}
+        <rect x="40" y="214" width="160" height="78" rx="6" fill="var(--sch-panel)" stroke="var(--cuxton-teal-light)" strokeWidth="1.5" />
+        <text x="120" y="238" fill="var(--cuxton-teal-text)" fontSize="12" fontWeight="700" textAnchor="middle">Output</text>
+        <text x="120" y="256" fill="var(--sch-text)" fontSize="10.5" textAnchor="middle">+ Source Citations</text>
+        <text x="120" y="274" fill="var(--sch-amber-text)" fontSize="10.5" textAnchor="middle">Audit Ready</text>
       </svg>
     ),
   },
@@ -281,7 +422,7 @@ const principlesData: PrincipleData[] = [
     ],
     footerNote: "We build enduring institutional capability, not consultant dependencies.",
     renderGraphic: () => (
-      <svg width="100%" height="160" viewBox="0 0 340 160" fill="none" aria-hidden="true">
+      <svg width="100%" viewBox="0 0 340 160" fill="none" aria-hidden="true">
         {/* Trajectory */}
         <rect x="25" y="30" width="290" height="100" rx="8" fill="var(--sch-deep)" stroke="rgba(27, 107, 138, 0.35)" strokeWidth="1.5" />
         
@@ -295,7 +436,25 @@ const principlesData: PrincipleData[] = [
         <text x="160" y="102" fill="var(--sch-text-dim)" fontSize="8" textAnchor="middle">Phase 2: Deploy</text>
 
         <circle cx="285" cy="45" r="5" fill="var(--cuxton-teal-light)" />
-        <text x="285" y="35" fill="var(--cuxton-teal-light)" fontSize="9" fontWeight="700" textAnchor="middle">Autonomous Client Mastery</text>
+        <text x="285" y="35" fill="var(--cuxton-teal-text)" fontSize="9" fontWeight="700" textAnchor="middle">Autonomous Client Mastery</text>
+      </svg>
+    ),
+    renderCompactGraphic: () => (
+      <svg width="100%" viewBox="0 0 240 248" fill="none" aria-hidden="true">
+        {/* Trajectory */}
+        <rect x="4" y="4" width="232" height="240" rx="8" fill="var(--sch-deep)" stroke="rgba(27, 107, 138, 0.35)" strokeWidth="1.5" />
+
+        {/* Capability curve */}
+        <path d="M36 206 Q 100 196, 136 140 T 200 56" fill="none" stroke="var(--cuxton-teal-light)" strokeWidth="2.5" />
+
+        <circle cx="36" cy="206" r="4.5" fill="var(--cuxton-amber)" />
+        <text x="22" y="230" fill="var(--sch-text-dim)" fontSize="10.5">Phase 1: Discovery</text>
+
+        <circle cx="136" cy="140" r="4.5" fill="var(--cuxton-teal-light)" />
+        <text x="146" y="160" fill="var(--sch-text-dim)" fontSize="10">Phase 2: Deploy</text>
+
+        <circle cx="200" cy="56" r="5.5" fill="var(--cuxton-teal-light)" />
+        <text x="222" y="34" fill="var(--cuxton-teal-text)" fontSize="11" fontWeight="700" textAnchor="end">Autonomous Client Mastery</text>
       </svg>
     ),
   },
@@ -413,7 +572,8 @@ export default function CompanyPrinciplesMatrix() {
               </div>
 
               <div className={styles.schematicVisualStage}>
-                {current.renderGraphic()}
+                <div className={styles.graphicWide}>{current.renderGraphic()}</div>
+                <div className={styles.graphicTall}>{current.renderCompactGraphic()}</div>
               </div>
 
               <div className={styles.schematicFooter}>

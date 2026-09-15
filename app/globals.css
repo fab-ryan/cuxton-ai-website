@@ -331,6 +331,12 @@ select:focus-visible,
   }
 }
 
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-secondary {
+    margin: auto;
+  }
+}
 /* ══════════════════════════════════════════════════
    TYPE
 
