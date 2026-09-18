@@ -19,8 +19,8 @@
 }
 
 .sidebar {
-  border-right: 1px solid var(--border);
-  background: var(--bg-surface);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, #0B4F63 0%, #0A3D4D 100%);
   padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
@@ -45,6 +45,7 @@
   gap: 0.625rem;
   padding: 0 0.5rem;
   text-decoration: none;
+  color: #fff;
 }
 
 .brandMark {
@@ -74,14 +75,14 @@
 .brandName {
   font-size: 0.86rem;
   font-weight: 600;
-  color: var(--foreground);
+  color: #fff;
 }
 
 .brandSub {
   font-size: 0.62rem;
   font-weight: 700;
-  color: var(--cuxton-amber-text);
-  opacity: 0.85;
+  color: #F5A623;
+  opacity: 1;
 }
 
 .navGroup {
@@ -94,7 +95,7 @@
 .navLabel {
   font-size: 0.6rem;
   font-weight: 700;
-  color: rgba(var(--foreground-rgb), 0.35);
+  color: rgba(255, 255, 255, 0.4);
   padding: 0 0.75rem;
   margin-bottom: 0.4rem;
 }
@@ -107,7 +108,7 @@
   border-radius: 0;
   font-size: 0.83rem;
   font-weight: 600;
-  color: rgba(var(--foreground-rgb), 0.62);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   border: 1px solid transparent;
   transition:
@@ -117,14 +118,14 @@
 }
 
 .navLink:hover {
-  background: rgba(var(--foreground-rgb), 0.045);
-  color: var(--foreground);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .navLinkActive {
-  background: rgba(27, 107, 138, 0.13);
-  border-color: rgba(27, 107, 138, 0.3);
-  color: var(--cuxton-teal-text);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
 .navCount {
@@ -133,12 +134,12 @@
   font-weight: 600;
   padding: 0.1rem 0.42rem;
   border-radius: 999px;
-  background: var(--cuxton-amber);
+  background: #F5A623;
   color: #1a1206;
 }
 
 .sidebarFoot {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -153,7 +154,7 @@
 .whoName {
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--foreground);
+  color: #fff;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -161,7 +162,7 @@
 
 .whoRole {
   font-size: 0.68rem;
-  color: rgba(var(--foreground-rgb), 0.4);
+  color: rgba(255, 255, 255, 0.5);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -661,16 +662,17 @@
   font: inherit;
   font-size: 0.76rem;
   font-weight: 700;
-  color: var(--cuxton-teal-text);
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
 }
 
 .linkBtn:hover {
   text-decoration: underline;
+  color: #fff;
 }
 
 .danger {
-  color: var(--status-error);
+  color: #FF6B6B;
 }
 
 /* ─── Centred states (loading / gate) ─── */

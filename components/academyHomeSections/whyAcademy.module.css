@@ -1,0 +1,97 @@
+.section {
+  position: relative;
+  padding: 6rem 1.5rem;
+  background: var(--background);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.card {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(27, 107, 138, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(27, 107, 138, 0.3);
+  transform: translateY(-4px);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem 0;
+}
+
+.cardDescription {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}

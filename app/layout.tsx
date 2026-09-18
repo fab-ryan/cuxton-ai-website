@@ -2,41 +2,42 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SiteNav, SiteFooter } from "@/components/SiteChrome";
+import AcademyNav from "@/components/AcademyNav";
+import { SiteFooter } from "@/components/SiteChrome";
 import { ScrollTop } from "@/components/scrollTop";
 
 const inter = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cuxtonai.com"),
+  metadataBase: new URL("https://academy.cuxtonai.com"),
   title: {
-    default: "CuxtonAI — Enterprise AI Built Around Your Data, Workflows and Control",
-    template: "%s | CuxtonAI",
+    default: "CuxtonAI Academy — AI-Powered Learning Platform",
+    template: "%s | CuxtonAI Academy",
   },
   description:
-    "CuxtonAI helps institutions discover where AI can create real value, then integrates, customises or builds secure AI systems, agents and automations around the organisation's own knowledge, infrastructure and operational needs.",
+    "CuxtonAI Academy is an AI-powered learning platform where students learn through expert-designed courses, personalized AI tutoring, hands-on practice, and assessments.",
   keywords: [
-    "enterprise AI", "private AI", "AI consultancy", "AI agents", "workflow automation",
-    "knowledge-grounded AI", "AI integration", "CuxtonAI",
+    "online learning", "AI education", "programming courses", "skill development", "online academy",
+    "AI tutoring", "course platform", "learn with AI", "CuxtonAI Academy",
   ],
-  authors: [{ name: "CuxtonAI" }],
+  authors: [{ name: "CuxtonAI Academy" }],
   openGraph: {
     type: "website",
-    locale: "en_GB",
-    siteName: "CuxtonAI",
-    title: "CuxtonAI - Enterprise AI Built Around Your Data, Workflows and Control",
+    locale: "en_US",
+    siteName: "CuxtonAI Academy",
+    title: "CuxtonAI Academy - AI-Powered Learning Platform",
     description:
-      "Private AI. Your data. Your infrastructure. Under your control. CuxtonAI helps institutions deploy secure AI systems, agents and automations.",
+      "Learn with AI. Master real skills. Get personalized guidance. CuxtonAI Academy helps you achieve your learning goals.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CuxtonAI - Enterprise AI",
-    description: "Private AI, knowledge-grounded systems and workflow automation for institutions.",
+    title: "CuxtonAI Academy",
+    description: "AI-powered learning with expert courses, personalized tutoring, and hands-on practice.",
   },
   robots: {
     index: true,
@@ -56,8 +57,8 @@ export default function RootLayout({ children }: LayoutProps) {
         <Suspense fallback={null}>
           <ScrollTop />
         </Suspense>
-        <SiteNav />
-        <main id="main-content" tabIndex={-1} style={{ flex: 1, outline: "none" }}>
+        <AcademyNav />
+        <main id="main-content" tabIndex={-1} style={{ flex: 1, outline: "none", marginTop: "60px" }}>
           {children}
         </main>
         <SiteFooter />

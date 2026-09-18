@@ -1,89 +1,40 @@
 import type { Metadata } from "next";
-import styles from "./page.module.css";
-import CapabilitiesShowcase from "../components/CapabilitiesShowcase";
-import { HeroSection } from "@/components/homeSections/hero";
-import { ProblemSection } from "@/components/homeSections/problem";
-import { WhyPrivateSection } from "@/components/homeSections/whyPrivate";
-import { FourLayersSection } from "@/components/homeSections/fourLayer";
-import { IndustriesSection } from "@/components/homeSections/industries";
-import { AiAgentsSection } from "@/components/homeSections/aiAgent";
-import { HowWeWorkSection } from "@/components/homeSections/howWeWork";
-import { WhyCuxtonSection } from "@/components/homeSections/whyCuxton";
-import { InsightsSection } from "@/components/homeSections/insights";
-import { CTASection } from "@/components/homeSections/cta";
-
-
+import { AcademyHeroSection } from "@/components/academyHomeSections/academyHero";
+import { WhyAcademySection } from "@/components/academyHomeSections/whyAcademy";
+import { FeaturedCoursesSection } from "@/components/academyHomeSections/featuredCourses";
+import { HowItWorksSection } from "@/components/academyHomeSections/howItWorks";
+import { AITutorSection } from "@/components/academyHomeSections/aiTutorSection";
+import { CTASection } from "@/components/academyHomeSections/ctaSection";
 
 export const metadata: Metadata = {
-    title: "Enterprise AI Built Around Your Data, Workflows and Control",
+    title: "CuxtonAI Academy | Learn with AI, Build Real Skills",
     description:
-        "CuxtonAI helps institutions discover where AI can create real value, then integrates, customises or builds secure AI systems, agents and automations around the organisation's own knowledge and infrastructure.",
+        "CuxtonAI Academy is an AI-powered learning platform where students learn through courses, AI tutoring, guided practice, and personalized learning paths.",
+    openGraph: {
+        title: "CuxtonAI Academy | AI-Powered Learning",
+        description: "Master real skills with expert-designed courses, personalized AI tutoring, and hands-on practice.",
+    },
 };
 
 export default function HomePage() {
     return (
         <div style={{ background: "var(--background)" }}>
+            {/* Hero Section */}
+            <AcademyHeroSection />
 
-            {/* ════════════════════════════════════════════
-          1. HERO — full-width photograph background
-          ════════════════════════════════════════════ */}
-            <HeroSection />
+            {/* Why CuxtonAI Academy */}
+            <WhyAcademySection />
 
-            {/* ════════════════════════════════════════════
-          2. THE PROBLEM
-          ════════════════════════════════════════════ */}
-            <ProblemSection />
+            {/* Featured Courses */}
+            <FeaturedCoursesSection />
 
-            {/* Divider */}
-            <div className="section-container"><div className={styles.divider} /></div>
+            {/* How Learning Works */}
+            <HowItWorksSection />
 
-            {/* ════════════════════════════════════════════
-          3. WHAT A CUXTON DEPLOYMENT INCLUDES
-          ════════════════════════════════════════════ */}
-            <section className="section-py">
-                <div className="container max-w-7xl mx-auto px-4 relative z-10 *:px-4 sm:px-6 lg:px-8 text-left ">
-                    <CapabilitiesShowcase />
-                </div>
-            </section>
+            {/* AI Tutor Section */}
+            <AITutorSection />
 
-            {/* ════════════════════════════════════════════
-          4. WHY PRIVATE / CONTROLLED AI
-          ════════════════════════════════════════════ */}
-
-            <WhyPrivateSection />
-            {/* ════════════════════════════════════════════
-          4B. FOUR LAYERS
-          ════════════════════════════════════════════ */}
-            <FourLayersSection />
-
-            {/* ════════════════════════════════════════════
-          5. INDUSTRIES
-          ════════════════════════════════════════════ */}
-
-            <IndustriesSection />
-
-            {/* ════════════════════════════════════════════
-          6. AI AGENTS & AUTOMATION
-          ════════════════════════════════════════════ */}
-            <AiAgentsSection />
-
-            {/* ════════════════════════════════════════════
-          7. HOW WE WORK
-          ════════════════════════════════════════════ */}
-            <HowWeWorkSection />
-            {/* ════════════════════════════════════════════
-          8. WHY CUXTON
-          ════════════════════════════════════════════ */}
-            <WhyCuxtonSection />
-
-            {/* ════════════════════════════════════════════
-          9. INSIGHTS
-          ════════════════════════════════════════════ */}
-            <InsightsSection />
-
-            {/* ════════════════════════════════════════════
-          10. FINAL CTA — second, subtler use of the hero photo
-          ════════════════════════════════════════════ */}
+            {/* Final CTA */}
             <CTASection />
         </div>
     );
