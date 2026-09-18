@@ -55,8 +55,8 @@ export default function PrivacyPage() {
             </h2>
             <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
               For data protection questions, enterprise DPA requests, or compliance reviews, contact our security team directly at{" "}
-              <a href="mailto:privacy@cuxtonai.com" style={{ color: "var(--cuxton-teal-light)", textDecoration: "none", fontWeight: 600 }}>
-                privacy@cuxtonai.com
+              <a href="mailto:info@cuxtonai.com" style={{ color: "var(--cuxton-teal-light)", textDecoration: "none", fontWeight: 600 }}>
+                info@cuxtonai.com
               </a>.
             </p>
             <div style={{ marginTop: "1.5rem" }}>
