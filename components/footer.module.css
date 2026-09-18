@@ -157,6 +157,20 @@
   cursor: not-allowed;
 }
 
+.briefingAction {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.briefingError {
+  max-width: 22rem;
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--status-error);
+}
+
 .briefingSuccess {
   display: flex;
   align-items: center;

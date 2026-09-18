@@ -58,8 +58,6 @@ export function sortByPublished(a: Insight, b: Insight): number {
  * — through the client-rendered /insights/view route — so the index never
  * links a visitor into a 404 while waiting for the next deploy.
  */
-export function insightHref(slug: string, prerendered: ReadonlySet<string>): string {
-  return prerendered.has(slug)
-    ? `/insights/${slug}`
-    : `/insights/view?slug=${encodeURIComponent(slug)}`;
+export function insightHref(slug: string): string {
+  return `/insights/view?slug=${encodeURIComponent(slug)}`;
 }

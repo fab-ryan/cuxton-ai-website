@@ -13,6 +13,9 @@ import HomeInsightsGrid from "./HomeInsightsGrid";
 
 export const InsightsSection = async () => {
   const insights = (await fetchPublishedInsights()).slice(0, 6);
+  if (insights?.length === 0) {
+    return null; // don't render the section at all if nothing is published
+  }
 
   return (
     <section className="section-py">

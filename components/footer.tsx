@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getImageProps } from "next/image";
 import SocialIcon from "@/components/SocialIcon";
 import { companyContact } from "@/data/company";
+import { getSupabase } from "@/lib/supabase/client";
 import styles from "./footer.module.css";
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -71,16 +72,42 @@ const legalLinks: LinkItem[] = [
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  /* Sign-ups go through the subscribe_to_briefings() function in
+     supabase/schema.sql rather than a table insert, so the response is the
+     same whether or not the address was already on the list. */
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !email.includes("@")) return;
+    const address = email.trim();
+    if (!address) return;
+
+    setError(null);
+
+    const supabase = getSupabase();
+    if (!supabase) {
+      setError(`Briefings are not connected yet. Email ${companyContact.email} to be added.`);
+      return;
+    }
 
     setStatus("submitting");
-    setTimeout(() => {
-      setStatus("success");
-      setEmail("");
-    }, 600);
+    const { error: rpcError } = await supabase.rpc("subscribe_to_briefings", {
+      p_email: address,
+      p_source: "footer",
+    });
+
+    if (rpcError) {
+      setStatus("idle");
+      setError(
+        rpcError.code === "22023"
+          ? "That email address does not look right. Please check it."
+          : "We could not enrol you just now. Please try again shortly."
+      );
+      return;
+    }
+
+    setStatus("success");
+    setEmail("");
   };
 
   const scrollToTop = () => {
@@ -110,26 +137,37 @@ export default function Footer() {
               <span>Thank you. You are enrolled in executive briefings.</span>
             </div>
           ) : (
-            <form onSubmit={handleSubscribe} className={styles.briefingForm} aria-label="Subscribe to Executive Briefings">
-              <input
-                type="email"
-                required
-                placeholder="Enter corporate email..."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className={styles.emailInput}
-                aria-label="Corporate Email Address"
-                disabled={status === "submitting"}
-              />
-              <button
-                type="submit"
-                className={styles.briefingSubmit}
-                disabled={status === "submitting"}
-                aria-label="Join Briefings"
-              >
-                {status === "submitting" ? "Connecting..." : "Join"}
-              </button>
-            </form>
+            /* `on-dark` keeps the error's status colour legible: the footer
+               stays dark even when the page is in light mode. */
+            <div className={`on-dark ${styles.briefingAction}`}>
+              <form onSubmit={handleSubscribe} className={styles.briefingForm} aria-label="Subscribe to Executive Briefings">
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter corporate email..."
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className={styles.emailInput}
+                  aria-label="Corporate Email Address"
+                  aria-invalid={error ? true : undefined}
+                  aria-describedby={error ? "briefing-error" : undefined}
+                  disabled={status === "submitting"}
+                />
+                <button
+                  type="submit"
+                  className={styles.briefingSubmit}
+                  disabled={status === "submitting"}
+                  aria-label="Join Briefings"
+                >
+                  {status === "submitting" ? "Connecting..." : "Join"}
+                </button>
+              </form>
+              {error && (
+                <p id="briefing-error" className={styles.briefingError} role="alert">
+                  {error}
+                </p>
+              )}
+            </div>
           )}
         </div>
 

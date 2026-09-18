@@ -8,6 +8,8 @@ export type Role = "admin" | "viewer";
 export type InsightStatus = "draft" | "published";
 export type ContactStatus = "new" | "in_review" | "responded" | "archived";
 export type EmailStatus = "pending" | "sent" | "failed";
+export type SubscriberStatus = "active" | "unsubscribed";
+export type BroadcastStatus = "sending" | "sent" | "partial" | "failed";
 
 export type Profile = {
   id: string;
@@ -67,6 +69,35 @@ export type ContactReply = {
   created_at: string;
 };
 
+export type Subscriber = {
+  id: string;
+  /** Stored lowercased; the column is unique. */
+  email: string;
+  status: SubscriberStatus;
+  /** Where the sign-up came from, e.g. `footer`. */
+  source: string;
+  unsubscribe_token: string;
+  unsubscribed_at: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type Broadcast = {
+  id: string;
+  author_id: string | null;
+  /** Set when the briefing announced an insight. */
+  insight_id: string | null;
+  subject: string;
+  body: string;
+  status: BroadcastStatus;
+  recipient_count: number;
+  sent_count: number;
+  failed_count: number;
+  last_error: string | null;
+  created_at: string;
+  completed_at: string | null;
+};
+
 /* ─── Presentation helpers shared by the dashboard ─── */
 
 export const CONTACT_STATUS_LABEL: Record<ContactStatus, string> = {
@@ -74,6 +105,13 @@ export const CONTACT_STATUS_LABEL: Record<ContactStatus, string> = {
   in_review: "In review",
   responded: "Responded",
   archived: "Archived",
+};
+
+export const BROADCAST_STATUS_LABEL: Record<BroadcastStatus, string> = {
+  sending: "Sending",
+  sent: "Sent",
+  partial: "Partly sent",
+  failed: "Failed",
 };
 
 export const INSIGHT_TAGS = [
