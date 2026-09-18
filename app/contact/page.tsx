@@ -76,7 +76,7 @@ export default function ContactPage() {
     const supabase = getSupabase();
     if (!supabase) {
       setErrorMessage(
-        "The enquiry form is not connected yet. Please email hello@cuxtonai.com instead."
+        "The enquiry form is not connected yet. Please email info@cuxtonai.com instead."
       );
       setStatus("error");
       return;
@@ -96,7 +96,7 @@ export default function ContactPage() {
 
     if (error) {
       setErrorMessage(
-        "We could not record your enquiry. Please try again, or email hello@cuxtonai.com."
+        "We could not record your enquiry. Please try again, or email info@cuxtonai.com."
       );
       setStatus("error");
       return;
@@ -179,8 +179,8 @@ export default function ContactPage() {
               {/* Direct email */}
               <p style={{ fontSize: "0.8rem", color: "rgba(var(--foreground-rgb),0.35)", lineHeight: 1.6 }}>
                 Prefer email?{" "}
-                <a href="mailto:hello@cuxtonai.com" style={{ color: "var(--cuxton-teal-light)", textDecoration: "none" }}>
-                  hello@cuxtonai.com
+                <a href="mailto:info@cuxtonai.com" style={{ color: "var(--cuxton-teal-light)", textDecoration: "none" }}>
+                  info@cuxtonai.com
                 </a>
               </p>
             </aside>
@@ -371,7 +371,7 @@ export default function ContactPage() {
                       }}>
                         {errorMessage ?? "Something went wrong. Please try again."} If the problem
                         persists, email us directly at{" "}
-                        <a href="mailto:hello@cuxtonai.com" style={{ color: "var(--status-error)" }}>hello@cuxtonai.com</a>.
+                        <a href="mailto:info@cuxtonai.com" style={{ color: "var(--status-error)" }}>info@cuxtonai.com</a>.
                       </p>
                     )}
 

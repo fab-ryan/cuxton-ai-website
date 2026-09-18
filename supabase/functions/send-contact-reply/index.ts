@@ -8,7 +8,7 @@
 //  Deploy:
 //    supabase functions deploy send-contact-reply
 //    supabase secrets set RESEND_API_KEY=re_xxx \
-//                         REPLY_FROM="CuxtonAI <hello@cuxtonai.com>"
+//                         REPLY_FROM="CuxtonAI <info@cuxtonai.com>"
 // ═══════════════════════════════════════════════════════════════════
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
@@ -16,11 +16,12 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")!;
-const REPLY_FROM = Deno.env.get("REPLY_FROM") ?? "CuxtonAI <hello@cuxtonai.com>";
+const REPLY_FROM = Deno.env.get("REPLY_FROM") ?? "CuxtonAI <info@cuxtonai.com>";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": Deno.env.get("ALLOWED_ORIGIN") ?? "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
@@ -44,7 +45,10 @@ function escapeHtml(value: string) {
 function renderEmail(recipientName: string, body: string) {
   const paragraphs = body
     .split(/\n{2,}/)
-    .map((p) => `<p style="margin:0 0 16px;line-height:1.7;">${escapeHtml(p).replace(/\n/g, "<br />")}</p>`)
+    .map(
+      (p) =>
+        `<p style="margin:0 0 16px;line-height:1.7;">${escapeHtml(p).replace(/\n/g, "<br />")}</p>`,
+    )
     .join("");
 
   return `<!doctype html>
@@ -62,7 +66,8 @@ function renderEmail(recipientName: string, body: string) {
 }
 
 Deno.serve(async (req) => {
-  if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
+  if (req.method === "OPTIONS")
+    return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
 
   // ── 1. Identify the caller from their JWT ──
@@ -76,7 +81,8 @@ Deno.serve(async (req) => {
   });
 
   const { data: userData, error: userError } = await asCaller.auth.getUser();
-  if (userError || !userData.user) return json({ error: "Invalid session" }, 401);
+  if (userError || !userData.user)
+    return json({ error: "Invalid session" }, 401);
 
   // ── 2. Authorise: admins only ──
   const { data: profile } = await asCaller
@@ -85,7 +91,8 @@ Deno.serve(async (req) => {
     .eq("id", userData.user.id)
     .single();
 
-  if (profile?.role !== "admin") return json({ error: "Admin access required" }, 403);
+  if (profile?.role !== "admin")
+    return json({ error: "Admin access required" }, 403);
 
   // ── 3. Validate input ──
   let payload: { contactId?: string; subject?: string; body?: string };
@@ -115,7 +122,8 @@ Deno.serve(async (req) => {
     .eq("id", contactId)
     .single();
 
-  if (contactError || !contact) return json({ error: "Contact not found" }, 404);
+  if (contactError || !contact)
+    return json({ error: "Contact not found" }, 404);
 
   // ── 5. Record the attempt before sending, so a failure is never silent ──
   const { data: reply, error: replyError } = await admin
@@ -130,7 +138,8 @@ Deno.serve(async (req) => {
     .select("id")
     .single();
 
-  if (replyError || !reply) return json({ error: "Could not record the reply" }, 500);
+  if (replyError || !reply)
+    return json({ error: "Could not record the reply" }, 500);
 
   // ── 6. Send ──
   try {
@@ -158,7 +167,10 @@ Deno.serve(async (req) => {
         .from("contact_replies")
         .update({ email_status: "failed", email_error: String(message) })
         .eq("id", reply.id);
-      return json({ error: `Email provider rejected the message: ${message}` }, 502);
+      return json(
+        { error: `Email provider rejected the message: ${message}` },
+        502,
+      );
     }
 
     await admin
@@ -173,11 +185,15 @@ Deno.serve(async (req) => {
 
     return json({ ok: true, replyId: reply.id, messageId: result?.id ?? null });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "Unknown transport error";
+    const message =
+      err instanceof Error ? err.message : "Unknown transport error";
     await admin
       .from("contact_replies")
       .update({ email_status: "failed", email_error: message })
       .eq("id", reply.id);
-    return json({ error: `Could not reach the email provider: ${message}` }, 502);
+    return json(
+      { error: `Could not reach the email provider: ${message}` },
+      502,
+    );
   }
 });

@@ -61,7 +61,7 @@ export default function InsightsIndex({ initial }: { initial: Insight[] }) {
       {rows.map((insight) => (
         <Link
           key={insight.id}
-          href={insightHref(insight.slug, prerendered)}
+          href={insightHref(insight.slug)}
           className={`card-enterprise ${s.card}`}
         >
           <span className={`tag-teal ${s.cardTag}`}>{insight.tag}</span>

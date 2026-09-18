@@ -9,6 +9,8 @@
 --    insights          editorial posts surfaced on the public site
 --    contacts          submissions from the public /contact form
 --    contact_replies   responses sent back to a contact, with email status
+--    subscribers       executive briefing sign-ups from the site footer
+--    broadcasts        briefing emails sent to every active subscriber
 -- ═══════════════════════════════════════════════════════════════════
 
 create extension if not exists pgcrypto;
@@ -188,6 +190,71 @@ create index if not exists contact_replies_contact_id_idx
 
 
 -- ═══════════════════════════════════════════════════════════════════
+--  subscribers
+--
+--  Filled from the footer's "Executive AI Briefings" form. Visitors never
+--  touch the table directly: they go through subscribe_to_briefings() and
+--  unsubscribe_from_briefings() below, which are the only two things the
+--  anon key can do here.
+-- ═══════════════════════════════════════════════════════════════════
+create table if not exists public.subscribers (
+  id                uuid primary key default gen_random_uuid(),
+  email             text not null unique
+                    check (email = lower(email) and char_length(email) between 3 and 320),
+  status            text not null default 'active'
+                    check (status in ('active', 'unsubscribed')),
+  source            text not null default 'footer',
+  -- Carried in every briefing's unsubscribe link. Random, so holding one
+  -- link reveals nothing about any other subscriber.
+  unsubscribe_token uuid not null unique default gen_random_uuid(),
+  unsubscribed_at   timestamptz,
+  created_at        timestamptz not null default now(),
+  updated_at        timestamptz not null default now()
+);
+
+create index if not exists subscribers_status_created_at_idx
+  on public.subscribers (status, created_at desc);
+
+drop trigger if exists subscribers_touch_updated_at on public.subscribers;
+create trigger subscribers_touch_updated_at
+  before update on public.subscribers
+  for each row execute function public.touch_updated_at();
+
+
+-- ═══════════════════════════════════════════════════════════════════
+--  broadcasts
+--
+--  One row per briefing sent from the console. Written only by the
+--  send-broadcast Edge Function, which creates the row before the first
+--  email leaves and updates the counts after every batch — so a send that
+--  dies halfway still shows how far it got.
+-- ═══════════════════════════════════════════════════════════════════
+create table if not exists public.broadcasts (
+  id              uuid primary key default gen_random_uuid(),
+  author_id       uuid references public.profiles (id) on delete set null,
+  -- Set when the briefing announces an insight, so the editor can show
+  -- that a post has already been sent out.
+  insight_id      uuid references public.insights (id) on delete set null,
+  subject         text not null,
+  body            text not null,
+  status          text not null default 'sending'
+                  check (status in ('sending', 'sent', 'partial', 'failed')),
+  recipient_count int not null default 0,
+  sent_count      int not null default 0,
+  failed_count    int not null default 0,
+  last_error      text,
+  created_at      timestamptz not null default now(),
+  completed_at    timestamptz
+);
+
+create index if not exists broadcasts_created_at_idx
+  on public.broadcasts (created_at desc);
+
+create index if not exists broadcasts_insight_id_idx
+  on public.broadcasts (insight_id);
+
+
+-- ═══════════════════════════════════════════════════════════════════
 --  Row Level Security
 --
 --  The dashboard talks to Postgres straight from the browser with the
@@ -198,6 +265,8 @@ alter table public.profiles        enable row level security;
 alter table public.insights        enable row level security;
 alter table public.contacts        enable row level security;
 alter table public.contact_replies enable row level security;
+alter table public.subscribers     enable row level security;
+alter table public.broadcasts      enable row level security;
 
 -- ── profiles ──
 drop policy if exists "own profile readable" on public.profiles;
@@ -260,6 +329,78 @@ create policy "admins delete contacts" on public.contacts
 drop policy if exists "admins read replies" on public.contact_replies;
 create policy "admins read replies" on public.contact_replies
   for select using (public.is_admin());
+
+-- ── subscribers ──
+-- No anon policy at all: the public form goes through the SECURITY DEFINER
+-- functions below. A plain INSERT policy would answer "duplicate key" for
+-- an address already on the list, which tells anyone who is subscribed.
+drop policy if exists "admins manage subscribers" on public.subscribers;
+create policy "admins manage subscribers" on public.subscribers
+  for all using (public.is_admin()) with check (public.is_admin());
+
+-- ── broadcasts ──
+-- Written by the send-broadcast Edge Function (service role); admins read.
+drop policy if exists "admins read broadcasts" on public.broadcasts;
+create policy "admins read broadcasts" on public.broadcasts
+  for select using (public.is_admin());
+
+
+-- ═══════════════════════════════════════════════════════════════════
+--  Briefing sign-up and opt-out
+--
+--  Both are callable with the anon key. Each does exactly one thing and
+--  returns nothing that describes the list.
+-- ═══════════════════════════════════════════════════════════════════
+
+-- Subscribing an address that is already active is a silent no-op, and one
+-- that previously opted out is reactivated — the visitor asked again. The
+-- caller sees the same success either way.
+create or replace function public.subscribe_to_briefings(
+  p_email  text,
+  p_source text default 'footer'
+)
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_email text := lower(trim(coalesce(p_email, '')));
+begin
+  if char_length(v_email) not between 3 and 320
+     or v_email !~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$' then
+    raise exception 'invalid email address' using errcode = '22023';
+  end if;
+
+  insert into public.subscribers (email, source)
+  -- `source` is caller-supplied, so only a plain slug is kept; anything
+  -- else is recorded as the footer rather than stored verbatim.
+  values (v_email, case when p_source ~ '^[a-z0-9_-]{1,40}$' then p_source else 'footer' end)
+  on conflict (email) do update
+    set status = 'active',
+        unsubscribed_at = null
+    where subscribers.status = 'unsubscribed';
+end;
+$$;
+
+-- Returns whether the token matched anyone. Repeating it is harmless.
+create or replace function public.unsubscribe_from_briefings(p_token uuid)
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  update public.subscribers
+     set status = 'unsubscribed',
+         unsubscribed_at = coalesce(unsubscribed_at, now())
+   where unsubscribe_token = p_token;
+  return found;
+end;
+$$;
+
+grant execute on function public.subscribe_to_briefings(text, text) to anon, authenticated;
+grant execute on function public.unsubscribe_from_briefings(uuid) to anon, authenticated;
 
 
 -- ═══════════════════════════════════════════════════════════════════

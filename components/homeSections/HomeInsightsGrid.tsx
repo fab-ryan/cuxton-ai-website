@@ -18,11 +18,7 @@ export default function HomeInsightsGrid({
 }) {
   const [rows, setRows] = useState<Insight[]>(initial);
 
-  /* Only build-time slugs have a prerendered page; see insightHref. */
-  const prerendered = useMemo(
-    () => new Set(initial.map((insight) => insight.slug)),
-    [initial]
-  );
+ 
 
   useEffect(() => {
     const supabase = getSupabase();
@@ -66,7 +62,7 @@ export default function HomeInsightsGrid({
       {rows.map((insight) => (
         <Link
           key={insight.id}
-          href={insightHref(insight.slug, prerendered)}
+          href={insightHref(insight.slug)}
           className={`card-enterprise ${styles.cardAccent} ${styles.insights__card}`}
           style={{ textDecoration: "none" }}
         >

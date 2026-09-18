@@ -7,8 +7,9 @@ privileged code. Supabase supplies the three things the console needs:
 | Need | Where it lives |
 |---|---|
 | Sign in | Supabase Auth, called from the browser |
-| Read / write insights and enquiries | Postgres, guarded by Row Level Security |
+| Read / write insights, enquiries and subscribers | Postgres, guarded by Row Level Security |
 | Sending reply emails | `send-contact-reply` Edge Function (holds the Resend key) |
+| Sending briefings to subscribers | `send-broadcast` Edge Function (same Resend key) |
 
 **Row Level Security is the security boundary.** The `DashboardShell` guard is
 a convenience that keeps the UI honest; a visitor who bypasses it still cannot
@@ -42,8 +43,9 @@ supabase db push
 ```
 
 It is idempotent, so re-running after an edit is safe. It creates
-`profiles`, `insights`, `contacts` and `contact_replies`, the triggers that
-maintain `updated_at` and `published_at`, and every RLS policy.
+`profiles`, `insights`, `contacts`, `contact_replies`, `subscribers` and
+`broadcasts`, the triggers that maintain `updated_at` and `published_at`,
+the two briefing sign-up functions, and every RLS policy.
 
 ### Images
 
@@ -79,18 +81,25 @@ with `role = 'viewer'` — which grants nothing. Only `admin` opens the console.
 > can create an account. They would still land on the "no dashboard access"
 > screen and could read nothing, but there is no reason to allow it.
 
-## 4. Deploy the email function
+## 4. Deploy the email functions
 
-Replies are sent by [Resend](https://resend.com). Verify your sending domain
-there first, then:
+Replies and briefings are sent by [Resend](https://resend.com). Verify your
+sending domain there first, then:
 
 ```bash
 supabase functions deploy send-contact-reply
+supabase functions deploy send-broadcast
 
 supabase secrets set \
   RESEND_API_KEY=re_xxxxxxxxxxxx \
-  REPLY_FROM="CuxtonAI <hello@cuxtonai.com>"
+  REPLY_FROM="CuxtonAI <info@cuxtonai.com>" \
+  BRIEFING_FROM="CuxtonAI Briefings <briefings@cuxtonai.com>" \
+  SITE_URL=https://cuxtonai.com
 ```
+
+`BRIEFING_FROM` falls back to `REPLY_FROM` when unset. `SITE_URL` is used to
+build the article and unsubscribe links inside each briefing, so it must be
+the address the site is actually served from.
 
 Optionally pin the browser origin allowed to call it:
 
@@ -101,9 +110,10 @@ supabase secrets set ALLOWED_ORIGIN=https://cuxtonai.com
 `SUPABASE_URL`, `SUPABASE_ANON_KEY` and `SUPABASE_SERVICE_ROLE_KEY` are
 injected by the platform — you do not set those.
 
-The function re-checks the caller's JWT and their `admin` role server-side
-before it will send anything, and writes a `contact_replies` row **before**
-attempting delivery, so a failure is recorded rather than lost.
+Both functions re-check the caller's JWT and their `admin` role server-side
+before they will send anything, and write their log row (`contact_replies`,
+`broadcasts`) **before** attempting delivery, so a failure is recorded rather
+than lost.
 
 ## 5. Run it
 
@@ -118,7 +128,8 @@ npm run build   # static export into out/
 
 ```
 app/login/                     sign-in page
-app/dashboard/                 console (overview, insights, contacts)
+app/dashboard/                 console (overview, insights, contacts, subscribers)
+app/unsubscribe/               briefing opt-out, linked from every briefing
 app/insights/                  public index + prerendered article pages
 app/insights/view/             client-rendered article fallback (see below)
 
@@ -155,6 +166,38 @@ Posts written before the editor existed have no `body_json`; they still render
 through the original plain-text parser, and open in the editor as paragraphs.
 Nothing had to be migrated.
 
+## Executive briefings
+
+The **Join** form in the site footer calls `subscribe_to_briefings()`, and the
+console's **Subscribers** page sends a briefing to everyone active.
+
+**Signing up.** The anon key cannot touch the `subscribers` table at all. It
+can only call two `SECURITY DEFINER` functions: `subscribe_to_briefings()` and
+`unsubscribe_from_briefings()`. The first answers the same way whether or not
+the address was already on the list, so the form cannot be used to find out
+who is subscribed. Signing up again after unsubscribing reactivates the
+address.
+
+**Sending.** Write a message, optionally pick a published insight to feature
+(a card with its cover, excerpt and link is added under the message), then
+**Send test to me** before **Send to everyone**. Each published insight's
+editor also has an *Email this insight to subscribers* link that opens the
+composer with it selected, and shows whether it has been sent already.
+Nothing is emailed automatically on publish: sending to the whole list cannot
+be undone, so it is always a deliberate step.
+
+**Unsubscribing.** Every email carries the recipient's own link to
+`/unsubscribe?token=…`, and a `List-Unsubscribe` header so mail clients show
+their own control. The page waits for a click, because corporate mail
+gateways open links to scan them. Admins can also unsubscribe or delete (for
+erasure requests) an address from the console.
+
+**Limits.** Emails go out through Resend's batch endpoint, 100 per request
+with a short pause between requests, and the `broadcasts` row is updated after
+every batch. That is roughly 6,000 recipients a minute. Edge Functions have
+a wall-clock limit (150 s on the free plan), so past about 10,000 active
+subscribers the send should move to a queue.
+
 ## Two consequences of the static export
 
 **1. A new insight needs a deploy to get its own URL.**
@@ -179,5 +222,8 @@ would need every id known at build time.
   narrow — an anonymous poster cannot set `status` or `internal_notes`, and
   every field is length-capped — but it does not stop volume. Add Cloudflare
   Turnstile or hCaptcha to `/contact` if enquiries start being abused.
+- **Double opt-in for briefings.** Sign-up is single opt-in: anyone can enter
+  anyone's address. Every briefing has an unsubscribe link, but if bogus
+  sign-ups appear, add a confirmation email before an address becomes active.
 - **Backups.** Enable Point-in-Time Recovery on the Supabase project; the
   enquiry history is not stored anywhere else.

@@ -52,13 +52,17 @@ export const companyContact: CompanyContact = {
     mapViewHref: `https://www.google.com/maps/search/?api=1&query=${mapQuery}`,
     geo: officeGeo,
   },
-  email: "hello@cuxtonai.com",
+  email: "info@cuxtonai.com",
   phone: null,
   /* These still point at each network's home page — swap in the real
      profile URLs once they exist. */
   socials: [
-    { id: "linkedin", label: "LinkedIn", href: "https://linkedin.com" },
-    { id: "x", label: "X", href: "https://x.com" },
-    { id: "github", label: "GitHub", href: "https://github.com" },
+    {
+      id: "linkedin",
+      label: "LinkedIn",
+      href: "https://linkedin.com/company/cuxtonai",
+    },
+    { id: "x", label: "X", href: "https://x.com/cuxtonai" },
+    { id: "github", label: "GitHub", href: "https://github.com/cuxtonai" },
   ],
 };

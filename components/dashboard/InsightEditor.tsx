@@ -4,8 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getSupabase } from "@/lib/supabase/client";
-import { INSIGHT_TAGS, type Insight, type InsightStatus } from "@/lib/supabase/types";
-import { deriveExcerpt, formatDateTime, readingMinutes, slugify } from "@/lib/insights";
+import { INSIGHT_TAGS, type Broadcast, type Insight, type InsightStatus } from "@/lib/supabase/types";
+import { deriveExcerpt, formatDate, formatDateTime, readingMinutes, slugify } from "@/lib/insights";
 import { asRichDoc, EMPTY_DOC, isDocEmpty, type RichDoc } from "@/lib/richtext";
 import RichTextEditor from "./RichTextEditor";
 import InsightMediaField from "./InsightMediaField";
@@ -59,6 +59,7 @@ export default function InsightEditor({ insightId }: { insightId: string | null 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [announced, setAnnounced] = useState<Pick<Broadcast, "sent_count" | "created_at"> | null>(null);
 
   const set = useCallback(<K extends keyof Draft>(key: K, value: Draft[K]) => {
     setDraft((prev) => ({ ...prev, [key]: value }));
@@ -106,6 +107,30 @@ export default function InsightEditor({ insightId }: { insightId: string | null 
       }
       setLoading(false);
     })();
+
+    return () => {
+      alive = false;
+    };
+  }, [insightId, isAdmin]);
+
+  /* Whether this post has already been emailed to briefing subscribers. */
+  useEffect(() => {
+    if (!insightId || !isAdmin) return;
+    const supabase = getSupabase();
+    if (!supabase) return;
+
+    let alive = true;
+    supabase
+      .from("broadcasts")
+      .select("sent_count, created_at")
+      .eq("insight_id", insightId)
+      .gt("sent_count", 0)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (alive) setAnnounced(data);
+      });
 
     return () => {
       alive = false;
@@ -335,6 +360,29 @@ export default function InsightEditor({ insightId }: { insightId: string | null 
                 >
                   Unpublish and return to draft
                 </button>
+              )}
+
+              {draft.status === "published" && insightId && (
+                <div
+                  style={{
+                    marginTop: "0.9rem",
+                    paddingTop: "0.9rem",
+                    borderTop: "1px solid var(--border)",
+                  }}
+                >
+                  <Link
+                    href={`/dashboard/subscribers?insight=${insightId}`}
+                    className={s.linkBtn}
+                    style={{ textDecoration: "none" }}
+                  >
+                    Email this insight to subscribers →
+                  </Link>
+                  <p className={s.hint}>
+                    {announced
+                      ? `Already sent to ${announced.sent_count} ${announced.sent_count === 1 ? "subscriber" : "subscribers"} on ${formatDate(announced.created_at)}.`
+                      : "Not yet sent to briefing subscribers."}
+                  </p>
+                </div>
               )}
 
               {validationError && (
