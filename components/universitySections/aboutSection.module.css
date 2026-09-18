@@ -1,0 +1,124 @@
+.section {
+  position: relative;
+  padding: 6rem 1.5rem;
+  background: var(--background);
+  border-bottom: 1px solid rgba(27, 107, 138, 0.1);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.content {
+  max-width: 700px;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
+}
+
+.paragraph {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem 0;
+}
+
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.highlight {
+  padding: 1.5rem;
+  background: rgba(27, 107, 138, 0.05);
+  border-left: 3px solid var(--cuxton-teal);
+  border-radius: 0.375rem;
+}
+
+.highlightTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.highlightDesc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.learnMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  background: var(--cuxton-teal);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.learnMoreBtn:hover {
+  background: rgba(27, 107, 138, 0.9);
+  transform: translateY(-2px);
+}
+
+.statsBox {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(27, 107, 138, 0.05);
+  border: 1px solid rgba(27, 107, 138, 0.15);
+  border-radius: 0.5rem;
+  position: sticky;
+  top: 100px;
+}
+
+@media (min-width: 1024px) {
+  .statsBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNum {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--cuxton-teal);
+  margin-bottom: 0.5rem;
+}
+
+.statText {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
