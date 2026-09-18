@@ -1,0 +1,299 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CUXTONAI ACADEMY UNIVERSITY — shared page primitives
+
+   Inherits the CuxtonAI system: square corners, hairline borders,
+   teal for structure, amber for state. No gradients, no shadows,
+   no ambient motion. The university layer adds a serif display face
+   for headings and a wider reading measure for prose.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section {
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+.sectionFlush { border-top: 0; }
+.sectionAlt { background: var(--bg-surface); }
+
+@media (min-width: 1024px) {
+  .section { padding: 6rem 0; }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+@media (min-width: 768px) { .container { padding: 0 2rem; } }
+@media (min-width: 1024px) { .container { padding: 0 3rem; } }
+
+.narrow { max-width: 780px; }
+
+/* ── Section headings ─────────────────────────────────────────── */
+
+.head { margin-bottom: 2.5rem; }
+.headSplit {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+@media (min-width: 900px) {
+  .headSplit {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cuxton-teal-text);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.titleSm {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.375rem, 2.4vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--foreground);
+  margin: 0 0 1rem;
+}
+
+.lead {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(var(--foreground-rgb), 0.7);
+  max-width: 62ch;
+  margin: 1rem 0 0;
+}
+
+.prose p {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: rgba(var(--foreground-rgb), 0.78);
+  margin: 0 0 1.25rem;
+  max-width: 68ch;
+}
+.prose p:last-child { margin-bottom: 0; }
+
+/* ── Grids ────────────────────────────────────────────────────── */
+
+.grid { display: grid; gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); }
+.gridGap { display: grid; gap: 1.5rem; }
+
+.cols2 { grid-template-columns: 1fr; }
+.cols3 { grid-template-columns: 1fr; }
+.cols4 { grid-template-columns: 1fr; }
+
+@media (min-width: 640px) {
+  .cols2 { grid-template-columns: repeat(2, 1fr); }
+  .cols3 { grid-template-columns: repeat(2, 1fr); }
+  .cols4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1000px) {
+  .cols3 { grid-template-columns: repeat(3, 1fr); }
+  .cols4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ── Cards ────────────────────────────────────────────────────── */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease;
+}
+a.card:hover, a.card:focus-visible { border-color: var(--cuxton-teal-mid); }
+
+.cardFlat {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  padding: 1.75rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s ease;
+}
+a.cardFlat:hover, a.cardFlat:focus-visible { background: var(--bg-elevated); }
+
+.cardMedia {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.cardMedia img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.cardTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.1875rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--foreground);
+  margin: 0 0 0.625rem;
+}
+
+.cardText {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(var(--foreground-rgb), 0.68);
+  margin: 0;
+}
+
+.cardFoot {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cuxton-teal-text);
+}
+.cardFoot span[aria-hidden] { transition: transform 0.15s ease; }
+a.card:hover .cardFoot span[aria-hidden],
+a.cardFlat:hover .cardFoot span[aria-hidden] { transform: translateX(3px); }
+
+/* ── Meta rows and pills ──────────────────────────────────────── */
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.875rem;
+  margin-bottom: 0.875rem;
+  font-size: 0.8125rem;
+  color: rgba(var(--foreground-rgb), 0.55);
+}
+.metaRow > * { display: inline-flex; align-items: center; }
+
+.pill {
+  padding: 0.1875rem 0.625rem;
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(var(--foreground-rgb), 0.8);
+  white-space: nowrap;
+}
+.pillAccent { border-color: var(--border-amber); color: var(--cuxton-amber-text); }
+.pillTeal { border-color: rgba(var(--cuxton-teal-mid-rgb), 0.5); color: var(--cuxton-teal-text); }
+
+/* ── Fact strip ───────────────────────────────────────────────── */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid var(--border);
+  background: var(--border-subtle);
+  gap: 1px;
+}
+@media (min-width: 768px) { .facts { grid-template-columns: repeat(4, 1fr); } }
+
+.fact { background: var(--bg-surface); padding: 1.25rem 1.5rem; }
+.factValue {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--foreground);
+  display: block;
+}
+.factLabel {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: rgba(var(--foreground-rgb), 0.6);
+}
+
+/* ── Definition list used on detail pages ─────────────────────── */
+
+.specs {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+@media (min-width: 640px) { .specs { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .specs { grid-template-columns: repeat(4, 1fr); } }
+
+.spec {
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+}
+@media (min-width: 640px) {
+  .spec { border-right: 1px solid var(--border); padding: 1rem 1.25rem; }
+  .spec:first-child { padding-left: 0; }
+}
+.specLabel {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(var(--foreground-rgb), 0.5);
+  margin-bottom: 0.375rem;
+}
+.specValue { display: block; font-size: 0.9375rem; color: var(--foreground); line-height: 1.5; }
+
+/* ── Lists ────────────────────────────────────────────────────── */
+
+.checklist { list-style: none; margin: 0; padding: 0; }
+.checklist li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.875rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(var(--foreground-rgb), 0.78);
+}
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--cuxton-teal-mid);
+}
+.checklist li:last-child { margin-bottom: 0; }
+
+/* ── Actions ──────────────────────────────────────────────────── */
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: 2rem; }
+
+.linkRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--cuxton-teal-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.linkRow:hover { border-bottom-color: var(--cuxton-teal-mid); }

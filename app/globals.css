@@ -79,6 +79,26 @@
   --sch-amber-text: #f0ad3e;
   --sch-amber-bg: #2e2411;
   --sch-red-bg: #2a1719;
+
+  /* Layout metrics. The navigation is fixed, so the main element
+     reserves exactly its height rather than guessing at an offset. */
+  --nav-h: 60px;
+
+  /* Semantic roles for the university layer. Every one of these points
+     at a brand token above: the palette does not grow, it only gains
+     names that say what a colour means. */
+  --u-primary: var(--cuxton-teal);
+  --u-primary-text: var(--cuxton-teal-text);
+  --u-accent: var(--cuxton-amber);
+  --u-accent-text: var(--cuxton-amber-text);
+  --u-success: var(--status-ok);
+  --u-error: var(--status-error);
+  --u-info: var(--cuxton-teal-mid);
+  --u-progress: var(--cuxton-teal-mid);
+}
+
+@media (min-width: 768px) {
+  :root { --nav-h: 72px; }
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -195,6 +215,12 @@
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+.site-main {
+  flex: 1;
+  outline: none;
+  padding-top: var(--nav-h);
 }
 
 body {

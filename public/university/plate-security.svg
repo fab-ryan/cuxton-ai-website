@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Shield with a keyed lock over a grid">
+<rect width="800" height="600" fill="#101b26"/>
+<g stroke="#1a3d4d" stroke-width="1" opacity="0.45"><path d="M100 80v440"/><path d="M186 80v440"/><path d="M272 80v440"/><path d="M358 80v440"/><path d="M444 80v440"/><path d="M530 80v440"/><path d="M616 80v440"/><path d="M702 80v440"/><path d="M60 120h680"/><path d="M60 208h680"/><path d="M60 296h680"/><path d="M60 384h680"/><path d="M60 472h680"/></g>
+<path d="M400 100 600 168v152c0 112-92 158-200 180-108-22-200-68-200-180V168Z" fill="#16222e" stroke="#2f88a8" stroke-width="2"/>
+<path d="M400 148 552 200v122c0 86-70 122-152 140-82-18-152-54-152-140V200Z" fill="none" stroke="#2b4356" stroke-width="1.5"/>
+<rect x="348" y="300" width="104" height="86" fill="#101b26" stroke="#f5a623" stroke-width="2"/>
+<path d="M368 300v-26a32 32 0 0 1 64 0v26" fill="none" stroke="#f5a623" stroke-width="2"/>
+<circle cx="400" cy="336" r="9" fill="#f5a623"/><path d="M400 345v22" stroke="#f5a623" stroke-width="3"/>
+</svg>

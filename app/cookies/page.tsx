@@ -1,54 +1,75 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
+import LegalPage from "@/components/university/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy — CuxtonAI",
+  title: "Cookie policy",
   description:
-    "Information on cookies, tracking, and minimal telemetry used on the CuxtonAI website.",
+    "This website sets no cookies and runs no analytics. What that means in practice.",
+  alternates: { canonical: "/cookies" },
 };
 
 export default function CookiePolicyPage() {
   return (
-    <div style={{ background: "var(--background)", minHeight: "80vh" }}>
-      <PageHero
-        breadcrumbs={[{ label: "Cookie Policy" }]}
-        eyebrow="Privacy Transparency"
-        title="Minimal &"
-        titleHighlight="Transparent Cookie Policy"
-        showVisual={false}
-        description="CuxtonAI respects user privacy. We do not use intrusive third-party cross-site advertising cookies or commercial tracking beacons."
-        tags={["Zero Tracking Ads", "Essential Only", "User Managed"]}
-      />
-
-      <section style={{ padding: "4rem 1.5rem 6rem" }}>
-        <div style={{ maxWidth: 840, margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
-          <article className="card-enterprise" style={{ padding: "2rem 2.5rem", lineHeight: 1.8 }}>
-            <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "1rem" }}>
-              1. Essential Cookies Only
-            </h2>
-            <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
-              We only use strictly necessary session cookies required for core website routing, accessibility preferences,
-              and security validation. We do not sell data or maintain ad-network trackers.
+    <LegalPage
+      label="Cookie policy"
+      title="Cookie policy"
+      lead="The short version: this site sets no cookies at all. The longer version explains what your browser still does on its own."
+      updated="18 September 2026"
+      sections={[
+        {
+          heading: "No cookies are set",
+          body: (
+            <p>
+              This website does not set cookies, does not use local or session
+              storage to identify you, and does not run an analytics script. There
+              is no banner to dismiss because there is nothing to consent to.
             </p>
-          </article>
-
-          <article className="card-enterprise" style={{ padding: "2rem 2.5rem", lineHeight: 1.8 }}>
-            <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "1rem" }}>
-              2. Managing Preferences
-            </h2>
-            <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
-              You can block or disable cookies at any time through your browser settings. Doing so will not degrade your ability
-              to review CuxtonAI solutions and content.
+          ),
+        },
+        {
+          heading: "What your browser still does",
+          body: (
+            <p>
+              Your browser caches pages, images and typefaces so that the site
+              loads faster next time. That cache is held on your own device, is not
+              readable by us, and can be cleared from your browser settings at any
+              time.
             </p>
-            <div style={{ marginTop: "1.5rem" }}>
-              <Link href="/privacy" className="btn-secondary" style={{ display: "inline-flex", height: "2.75rem", padding: "0 1.25rem", fontSize: "0.85rem" }}>
-                Read Full Privacy Policy
-              </Link>
-            </div>
-          </article>
-        </div>
-      </section>
-    </div>
+          ),
+        },
+        {
+          heading: "No third-party embeds",
+          body: (
+            <p>
+              No maps, videos, chat widgets, advertising pixels or social embeds are
+              loaded into these pages. Where the site points to an external service,
+              such as a map of the campus address, it is a plain link that opens in
+              a new tab, so nothing is loaded until you choose to follow it.
+            </p>
+          ),
+        },
+        {
+          heading: "Typefaces",
+          body: (
+            <p>
+              Fonts are downloaded at build time and served from this site. Loading
+              a page does not contact an external font service.
+            </p>
+          ),
+        },
+        {
+          heading: "If this changes",
+          body: (
+            <p>
+              If the site ever needs a cookie to work, this page will say what it is
+              and why, and consent will be asked for before it is set. See the{" "}
+              <Link href="/privacy">privacy notice</Link> for how personal
+              information is handled more generally.
+            </p>
+          ),
+        },
+      ]}
+    />
   );
 }

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Line drawing of the CuxtonAI Academy University campus at dusk">
+  <rect width="1600" height="900" fill="#101b26"/>
+
+  <!-- sky rules -->
+  <g stroke="#1a3d4d" stroke-width="1" opacity="0.55">
+    <path d="M0 90h1600M0 170h1600M0 250h1600M0 330h1600M0 410h1600"/>
+  </g>
+  <g stroke="#1a3d4d" stroke-width="1" opacity="0.3">
+    <path d="M160 0v470M480 0v470M800 0v330M1120 0v470M1440 0v470"/>
+  </g>
+
+  <!-- far skyline -->
+  <g fill="#14202c" stroke="#23384a" stroke-width="1.5">
+    <rect x="60" y="470" width="150" height="230"/>
+    <rect x="232" y="516" width="96" height="184"/>
+    <rect x="1372" y="452" width="168" height="248"/>
+    <rect x="1290" y="530" width="66" height="170"/>
+  </g>
+  <g stroke="#23384a" stroke-width="1" opacity="0.8">
+    <path d="M60 520h150M60 570h150M60 620h150M232 566h96M232 616h96M1372 502h168M1372 552h168M1372 602h168"/>
+  </g>
+
+  <!-- left wing -->
+  <g fill="#16222e" stroke="#2b4356" stroke-width="2">
+    <rect x="348" y="512" width="196" height="188"/>
+  </g>
+  <g stroke="#2f88a8" stroke-width="1.5" fill="none" opacity="0.85">
+    <rect x="374" y="540" width="30" height="48"/><rect x="420" y="540" width="30" height="48"/>
+    <rect x="466" y="540" width="30" height="48"/><rect x="512" y="540" width="24" height="48"/>
+    <rect x="374" y="614" width="30" height="48"/><rect x="420" y="614" width="30" height="48"/>
+    <rect x="466" y="614" width="30" height="48"/><rect x="512" y="614" width="24" height="48"/>
+  </g>
+  <rect x="420" y="540" width="30" height="48" fill="#f5a623" opacity="0.9"/>
+
+  <!-- main hall: pediment, colonnade, steps -->
+  <path d="M790 300 1074 404H506Z" fill="#16222e" stroke="#2b4356" stroke-width="2"/>
+  <path d="M790 336 976 404H604Z" fill="none" stroke="#2f88a8" stroke-width="1.5"/>
+  <rect x="506" y="404" width="568" height="26" fill="#1c2a37" stroke="#2b4356" stroke-width="2"/>
+  <g fill="#16222e" stroke="#2b4356" stroke-width="2">
+    <rect x="530" y="430" width="30" height="240"/><rect x="606" y="430" width="30" height="240"/>
+    <rect x="682" y="430" width="30" height="240"/><rect x="758" y="430" width="30" height="240"/>
+    <rect x="834" y="430" width="30" height="240"/><rect x="910" y="430" width="30" height="240"/>
+    <rect x="986" y="430" width="30" height="240"/>
+  </g>
+  <g stroke="#2b4356" stroke-width="1" opacity="0.7">
+    <path d="M530 470h486M530 530h486M530 590h486"/>
+  </g>
+  <rect x="506" y="670" width="568" height="14" fill="#1c2a37" stroke="#2b4356" stroke-width="2"/>
+  <rect x="546" y="684" width="488" height="12" fill="#16222e" stroke="#2b4356" stroke-width="1.5"/>
+  <!-- doorway -->
+  <path d="M770 560h40v110h-40z" fill="#0c141d" stroke="#f5a623" stroke-width="2"/>
+
+  <!-- clock tower -->
+  <g fill="#16222e" stroke="#2b4356" stroke-width="2">
+    <rect x="1118" y="352" width="104" height="348"/>
+    <path d="M1170 306 1230 356h-120z"/>
+  </g>
+  <circle cx="1170" cy="418" r="26" fill="#101b26" stroke="#f5a623" stroke-width="2"/>
+  <path d="M1170 418v-15M1170 418l11 8" stroke="#f5a623" stroke-width="2" stroke-linecap="round"/>
+  <g stroke="#2f88a8" stroke-width="1.5" fill="none" opacity="0.85">
+    <rect x="1140" y="484" width="26" height="44"/><rect x="1178" y="484" width="26" height="44"/>
+    <rect x="1140" y="554" width="26" height="44"/><rect x="1178" y="554" width="26" height="44"/>
+    <rect x="1140" y="624" width="26" height="44"/><rect x="1178" y="624" width="26" height="44"/>
+  </g>
+
+  <!-- right wing -->
+  <rect x="1240" y="524" width="132" height="176" fill="#16222e" stroke="#2b4356" stroke-width="2"/>
+  <g stroke="#2f88a8" stroke-width="1.5" fill="none" opacity="0.8">
+    <rect x="1264" y="550" width="28" height="42"/><rect x="1310" y="550" width="28" height="42"/>
+    <rect x="1264" y="616" width="28" height="42"/><rect x="1310" y="616" width="28" height="42"/>
+  </g>
+  <rect x="1310" y="616" width="28" height="42" fill="#f5a623" opacity="0.85"/>
+
+  <!-- trees -->
+  <g fill="#14202c" stroke="#2b4356" stroke-width="1.5">
+    <path d="M300 700V648M282 648a18 18 0 0 1 36 0z"/>
+    <path d="M1420 700v-58M1400 642a20 20 0 0 1 40 0z"/>
+    <path d="M196 700v-46M180 654a16 16 0 0 1 32 0z"/>
+  </g>
+
+  <!-- ground -->
+  <rect y="700" width="1600" height="200" fill="#0c141d"/>
+  <path d="M0 700h1600" stroke="#2b4356" stroke-width="2"/>
+  <path d="M640 900 740 700h100L700 900Z" fill="#101b26" stroke="#2b4356" stroke-width="1.5"/>
+  <g stroke="#1a3d4d" stroke-width="1" opacity="0.8">
+    <path d="M0 756h1600M0 812h1600M0 868h1600"/>
+  </g>
+</svg>

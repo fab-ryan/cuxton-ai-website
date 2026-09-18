@@ -1,67 +1,117 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
+import LegalPage from "@/components/university/LegalPage";
+import { UNIVERSITY_CONTACT } from "@/data/university";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — CuxtonAI",
+  title: "Terms of use",
   description:
-    "Terms of use and enterprise engagement policies for CuxtonAI.",
+    "The terms governing use of the CuxtonAI Academy University website, including the status of the content published on it.",
+  alternates: { canonical: "/terms" },
 };
+
+const general = UNIVERSITY_CONTACT.offices[3];
 
 export default function TermsPage() {
   return (
-    <div style={{ background: "var(--background)", minHeight: "80vh" }}>
-      <PageHero
-        breadcrumbs={[{ label: "Terms of Use" }]}
-        eyebrow="Legal Agreements"
-        title="Terms of"
-        titleHighlight="Service & Engagement"
-        showVisual={false}
-        description="These terms govern the use of the CuxtonAI website, enterprise consultative engagements, and software evaluation frameworks."
-        tags={["Enterprise Master Agreements", "Client IP Protection", "Jurisdictional Compliance"]}
-      />
-
-      <section style={{ padding: "4rem 1.5rem 6rem" }}>
-        <div style={{ maxWidth: 840, margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
-          <article className="card-enterprise" style={{ padding: "2rem 2.5rem", lineHeight: 1.8 }}>
-            <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "1rem" }}>
-              1. Engagement &amp; Advisory Scope
-            </h2>
-            <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
-              CuxtonAI provides enterprise AI consultancy, architectural design, and deployment services under tailored
-              Master Services Agreements (MSAs) and Statements of Work (SOWs). Information published on this site is provided
-              for informational purposes regarding capabilities and methodology.
+    <LegalPage
+      label="Terms of use"
+      title="Terms of use"
+      lead="The terms on which this website is published, and what its content does and does not commit the university to."
+      updated="18 September 2026"
+      sections={[
+        {
+          heading: "Accepting these terms",
+          body: (
+            <p>
+              Using this website means accepting the terms below. If you do not
+              accept them, please stop using the site.
             </p>
-          </article>
-
-          <article className="card-enterprise" style={{ padding: "2rem 2.5rem", lineHeight: 1.8 }}>
-            <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "1rem" }}>
-              2. Intellectual Property &amp; Code
-            </h2>
-            <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
-              Unless otherwise agreed in an enterprise SOW, custom models, system prompts, pipelines, and integrations developed
-              specifically for institutional clients remain the exclusive intellectual property of the respective client.
+          ),
+        },
+        {
+          heading: "The status of this content",
+          body: (
+            <>
+              <p>
+                This site is a demonstration build. The programmes, modules,
+                faculty, news items and events it describes are illustrative
+                placeholder content, written to show how the site works rather than
+                to record a real institution.
+              </p>
+              <p>
+                Nothing published here is an offer of a place, a prospectus, a
+                contract, or a statement of accreditation, and it should not be
+                relied on as any of those things.
+              </p>
+            </>
+          ),
+        },
+        {
+          heading: "Accuracy",
+          body: (
+            <p>
+              Where the site describes a process, we aim to describe it accurately,
+              but content may be changed or withdrawn at any time without notice.
+              Before acting on anything you read here, confirm it with the relevant
+              office through the <Link href="/contact">contact page</Link>.
             </p>
-          </article>
-
-          <article className="card-enterprise" style={{ padding: "2rem 2.5rem", lineHeight: 1.8 }}>
-            <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "1rem" }}>
-              3. Contact
-            </h2>
-            <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
-              For contractual or legal inquiries, reach out to{" "}
-              <a href="mailto:legal@cuxtonai.com" style={{ color: "var(--cuxton-teal-light)", textDecoration: "none", fontWeight: 600 }}>
-                legal@cuxtonai.com
-              </a>.
+          ),
+        },
+        {
+          heading: "Acceptable use",
+          body: (
+            <>
+              <p>You agree not to:</p>
+              <ul>
+                <li>use the site in a way that disrupts it or anyone else&apos;s use of it;</li>
+                <li>attempt to gain access to any part of it you have not been given access to;</li>
+                <li>reproduce substantial parts of it commercially without permission.</li>
+              </ul>
+            </>
+          ),
+        },
+        {
+          heading: "Intellectual property",
+          body: (
+            <p>
+              The text, layout, illustrations and marks on this site belong to
+              CuxtonAI Ltd unless stated otherwise. You may quote from it with
+              attribution and link to it freely.
             </p>
-            <div style={{ marginTop: "1.5rem" }}>
-              <Link href="/contact" className="btn-secondary" style={{ display: "inline-flex", height: "2.75rem", padding: "0 1.25rem", fontSize: "0.85rem" }}>
-                Contact Legal &amp; Compliance Team
-              </Link>
-            </div>
-          </article>
-        </div>
-      </section>
-    </div>
+          ),
+        },
+        {
+          heading: "Links to other sites",
+          body: (
+            <p>
+              Links to external sites are provided for convenience. The university
+              does not control them and is not responsible for their content or
+              their handling of your data.
+            </p>
+          ),
+        },
+        {
+          heading: "Liability",
+          body: (
+            <p>
+              The site is provided as it stands. To the extent the law allows, the
+              university is not liable for loss arising from reliance on its
+              content. Nothing here limits liability that cannot lawfully be
+              limited.
+            </p>
+          ),
+        },
+        {
+          heading: "Questions",
+          body: (
+            <p>
+              Questions about these terms go to{" "}
+              <a href={`mailto:${general.email}`}>{general.email}</a>.
+            </p>
+          ),
+        },
+      ]}
+    />
   );
 }

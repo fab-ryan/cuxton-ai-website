@@ -1,42 +1,38 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="relative flex-1 flex flex-col items-center justify-center min-h-screen">
-      <div className="relative flex flex-col items-start text-left px-6 max-w-lg">
-        <div className="mb-10">
-          <Image
-            src="/full_color.png"
-            alt="CuxtonAI"
-            width={96}
-            height={96}
-            className="object-contain"
-            preload
-          />
-        </div>
+    <div style={{ padding: "5rem 1.5rem 7rem" }}>
+      <div style={{ maxWidth: 640, margin: "0 auto" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/university/crest.svg"
+          alt=""
+          width={72}
+          height={82}
+          style={{ display: "block", marginBottom: "2.5rem" }}
+        />
 
-        <p className="text-sm text-[rgba(var(--foreground-rgb),0.55)] mb-3">404</p>
-
-        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4">
-          We couldn&apos;t find that page.
-        </h1>
-
-        <p className="text-base text-[rgba(var(--foreground-rgb),0.68)] leading-relaxed mb-8">
-          The link may be out of date, or the page may not be built yet. You can
-          head back to the homepage, or get in touch if you were expecting
-          something here.
+        <p style={{ fontSize: "0.875rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--cuxton-teal-text)", marginBottom: "0.875rem" }}>
+          404
         </p>
 
-        <div className="flex flex-wrap gap-3">
-          <Link href="/" className="btn-primary">
-            Back to homepage
-          </Link>
-          <Link href="/contact" className="btn-secondary">
-            Contact us
-          </Link>
+        <h1 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "1.25rem" }}>
+          That page is not here
+        </h1>
+
+        <p style={{ fontSize: "1.0625rem", lineHeight: 1.75, color: "rgba(var(--foreground-rgb), 0.7)", marginBottom: "2rem" }}>
+          The link may be out of date, or the page may never have existed. The
+          programme catalogue and the admissions pages are the two places most
+          people are looking for.
+        </p>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem" }}>
+          <Link href="/programs" className="btn-primary">Browse programmes</Link>
+          <Link href="/" className="btn-secondary">Back to the homepage</Link>
+          <Link href="/contact" className="btn-secondary">Contact the university</Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

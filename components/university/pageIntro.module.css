@@ -1,0 +1,111 @@
+/* Interior page header. Dark ground in both themes so the nav, which
+   floats over it, keeps a single set of colours to work against. */
+
+.intro {
+  position: relative;
+  background: #101b26;
+  border-bottom: 1px solid rgba(120, 160, 185, 0.2);
+  padding: 2.5rem 0 3.25rem;
+}
+@media (min-width: 1024px) { .intro { padding: 3.5rem 0 4.5rem; } }
+
+.grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+@media (min-width: 1000px) {
+  .gridWithMedia { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 3.5rem; }
+}
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  margin-bottom: 1.5rem;
+  color: rgba(230, 236, 242, 0.45);
+}
+.crumbs a { color: rgba(230, 236, 242, 0.65); text-decoration: none; }
+.crumbs a:hover { color: #e6ecf2; text-decoration: underline; text-underline-offset: 0.25em; }
+.sep { color: rgba(230, 236, 242, 0.3); }
+.current { color: #e6ecf2; }
+
+.eyebrow {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6fb8d1;
+  margin-bottom: 0.875rem;
+}
+
+.title {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2rem, 4.6vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #e6ecf2;
+  margin: 0;
+}
+
+.award {
+  display: block;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f0ad3e;
+  margin-bottom: 0.75rem;
+}
+
+.lead {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(230, 236, 242, 0.72);
+  max-width: 60ch;
+  margin: 1.25rem 0 0;
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: 2rem; }
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  height: 2.875rem;
+  padding: 0 1.5rem;
+  background: #e6ecf2;
+  color: #101b26;
+  border: 1px solid #e6ecf2;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btnPrimary:hover { background: transparent; color: #e6ecf2; }
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  height: 2.875rem;
+  padding: 0 1.5rem;
+  background: transparent;
+  color: #e6ecf2;
+  border: 1px solid rgba(120, 160, 185, 0.35);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+.btnSecondary:hover { border-color: #e6ecf2; }
+
+.media { border: 1px solid rgba(120, 160, 185, 0.2); background: #0c141d; }
+.media img { display: block; width: 100%; height: auto; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.tag {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid rgba(120, 160, 185, 0.3);
+  font-size: 0.8125rem;
+  color: rgba(230, 236, 242, 0.75);
+}

@@ -1,0 +1,144 @@
+/* ── Numbered sequence (how study works) ──────────────────────── */
+
+.steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--border);
+  background: var(--border-subtle);
+  gap: 1px;
+}
+@media (min-width: 640px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+
+.step { background: var(--bg-surface); padding: 1.75rem 1.5rem 2rem; }
+
+.stepNum {
+  display: block;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  color: var(--cuxton-amber-text);
+  margin-bottom: 1.25rem;
+}
+.stepTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin: 0 0 0.625rem;
+}
+.stepText {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(var(--foreground-rgb), 0.68);
+  margin: 0;
+}
+
+/* ── Research index ───────────────────────────────────────────── */
+
+.researchList { border-top: 1px solid var(--border); }
+.researchRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.375rem;
+  padding: 1.375rem 0;
+  border-bottom: 1px solid var(--border);
+}
+@media (min-width: 800px) {
+  .researchRow { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr) auto; align-items: baseline; gap: 2rem; }
+}
+.researchTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin: 0;
+}
+.researchDetail {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.68);
+  margin: 0;
+}
+.researchSchool {
+  font-size: 0.8125rem;
+  color: rgba(var(--foreground-rgb), 0.5);
+  white-space: nowrap;
+}
+
+/* ── Events ───────────────────────────────────────────────────── */
+
+.events { border-top: 1px solid var(--border); }
+.event {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+@media (min-width: 720px) {
+  .event { grid-template-columns: 8.5rem minmax(0, 1fr) auto; gap: 1.5rem; align-items: baseline; }
+}
+.eventDate {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cuxton-teal-text);
+  white-space: nowrap;
+}
+.eventTitle { font-size: 1rem; font-weight: 500; color: var(--foreground); margin: 0 0 0.25rem; }
+.eventDetail { font-size: 0.875rem; line-height: 1.6; color: rgba(var(--foreground-rgb), 0.62); margin: 0; }
+.eventMeta { font-size: 0.8125rem; color: rgba(var(--foreground-rgb), 0.5); white-space: nowrap; }
+
+/* ── Closing call to action ───────────────────────────────────── */
+
+.cta {
+  background: #101b26;
+  border-top: 1px solid rgba(120, 160, 185, 0.2);
+  padding: 4.5rem 0;
+}
+@media (min-width: 1024px) { .cta { padding: 6rem 0; } }
+
+.ctaGrid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+@media (min-width: 900px) {
+  .ctaGrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: start; }
+}
+
+.ctaTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.875rem, 3.6vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #e6ecf2;
+  margin: 0;
+}
+.ctaLead {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(230, 236, 242, 0.72);
+  margin: 1.25rem 0 0;
+  max-width: 52ch;
+}
+
+.ctaRoutes { display: grid; gap: 1px; background: rgba(120, 160, 185, 0.2); border: 1px solid rgba(120, 160, 185, 0.2); }
+
+.ctaRoute {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: #101b26;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.ctaRoute:hover { background: #16222e; }
+.ctaRouteTitle {
+  display: block;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: #e6ecf2;
+  margin-bottom: 0.25rem;
+}
+.ctaRouteText { display: block; font-size: 0.875rem; line-height: 1.55; color: rgba(230, 236, 242, 0.62); }
+.ctaArrow { color: #6fb8d1; font-size: 1.125rem; flex-shrink: 0; }

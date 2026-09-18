@@ -1,14 +1,12 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Nav from "./nav";
-import Footer from "./footer";
+import UniversityNav from "./UniversityNav";
+import UniversityFooter from "./university/UniversityFooter";
 
-/* ═══════════════════════════════════════════════════════════════════
-   The console and the sign-in page carry their own chrome, so the
-   marketing navbar and footer are suppressed there. Everything else on
-   the site keeps them.
-   ═══════════════════════════════════════════════════════════════════ */
+/* The staff console and its sign-in page carry their own chrome, so the
+   university navigation and footer are suppressed there. Everything else
+   on the site keeps them. */
 
 const BARE_ROUTES = ["/login", "/dashboard"];
 
@@ -19,9 +17,9 @@ function isBare(pathname: string) {
 }
 
 export function SiteNav() {
-  return isBare(usePathname()) ? null : <Nav />;
+  return isBare(usePathname()) ? null : <UniversityNav />;
 }
 
 export function SiteFooter() {
-  return isBare(usePathname()) ? null : <Footer />;
+  return isBare(usePathname()) ? null : <UniversityFooter />;
 }

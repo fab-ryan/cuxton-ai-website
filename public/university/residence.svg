@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Student residence building with lit windows">
+  <rect width="800" height="600" fill="#101b26"/>
+  <g stroke="#1a3d4d" stroke-width="1" opacity="0.45"><path d="M0 120h800M0 240h800M0 360h800"/></g>
+  <rect x="150" y="120" width="300" height="400" fill="#16222e" stroke="#2b4356" stroke-width="2"/>
+  <rect x="470" y="220" width="200" height="300" fill="#14202c" stroke="#2b4356" stroke-width="2"/>
+  <g fill="none" stroke="#2f88a8" stroke-width="1.5" opacity="0.9">
+    <rect x="178" y="150" width="42" height="52"/><rect x="242" y="150" width="42" height="52"/><rect x="306" y="150" width="42" height="52"/><rect x="370" y="150" width="42" height="52"/>
+    <rect x="178" y="230" width="42" height="52"/><rect x="242" y="230" width="42" height="52"/><rect x="306" y="230" width="42" height="52"/><rect x="370" y="230" width="42" height="52"/>
+    <rect x="178" y="310" width="42" height="52"/><rect x="242" y="310" width="42" height="52"/><rect x="306" y="310" width="42" height="52"/><rect x="370" y="310" width="42" height="52"/>
+    <rect x="178" y="390" width="42" height="52"/><rect x="242" y="390" width="42" height="52"/><rect x="306" y="390" width="42" height="52"/><rect x="370" y="390" width="42" height="52"/>
+    <rect x="496" y="250" width="40" height="50"/><rect x="556" y="250" width="40" height="50"/><rect x="616" y="250" width="40" height="50"/>
+    <rect x="496" y="330" width="40" height="50"/><rect x="556" y="330" width="40" height="50"/><rect x="616" y="330" width="40" height="50"/>
+    <rect x="496" y="410" width="40" height="50"/><rect x="556" y="410" width="40" height="50"/><rect x="616" y="410" width="40" height="50"/>
+  </g>
+  <g fill="#f5a623" opacity="0.85">
+    <rect x="242" y="230" width="42" height="52"/><rect x="370" y="310" width="42" height="52"/><rect x="556" y="330" width="40" height="50"/>
+  </g>
+  <rect x="268" y="462" width="64" height="58" fill="#0c141d" stroke="#2f88a8" stroke-width="2"/>
+  <rect y="520" width="800" height="80" fill="#0c141d"/>
+  <path d="M0 520h800" stroke="#2b4356" stroke-width="2"/>
+  <g fill="#14202c" stroke="#2b4356" stroke-width="1.5">
+    <path d="M700 520v-56M680 464a20 20 0 0 1 40 0z"/><path d="M110 520v-44M92 476a18 18 0 0 1 36 0z"/>
+  </g>
+</svg>

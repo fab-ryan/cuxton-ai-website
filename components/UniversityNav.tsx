@@ -1,123 +1,115 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./universityNav.module.css";
 
-const LOGO = "/logo/cuxtonai-academy-logo.png";
-
 const navLinks = [
   { label: "About", href: "/about" },
-  { label: "Programs", href: "/programs" },
+  { label: "Programmes", href: "/programs" },
   { label: "Admissions", href: "/admissions" },
+  { label: "Research", href: "/research" },
   { label: "Campus Life", href: "/campus-life" },
   { label: "Faculty", href: "/faculty" },
-  { label: "News & Events", href: "/news" },
+  { label: "News", href: "/news" },
 ];
 
 export default function UniversityNav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
+    const handler = () => setScrolled(window.scrollY > 8);
     handler();
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  /* The panel covers the viewport, so the page behind it must not
+     scroll, and Escape has to close it for keyboard users. */
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (hamburgerRef.current && !hamburgerRef.current.contains(e.target as Node)) {
-        setMobileMenuOpen(false);
-      }
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
     };
-    document.addEventListener("click", handler);
-    return () => document.removeEventListener("click", handler);
-  }, []);
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const isCurrent = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <nav
       className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}
-      role="navigation"
-      aria-label="Main navigation"
+      aria-label="Main"
     >
       <div className={styles.container}>
-        {/* Logo */}
-        <Link href="/" className={styles.logo} aria-label="CuxtonAI Academy home">
-          <img
-            src={LOGO}
-            alt="CuxtonAI Academy"
-            width={140}
-            height={40}
-          />
+        <Link href="/" className={styles.logo} aria-label="CuxtonAI Academy University, home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className={styles.markDark} src="/logo/cuxtonai-academy-logo-white.png" alt="CuxtonAI Academy University" width={160} height={38} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className={styles.markLight} src="/logo/cuxtonai-academy-logo.png" alt="CuxtonAI Academy University" width={160} height={38} />
         </Link>
 
-        {/* Desktop Nav Links */}
         <div className={styles.desktopLinks}>
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`${styles.navLink} ${
-                pathname === link.href ? styles.active : ""
-              }`}
+              className={`${styles.navLink} ${isCurrent(link.href) ? styles.active : ""}`}
+              aria-current={isCurrent(link.href) ? "page" : undefined}
             >
               {link.label}
             </Link>
           ))}
         </div>
 
-        {/* CTA Buttons */}
         <div className={styles.ctaContainer}>
-          <Link href="/login" className={styles.signIn}>
-            Portal
-          </Link>
-          <Link href="/admissions" className={styles.applyBtn}>
-            Apply Now
-          </Link>
+          <Link href="/contact" className={styles.signIn}>Contact</Link>
+          <Link href="/admissions" className={styles.applyBtn}>Apply</Link>
         </div>
 
-        {/* Mobile Hamburger */}
         <button
-          ref={hamburgerRef}
-          className={`${styles.hamburger} ${mobileMenuOpen ? styles.open : ""}`}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle mobile menu"
-          aria-expanded={mobileMenuOpen}
+          type="button"
+          className={`${styles.hamburger} ${open ? styles.open : ""}`}
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span /><span /><span />
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className={styles.mobileMenu}>
+      {open && (
+        <div className={styles.mobileMenu} id="mobile-menu">
           <div className={styles.mobileLinks}>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`${styles.mobileLink} ${
-                  pathname === link.href ? styles.active : ""
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
+                className={`${styles.mobileLink} ${isCurrent(link.href) ? styles.active : ""}`}
+                aria-current={isCurrent(link.href) ? "page" : undefined}
+                onClick={() => setOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
           </div>
           <div className={styles.mobileCta}>
-            <Link href="/login" className={styles.mobileSignIn}>
-              Portal
+            <Link href="/contact" className={styles.mobileSignIn} onClick={() => setOpen(false)}>
+              Contact
             </Link>
-            <Link href="/admissions" className={styles.mobileApplyBtn}>
-              Apply Now
+            <Link href="/admissions" className={styles.mobileApplyBtn} onClick={() => setOpen(false)}>
+              Apply
             </Link>
           </div>
         </div>

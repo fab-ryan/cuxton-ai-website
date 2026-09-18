@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Inter } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
-import UniversityNav from "@/components/UniversityNav";
-import { SiteFooter } from "@/components/SiteChrome";
+import { SiteNav, SiteFooter } from "@/components/SiteChrome";
 import { ScrollTop } from "@/components/scrollTop";
 
+/* Inter carries the interface and body copy. The serif is used only for
+   headings, where it does the work a university wordmark would: it marks
+   the institution without changing the reading experience. */
 const inter = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const serif = Source_Serif_4({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -20,45 +29,47 @@ export const metadata: Metadata = {
     template: "%s | CuxtonAI Academy University",
   },
   description:
-    "CuxtonAI Academy University - Leading institution for artificial intelligence, computer science, and technology education. Join our academic community.",
+    "A university for artificial intelligence, computing, data, security and digital business. Undergraduate, graduate, doctoral and professional programmes across five schools.",
   keywords: [
-    "university", "artificial intelligence", "computer science", "AI education", "master's degree",
-    "bachelor's degree", "research", "technology education", "university admissions",
+    "university",
+    "artificial intelligence degree",
+    "computer science degree",
+    "data science degree",
+    "cybersecurity degree",
+    "master's programmes",
+    "doctoral research",
+    "university admissions",
   ],
   authors: [{ name: "CuxtonAI Academy University" }],
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_GB",
     siteName: "CuxtonAI Academy University",
     title: "CuxtonAI Academy University",
     description:
-      "Leading university for artificial intelligence and computer science education. Explore our programs and join our community.",
+      "Five schools teaching artificial intelligence, computing, data, security and digital business, from undergraduate degrees to doctoral research.",
   },
   twitter: {
     card: "summary_large_image",
     title: "CuxtonAI Academy University",
-    description: "Top university for AI, computer science, and technology education.",
+    description:
+      "Undergraduate, graduate, doctoral and professional study in artificial intelligence, computing and data.",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
-type LayoutProps = {
-  children: React.ReactNode;
-};
+type LayoutProps = { children: React.ReactNode };
 
 export default function RootLayout({ children }: LayoutProps) {
-
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col overflow-x-hidden" style={{ background: "var(--background)" }}>
+    <html lang="en-GB" className={`${inter.variable} ${serif.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col overflow-x-hidden">
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <Suspense fallback={null}>
           <ScrollTop />
         </Suspense>
-        <UniversityNav />
-        <main id="main-content" tabIndex={-1} style={{ flex: 1, outline: "none", marginTop: "60px" }}>
+        <SiteNav />
+        <main id="main-content" tabIndex={-1} className="site-main">
           {children}
         </main>
         <SiteFooter />

@@ -1,21 +1,20 @@
-# CuxtonAI — website & console
+# CuxtonAI Academy University — website
 
-The marketing site for CuxtonAI, plus the admin console that runs its
-insights and enquiries. One Next.js app that builds to **static HTML** and is
-backed by Supabase for everything dynamic.
+The public website for CuxtonAI Academy University: a university teaching
+artificial intelligence, computing, data, security and digital business across
+five schools, from undergraduate degrees to doctoral research.
 
 | | |
 |---|---|
 | Framework | Next.js 16 (App Router) + React 19 |
 | Language | TypeScript (strict), `@/*` path alias |
 | Styling | Tailwind CSS v4 + CSS Modules, brand tokens in `app/globals.css` |
-| Backend | Supabase — Auth, Postgres (RLS), Storage, one Edge Function |
-| Editor | Tiptap, stored as JSON (no HTML is ever stored or injected) |
+| Content | A single TypeScript file, `data/university.ts`. No database, no CMS |
+| Images | Hand-authored SVG line art in `public/university/` |
 | Output | `output: "export"` → static files in `out/`, hostable anywhere |
 
-There is **no Next.js server at runtime**. Nothing in this repo can hold a
-secret; Row Level Security is the security boundary. See
-[supabase/README.md](supabase/README.md) for the backend and its rationale.
+There is no server, no database and no runtime API. Every page is prerendered
+to HTML at build time.
 
 ---
 
@@ -25,125 +24,115 @@ Requires Node **≥ 20.9**.
 
 ```bash
 npm install
-cp .env.local.example .env.local   # fill in from Supabase → Project Settings → API
-npm run dev                        # http://localhost:3000
+npm run dev     # http://localhost:3000
+npm run build   # static export into out/
+npx eslint .    # lint
 ```
-
-The marketing pages render fine **without** Supabase credentials — the client
-returns `null` and the console shows a configuration notice rather than
-crashing. You only need `.env.local` for `/login`, `/dashboard` and live
-insights.
-
-### Environment
-
-Both variables are shipped to the browser and are public by design.
-
-| Variable | Value |
-|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | `https://<ref>.supabase.co` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | the project's anon key |
-
-Never put the `service_role` key in a `NEXT_PUBLIC_` variable — it belongs
-only in the Edge Function secrets.
-
-### Backend setup
-
-First time against a fresh Supabase project, follow
-[supabase/README.md](supabase/README.md): apply `supabase/schema.sql`, create
-an admin user (there is no public registration), and deploy the
-`send-contact-reply` function. It takes about ten minutes.
 
 ---
 
-## Scripts
+## Routes
 
-| Command | Does |
-|---|---|
-| `npm run dev` | Dev server on :3000 |
-| `npm run build` | Static export into `out/` |
-| `npm run lint` | ESLint (`eslint-config-next`) |
-
-`npm start` does **not** work here — `next start` refuses to run under
-`output: "export"`. To preview a build, serve the folder:
-
-```bash
-npm run build && npx serve@latest out
+```
+/                      Home
+/about                 The university, its teaching and its leadership
+/programs              Programme catalogue, filterable by level and school
+/programs/[slug]       Programme detail: curriculum, assessment, entry, staff
+/admissions            Process, entry requirements, fees, key dates, questions
+/research              Research groups, research culture, doctoral study
+/faculty               Academic staff by school
+/campus-life           Facilities, housing, societies, student support
+/news                  News and events index, filterable by category
+/news/[slug]           Article
+/contact               Offices, enquiry form, campus address
+/privacy /terms /cookies
 ```
 
-The `export` script in `package.json` is a leftover from older Next versions;
-`next export` no longer exists and `npm run build` already writes `out/`.
+`/programs` accepts `?school=<slug>` and `?level=<level>` so that other pages
+can link into a pre-filtered view.
 
 ---
 
-## Layout
+## Content
 
-```
-app/
-  page.tsx                 home, assembled from components/homeSections/*
-  solutions/[slug]/        five service pages, from data/solutions.ts
-  industries/[slug]/       six sector pages, from data/industries.ts
-  technology/  company/  how-we-work/  contact/
-  privacy/  terms/  cookies/
-  insights/                public index + one prerendered page per post
-  insights/view/           client-rendered fallback for posts published
-                           since the last deploy (noindex)
-  login/                   sign-in
-  dashboard/               console: overview, insights, contacts
-components/
-  SiteChrome.tsx           suppresses nav/footer on /login and /dashboard
-  homeSections/            one component per home section
-  solutions/ industries/ technology/ company/ howWeWork/
-  insights/RichContent.tsx JSON → React, the sanitising renderer
-  dashboard/               console UI, session context, route guard, editor
-data/                      hard-coded marketing copy (solutions, industries)
-lib/
-  insights.ts              slugify, excerpt, reading time, link resolution
-  richtext.ts              document types, URL guards, text extraction
-  supabase/client.ts       browser client (anon key)
-  supabase/build.ts        build-time reader used to prerender articles
-  supabase/storage.ts      image upload / delete
-supabase/                  schema.sql, Edge Function, backend README
-public/                    imagery and inline-SVG schematics
-```
+All copy, programmes, modules, faculty, news and events live in
+[`data/university.ts`](data/university.ts). Editing that file is how the site
+changes; nothing else reads from anywhere else.
 
-**Where content lives.** Solutions and industries are hard-coded in `data/` —
-edit the file, redeploy. Insights and enquiries live in Supabase and are
-managed from the console at `/dashboard`.
+Two rules were applied when writing it, and are worth keeping:
 
-## Two things the static export implies
+1. **No invented figures.** No head-counts, rankings, employment rates,
+   ratings, testimonials or accreditation claims. The numbers shown on the
+   home and about pages come from `FACTS`, which counts the content in the
+   file, so every figure on the site is true of the site itself.
+2. **The placeholder status is stated.** The footer and the terms page say
+   plainly that the programmes, faculty and news are illustrative content for
+   a demonstration build rather than a record of a real institution.
 
-1. **A new insight needs a deploy to get its own URL.** `next build` writes one
-   HTML file per published post. Anything published since then is linked to
-   `/insights/view?slug=…`, a client-rendered page that resolves any slug, so
-   it is readable immediately; the next deploy gives it a real page and the
-   index switches over. Edits to already-published posts appear immediately,
-   because each article refetches itself in the browser.
-2. **Records are addressed by query string.** The editor is
-   `/dashboard/insights/edit?id=…` rather than a dynamic segment, which under
-   `output: "export"` would need every id known at build time.
+The enquiry form on `/contact` has no backend. It composes the message and
+hands it to the visitor's own mail client, addressed to the office matching
+the chosen topic. That is deliberate: a form that silently discards what
+someone typed is worse than no form.
 
-## Design notes
+---
 
-Brand tokens are defined once at the top of `app/globals.css`: teal `#1B6B8A`
-is **structure** (rules, borders, diagram lines), amber `#F5A623` is **state**
-(the trust boundary, warnings) and is never decoration. The ground is a matte
-slate-navy; a light theme follows `prefers-color-scheme`.
+## Design system
 
-Motion is deliberately scarce. `components/Reveal.tsx` used to fade every
-section in on scroll and now renders its children directly — it keeps its prop
-signature so call sites did not have to change. The site's motion budget is
-spent on the trust perimeter drawing itself once.
+Brand tokens are defined once in [`app/globals.css`](app/globals.css) and
+inherited by every component:
 
-## Deploying
+- **Teal** is structure — rules, borders, diagram lines, links.
+- **Amber** is state — the active nav item, one accent per illustration.
+- **Green and red** appear only as pass/fail status, never as decoration.
+- Square corners everywhere; pill radius only on status tags.
+- Hairline borders carry structure. No drop shadows, and no gradients.
+- Nothing animates on load or scroll. Motion responds to user action only.
 
-`npm run build` produces `out/` — plain HTML, CSS and JS. Upload it to any
-static host or CDN (Vercel, Netlify, S3 + CloudFront, GitHub Pages, nginx).
-Set the two `NEXT_PUBLIC_` variables in the build environment so published
-insights are baked into the HTML for search engines.
+Light and dark themes follow the system preference. Sections that stay dark in
+both themes carry the `.on-dark` class, which re-asserts the dark palette for
+its subtree.
 
-## See also
+Typography pairs Inter for interface and body copy with Source Serif 4
+(`--font-display`) for headings, which is what gives the site its institutional
+register without changing how it reads.
 
-- [supabase/README.md](supabase/README.md) — schema, RLS, admin account, the
-  reply Edge Function, and how article content is stored
-- [AGENTS.md](AGENTS.md) — note for AI agents: this Next.js version differs
-  from older conventions; check `node_modules/next/dist/docs/` before coding
+Shared page primitives live in
+[`components/university/ui.module.css`](components/university/ui.module.css)
+and are imported by the pages that need them.
+
+---
+
+## Illustrations
+
+There are no photographs. `public/university/` holds SVG line art drawn in the
+brand palette: a campus elevation for the home hero, scene plates for the
+schools and campus pages, abstract plates for news items, monogram plates for
+faculty, and a crest.
+
+They are flat, gradient-free and drawn on a dark ground, so they read the same
+in both themes. The generator for the parametric ones is a short script; the
+scene drawings are hand-authored.
+
+---
+
+## Accessibility
+
+- A skip link to `#main-content` on every page.
+- One `h1` per page, headings in order, sections labelled with
+  `aria-labelledby`.
+- The FAQ uses native `<details>`, so keyboard and screen-reader behaviour is
+  the browser's.
+- The mobile menu traps nothing, closes on `Escape`, locks background scroll,
+  and reports state with `aria-expanded`.
+- Focus is visible everywhere via a single amber outline rule.
+- `prefers-reduced-motion` is honoured globally.
+
+---
+
+## Notes
+
+- `package.json` still lists Supabase and Tiptap. Nothing imports them any
+  more, so they do not reach the bundle; they can be removed with
+  `npm uninstall` when convenient.
+- `supabase/` and `.env` are left over from the previous version of this
+  application and are no longer read by anything in `app/`.

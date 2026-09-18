@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Connected servers and network nodes">
+<rect width="800" height="600" fill="#101b26"/>
+<g stroke="#2f88a8" stroke-width="1.5" opacity="0.6" fill="none"><path d="M400 200V120M400 200 220 320M400 200l180 120M220 400v60M580 400v60M400 200 400 460"/></g>
+<rect x="290" y="80" width="220" height="120" fill="#16222e" stroke="#58aac6" stroke-width="2"/>
+<path d="M320 120h160M320 150h110" stroke="#58aac6" stroke-width="1.5"/>
+<g><rect x="140" y="320" width="160" height="80" fill="#16222e" stroke="#2b4356" stroke-width="2"/><path d="M160 348h60M160 372h100" stroke="#2f88a8" stroke-width="1.5"/><circle cx="276" cy="348" r="6" fill="#2f88a8"/></g><g><rect x="500" y="320" width="160" height="80" fill="#16222e" stroke="#2b4356" stroke-width="2"/><path d="M520 348h60M520 372h100" stroke="#2f88a8" stroke-width="1.5"/><circle cx="636" cy="348" r="6" fill="#2f88a8"/></g><g><rect x="320" y="460" width="160" height="80" fill="#16222e" stroke="#f5a623" stroke-width="2"/><path d="M340 488h60M340 512h100" stroke="#f5a623" stroke-width="1.5"/><circle cx="456" cy="488" r="6" fill="#f5a623"/></g>
+</svg>

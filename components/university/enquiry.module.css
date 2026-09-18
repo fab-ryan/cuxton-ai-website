@@ -1,0 +1,63 @@
+.form { display: grid; gap: 1.5rem; }
+
+.row { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 640px) { .row { grid-template-columns: repeat(2, 1fr); } }
+
+.field { display: flex; flex-direction: column; }
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+.optional { color: rgba(var(--foreground-rgb), 0.5); font-weight: 400; }
+
+.input {
+  height: 2.875rem;
+  padding: 0 0.875rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease;
+  width: 100%;
+}
+.input:hover { border-color: rgba(var(--cuxton-teal-mid-rgb), 0.6); }
+
+.select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%232f88a8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.textarea { height: auto; min-height: 9rem; padding: 0.75rem 0.875rem; resize: vertical; line-height: 1.6; }
+
+.foot { display: flex; flex-direction: column; gap: 1rem; }
+@media (min-width: 720px) { .foot { flex-direction: row; align-items: center; gap: 1.75rem; } }
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0 1.75rem;
+  background: var(--foreground);
+  color: var(--background);
+  border: 1px solid var(--foreground);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.submit:hover { background: transparent; color: var(--foreground); }
+
+.note { font-size: 0.875rem; line-height: 1.6; color: rgba(var(--foreground-rgb), 0.6); margin: 0; }
+.note strong { color: var(--cuxton-teal-text); font-weight: 500; }
