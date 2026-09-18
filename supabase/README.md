@@ -92,7 +92,7 @@ supabase functions deploy send-broadcast
 
 supabase secrets set \
   RESEND_API_KEY=re_xxxxxxxxxxxx \
-  REPLY_FROM="CuxtonAI <hello@cuxtonai.com>" \
+  REPLY_FROM="CuxtonAI <info@cuxtonai.com>" \
   BRIEFING_FROM="CuxtonAI Briefings <briefings@cuxtonai.com>" \
   SITE_URL=https://cuxtonai.com
 ```

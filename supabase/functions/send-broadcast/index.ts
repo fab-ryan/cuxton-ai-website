@@ -22,8 +22,13 @@ const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")!;
 const BRIEFING_FROM =
-  Deno.env.get("BRIEFING_FROM") ?? Deno.env.get("REPLY_FROM") ?? "CuxtonAI <hello@cuxtonai.com>";
-const SITE_URL = (Deno.env.get("SITE_URL") ?? "https://cuxtonai.com").replace(/\/+$/, "");
+  Deno.env.get("BRIEFING_FROM") ??
+  Deno.env.get("REPLY_FROM") ??
+  "CuxtonAI <info@cuxtonai.com>";
+const SITE_URL = (Deno.env.get("SITE_URL") ?? "https://cuxtonai.com").replace(
+  /\/+$/,
+  "",
+);
 
 /** Resend's ceiling for one batch request. */
 const BATCH_SIZE = 100;
@@ -36,11 +41,17 @@ const IN_FLIGHT_WINDOW_MS = 10 * 60 * 1000;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": Deno.env.get("ALLOWED_ORIGIN") ?? "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
-type Feature = { title: string; excerpt: string; coverImage: string | null; url: string };
+type Feature = {
+  title: string;
+  excerpt: string;
+  coverImage: string | null;
+  url: string;
+};
 type Recipient = { email: string; unsubscribe_token: string };
 type OutgoingEmail = {
   from: string;
@@ -70,22 +81,33 @@ function escapeHtml(value: string) {
     .replace(/'/g, "&#39;");
 }
 
-function renderHtml(body: string, feature: Feature | null, unsubscribeUrl: string) {
+function renderHtml(
+  body: string,
+  feature: Feature | null,
+  unsubscribeUrl: string,
+) {
   const paragraphs = body
     .split(/\n{2,}/)
-    .map((p) => `<p style="margin:0 0 16px;line-height:1.7;">${escapeHtml(p).replace(/\n/g, "<br />")}</p>`)
+    .map(
+      (p) =>
+        `<p style="margin:0 0 16px;line-height:1.7;">${escapeHtml(p).replace(/\n/g, "<br />")}</p>`,
+    )
     .join("");
 
   const featureBlock = feature
     ? `<div style="margin:24px 0 8px;border:1px solid #dbe6f0;border-radius:12px;overflow:hidden;">
-      ${feature.coverImage
-        ? `<img src="${escapeHtml(feature.coverImage)}" alt="" width="494" style="display:block;width:100%;height:auto;border:0;" />`
-        : ""}
+      ${
+        feature.coverImage
+          ? `<img src="${escapeHtml(feature.coverImage)}" alt="" width="494" style="display:block;width:100%;height:auto;border:0;" />`
+          : ""
+      }
       <div style="padding:20px;">
         <p style="margin:0 0 8px;font-size:17px;font-weight:600;line-height:1.4;color:#0c2233;">${escapeHtml(feature.title)}</p>
-        ${feature.excerpt
-          ? `<p style="margin:0 0 16px;font-size:14px;line-height:1.6;color:#5b7186;">${escapeHtml(feature.excerpt)}</p>`
-          : ""}
+        ${
+          feature.excerpt
+            ? `<p style="margin:0 0 16px;font-size:14px;line-height:1.6;color:#5b7186;">${escapeHtml(feature.excerpt)}</p>`
+            : ""
+        }
         <a href="${escapeHtml(feature.url)}" style="display:inline-block;background:#1b6b8a;color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:10px 18px;border-radius:8px;">Read the insight</a>
       </div>
     </div>`
@@ -106,7 +128,11 @@ function renderHtml(body: string, feature: Feature | null, unsubscribeUrl: strin
 </body></html>`;
 }
 
-function renderText(body: string, feature: Feature | null, unsubscribeUrl: string) {
+function renderText(
+  body: string,
+  feature: Feature | null,
+  unsubscribeUrl: string,
+) {
   const parts = [body];
   if (feature) parts.push(`${feature.title}\n${feature.url}`);
   parts.push(`Unsubscribe: ${unsubscribeUrl}`);
@@ -118,7 +144,7 @@ function buildEmail(
   subject: string,
   body: string,
   feature: Feature | null,
-  unsubscribeUrl: string
+  unsubscribeUrl: string,
 ): OutgoingEmail {
   return {
     from: BRIEFING_FROM,
@@ -132,7 +158,11 @@ function buildEmail(
 }
 
 /** POST to Resend, retrying briefly if rate-limited. Returns an error message, or null on success. */
-async function postToResend(path: string, payload: unknown, idempotencyKey?: string) {
+async function postToResend(
+  path: string,
+  payload: unknown,
+  idempotencyKey?: string,
+) {
   for (let attempt = 0; attempt < 3; attempt++) {
     const res = await fetch(`https://api.resend.com${path}`, {
       method: "POST",
@@ -157,7 +187,8 @@ async function postToResend(path: string, payload: unknown, idempotencyKey?: str
 }
 
 Deno.serve(async (req) => {
-  if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
+  if (req.method === "OPTIONS")
+    return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
 
   // ── 1. Identify the caller from their JWT ──
@@ -171,7 +202,8 @@ Deno.serve(async (req) => {
   });
 
   const { data: userData, error: userError } = await asCaller.auth.getUser();
-  if (userError || !userData.user) return json({ error: "Invalid session" }, 401);
+  if (userError || !userData.user)
+    return json({ error: "Invalid session" }, 401);
 
   // ── 2. Authorise: admins only ──
   const { data: profile } = await asCaller
@@ -180,10 +212,16 @@ Deno.serve(async (req) => {
     .eq("id", userData.user.id)
     .single();
 
-  if (profile?.role !== "admin") return json({ error: "Admin access required" }, 403);
+  if (profile?.role !== "admin")
+    return json({ error: "Admin access required" }, 403);
 
   // ── 3. Validate input ──
-  let payload: { subject?: string; body?: string; insightId?: string | null; test?: boolean };
+  let payload: {
+    subject?: string;
+    body?: string;
+    insightId?: string | null;
+    test?: boolean;
+  };
   try {
     payload = await req.json();
   } catch {
@@ -195,7 +233,8 @@ Deno.serve(async (req) => {
   const insightId = payload.insightId?.trim() || null;
   const test = payload.test === true;
 
-  if (!subject || !body) return json({ error: "subject and body are both required" }, 400);
+  if (!subject || !body)
+    return json({ error: "subject and body are both required" }, 400);
   if (body.length > 20000 || subject.length > 300) {
     return json({ error: "Subject or body exceeds the allowed length" }, 400);
   }
@@ -212,14 +251,19 @@ Deno.serve(async (req) => {
       .maybeSingle();
 
     if (!insight || insight.status !== "published") {
-      return json({ error: "Only a published insight can be featured in a briefing" }, 400);
+      return json(
+        { error: "Only a published insight can be featured in a briefing" },
+        400,
+      );
     }
 
     feature = {
       title: insight.title,
       excerpt: insight.excerpt ?? "",
       // Mail clients fetch images over the open internet; anything else would not load.
-      coverImage: insight.cover_image?.startsWith("https://") ? insight.cover_image : null,
+      coverImage: insight.cover_image?.startsWith("https://")
+        ? insight.cover_image
+        : null,
       url: `${SITE_URL}/insights/view?slug=${encodeURIComponent(insight.slug)}`,
     };
   }
@@ -227,13 +271,24 @@ Deno.serve(async (req) => {
   // ── 5a. Test send: one copy to the caller, nothing recorded ──
   if (test) {
     const to = userData.user.email;
-    if (!to) return json({ error: "Your account has no email address to send a test to" }, 400);
+    if (!to)
+      return json(
+        { error: "Your account has no email address to send a test to" },
+        400,
+      );
 
     const error = await postToResend(
       "/emails",
-      buildEmail(to, `[Test] ${subject}`, body, feature, `${SITE_URL}/unsubscribe`)
+      buildEmail(
+        to,
+        `[Test] ${subject}`,
+        body,
+        feature,
+        `${SITE_URL}/unsubscribe`,
+      ),
     );
-    if (error) return json({ error: `Email provider rejected the test: ${error}` }, 502);
+    if (error)
+      return json({ error: `Email provider rejected the test: ${error}` }, 502);
     return json({ ok: true, test: true, to });
   }
 
@@ -246,7 +301,13 @@ Deno.serve(async (req) => {
     .limit(1);
 
   if (inFlight && inFlight.length > 0) {
-    return json({ error: "Another briefing is still sending. Wait for it to finish first." }, 409);
+    return json(
+      {
+        error:
+          "Another briefing is still sending. Wait for it to finish first.",
+      },
+      409,
+    );
   }
 
   // ── 6. Load every active subscriber ──
@@ -283,7 +344,8 @@ Deno.serve(async (req) => {
     .select("id")
     .single();
 
-  if (broadcastError || !broadcast) return json({ error: "Could not record the broadcast" }, 500);
+  if (broadcastError || !broadcast)
+    return json({ error: "Could not record the broadcast" }, 500);
 
   // ── 8. Send in batches, saving progress after each ──
   let sent = 0;
@@ -298,14 +360,18 @@ Deno.serve(async (req) => {
         subject,
         body,
         feature,
-        `${SITE_URL}/unsubscribe?token=${encodeURIComponent(r.unsubscribe_token)}`
-      )
+        `${SITE_URL}/unsubscribe?token=${encodeURIComponent(r.unsubscribe_token)}`,
+      ),
     );
 
     let error: string | null;
     try {
       // A batch is accepted or rejected as a whole, so it is counted as one.
-      error = await postToResend("/emails/batch", emails, `${broadcast.id}-${i / BATCH_SIZE}`);
+      error = await postToResend(
+        "/emails/batch",
+        emails,
+        `${broadcast.id}-${i / BATCH_SIZE}`,
+      );
     } catch (err) {
       error = err instanceof Error ? err.message : "Unknown transport error";
     }
@@ -332,7 +398,20 @@ Deno.serve(async (req) => {
     .eq("id", broadcast.id);
 
   if (sent === 0) {
-    return json({ error: `Email provider rejected the briefing: ${lastError}`, broadcastId: broadcast.id }, 502);
+    return json(
+      {
+        error: `Email provider rejected the briefing: ${lastError}`,
+        broadcastId: broadcast.id,
+      },
+      502,
+    );
   }
-  return json({ ok: true, broadcastId: broadcast.id, status, sent, failed, lastError });
+  return json({
+    ok: true,
+    broadcastId: broadcast.id,
+    status,
+    sent,
+    failed,
+    lastError,
+  });
 });

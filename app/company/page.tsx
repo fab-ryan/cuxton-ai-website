@@ -314,7 +314,7 @@ export default function CompanyPage() {
       </section>
 
       {/* --- Section 5: Executive Council Stage ---------------------------- */}
-      <LeadershipCouncil />
+      {/* <LeadershipCouncil /> */}
 
       {/* --- Section 6: Closing CTA ----------------------------------------
            Same shape as the /technology and /how-we-work closers. */}
