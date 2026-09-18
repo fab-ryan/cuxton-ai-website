@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import ManageConsentButton from "@/components/analytics/ManageConsentButton";
 
 export const metadata: Metadata = {
   title: "Cookie Policy — CuxtonAI",
@@ -25,17 +26,29 @@ export default function CookiePolicyPage() {
         <div style={{ maxWidth: 840, margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
           <article className="card-enterprise" style={{ padding: "2rem 2.5rem", lineHeight: 1.8 }}>
             <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "1rem" }}>
-              1. Essential Cookies Only
+              1. Essential Cookies
             </h2>
             <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
-              We only use strictly necessary session cookies required for core website routing, accessibility preferences,
-              and security validation. We do not sell data or maintain ad-network trackers.
+              We use strictly necessary session cookies required for core website routing, accessibility preferences,
+              and security validation. These are always active. We do not sell data or maintain ad-network trackers.
             </p>
           </article>
 
           <article className="card-enterprise" style={{ padding: "2rem 2.5rem", lineHeight: 1.8 }}>
             <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "1rem" }}>
-              2. Managing Preferences
+              2. Optional Analytics Cookies
+            </h2>
+            <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
+              With your consent, we use Google Analytics to understand which pages are read and how visitors move through
+              the site. These cookies are never set unless you accept them, and the analytics script is not loaded at all
+              until you do. Declining leaves the site fully functional.
+            </p>
+            <ManageConsentButton />
+          </article>
+
+          <article className="card-enterprise" style={{ padding: "2rem 2.5rem", lineHeight: 1.8 }}>
+            <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "var(--foreground)", marginBottom: "1rem" }}>
+              3. Managing Preferences
             </h2>
             <p style={{ color: "rgba(var(--foreground-rgb), 0.75)" }}>
               You can block or disable cookies at any time through your browser settings. Doing so will not degrade your ability

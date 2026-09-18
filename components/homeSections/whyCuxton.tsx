@@ -248,7 +248,7 @@ const comparisonRows = [
   },
   {
     dimension: "Who owns the work",
-    cuxton: "You do — the prompts, the pipelines, the integration code and the fine-tuned weights.",
+    cuxton: "You do the prompts, the pipelines, the integration code and the fine-tuned weights.",
     saas: "The vendor owns the platform. You rent access to your own workflows.",
     consulting: "Often built on their internal framework, which you licence rather than own.",
   },

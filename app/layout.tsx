@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteNav, SiteFooter } from "@/components/SiteChrome";
 import { ScrollTop } from "@/components/scrollTop";
+import Analytics from "@/components/analytics/Analytics";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps) {
           {children}
         </main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );
