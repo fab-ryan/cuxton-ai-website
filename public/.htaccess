@@ -1,0 +1,41 @@
+# ═══════════════════════════════════════════════════════════════════
+#  CuxtonAI — Apache config for the cPanel static deploy.
+#
+#  Lives in public/ so `next build` copies it into out/. Upload the
+#  contents of out/ into public_html, this file included (cPanel's file
+#  manager hides dotfiles until you enable "Show Hidden Files").
+# ═══════════════════════════════════════════════════════════════════
+
+# Serve the branded 404 rather than Apache's default. Next writes it to
+# the export root as 404.html.
+ErrorDocument 404 /404.html
+
+# Never expose a bare file list. Routes resolve via DirectoryIndex; any
+# directory without an index.html should fail closed.
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Everything under /_next/static carries a content hash in its name, so
+  # it can never go stale — cache it hard.
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML and the RSC payload files are not hashed and change on every
+  # deploy, so they must be revalidated or visitors get a stale build.
+  <FilesMatch "\.(html|txt)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/svg+xml .svg
+  AddType font/woff2 .woff2
+</IfModule>

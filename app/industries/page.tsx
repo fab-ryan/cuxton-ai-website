@@ -6,7 +6,7 @@ import styles from "@/components/industries/IndustriesIndex.module.css";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Industries & Sector Practices — CuxtonAI",
+  title: "Industries & Sector Practices - CuxtonAI",
   description:
     "CuxtonAI builds verifiable AI systems for financial services, healthcare, national defense, academic research, telecommunications, and legal advisory.",
 };

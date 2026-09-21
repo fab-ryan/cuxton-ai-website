@@ -5,7 +5,7 @@ import EngagementModel from "@/components/howWeWork/EngagementModel";
 import OperatingPrinciples from "@/components/howWeWork/OperatingPrinciples";
 
 export const metadata: Metadata = {
-  title: "How We Work — CuxtonAI Engagement Model",
+  title: "How We Work -CuxtonAI Engagement Model",
   description:
     "CuxtonAI's 8-step engagement model: from AI opportunity discovery through to operational deployment, training and long-term support.",
 };

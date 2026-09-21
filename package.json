@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "export": "next export"
+    "preview": "python3 -m http.server 4322 --directory out"
   },
   "dependencies": {
     "@next/third-parties": "^16.3.5",

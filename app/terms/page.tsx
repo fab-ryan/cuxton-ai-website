@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — CuxtonAI",
+  title: "Terms of Use - CuxtonAI",
   description:
     "Terms of use and enterprise engagement policies for CuxtonAI.",
 };

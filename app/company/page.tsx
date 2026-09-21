@@ -3,11 +3,11 @@ import Link from "next/link";
 
 import PageHero from "@/components/PageHero";
 import CompanyPrinciplesMatrix from "@/components/company/CompanyPrinciplesMatrix";
-import LeadershipCouncil from "@/components/company/LeadershipCouncil";
+// import LeadershipCouncil from "@/components/company/LeadershipCouncil";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Company — About CuxtonAI",
+  title: "Company - About CuxtonAI",
   description:
     "CuxtonAI is an enterprise AI consultancy helping institutions discover, integrate and deploy secure AI systems, agents and workflow automation.",
 };
