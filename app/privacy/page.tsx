@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Privacy & Data Governance — CuxtonAI",
+  title: "Privacy & Data Governance - CuxtonAI",
   description:
     "CuxtonAI's commitment to data sovereignty, zero unauthorized data retention, and enterprise security standards.",
 };

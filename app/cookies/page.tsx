@@ -4,7 +4,7 @@ import PageHero from "@/components/PageHero";
 import ManageConsentButton from "@/components/analytics/ManageConsentButton";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy — CuxtonAI",
+  title: "Cookie Policy - CuxtonAI",
   description:
     "Information on cookies, tracking, and minimal telemetry used on the CuxtonAI website.",
 };
