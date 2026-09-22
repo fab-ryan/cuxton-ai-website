@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
+import ConsoleLogo from "./ConsoleLogo";
 import s from "./dashboard.module.css";
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -83,18 +84,9 @@ export default function LoginForm() {
       <div style={{ width: "100%", maxWidth: 420 }}>
         <div className="card-enterprise" style={{ padding: "2.25rem 2rem" }}>
           <div style={{ marginBottom: "1.75rem" }}>
-            <p
-              style={{
-                fontSize: "0.66rem",
-                fontWeight: 700,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "var(--cuxton-amber-text)",
-                marginBottom: "0.6rem",
-              }}
-            >
-              CuxtonAI Console
-            </p>
+            <div className={s.loginLogo}>
+              <ConsoleLogo />
+            </div>
             <h1
               style={{
                 fontSize: "1.5rem",
